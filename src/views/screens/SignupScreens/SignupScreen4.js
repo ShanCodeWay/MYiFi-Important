@@ -2,16 +2,20 @@
   import { View, Text, Touchable, ScrollView, SafeAreaView, StatusBar, } from "react-native";
   import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
   import { TouchableOpacity } from "react-native-gesture-handler";
-  import Button from "../../../components/Button";
+  import Button from "../../components/Common/CommonButton";
   import { useNavigation } from '@react-navigation/native';
-  import TitleBar from "../../../components/TitleBar";
-  import PaginationIndicator from "../../../components/PaginationIndicator";
-  import {styles as SignupScreenStyles4} from "./SignupScreen4Styles";
-  import FontAwesome from 'react-native-vector-icons/FontAwesome';
-  import CommonInputField from '../../../components/CommonInPutField/CommonInputField';
+  import TitleBar from "../../components/Common/TitleBar";
+  import PaginationIndicator from "../../components/PaginationIndicator";
+  import {SignupScreenStyles4} from "./styles/SignupScreen4Styles";
+  
+  import CommonInputField from '../../components/Common/CommonInputField';
   import Svg, { Path } from 'react-native-svg';
-  import AppleIcon from '../../../assets/icons/apple.svg';
-  import GoogleIcon from '../../../assets/icons/google.svg';
+ 
+  
+  import Icon_apple from '../../../assets/icons/Icon_apple.svg';
+  import Icon_google from '../../../assets/icons/Icon_google.svg';
+  import Icon_navLeft from '../../../assets/icons/Icon_navLeft.svg';
+  import Icon_navRight from '../../../assets/icons/Icon_navRight.svg';
 
 
   class SignupScreen4 extends Component {
@@ -43,7 +47,7 @@
     };
 
     handleLeftButtonPress = () => {
-      this.props.navigation.replace('ButtonScreen'); 
+      this.props.navigation.replace('SignupScreen3'); 
       console.log("left pressed");
     };
 
@@ -69,6 +73,8 @@
         >
         
         <TitleBar
+        nameLeft={Icon_navLeft}
+        onPressLeft={this.handleLeftButtonPress} 
        
         />
        
@@ -122,28 +128,29 @@
           </View>
 
           
-          <View style={SignupScreenStyles4.button}>
+          
             
             <Button
               type='1'
-              text="Next"
+              title="Next"
               borderRadius={35}
               onPress={this.handleNextButtonPress}
               textSize={20}
+              btnWidth='30%'
             />
             
-          </View>
+         
 
   </View>
       
   <View style={SignupScreenStyles4.bottomView}>
           <View style={SignupScreenStyles4.logoIcon}>
 
-          <AppleIcon style={SignupScreenStyles4.logo} width={25} height={25} />
+          <Icon_apple style={SignupScreenStyles4.logo} width={25} height={25} />
           
 
 
-          <GoogleIcon style={SignupScreenStyles4.logo} width={25} height={25} />
+          <Icon_google style={SignupScreenStyles4.logo} width={25} height={25} />
   </View>
             
 

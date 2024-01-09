@@ -2,16 +2,18 @@
   import { View, Text, Touchable, ScrollView, SafeAreaView, StatusBar, } from "react-native";
   import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
   import { TouchableOpacity } from "react-native-gesture-handler";
-  import Button from "../../../components/Button";
+  import Button from "../../components/Common/CommonButton";
   import { useNavigation } from '@react-navigation/native';
-  import TitleBar from "../../../components/TitleBar";
-  import PaginationIndicator from "../../../components/PaginationIndicator";
-  import {styles as SignupScreenStyles1} from "./SignupScreen1Styles";
-  import FontAwesome from 'react-native-vector-icons/FontAwesome';
-  import CommonInputField from '../../../components/CommonInPutField/CommonInputField';
+  import TitleBar from "../../components/Common/TitleBar";
+  import PaginationIndicator from "../../components/PaginationIndicator";
+  import {SignupScreenStyles1} from "./styles/SignupScreen1Styles";
  
-  import AppleIcon from '../../../assets/icons/apple.svg';
-  import GoogleIcon from '../../../assets/icons/google.svg';
+  import CommonInputField from '../../components/Common/CommonInputField';
+ 
+  import Icon_apple from '../../../assets/icons/Icon_apple.svg';
+  import Icon_google from '../../../assets/icons/Icon_google.svg';
+  import Icon_navLeft from '../../../assets/icons/Icon_navLeft.svg';
+  import Icon_navRight from '../../../assets/icons/Icon_navRight.svg';
 
   class SignupScreen1 extends Component {
 
@@ -49,7 +51,7 @@
     };
 
     handleLeftButtonPress = () => {
-      this.props.navigation.replace('ButtonScreen'); 
+      this.props.navigation.replace('LoginScreen'); 
       console.log("left pressed");
     };
 
@@ -86,8 +88,7 @@
         
         <TitleBar
         
-        nameLeft="chevron-left"
-        
+        nameLeft={Icon_navLeft}
         onPressLeft={this.handleLeftButtonPress} 
         
         />
@@ -112,9 +113,7 @@
               }}
             >
 
-        <View 
-        style={SignupScreenStyles1.mainView}
-        > 
+      
         
       
 
@@ -161,28 +160,34 @@
           </View>
 
           
-          <View style={SignupScreenStyles1.button}>
+          
+          
             
-            <Button
-              type='1'
-              text="Next"
-              borderRadius={35}
-              onPress={this.handleNextButtonPress}
-              textSize={20}
-            />
-            
-          </View>
+         
 
   </View>
       
   <View style={SignupScreenStyles1.bottomView}>
+
+
+      
+         <Button
+              type='1'
+              title="Next"
+              borderRadius={35}
+              onPress={this.handleNextButtonPress}
+              textSize={20}
+              btnWidth='30%'
+            />
+
+
           <View style={SignupScreenStyles1.logoIcon}>
 
-          <AppleIcon style={SignupScreenStyles1.logo} width={25} height={25} />
+          <Icon_apple style={SignupScreenStyles1.logo} width={25} height={25} />
           
 
 
-          <GoogleIcon style={SignupScreenStyles1.logo} width={25} height={25} />
+          <Icon_google style={SignupScreenStyles1.logo} width={25} height={25} />
            
       
   </View>
@@ -193,7 +198,7 @@
         
         
           
-        </View>
+       
         </KeyboardAwareScrollView>
         
         

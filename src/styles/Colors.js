@@ -1,6 +1,12 @@
 export default {
-    BLACK_COLOR: "#000000",
-    RED_COLOR: "#FF0000",
-    WHITE_COLOR: "#ffffff",
-
-  };
+  Blue: "#00377B",
+  Dark_Blue: "#1B1F52",
+  LIGHT_Blue: "#007BC2",
+  WHITE: "#FAFBFC",
+  BLACK_DEEP: "#1E1C2A",
+  GREEN_DARK: "#6DC100",
+  GRAY_DARK: "#7C8DA6",
+  GRAY: "#A5B4CB",
+  GRAY_LIGHT: "#F5F7F9",
+  BLUE_ACCENT: "#EEF5FF",
+};

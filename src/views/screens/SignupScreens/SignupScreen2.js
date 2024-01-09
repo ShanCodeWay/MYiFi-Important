@@ -2,18 +2,22 @@
   import { View, Text, Touchable, ScrollView, SafeAreaView, StatusBar, } from "react-native";
   import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
   import { TouchableOpacity } from "react-native-gesture-handler";
-  import Button from "../../../components/Button";
+  import Button from "../../components/Common/CommonButton";
   import { useNavigation } from '@react-navigation/native';
-  import TitleBar from "../../../components/TitleBar";
-  import PaginationIndicator from "../../../components/PaginationIndicator";
-  import {styles as SignupScreenStyles2} from "./SignupScreen2Styles";
-  import FontAwesome from 'react-native-vector-icons/FontAwesome';
-  import CommonInputField from '../../../components/CommonInPutField/CommonInputField';
+  import TitleBar from "../../components/Common/TitleBar";
+  import PaginationIndicator from "../../components/PaginationIndicator";
+  import {SignupScreenStyles2} from "./styles/SignupScreen2Styles";
+ 
+  import CommonInputField from '../../components/Common/CommonInputField';
   import Svg, { Path } from 'react-native-svg';
-  import VerifiedIcon from '../../../assets/icons/verified.svg';
-  import EyeIcon from '../../../assets/icons/eye.svg';
-   import AppleIcon from '../../../assets/icons/apple.svg';
-  import GoogleIcon from '../../../assets/icons/google.svg';
+
+  import Icon_Verified from '../../../assets/icons/Icon_Verfied.svg';
+  import Icon_Eye from '../../../assets/icons/Icon_Eye.svg';
+
+  import Icon_apple from '../../../assets/icons/Icon_apple.svg';
+  import Icon_google from '../../../assets/icons/Icon_google.svg';
+  import Icon_navLeft from '../../../assets/icons/Icon_navLeft.svg';
+  import Icon_navRight from '../../../assets/icons/Icon_navRight.svg';
   
 
   class SignupScreen2 extends Component {
@@ -72,7 +76,7 @@
         
         <TitleBar
         
-        nameLeft="chevron-left"
+        nameLeft={Icon_navLeft}
         onPressLeft={this.handleLeftButtonPress} 
         
         />
@@ -97,16 +101,13 @@
               }}
             >
 
-        <View 
-        style={SignupScreenStyles2.mainView}
-        > 
-        
+       
         
 
   <View style={SignupScreenStyles2.middleView}> 
 
 
-          <View style={SignupScreenStyles2.inputView}>
+         
 
           <CommonInputField
               value={""}
@@ -130,16 +131,6 @@
               
             />
 
-<CommonInputField
-              value={""}
-              title={"Enter Email Address"}
-              placeholder={"Enter Your Email Address"}
-              onInputChange={(text) => this.handlePasswordInputChange(text)}
-              
-              inputRef={this.inputRef2}
-              nextInputRef={this.inputRef1}
-              icon={VerifiedIcon} 
-            />
 
 
 
@@ -149,7 +140,7 @@
               placeholder={"Enter Your Password"}
               isSecureText={true}
               onInputChange={(text) => this.handlePasswordInputChange(text)}
-              icon={EyeIcon}
+              icon={Icon_Eye}
               inputRef={this.inputRef2}
               nextInputRef={this.inputRef1}
             />
@@ -167,32 +158,34 @@
        
 
 
-          </View>
-
+    
           
-          <View style={SignupScreenStyles2.button}>
+          
             
-            <Button
-              type='1'
-              text="Next"
-              borderRadius={35}
-              onPress={this.handleNextButtonPress}
-              textSize={20}
-            />
+          
             
-          </View>
+        
 
   </View>
       
   <View style={SignupScreenStyles2.bottomView}>
+
+  <Button
+              type='1'
+              title="Next"
+              borderRadius={35}
+              onPress={this.handleNextButtonPress}
+              textSize={20}
+              btnWidth='30%'
+            />
           <View style={SignupScreenStyles2.logoIcon}>
 
 
-              <AppleIcon style={SignupScreenStyles2.logo} width={25} height={25} />
+              <Icon_apple style={SignupScreenStyles2.logo} width={25} height={25} />
           
 
 
-              <GoogleIcon style={SignupScreenStyles2.logo} width={25} height={25} />
+              <Icon_google style={SignupScreenStyles2.logo} width={25} height={25} />
    
   </View>
             
@@ -202,7 +195,7 @@
         
         
           
-        </View>
+        
         </KeyboardAwareScrollView>
         
         

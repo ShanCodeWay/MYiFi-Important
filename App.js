@@ -8,11 +8,9 @@
 import React from 'react';
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { useNavigation } from '@react-navigation/native';
-import Navigator from './src/navigator/navigator';
-
-
-const Stack = createNativeStackNavigator();
+import SplashScreen from "./src/views/screens/SplashScreen/SplashScreen";
+import LoginScreen from "./src/views/screens/LoginScreen/LoginScreen";
+//const Stack = createNativeStackNavigator();
 import {
   SafeAreaView,
   ScrollView,
@@ -22,6 +20,7 @@ import {
   useColorScheme,
   View,
 } from "react-native";
+import NavContainer from './src/views/navigators/NavContainer';
 
 // import ConfigStore from "./src/store";
 //import { Provider } from "react-redux";
@@ -30,15 +29,12 @@ import {
 
 //function App(): JSX.Element {
 class App extends React.Component {
-
-  componentDidMount() {
-    
-
-  }
+  componentDidMount() {}
 
   render() {
     return (
-     <Navigator/>
+      <NavContainer/>
+
     );
   }
 }
