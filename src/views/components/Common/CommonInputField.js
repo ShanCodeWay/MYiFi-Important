@@ -6,10 +6,12 @@ import Colors from "../../../styles/Colors";
 //Done by: Dinuranga 24/01/02
 const CommonInputField = (props) => {
   const [inputValue, setInputValue] = useState(props.value);
+  
+ useEffect(() => {
+  props.onInputChange(inputValue);
+}, [inputValue]);
 
-  useEffect(() => {
-    props.onInputChange(inputValue);
-  }, [inputValue]);
+  
 
   const handleSubmitEditing = () => {
 
@@ -26,33 +28,44 @@ const CommonInputField = (props) => {
   };
   return (
     <>
-      <View style={CommonInputFieldStyles.parentContainer}>
+      <View style={[CommonInputFieldStyles.parentContainer, { width: props.width==null ? '100%'  : props.width }]}>
         <Text style={[CommonInputFieldStyles.textStyleTitle]}>
           {props.title}
         </Text>
-
+        
         <View style={CommonInputFieldStyles.inputContainer}>
-          <TextInput
-            style={CommonInputFieldStyles.input}
-            secureTextEntry={
-              props.isSecureText == null ? false : props.isSecureText
-            }
-            keyboardType={props.keyboardType == null ? 'default' :props.keyboardType == 1 ? 'numeric' :props.keyboardType == 2? 'email-address' : 'default' }
-            placeholder={props.placeholder}
-            placeholderTextColor={Colors.GRAY}
-            onChangeText={(text) => setInputValue(text)}
-            value={inputValue}
-            ref={props.inputRef == null ? null : props.inputRef}
-            onSubmitEditing={handleSubmitEditing}
-            blurOnSubmit={props.nextInputRef == null ? true : false}
-            maxLength={props.maxLength == null ? null : props.maxLength}
-            returnKeyType= {props.returnKeyType == null ?'done' :props.returnKeyType}
-          />
+  {props.editable !== false ? (  
+    <TextInput
+      style={CommonInputFieldStyles.input}
+      secureTextEntry={props.isSecureText == null ? false : props.isSecureText}
+      keyboardType={
+        props.keyboardType == null
+          ? 'default'
+          : props.keyboardType == 1
+          ? 'numeric'
+          : props.keyboardType == 2
+          ? 'email-address'
+          : 'default'
+      }
+      placeholder={props.placeholder}
+      placeholderTextColor={Colors.GRAY}
+      onChangeText={(text) => setInputValue(text)}
+      value={inputValue}
+      ref={props.inputRef == null ? null : props.inputRef}
+      onSubmitEditing={handleSubmitEditing}
+      blurOnSubmit={props.nextInputRef == null ? true : false}
+      maxLength={props.maxLength == null ? null : props.maxLength}
+      returnKeyType={props.returnKeyType == null ? 'done' : props.returnKeyType}
+      editable={props.editable == null ? true : props.editable} 
+    />
+  ) : (
+    <Text style={CommonInputFieldStyles.input}>{inputValue}</Text>
+  )}
 
-          {props.icon == null ? null : (
-            <props.icon fill={inputValue ? "#00377B" : Colors.GRAY} />
-          )}
-        </View>
+  {props.icon == null ? null : (
+    <props.icon fill={inputValue ? "#00377B" : Colors.GRAY} />
+  )}
+</View>
       </View>
     </>
   );
@@ -69,6 +82,7 @@ placeholder={"Enter Your Password"} //Hint text
 onInputChange={this.handlePasswordInputChange}
 icon={Icon_Eye}               //Not mandatory
 inputRef={this.inputRef2}      //Not mandatory
+editable={false} || {true}                //Not mandatory
 nextInputRef={this.inputRef1}   //Not mandatory
 /> */
 }

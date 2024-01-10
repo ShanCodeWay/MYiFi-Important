@@ -7,9 +7,10 @@ const CommonInputFieldStyles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "flex-start",
     alignContent: "space-between",
+    justifyContent: 'center',
     height: 100,
-    //margin: 20,
-    //backgroundColor:'green'
+   
+
   },
 
   inputContainer: {

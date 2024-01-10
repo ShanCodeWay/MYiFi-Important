@@ -1,4 +1,13 @@
-export const PaginationIndicatorStyles = {
+import { StyleSheet } from "react-native";
+import Colors from "../../styles/Colors";
+import Fonts from "../../styles/Fonts";
+
+
+//Done by: Darshana 24/01/02
+
+const PaginationIndicatorStyles = StyleSheet.create({
+
+
   paginationIndicatorContainer:{ 
     flexDirection: 'column',
     justifyContent:'center',
@@ -22,18 +31,20 @@ export const PaginationIndicatorStyles = {
       },
     
       activeCircle: {
-        backgroundColor: '#7C8DA6', // Active color
+        backgroundColor: Colors.GRAY_DARK, // Active color
       },
     
       inactiveCircle: {
-        backgroundColor: '#A5B4CB', // Inactive color
+        backgroundColor: Colors.GRAY, // Inactive color
       },
 
       titleText:{
-        fontFamily:"Poppins-Bold",
+        fontFamily:Fonts.POPPINS_BOLD, // Font
         fontSize:26,
-        color: '#1B1F52'
+        color: Colors.Dark_Blue, //rs.Dar, //'
       }
 
 
-  };
+  });
+
+  export default PaginationIndicatorStyles; 

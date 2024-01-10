@@ -2,11 +2,10 @@ import { StyleSheet } from "react-native";
 import Colors from "../../../../styles/Colors";
 import Fonts from "../../../../styles/Fonts";
 
-
 //Done by: Darshana 24/01/02
 
-const SignupScreenStyles4 = StyleSheet.create({
-            
+const FoundTransferScreenStyles1 = StyleSheet.create({
+           
     topView: {
         height: 150,
         justifyContent: "center",
@@ -18,8 +17,9 @@ const SignupScreenStyles4 = StyleSheet.create({
     middleView: {
     
         flex: 1,
+        justifyContent: "center",
         alignItems: "center",
-        marginTop:20,
+        marginTop:60,
         width: '100%', 
     },
 
@@ -34,14 +34,13 @@ const SignupScreenStyles4 = StyleSheet.create({
         width: '80%',
         justifyContent: "center",
         alignItems: "center",
-        
-        
+  
         },            
     
     mainTitle: {
                 fontFamily:Fonts.POPPINS_SEMIBOLD,
                 fontSize:40,
-                color:Colors.Dark_Blue,
+                color: Colors.Dark_Blue,
                 justifyContent: "center",
                 alignItems: "center",
                 textAlign: 'center', 
@@ -50,31 +49,20 @@ const SignupScreenStyles4 = StyleSheet.create({
 
     secondTitle:{
         fontFamily:Fonts.POPPINS_MEDIUM,
-        fontSize:18,
-        color: Colors.Dark_Blue,
+        fontSize:20,
+        color: Colors.GRAY_DARK,
         justifyContent: "center",
         alignItems: "center",
         textAlign: 'center', 
-        paddingBottom: 30,
+        width: '100%', 
 
     },
 
-    secondTitle1:{
-        fontFamily:Fonts.POPPINS_MEDIUM,
-        fontSize:18,
-        color: Colors.Dark_Blue,
-        justifyContent: "center",
-        alignItems: "center",
-        textAlign: 'center', 
-        marginLeft:100,
-        marginRight:100,
-        paddingTop: 30,
-
-    },
-
-    button:{
-        marginTop: 0,
-        width: 150,
+    inputView: {
+        flex: 5,
+        width: '80%',
+        
+        
 
     }
         ,
@@ -100,6 +88,7 @@ const SignupScreenStyles4 = StyleSheet.create({
     }
 
     
+
 });
 
-export default SignupScreenStyles4;
+export default FoundTransferScreenStyles1;

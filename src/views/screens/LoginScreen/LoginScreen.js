@@ -122,6 +122,7 @@ class LoginScreen extends Component {
           icon={Icon_Verfied}
           inputRef={this.inputRef1}
           nextInputRef={this.inputRef2}
+          width ={'90%'}
         />
 
         {/* Password */}
@@ -133,6 +134,7 @@ class LoginScreen extends Component {
           onInputChange={this.handlePasswordInputChange}
           icon={Icon_Eye}
           inputRef={this.inputRef2}
+          width ={'90%'}
         />
 
         {/* <View style={{ width: "80%" }}>

@@ -1,33 +1,30 @@
-export const SignupScreenStyles3 = {
-    mainView: {
-        flex: 1,
-        justifyContent: "space-evenly",
-        alignItems: "center",
-        backgroundColor: '#EEF5FF',
-                
-                },
+import { StyleSheet } from "react-native";
+import Colors from "../../../../styles/Colors";
+import Fonts from "../../../../styles/Fonts";
 
+//Done by: Darshana 24/01/02
 
+const SignupScreenStyles3 = StyleSheet.create({
                 
     topView: {
-        height: 200,
-        justifyContent: "center",
-        alignItems: "center",
-        width: '100%', 
-        marginTop: -20,
+        height: 150,
+        width: '100%',   
     },  
     
     middleView: {
     
         flex: 1,
+        marginLeft:30,
+        marginRight:30,
         justifyContent: "center",
         alignItems: "center",
-        marginTop:20,
-        width: '100%', 
+        
+     
+        
     },
 
     bottomView: {
-        height: 100,
+        height: 150,
         justifyContent: "center",
         alignItems: "center",
     },    
@@ -37,15 +34,13 @@ export const SignupScreenStyles3 = {
         width: '100%',
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: '#EEF5FF',
-        
-        
+       
         },            
     
     mainTitle: {
-                fontFamily:"Poppins-Medium",
+                fontFamily:Fonts.POPPINS_SEMIBOLD,
                 fontSize:30,
-                color: '#1B1F52',
+                color:Colors.Dark_Blue,
                 justifyContent: "center",
                 alignItems: "center",
                 textAlign: 'center', 
@@ -53,38 +48,21 @@ export const SignupScreenStyles3 = {
     },
 
     secondTitle:{
-        fontFamily:"Poppins-Medium",
+        fontFamily:Fonts.POPPINS_MEDIUM,
         fontSize:20,
-        color: '#7C8DA6',
-        justifyContent: "center",
-        alignItems: "center",
-        textAlign: 'center', 
-        width: '100%', 
-
-    },
-
-    inputView: {
-        flex: 5,
-        width: '80%',
-        
+        color: Colors.GRAY_DARK,
+        fontSize: 18,
+        marginBottom: 10,
+        marginTop:12,
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+        marginLeft:10,
+        marginRight:10,
         
 
     },
 
-    imageStyle:{
-        width: '100%',
-        height: '100%',
-    },
-
-    button:{
-        marginTop: 0,
-        width: 200,
-        justifyContent: "center",
-        alignItems: "center",
-        
-
-    }
-        ,
     logoIcon:{
         height: 100,
         flexDirection: 'row',
@@ -104,8 +82,51 @@ export const SignupScreenStyles3 = {
     KeyboardAvoidingView:{
         flexGrowl: 1,
         
-    }
-
+    },
+    textOtp: {
+        fontSize: 36,
+        color: 'black',
+        textAlign:"center",
+        
+      },
     
+      enterText: {
+      
+         
+      },
+      input: {
+       
+      },
+      timer: {
+    
+        fontSize: 16,
+        marginBottom: 10,
+        justifyContent: "center",
+        alignItems: "center",
+        color: 'white',
+        
+       
+      
+      },
+      timerOuter: {
+        backgroundColor: "#007BC2",
+        width: 150,
+        height: 60,
+        marginTop: 20,
+        borderRadius: 10,
+        justifyContent: "center",
+        alignItems: "center",
+  
+     
+      },
+  
+      resendText: {
+        fontSize: 15,
+        color: 'black',
+        
+      },
+      
 
-};
+});
+
+export default SignupScreenStyles3;

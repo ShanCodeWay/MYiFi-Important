@@ -6,7 +6,7 @@
   import { useNavigation } from '@react-navigation/native';
   import TitleBar from "../../components/Common/TitleBar";
   import PaginationIndicator from "../../components/PaginationIndicator";
-  import {SignupScreenStyles1} from "./styles/SignupScreen1Styles";
+  import SignupScreenStyles1 from "./styles/SignupScreen1Styles";
  
   import CommonInputField from '../../components/Common/CommonInputField';
  
@@ -14,6 +14,17 @@
   import Icon_google from '../../../assets/icons/Icon_google.svg';
   import Icon_navLeft from '../../../assets/icons/Icon_navLeft.svg';
   import Icon_navRight from '../../../assets/icons/Icon_navRight.svg';
+
+  import Colors from "../../../styles/Colors";
+  import Fonts from "../../../styles/Fonts";
+  import { GetCommonStyles } from "../../../styles/CommonStyles";
+
+  import {
+    Android_Theme_Light,
+    Android_Theme_Dark,
+  } from "../../../styles/Themes";
+
+  //Done by: Darshana 24/01/02
 
   class SignupScreen1 extends Component {
 
@@ -25,47 +36,44 @@
     }
     
     
-    componentDidMount() {
-      StatusBar.setBackgroundColor('#EEF5FF');
-
-
+    componentDidMount() 
+    {
+      try {
+        
+        StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
+      } catch (Error) {
+        console.log("[SignupScreen1] - componentDidMount - Error ", Error);
+      }
     }
 
-    componentWillUnmount() {}
+    componentWillUnmount() 
+    {
+      try {
+      } catch (Error) {
+        console.log("[SignupScreen1] - componentWillUnmount - Error ", Error);
+      }
+    }
 
-    handleLoginPress = () => {  
-      
-      try { 
-      this.props.navigation.replace('LoginScreen');
-      console.log("Login button pressed"); } 
-      
-      catch
-      (error){ console.log(error); }
-
-    };
-    
+   
     handleNextButtonPress = () => {
-
-      this.props.navigation.replace('SignupScreen2'); 
-      console.log("Next button pressed");
+      try { this.props.navigation.replace('SignupScreen2'); 
+            console.log("Next button pressed to navigate to SignupScreen2");
+          }
+      catch 
+            (error){ console.log("[SignupScreen1] - Next_Button - Error ",error); }
     };
 
     handleLeftButtonPress = () => {
-      this.props.navigation.replace('LoginScreen'); 
-      console.log("left pressed");
+      try{ this.props.navigation.replace('LoginScreen'); 
+           console.log("left pressed to navigate to LoginScreen");
+         }
+      catch 
+          (error){ console.log("[SignupScreen1] - left_Button - Error ",error);}
+      
     };
 
-    handleRightButtonPress = () => {
-      try{
-      this.props.navigation.replace('SignupScreen2'); 
-      console.log("right pressed");
-      }catch 
-      (error){ console.log(error); }
-    
-    };
 
     handlePasswordInputChange = (text) => {
-      
     }
 
 
@@ -79,12 +87,7 @@
 
         <> 
         
-        <SafeAreaView 
-          style={{
-            flex:1,
-            backgroundColor: '#EEF5FF',
-          }}
-        >
+        <SafeAreaView style={GetCommonStyles(Android_Theme_Light).safeAreaView}>
         
         <TitleBar
         
@@ -112,14 +115,6 @@
               
               }}
             >
-
-      
-        
-      
-
-        
-
-          
 
 
           <View style={SignupScreenStyles1.topView} >  
@@ -159,12 +154,7 @@
 
           </View>
 
-          
-          
-          
-            
-         
-
+     
   </View>
       
   <View style={SignupScreenStyles1.bottomView}>
@@ -191,14 +181,10 @@
            
       
   </View>
-            
-
-
+          
           </View>
         
         
-          
-       
         </KeyboardAwareScrollView>
         
         

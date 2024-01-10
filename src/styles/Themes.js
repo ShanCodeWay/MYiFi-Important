@@ -4,6 +4,7 @@ import fonts from "./Fonts";
 import images from "./Images";
 
 export const Android_Theme_Light = {
+  BACKGROUND_COLOR: colors.BLUE_ACCENT,
   SAFEAREA_BACKGROUND_COLOR: colors.BLUE_ACCENT,
   COMMON_BUTTON_BACKGROUND_COLOR: colors.Dark_Blue,
 

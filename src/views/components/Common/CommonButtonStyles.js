@@ -1,16 +1,28 @@
-export const CommonButtonStyles = {
+import { StyleSheet } from "react-native";
+import Fonts from "../../../styles/Fonts";
+import Colors from "../../../styles/Colors";
+import { DefaultTheme } from "@react-navigation/native";
+
+//Done by: Darshana 24/01/09
+
+//Button 0 is Rectangle Shape Button
+//Button 1 is Rounded Shape Button
+
+const CommonButtonStyles = StyleSheet.create({
+
   text: {
-    fontFamily: "Poppins-SemiBold",
+    fontFamily: Fonts.POPPINS_SEMIBOLD,
     fontSize: 20,
     alignItems: "center",
     //padding: 10,
-    color: "#EEF5FF",
+    color: Colors.BLUE_ACCENT,
   },
-
+//Button 0 is Rectangle Shape Button
+//Button 1 is Rounded Shape Button
   button0: {
     paddingHorizontal: 20,
     flexDirection: "row",
-    backgroundColor: "#A5B4CB",
+    backgroundColor: Colors.GRAY,
     borderRadius: 10,
     alignItems: "center",
 
@@ -27,9 +39,10 @@ export const CommonButtonStyles = {
 
 
   },
-
+//Button 0 is Rectangle Shape Button
+//Button 1 is Rounded Shape Button
   button1: {
-    backgroundColor: "#00377B",
+    backgroundColor: Colors.Blue,
     borderRadius: 10,
     alignItems: "center",
     justifyContent:"center",
@@ -44,4 +57,6 @@ export const CommonButtonStyles = {
     justifyContent: "center",
   
   }
-};
+});
+
+export default CommonButtonStyles;

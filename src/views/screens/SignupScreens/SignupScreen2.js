@@ -2,13 +2,15 @@
   import { View, Text, Touchable, ScrollView, SafeAreaView, StatusBar, } from "react-native";
   import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
   import { TouchableOpacity } from "react-native-gesture-handler";
-  import Button from "../../components/Common/CommonButton";
   import { useNavigation } from '@react-navigation/native';
-  import TitleBar from "../../components/Common/TitleBar";
-  import PaginationIndicator from "../../components/PaginationIndicator";
-  import {SignupScreenStyles2} from "./styles/SignupScreen2Styles";
+  import SignupScreenStyles2 from "./styles/SignupScreen2Styles";
  
   import CommonInputField from '../../components/Common/CommonInputField';
+  import CommonSpinner from "../../components/Common/CommonSpinner"; 
+  import TitleBar from "../../components/Common/TitleBar";
+  import Button from "../../components/Common/CommonButton";
+  import PaginationIndicator from "../../components/PaginationIndicator";
+
   import Svg, { Path } from 'react-native-svg';
 
   import Icon_Verified from '../../../assets/icons/Icon_Verfied.svg';
@@ -20,42 +22,68 @@
   import Icon_navRight from '../../../assets/icons/Icon_navRight.svg';
   
 
+  import Colors from "../../../styles/Colors";
+  import Fonts from "../../../styles/Fonts";
+
+  import { GetCommonStyles } from "../../../styles/CommonStyles";
+  import {
+    Android_Theme_Light,
+    Android_Theme_Dark,
+  } from "../../../styles/Themes";
+
+
+//Done by: Darshana 24/01/02
+
   class SignupScreen2 extends Component {
 
     constructor(props) {
       super(props);
       this.state = {
         scrollEnabled: false,
+        selectedName: null,
       };
     }
     
-    
-    componentDidMount() {
-      StatusBar.setBackgroundColor('#EEF5FF');
-
-
-    }
-
-    componentWillUnmount() {}
-
-    handleLoginPress = () => {
-      this.props.navigation.replace('LoginScreen');
-      console.log("Login button pressed"); 
+    handleNameSelection = (selectedName) => {
+      try {
+        
+      this.setState({ selectedName });}
+      catch (Error) {
+        console.log("[SignupScreen2] - handleNameSelction - Error ", Error);
+      }
     };
     
+    componentDidMount() {
+      try {
+        
+        StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
+      } catch (Error) {
+        console.log("[SignupScreen2] - componentDidMount - Error ", Error);
+      }
+    }
+
+    componentWillUnmount() {
+      try {
+      } catch (Error) {
+        console.log("[SignupScreen2] - componentWillUnmount - Error ", Error);
+      }
+    }
+
+  
+    
     handleNextButtonPress = () => {
-      this.props.navigation.replace('SignupScreen3'); 
-      console.log("next button pressed");
+      try {  this.props.navigation.replace('SignupScreen3'); 
+             console.log("Next button pressed to Navigate to SignupScreen3");
+          }
+      catch (error){ console.log("[SignupScreen2] - Next_Button - Error ",error); }
     };
 
     handleLeftButtonPress = () => {
-      this.props.navigation.replace('SignupScreen1'); 
-      console.log("left pressed");
-    };
-
-    handleRightButtonPress = () => {
-      this.props.navigation.replace('ButtonScreen'); 
-      console.log("right pressed");
+      try{
+        this.props.navigation.replace('SignupScreen1'); 
+      console.log("left pressed to Navigate to SignupScreen1");
+      }catch (error){ console.log("[SignupScreen2] - left_Button - Error ",error);}
+      
     };
 
     handlePasswordInputChange = (text) => {
@@ -67,13 +95,8 @@
 
         <> 
         
-        <SafeAreaView 
-          style={{
-            flex:1,
-            backgroundColor: '#EEF5FF',
-          }}
-        >
-        
+        <SafeAreaView style={GetCommonStyles(Android_Theme_Light).safeAreaView}>
+
         <TitleBar
         
         nameLeft={Icon_navLeft}
@@ -108,30 +131,46 @@
 
 
          
+  <CommonSpinner
+  title={"Security Question"}
+
+  width={"100%"}
+  data={[
+
+    { label: "Timmy", value: "Timmy" },
+    { label: "Garfield", value: "Garfield" },
+    { label: "woofy", value: "woofy" },
+    { label: "tom", value: "tom" },
+    { label: "jerry", value: "jerry" },
+  ]}
+  placeholder={"What is your pet name?"}
+  value={this.state.selectedName} 
+  lable={this.state.selectedName} 
+  onRef={(ref) => (this.parentReferenceItem = ref)}
+  parentReferenceItem={this.handleNameSelection}
+/>
+
+<Text> { this.state.selectedName}</Text>
+
+          <CommonInputField
+              value={this.state.selectedName}
+              title={"Security Answer"}
+              onInputChange={(text) => this.handlePasswordInputChange(text)}
+              inputRef={this.inputRef2}
+              nextInputRef={this.inputRef1}
+              editable={false}
+              name={this.state.selectedName}
+            />
 
           <CommonInputField
               value={""}
-              title={"Security Question"}
-              placeholder={"What is your pet name?"}
+              title={"Mother's Maiden Name"}
               onInputChange={(text) => this.handlePasswordInputChange(text)}
-              
               inputRef={this.inputRef2}
               nextInputRef={this.inputRef1}
               
-            />
-
-<CommonInputField
-              value={""}
-              title={"Security Answer"}
-              placeholder={"Enter Your Security Answer"}
-              onInputChange={(text) => this.handlePasswordInputChange(text)}
               
-              inputRef={this.inputRef2}
-              nextInputRef={this.inputRef1}
-              
-            />
-
-
+          />
 
 
             <CommonInputField

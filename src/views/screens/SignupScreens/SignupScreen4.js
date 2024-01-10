@@ -6,7 +6,7 @@
   import { useNavigation } from '@react-navigation/native';
   import TitleBar from "../../components/Common/TitleBar";
   import PaginationIndicator from "../../components/PaginationIndicator";
-  import {SignupScreenStyles4} from "./styles/SignupScreen4Styles";
+  import SignupScreenStyles4 from "./styles/SignupScreen4Styles";
   
   import CommonInputField from '../../components/Common/CommonInputField';
   import Svg, { Path } from 'react-native-svg';
@@ -16,7 +16,20 @@
   import Icon_google from '../../../assets/icons/Icon_google.svg';
   import Icon_navLeft from '../../../assets/icons/Icon_navLeft.svg';
   import Icon_navRight from '../../../assets/icons/Icon_navRight.svg';
+  import Icon_CircleChecked from '../../../assets/icons/Icon_CircleChecked.svg';
+  import MI_Logo from '../../../assets/icons/MI_Logo.svg'
+  import Colors from "../../../styles/Colors";
+  import Fonts from "../../../styles/Fonts";
 
+  
+  import { GetCommonStyles } from "../../../styles/CommonStyles";
+  import {
+    Android_Theme_Light,
+    Android_Theme_Dark,
+  } from "../../../styles/Themes";
+
+
+  //Done by: Darshana 24/01/02
 
   class SignupScreen4 extends Component {
 
@@ -29,32 +42,36 @@
     
     
     componentDidMount() {
-      StatusBar.setBackgroundColor('#EEF5FF');
-
-
+      
+      try {
+        StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
+      } catch (Error) {
+        console.log("[SignupScreen4] - componentDidMount - Error ", Error);
+      }
+    }
+    componentWillUnmount() {
+      try {
+      } catch (Error) {
+        console.log("[SignupScreen4] - componentWillUnmount - Error ", Error);
+      }
     }
 
-    componentWillUnmount() {}
-
-    handleLoginPress = () => {
-      this.props.navigation.replace('LoginScreen');
-      console.log("Login button pressed"); 
-    };
-    
     handleNextButtonPress = () => {
+      try { 
       this.props.navigation.replace('SignupScreen5'); 
-      console.log("buttonscreen pressed");
+      console.log("Next button pressed to navigate SignupScreen 5 ");}
+      catch (error){ console.log("[SignupScreen4] - Next_Button - Error ",error); }
     };
 
     handleLeftButtonPress = () => {
-      this.props.navigation.replace('SignupScreen3'); 
-      console.log("left pressed");
+      try{
+        this.props.navigation.replace('SignupScreen3'); 
+      console.log("left pressed to navigate to SignupScreen 3 ");
+          }
+      catch (error){ console.log("[SignupScreen4] - left_Button - Error ",error);}
+      
     };
 
-    handleRightButtonPress = () => {
-      this.props.navigation.replace('ButtonScreen'); 
-      console.log("right pressed");
-    };
 
     handlePasswordInputChange = (text) => {
       
@@ -65,12 +82,7 @@
 
         <> 
         
-        <SafeAreaView 
-          style={{
-            flex:1,
-            backgroundColor: '#EEF5FF',
-          }}
-        >
+        <SafeAreaView style={GetCommonStyles(Android_Theme_Light).safeAreaView}>
         
         <TitleBar
         nameLeft={Icon_navLeft}
@@ -95,55 +107,41 @@
               }}
             >
 
-        <View 
-        style={SignupScreenStyles4.mainView}
-        > 
-        
-      
-
-        
-
+    
           
 
 
-          <View style={SignupScreenStyles4.topView} >  
-          <View style={SignupScreenStyles4.titleView} > 
-         
-          <Text style={SignupScreenStyles4.mainTitle}>Sign Up</Text>
-          <Text style={SignupScreenStyles4.secondTitle}>Sucessfully signed up
-          </Text>
-
-          </View>
-
-  </View>       
 
   <View style={SignupScreenStyles4.middleView}> 
 
-
-          <View style={SignupScreenStyles4.inputView}>
-
-         
-
-
-          </View>
-
-          
-          
-            
-            <Button
-              type='1'
-              title="Next"
-              borderRadius={35}
-              onPress={this.handleNextButtonPress}
-              textSize={20}
-              btnWidth='30%'
-            />
-            
+  <Icon_CircleChecked width={90} height={100} /> 
+  <Text style={SignupScreenStyles4.secondTitle}>Registration Succesful!</Text>    
+  <Text style={SignupScreenStyles4.mainTitle}>Welcome to
+ </Text>           
+ <MI_Logo />       
+ <Text style={SignupScreenStyles4.secondTitle1}>
+        You can now sign in to your Account!
+</Text>          
+        
+     
          
 
   </View>
       
   <View style={SignupScreenStyles4.bottomView}>
+
+  <Button
+              type='1'
+              title="Sign in"
+              borderRadius={35}
+              onPress={this.handleNextButtonPress}
+              textSize={20}
+              btnWidth='80%'
+            />   
+        
+           
+
+
           <View style={SignupScreenStyles4.logoIcon}>
 
           <Icon_apple style={SignupScreenStyles4.logo} width={25} height={25} />
@@ -159,7 +157,7 @@
         
         
           
-        </View>
+       
         </KeyboardAwareScrollView>
         
         

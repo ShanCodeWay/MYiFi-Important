@@ -6,17 +6,29 @@
   import { useNavigation } from '@react-navigation/native';
   import TitleBar from "../../components/Common/TitleBar";
   import PaginationIndicator from "../../components/PaginationIndicator";
-  import {SignupScreenStyles3} from "./styles/SignupScreen3Styles";
+  import SignupScreenStyles3 from "./styles/SignupScreen3Styles";
   
   import CommonInputField from '../../components/Common/CommonInputField';
 
+  import Icon_Verified from '../../../assets/icons/Icon_Verfied.svg';
+  import Icon_Eye from '../../../assets/icons/Icon_Eye.svg';
 
   import Icon_apple from '../../../assets/icons/Icon_apple.svg';
   import Icon_google from '../../../assets/icons/Icon_google.svg';
   import Icon_navLeft from '../../../assets/icons/Icon_navLeft.svg';
   import Icon_navRight from '../../../assets/icons/Icon_navRight.svg';
 
+  import Colors from "../../../styles/Colors";
+  import Fonts from "../../../styles/Fonts";
 
+  import { GetCommonStyles } from "../../../styles/CommonStyles";
+  import {
+    Android_Theme_Light,
+    Android_Theme_Dark,
+  } from "../../../styles/Themes";
+
+
+  //Done by: Darshana 24/01/02
 
   class SignupScreen3 extends Component {
 
@@ -24,53 +36,82 @@
       super(props);
       this.state = {
         scrollEnabled: false,
+        otp: '',
+        timer: 5,
       };
     }
     
     
-    componentDidMount() {
-      StatusBar.setBackgroundColor('#EEF5FF');
-
-
+     componentDidMount() {
+      this.interval = setInterval(() => {
+        const { timer } = this.state;
+        if (timer > 0) {
+          this.setState({ timer: timer - 1 });
+        }
+      try {
+        
+        StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
+      } catch (Error) {
+        console.log("[SignupScreen3] - componentDidMount - Error ", Error);
+      }
+    }, 1000);
     }
 
-    componentWillUnmount() {}
 
-    handleLoginPress = () => {
-      this.props.navigation.replace('LoginScreen');
-      console.log("Login button pressed"); 
+    componentWillUnmount() {
+      clearInterval(this.interval);
+      try {
+      } catch (Error) {
+        console.log("[SignupScreen3] - componentWillUnmount - Error ", Error);
+      }
+    }
+
+    handleOtpChange = (text) => {
+      this.setState({ otp: text });
+      try {
+      } catch (Error) {
+        console.log("[OtpScreen] - handleOtpChange - Error ", Error);
+      }
     };
+
+    handleResend = () => {
+      console.log('Resend button pressed!');
+      try {
+      } catch (Error) {
+        console.log("[OtpScreen] - handleResend - Error ", Error);
+      }
+    };
+
     
     handleNextButtonPress = () => {
+      try { 
       this.props.navigation.replace('SignupScreen4'); 
-      console.log("buttonscreen pressed");
+      console.log("Next button pressed to Navigate to SignupScreen4");}
+      catch (error)
+      { console.log("[SignupScreen3] - Next_Button - Error ",error); }
     };
 
     handleLeftButtonPress = () => {
-      this.props.navigation.replace('SignupScreen2'); 
-      console.log("left pressed");
+      try{
+        this.props.navigation.replace('SignupScreen2'); 
+      console.log("left pressed to Navigate to SignupScreen2");
+        }
+      catch (error){ console.log("[SignupScreen3] - left_Button - Error ",error);}
+      
     };
 
-    handleRightButtonPress = () => {
-      this.props.navigation.replace('ButtonScreen'); 
-      console.log("right pressed");
-    };
 
     handlePasswordInputChange = (text) => {
       
     }
 
     render() {
+      const { otp, timer } = this.state;
       return (
 
         <> 
         
-        <SafeAreaView 
-          style={{
-            flex:1,
-            backgroundColor: '#EEF5FF',
-          }}
-        >
+         <SafeAreaView style={GetCommonStyles(Android_Theme_Light).safeAreaView}>
         
         <TitleBar
         
@@ -99,51 +140,87 @@
               }}
             >
 
-        <View 
-        style={SignupScreenStyles3.mainView}
-        > 
         
           <View style={SignupScreenStyles3.topView} >  
           <View style={SignupScreenStyles3.titleView} > 
 
           <Text style={SignupScreenStyles3.mainTitle}>OTP</Text>
+          </View>
           <Text style={SignupScreenStyles3.secondTitle}>
-           
+          {timer > 0
+            ? 'Enter the one-time password shared to +94717718910'
+            : 'Oh no,Your time is up. If you have not received the OTP yeet,try resending.or contact our call center for assistence'}
           </Text>
-
-          </View>
-
   </View>       
+   
 
-  <View style={SignupScreenStyles3.middleView}> 
-
-
-          <View style={SignupScreenStyles3.inputView}>
+          <View style={SignupScreenStyles3.middleView}>
+        
+        <CommonInputField
+            value={""} // Set value to the input field
+            title={"OTP"}
           
-         
-    
-
-
-          </View>
-
+            onInputChange={this.handleOtpChange}
+            icon={Icon_Verified}               
+            inputRef={this.inputRef2}    
+            nextInputRef={this.inputRef1} 
           
+            />
+            
+             <Button
+                type='1'
+                title='Submit'
+                borderRadius={35}
+                onPress={this.handleNextButtonPress}
+                textSize={15}
+                backgroundColor="#6Dc100"
+                textColor ='black' 
+                btnWidth="80%"      
+             
+              />
+             
+      
+
+            {timer > 0 && (
+              <View style={SignupScreenStyles3.timerOuter}>
+                <Text style={SignupScreenStyles3.timer}>{timer}</Text>
+              </View>
+            )}
+            {timer === 0 && (
+                
+                <Button
+                type='0'
+                title="Resend the OTP"
+                textColor='black'
+                borderRadius={15}
+                onPress={this.handleLoginPress}
+                textSize={15}
+                btnWidth={"80%"}      
+
+                     />
+          
+          
+            )}
+   
+
+
+        </View>
+       
          
-           
-            <Button
+
+ 
+      
+  <View style={SignupScreenStyles3.bottomView}>
+
+           <Button
               type='1'
-              title="Next"
+              title="Go Back"
               borderRadius={35}
               btnWidth='30%'
 
-              onPress={this.handleNextButtonPress}
+              onPress={this.handleLeftButtonPress}
               textSize={20}
             />
-            
-         
-
-  </View>
-      
-  <View style={SignupScreenStyles3.bottomView}>
           <View style={SignupScreenStyles3.logoIcon}>
 
           <Icon_apple style={SignupScreenStyles3.logo} width={25} height={25} />
@@ -159,7 +236,7 @@
         
         
           
-        </View>
+       
         </KeyboardAwareScrollView>
         
         

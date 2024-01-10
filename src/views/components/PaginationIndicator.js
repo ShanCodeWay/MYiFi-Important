@@ -1,19 +1,23 @@
 import React, { useEffect } from "react";
 import { View, Text } from "react-native";
-import { PaginationIndicatorStyles } from "./PaginationIndicatorStyle ";
+import PaginationIndicatorStyles  from "./PaginationIndicatorStyle ";
+
+//Done by: Darshana 24/01/02
 
 const PaginationIndicator = (props) => {
+
   useEffect(() => {
-    // componentDidMount equivalent
+    
     return () => {
-      // componentWillUnmount equivalent
+      
     };
   }, []);
 
   const renderPaginationCircles = () => {
+    try {
     const totalScreens = 3;
     const activeScreen = props.pageNumber - 1;
-
+    // -1 Because Page numbers start from 0 
     return Array.from({ length: totalScreens }, (_, index) => (
       <View
         key={index}
@@ -25,6 +29,13 @@ const PaginationIndicator = (props) => {
         ]}
       />
     ));
+      }
+    catch (error) {
+      console.error("Error rendering pagination circles:", error);
+      // Handle the error or log it as needed
+      // You can return a fallback UI or null if desired
+      return null;}
+      
   };
 
   return (
@@ -36,6 +47,7 @@ const PaginationIndicator = (props) => {
       <Text style={PaginationIndicatorStyles.titleText}>{props.text}</Text>
     </View>
   );
+
 };
 
 export default PaginationIndicator;

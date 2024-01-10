@@ -6,12 +6,11 @@
   import { useNavigation } from '@react-navigation/native';
   import TitleBar from "../../components/Common/TitleBar";
   import PaginationIndicator from "../../components/PaginationIndicator";
-  import SignupScreenStyles5 from "./styles/SignupScreen5Styles";
+  import FoundTransferScreenStyles1 from "./styles/FoundTransferScreenStyles1";
  
   import CommonInputField from '../../components/Common/CommonInputField';
-  import Svg, { Path } from 'react-native-svg';
- 
-  
+  import CommonSpinner from '../../components/Common/CommonSpinner';
+
   import Icon_apple from '../../../assets/icons/Icon_apple.svg';
   import Icon_google from '../../../assets/icons/Icon_google.svg';
   import Icon_navLeft from '../../../assets/icons/Icon_navLeft.svg';
@@ -19,62 +18,73 @@
 
   import Colors from "../../../styles/Colors";
   import Fonts from "../../../styles/Fonts";
-
   import { GetCommonStyles } from "../../../styles/CommonStyles";
+
   import {
     Android_Theme_Light,
     Android_Theme_Dark,
   } from "../../../styles/Themes";
 
-
   //Done by: Darshana 24/01/02
 
-  class SignupScreen5 extends Component {
+  class FoundTransferScreen1 extends Component {
+
 
     constructor(props) {
       super(props);
       this.state = {
         scrollEnabled: false,
+        value: 3000,
       };
     }
     
     
-   componentDidMount() {
-      
+    componentDidMount() 
+    {
       try {
+        
         StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
       } catch (Error) {
-        console.log("[SignupScreen5] - componentDidMount - Error ", Error);
+        console.log("[FoundTransferScreen1] - componentDidMount - Error ", Error);
       }
-
     }
 
-    componentWillUnmount() {
+    componentWillUnmount() 
+    {
       try {
       } catch (Error) {
-        console.log("[SignupScreen5] - componentWillUnmount - Error ", Error);
+        console.log("[FoundTransferScreen1] - componentWillUnmount - Error ", Error);
       }
     }
 
+   
     handleNextButtonPress = () => {
-      try { 
-      this.props.navigation.replace('FoundTransferScreen1'); 
-      console.log("Next button pressed");}
-      catch (error){ console.log("[SignupScreen5] - Next_Button - Error ",error); }
+      try { this.props.navigation.replace('FoundTransferScreen2'); 
+            console.log("Next button pressed to navigate to SignupScreen2");
+          }
+      catch 
+            (error){ console.log("[FoundTransferScreen1] - Next_Button - Error ",error); }
     };
 
     handleLeftButtonPress = () => {
-      try{
-        this.props.navigation.replace('SignupScreen4'); 
-      console.log("left pressed");
-      }
-      catch (error){ console.log("[SignupScreen5] - left_Button - Error ",error);}
+      try{ this.props.navigation.replace('SignupScreen5'); 
+           console.log("left pressed to navigate to LoginScreen");
+         }
+      catch 
+          (error){ console.log("[FoundTransferScreen1] - left_Button - Error ",error);}
       
     };
 
-    handlePasswordInputChange = (text) => {  
+
+    handlePasswordInputChange = (text) => {
     }
 
+
+ 
+
+
+
+    
     render() {
       return (
 
@@ -83,11 +93,11 @@
         <SafeAreaView style={GetCommonStyles(Android_Theme_Light).safeAreaView}>
         
         <TitleBar
-       nameLeft={Icon_navLeft}
-       onPressLeft={this.handleLeftButtonPress} 
-        />
-       
         
+        nameLeft={Icon_navLeft}
+        onPressLeft={this.handleLeftButtonPress} 
+        title="Transfer"
+        />
         <KeyboardAwareScrollView
               contentContainerStyle={{ flexGrow: 1 }}
               keyboardShouldPersistTaps="handled"
@@ -102,57 +112,43 @@
               onKeyboardDidHide={(frames) => {
               
               }}
-            >
+            >      
 
+  <View style={FoundTransferScreenStyles1.middleView}> 
+
+  <CommonSpinner/>
+        
      
-
-
-          <View style={SignupScreenStyles5.topView} >  
-          <View style={SignupScreenStyles5.titleView} > 
-       
-          <Text style={SignupScreenStyles5.mainTitle}>Registration Sucessful! </Text>
-          <Text style={SignupScreenStyles5.secondTitle}>
-            Welcome to 
-          </Text>
-
-          </View>
-
-  </View>       
-
-  <View style={SignupScreenStyles5.middleView}> 
-
-  
-
   </View>
       
-  <View style={SignupScreenStyles5.bottomView}>
+  <View style={FoundTransferScreenStyles1.bottomView}>
 
-     
-            
-            <Button
+
+      
+         <Button
               type='1'
-              title="Next"
+              title={"Transfer this  "+ this.state.value}
               borderRadius={35}
               onPress={this.handleNextButtonPress}
               textSize={20}
-              btnWidth='30%'
+              btnWidth='80%'
             />
-          <View style={SignupScreenStyles5.logoIcon}>
 
-          <Icon_apple style={SignupScreenStyles5.logo} width={25} height={25} />
+
+          <View style={FoundTransferScreenStyles1.logoIcon}>
+
+          <Icon_apple style={FoundTransferScreenStyles1.logo} width={25} height={25} />
           
 
 
-          <Icon_google style={SignupScreenStyles5.logo} width={25} height={25} />
+          <Icon_google style={FoundTransferScreenStyles1.logo} width={25} height={25} />
+           
+      
   </View>
-            
-
-
+          
           </View>
         
         
-          
-       
         </KeyboardAwareScrollView>
         
         
@@ -165,4 +161,4 @@
     }
   }
 
-  export default SignupScreen5;
+  export default FoundTransferScreen1;

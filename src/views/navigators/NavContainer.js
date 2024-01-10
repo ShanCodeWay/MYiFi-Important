@@ -9,6 +9,8 @@ import SignupScreen2 from "../screens/SignupScreens/SignupScreen2";
 import SignupScreen3 from "../screens/SignupScreens/SignupScreen3";
 import SignupScreen4 from "../screens/SignupScreens/SignupScreen4";
 import SignupScreen5 from "../screens/SignupScreens/SignupScreen5";
+import FoundTransferScreen1 from "../screens/FoundTransferScreen/FoundTransferScreen1";
+
 const Stack = createStackNavigator();
 //navigationRef - is used to navigation inside the actions
 function NavContainer() {
@@ -28,6 +30,7 @@ function NavContainer() {
         <Stack.Screen name="SignupScreen3" component={SignupScreen3} />
         <Stack.Screen name="SignupScreen4" component={SignupScreen4} />
         <Stack.Screen name="SignupScreen5" component={SignupScreen5} />
+        <Stack.Screen name="FoundTransferScreen1" component={FoundTransferScreen1} />
       
    
       </Stack.Navigator>

@@ -1,15 +1,27 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import { styles as buttonStyles } from "./CommonButtonStyles";
-import Icon_Lock from "../../../assets/icons/Icon_Lock.svg";
 
+import Icon_Lock from "../../../assets/icons/Icon_Lock.svg";
 import Icon_Forward_Navigate from "../../../assets/icons/Icon_Forward_Navigate.svg";
-const numberOfChevrons = 3;
-import { CommonButtonStyles } from "./CommonButtonStyles";
+
+import CommonButtonStyles  from "./CommonButtonStyles";
+
+
+import Fonts from "../../../styles/Fonts";
+import Colors from "../../../styles/Colors";
+
+//Done by: Darshana 24/01/02
+
+//Button 0 is Rectangle Shape Button
+//Button 1 is Rounded Shape Button
 
 const CommonButton = (props) => {
   const renderButton = () => {
-    if (props.type === "0") {
+
+    try{
+
+    if (props.type === "0") {                               //Button 0 is Rectangle Shape Button
+                                                            //Button 1 is Rounded Shape Button
       return (
         <View style={CommonButtonStyles.button0OuterContainer}>
           <TouchableOpacity
@@ -17,7 +29,7 @@ const CommonButton = (props) => {
               CommonButtonStyles.button0,
               {
                 width: props.btnWidth == null ? "100%" : props.btnWidth,
-                backgroundColor: props.backgroundColor || "#A5B4CB",
+                backgroundColor: props.backgroundColor || Colors.GRAY,
                 borderRadius: props.borderRadius || 10,
               },
             ]}
@@ -28,8 +40,8 @@ const CommonButton = (props) => {
               style={[
                 CommonButtonStyles.text,
                 {
-                  color: props.textColor || "#EEF5FF",
-                  fontFamily: props.fontFamily || "Poppins-Medium",
+                  color: props.textColor || Colors.BLUE_ACCENT,
+                  fontFamily: props.fontFamily || Fonts.POPPINS_BOLD,
                   fontSize: props.textSize || 15,
                 },
               ]}
@@ -40,7 +52,8 @@ const CommonButton = (props) => {
             <Icon_Forward_Navigate />
           </TouchableOpacity>
         </View>
-      );
+      );                                      //Button 0 is Rectangle Shape Button
+                                              //Button 1 is Rounded Shape Button
     } else if (props.type === "1") {
       return (
         <View style={CommonButtonStyles.button1OuterContainer}>
@@ -49,7 +62,7 @@ const CommonButton = (props) => {
               CommonButtonStyles.button1,
               {
                 width: props.btnWidth == null ? "100%" : props.btnWidth,
-                backgroundColor: props.backgroundColor || "#00377B",
+                backgroundColor: props.backgroundColor || Colors.Blue,
                 borderRadius: props.borderRadius || 25,
               },
             ]}
@@ -59,8 +72,8 @@ const CommonButton = (props) => {
               style={[
                 CommonButtonStyles.text,
                 {
-                  color: props.textColor || "#EEF5FF",
-                  fontFamily: props.fontFamily || "Poppins-SemiBold",
+                  color: props.textColor || Colors.BLUE_ACCENT,
+                  fontFamily: props.fontFamily || Fonts.POPPINS_SEMIBOLD,
                   fontSize: props.textSize || 15,
                 },
               ]}
@@ -71,9 +84,15 @@ const CommonButton = (props) => {
         </View>
       );
     }
+  } 
+  
+  catch (error) {
+    console.error("Error rendering button:", error);
   };
-
+  
+  };
   return renderButton();
 };
-
+//Button 0 is Rectangle Shape Button
+//Button 1 is Rounded Shape Button
 export default CommonButton;

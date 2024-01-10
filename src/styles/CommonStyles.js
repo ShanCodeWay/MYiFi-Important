@@ -12,7 +12,7 @@ export const GetCommonStyles = (theme) => {
     //Common Container Styles
 
     ScreenUpperSectionStyle: {
-      flex: 1,
+  
       justifyContent: "center",
       alignItems: "center",
     },

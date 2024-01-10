@@ -1,14 +1,11 @@
-export const SignupScreenStyles1 = {
-    mainView: {
-        flex: 1,
-        justifyContent: "space-evenly",
-        alignItems: "center",
-        backgroundColor: '#EEF5FF',
-                
-                },
+import { StyleSheet } from "react-native";
+import Colors from "../../../../styles/Colors";
+import Fonts from "../../../../styles/Fonts";
 
+//Done by: Darshana 24/01/02
 
-                
+const SignupScreenStyles1 = StyleSheet.create({
+           
     topView: {
         height: 150,
         justifyContent: "center",
@@ -37,15 +34,13 @@ export const SignupScreenStyles1 = {
         width: '80%',
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: '#EEF5FF',
-        
-        
+  
         },            
     
     mainTitle: {
-                fontFamily:"Poppins-SemiBold",
+                fontFamily:Fonts.POPPINS_SEMIBOLD,
                 fontSize:40,
-                color: '#1B1F52',
+                color: Colors.Dark_Blue,
                 justifyContent: "center",
                 alignItems: "center",
                 textAlign: 'center', 
@@ -53,9 +48,9 @@ export const SignupScreenStyles1 = {
     },
 
     secondTitle:{
-        fontFamily:"Poppins-Medium",
+        fontFamily:Fonts.POPPINS_MEDIUM,
         fontSize:20,
-        color: '#7C8DA6',
+        color: Colors.GRAY_DARK,
         justifyContent: "center",
         alignItems: "center",
         textAlign: 'center', 
@@ -68,12 +63,6 @@ export const SignupScreenStyles1 = {
         width: '80%',
         
         
-
-    },
-
-    button:{
-        marginTop: 0,
-        width: 150,
 
     }
         ,
@@ -100,4 +89,6 @@ export const SignupScreenStyles1 = {
 
     
 
-};
+});
+
+export default SignupScreenStyles1;
