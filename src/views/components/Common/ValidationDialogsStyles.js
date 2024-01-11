@@ -3,75 +3,72 @@
 import { StyleSheet } from 'react-native';
 
 const ValidationDialogsStyles = StyleSheet.create({
-    container: {
-      flexGrow:1,
-      },
+  container: {
+    flexGrow: 1,
+  },
 
-      parientView:{
-        backgroundColor:'#1B1F52',
-        flex:1,
-        justifyContent: 'space-between',
-        opacity:0.7,
+  parientView: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    width: '100%',
+    height: '100%',
+    backgroundColor: '#1B1F52D9',
+  },
 
-      },
-      
-      upperView:{
-        //backgroundColor:'red',
-        flex:2,
-        justifyContent: 'flex-end', 
-       
-
-      },
-      
-      middleView:{
-       // backgroundColor:'yellow',
-        flex:0.8,
-        paddingTop:10,
-        
-
-      },
-      bottomView:{
-       //backgroundColor:'green',
-        flex:2,
-        flexDirection: 'row',
-   
-        justifyContent: 'center' 
-      },
+  upperView: {
+    flex: 2,
+    justifyContent: 'flex-end',
 
 
-        validationDialogsText1: {
-        
-            color: 'white', 
-            textAlign: 'center',
-            fontSize: 20,
-            fontWeight: 'bold',
-            color:'#6DC100'
+  },
 
-        },
+  middleView: {
+    flex: 0.8,
+    paddingTop: 10,
 
-        validationDialogsText2: {
-        
-            color: 'white', 
-            textAlign: 'center',
-            fontSize: 20,
-            fontWeight: 'bold',
-            paddingTop:25,
-            
+  },
+  bottomView: {
 
-        },
+    flex: 2,
+    flexDirection: 'row',
+    justifyContent: 'center'
+  },
 
-        validationDialogsdiscription: {
-        
-            color: 'white', 
-            textAlign: 'center',
-            fontSize: 15,
-            fontWeight: 'bold',
-            
 
-        },
+  validationDialogstitle: {
 
-        
-    
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#6DC100'
+
+  },
+
+  validationDialogsmessage: {
+
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 20,
+    fontWeight: 'bold',
+    paddingTop: 25,
+
+  },
+
+  validationDialogsdiscription: {
+
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 15,
+    fontWeight: 'bold',
+
+  },
+
+
+
 });
 
 export default ValidationDialogsStyles;

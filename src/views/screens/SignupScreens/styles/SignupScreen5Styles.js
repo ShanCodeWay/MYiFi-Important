@@ -17,12 +17,38 @@ const SignupScreenStyles5 = StyleSheet.create({
     },  
     
     middleView: {
-    
+        flexDirection: 'row',
+        justifyContent: "center",
+        alignItems: "center",
+        
+        width: '100%',
+        
+        marginleft:20,
+        padding:20
+    },
+
+    middleView1: {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        marginTop:20,
-        width: '100%', 
+        borderRightWidth: 2,
+        borderBottomWidth: 2,
+       
+        height: 50,
+        
+        marginleft:20,
+    },
+
+    middleView2: {
+        borderBottomWidth: 2,
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        
+        
+        height: 50,
+        
+        marginleft:20,
     },
 
     bottomView: {
@@ -93,7 +119,26 @@ const SignupScreenStyles5 = StyleSheet.create({
         flexGrowl: 1,
         
     }
+,
+bottomView1: {
 
+    flexDirection: 'row',
+    width: '90%',
+    backgroundColor:'black',
+    justifyContent: 'space-between',
+},    
+bottomView2: {
+       
+    backgroundColor:'green',
+    width: '40%',
+},  
+
+bottomView3: {
+    justifyContent: "center",
+    alignItems: "center",
+    marginLeft: 40,
+    marginRight: 40,
+},  
     
 });
 

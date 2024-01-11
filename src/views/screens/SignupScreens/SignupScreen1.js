@@ -7,7 +7,7 @@
   import TitleBar from "../../components/Common/TitleBar";
   import PaginationIndicator from "../../components/PaginationIndicator";
   import SignupScreenStyles1 from "./styles/SignupScreen1Styles";
- 
+  import Index from "../../../configs/Index";
   import CommonInputField from '../../components/Common/CommonInputField';
  
   import Icon_apple from '../../../assets/icons/Icon_apple.svg';
@@ -30,6 +30,8 @@
 
     constructor(props) {
       super(props);
+      this.inputNIC = React.createRef();
+      this.inputUserName = React.createRef();
       this.state = {
         scrollEnabled: false,
       };
@@ -56,7 +58,7 @@
 
    
     handleNextButtonPress = () => {
-      try { this.props.navigation.replace('SignupScreen2'); 
+      try { this.props.navigation.replace(Index.SIGNUP_2); 
             console.log("Next button pressed to navigate to SignupScreen2");
           }
       catch 
@@ -138,8 +140,10 @@
                             title={"NIC Number"}
                             placeholder={"Enter Your NIC Number"}
                             onInputChange={(text) => this.handlePasswordInputChange(text)}
-                            inputRef={(ref) => (this.inputRef1 = ref)}  
-                            nextInputRef={this.inputRef2}
+                            inputRef={this.inputNIC}
+                            nextInputRef={this.inputUserName}
+                            
+
                           />
 
                           <CommonInputField
@@ -147,8 +151,7 @@
                             title={"User Name"}
                             placeholder={"Enter Your User Name"}
                             onInputChange={(text) => this.handlePasswordInputChange(text)}
-                            inputRef={(ref) => (this.inputRef2 = ref)}  
-                            nextInputRef={this.inputRef1}  
+                            inputRef={this.inputUserName}
                           />
 
 
@@ -156,6 +159,8 @@
 
      
   </View>
+  
+ 
       
   <View style={SignupScreenStyles1.bottomView}>
 
@@ -185,7 +190,7 @@
           </View>
         
         
-        </KeyboardAwareScrollView>
+          </KeyboardAwareScrollView>
         
         
         </SafeAreaView>

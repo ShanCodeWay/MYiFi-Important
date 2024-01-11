@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import Colors from "../../../../styles/Colors";
 import Fonts from "../../../../styles/Fonts";
-
+import { elevate } from "react-native-elevation"
 //Done by: Darshana 24/01/02
 
 const FoundTransferScreenStyles1 = StyleSheet.create({
@@ -15,16 +15,16 @@ const FoundTransferScreenStyles1 = StyleSheet.create({
     },  
     
     middleView: {
-    
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        marginTop:60,
-        width: '100%', 
+       flex: 1,
+       elevation:10,
+       marginLeft: 20,
+       marginRight: 20,
+       
+       
     },
 
     bottomView: {
-        height: 150,
+        height: 140,
         justifyContent: "center",
         alignItems: "center",
     },    
@@ -85,8 +85,64 @@ const FoundTransferScreenStyles1 = StyleSheet.create({
     KeyboardAvoidingView:{
         flexGrowl: 1,
         
-    }
+    },
 
+    inputContainer: {
+        marginTop: 20,
+        borderWidth: 3,
+        borderRadius: 10,
+        height: 70
+      },
+      input: {
+        height: 70,
+        backgroundColor: '#ffffff',
+        paddingLeft: 15,
+        paddingRight: 15
+      },
+      Button: {
+        flexDirection: 'row',
+
+    },
+
+    bottomView1: {
+
+        flexDirection: 'row',
+        width: '80%',
+        
+        justifyContent: 'space-between',
+    },    
+    bottomView2: {
+        
+        width: '40%',
+        justifyContent: "center",
+    },  
+    
+    bottomView3: {
+        justifyContent: "center",
+        alignItems: "center",
+        marginLeft: 40,
+        marginRight: 40,
+    }, 
+
+
+    stayElevated: {
+        
+        marginTop: 10,
+        paddingBottom: 5,
+        backgroundColor: Colors.BLUE_ACCENT,
+        marginRight: 10,
+        marginLeft: 10,
+        borderRadius: 10,
+        padding:10,
+      },
+
+      titleText: {
+        fontFamily: Fonts.POPPINS_BOLD,
+        color: Colors.Dark_Blue,
+        fontSize: 14,
+        
+  
+        },  
     
 
 });

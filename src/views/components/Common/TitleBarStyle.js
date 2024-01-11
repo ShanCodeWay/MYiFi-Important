@@ -48,6 +48,7 @@ const TitleBarStyles = StyleSheet.create({
         fontSize:26,
         justifyContent: 'center',
         alignItems: 'center', 
+        fontFamily: Fonts.POPPINS_MEDIUM,
       }
     });
 

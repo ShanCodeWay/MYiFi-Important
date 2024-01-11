@@ -7,7 +7,7 @@
   import TitleBar from "../../components/Common/TitleBar";
   import PaginationIndicator from "../../components/PaginationIndicator";
   import SignupScreenStyles4 from "./styles/SignupScreen4Styles";
-  
+  import Index from "../../../configs/Index";
   import CommonInputField from '../../components/Common/CommonInputField';
   import Svg, { Path } from 'react-native-svg';
  
@@ -58,14 +58,14 @@
 
     handleNextButtonPress = () => {
       try { 
-      this.props.navigation.replace('SignupScreen5'); 
+      this.props.navigation.replace(Index.SIGNUP_5); 
       console.log("Next button pressed to navigate SignupScreen 5 ");}
       catch (error){ console.log("[SignupScreen4] - Next_Button - Error ",error); }
     };
 
     handleLeftButtonPress = () => {
       try{
-        this.props.navigation.replace('SignupScreen3'); 
+        this.props.navigation.replace(Index.SIGNUP_3); 
       console.log("left pressed to navigate to SignupScreen 3 ");
           }
       catch (error){ console.log("[SignupScreen4] - left_Button - Error ",error);}

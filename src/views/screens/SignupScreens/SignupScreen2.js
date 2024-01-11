@@ -4,7 +4,7 @@
   import { TouchableOpacity } from "react-native-gesture-handler";
   import { useNavigation } from '@react-navigation/native';
   import SignupScreenStyles2 from "./styles/SignupScreen2Styles";
- 
+  import Index from "../../../configs/Index";
   import CommonInputField from '../../components/Common/CommonInputField';
   import CommonSpinner from "../../components/Common/CommonSpinner"; 
   import TitleBar from "../../components/Common/TitleBar";
@@ -38,6 +38,10 @@
 
     constructor(props) {
       super(props);
+      this.answer = React.createRef();
+      this.name = React.createRef();
+      this.password = React.createRef();
+      this.confirm = React.createRef();
       this.state = {
         scrollEnabled: false,
         selectedName: null,
@@ -72,7 +76,7 @@
   
     
     handleNextButtonPress = () => {
-      try {  this.props.navigation.replace('SignupScreen3'); 
+      try {  this.props.navigation.replace(Index.SIGNUP_3); 
              console.log("Next button pressed to Navigate to SignupScreen3");
           }
       catch (error){ console.log("[SignupScreen2] - Next_Button - Error ",error); }
@@ -80,7 +84,7 @@
 
     handleLeftButtonPress = () => {
       try{
-        this.props.navigation.replace('SignupScreen1'); 
+        this.props.navigation.replace(Index.SIGNUP_1); 
       console.log("left pressed to Navigate to SignupScreen1");
       }catch (error){ console.log("[SignupScreen2] - left_Button - Error ",error);}
       
@@ -150,24 +154,20 @@
   parentReferenceItem={this.handleNameSelection}
 />
 
-<Text> { this.state.selectedName}</Text>
-
           <CommonInputField
               value={this.state.selectedName}
               title={"Security Answer"}
               onInputChange={(text) => this.handlePasswordInputChange(text)}
-              inputRef={this.inputRef2}
-              nextInputRef={this.inputRef1}
-              editable={false}
-              name={this.state.selectedName}
+              inputRef={this.confirm}
+              nextInputRef={this.answer}
+              
             />
-
           <CommonInputField
               value={""}
               title={"Mother's Maiden Name"}
               onInputChange={(text) => this.handlePasswordInputChange(text)}
-              inputRef={this.inputRef2}
-              nextInputRef={this.inputRef1}
+              inputRef={this.answer}
+              nextInputRef={this.name}
               
               
           />
@@ -180,8 +180,8 @@
               isSecureText={true}
               onInputChange={(text) => this.handlePasswordInputChange(text)}
               icon={Icon_Eye}
-              inputRef={this.inputRef2}
-              nextInputRef={this.inputRef1}
+              inputRef={this.name}
+              nextInputRef={this.password}
             />
 
              <CommonInputField
@@ -191,8 +191,8 @@
               isSecureText={true}
               onInputChange={(text) => this.handlePasswordInputChange(text)}
               
-              inputRef={this.inputRef2}
-              nextInputRef={this.inputRef1}
+              inputRef={this.password}
+              nextInputRef={this.confirm}
             />
        
 

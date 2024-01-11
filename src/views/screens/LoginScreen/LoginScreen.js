@@ -7,6 +7,7 @@ import Icon_Verfied from "../../../assets/icons/Icon_Verfied.svg";
 import Icon_Eye from "../../../assets/icons/Icon_Eye.svg";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { GetCommonStyles } from "../../../styles/CommonStyles";
+import Index from "../../../configs/Index";
 import {
   Android_Theme_Light,
   Android_Theme_Dark,
@@ -70,7 +71,7 @@ class LoginScreen extends Component {
   };
   onPressSignUp = () => {
     try {
-      this.props.navigation.navigate("SignupScreen1");
+      this.props.navigation.navigate(Index.SIGNUP_1);
     } catch (Error) {
       console.log("[LoginScreen] - onPressSignUp - Error ", Error);
     }

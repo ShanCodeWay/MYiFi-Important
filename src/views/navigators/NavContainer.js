@@ -10,7 +10,7 @@ import SignupScreen3 from "../screens/SignupScreens/SignupScreen3";
 import SignupScreen4 from "../screens/SignupScreens/SignupScreen4";
 import SignupScreen5 from "../screens/SignupScreens/SignupScreen5";
 import FoundTransferScreen1 from "../screens/FoundTransferScreen/FoundTransferScreen1";
-
+import Index from "../../configs/Index";
 const Stack = createStackNavigator();
 //navigationRef - is used to navigation inside the actions
 function NavContainer() {
@@ -25,12 +25,12 @@ function NavContainer() {
       >
         <Stack.Screen name="SplashScreen" component={SplashScreen} />
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
-        <Stack.Screen name="SignupScreen1" component={SignupScreen1} />
-        <Stack.Screen name="SignupScreen2" component={SignupScreen2} />
-        <Stack.Screen name="SignupScreen3" component={SignupScreen3} />
-        <Stack.Screen name="SignupScreen4" component={SignupScreen4} />
-        <Stack.Screen name="SignupScreen5" component={SignupScreen5} />
-        <Stack.Screen name="FoundTransferScreen1" component={FoundTransferScreen1} />
+        <Stack.Screen name={Index.SIGNUP_1} component={SignupScreen1} />
+        <Stack.Screen name={Index.SIGNUP_2} component={SignupScreen2} />
+        <Stack.Screen name={Index.SIGNUP_3} component={SignupScreen3} />
+        <Stack.Screen name={Index.SIGNUP_4} component={SignupScreen4} />
+        <Stack.Screen name={Index.SIGNUP_5} component={SignupScreen5} />
+        <Stack.Screen name={Index.FOUND_1} component={FoundTransferScreen1} />
       
    
       </Stack.Navigator>

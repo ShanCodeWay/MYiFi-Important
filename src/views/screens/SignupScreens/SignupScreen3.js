@@ -7,7 +7,7 @@
   import TitleBar from "../../components/Common/TitleBar";
   import PaginationIndicator from "../../components/PaginationIndicator";
   import SignupScreenStyles3 from "./styles/SignupScreen3Styles";
-  
+  import Index from "../../../configs/Index";
   import CommonInputField from '../../components/Common/CommonInputField';
 
   import Icon_Verified from '../../../assets/icons/Icon_Verfied.svg';
@@ -85,7 +85,7 @@
     
     handleNextButtonPress = () => {
       try { 
-      this.props.navigation.replace('SignupScreen4'); 
+      this.props.navigation.replace(Index.SIGNUP_4); 
       console.log("Next button pressed to Navigate to SignupScreen4");}
       catch (error)
       { console.log("[SignupScreen3] - Next_Button - Error ",error); }
@@ -93,7 +93,7 @@
 
     handleLeftButtonPress = () => {
       try{
-        this.props.navigation.replace('SignupScreen2'); 
+        this.props.navigation.replace(Index.SIGNUP_2); 
       console.log("left pressed to Navigate to SignupScreen2");
         }
       catch (error){ console.log("[SignupScreen3] - left_Button - Error ",error);}

@@ -12,7 +12,6 @@ const CommonSpinnerStyles = StyleSheet.create({
     justifyContent: "center",
     flex: 1,
     alignContent: "center",
-
     alignItems: "center",
     backgroundColor: "rgba(0, 0, 0, 0.4)", // Adjust the opacity here
   },
@@ -27,7 +26,6 @@ const CommonSpinnerStyles = StyleSheet.create({
   IconOuterStyle: {
     justifyContent: "center",
     flex: 1,
-
     alignItems: "center",
     marginLeft: 5,
   },
@@ -36,7 +34,7 @@ const CommonSpinnerStyles = StyleSheet.create({
     width: "90%",
 
     padding: 12,
- 
+
     maxHeight: "80%",
     // minHeight: "20%",
     //  height: "60%",
@@ -54,7 +52,7 @@ const CommonSpinnerStyles = StyleSheet.create({
     alignItems: "center",
     alignContent: "space-between",
     marginTop: 10,
-    borderColor:   Colors.Dark_Blue,
+    borderColor: Colors.Dark_Blue,
     borderWidth: 1,
     borderRadius: 5,
     backgroundColor: Android_Theme_Light.BACKGROUND_COLOR,
@@ -104,22 +102,6 @@ const CommonSpinnerStyles = StyleSheet.create({
     color: Colors.WHITE,
   },
 
-  ////////////////////////////////
-
-  border: {
-    borderBottomWidth: 1,
-    flexDirection: "row",
-    // marginTop: hp('1%')
-  },
-
-  borderCustomPicker: {
-    borderBottomWidth: 1,
-    flexDirection: "row",
-    //  marginTop: hp('2%'),
-    borderWidth: 1,
-    borderColor: "red",
-  },
-
   text: {
     color: Colors.BLACK_DEEP,
 
@@ -136,43 +118,11 @@ const CommonSpinnerStyles = StyleSheet.create({
     fontSize: 12,
   },
 
-  textView: {
-    width: "75%",
-    //padding: wp("2.2%"),
-    paddingTop: "2.2%",
-  },
-
-  iconView: {
-    width: "13%",
-    justifyContent: "center",
-    alignItems: "flex-end",
-    marginRight: 6,
-  },
-
-  textViewHalf: {
-    width: "33%",
-    //padding: wp("2.2%"),
-  },
-
-  iconViewHalf: {
-    width: "7%",
-    justifyContent: "center",
-    alignItems: "flex-end",
-  },
-
-  maincontainer: {
-    flex: 1,
-    justifyContent: "center",
-    // marginTop: hp('1%')
-  },
-
   mainview: {
-
     flexDirection: "row",
     justifyContent: "space-around",
-    width: '100%',
-    height : '100%',
-
+    width: "100%",
+    height: "100%",
 
     margin: 10,
   },
@@ -186,16 +136,14 @@ const CommonSpinnerStyles = StyleSheet.create({
   },
 
   dropDownBtnContainer: {
-    
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 10,
-    height: '100%',
+    height: "100%",
     width: 70,
     height: 40,
     alignContent: "center",
-marginVertical: 5,
-
+    marginVertical: 5,
   },
   itemSelectedContainer: {
     flex: 1,
@@ -204,22 +152,18 @@ marginVertical: 5,
   },
 
   textStyleTitle: {
-    color: Colors.BLACK_DEEP,
-    textAlign:"left",
+    color: Colors.Dark_Blue,
+    textAlign: "left",
     fontSize: 16,
     fontFamily: Fonts.POPPINS_MEDIUM,
-    
   },
 
-  title:{
+  title: {
     marginLeft: 10,
     width: "100%",
     fontSize: 16,
     fontFamily: Fonts.POPPINS_MEDIUM,
-    
-
-  }
-
+  },
 });
 
 export default CommonSpinnerStyles;

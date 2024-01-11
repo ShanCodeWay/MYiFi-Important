@@ -19,7 +19,7 @@ const SignupScreenStyles1 = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        marginTop:60,
+        
         width: '100%', 
     },
 

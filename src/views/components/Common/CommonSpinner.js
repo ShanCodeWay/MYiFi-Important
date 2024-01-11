@@ -15,6 +15,7 @@ import CommonSpinnerStyles from "./CommonSpinnerStyles";
 import { Android_Theme_Light } from "../../../styles/Themes";
 import Icon_angleDown from "../../../assets/icons/Icon_angleDown.svg";
 import Colors from "../../../styles/Colors";
+import Fonts from "../../../styles/Fonts";
 import Icon_SpinnerItem_Selected from "../../../assets/icons/Icon_SpinnerItem_Selected.svg";
 import LinearGradient from "react-native-linear-gradient";
 
@@ -81,12 +82,33 @@ const CommonSpinner = (props) => {
     }
   };
 
+  
+  const renderTitle = () => { {/* Darshana 11.01.2024*/}
+    
+    try{ 
+    const { title } = props;
+
+    return (
+      <Text style={CommonSpinnerStyles.textStyleTitle}>
+        {title.split("").map((char, index) => (
+          <Text
+            key={index}
+            style={{
+              color: char === '*' ? 'red' : Colors.BLACK,
+            }}
+          >
+            {char}
+          </Text>
+        ))}
+      </Text>
+    );}
+    catch(error) { console.log("[CommonSpinner] - renderTitle - Error ", error);}
+  };
+
   return (
     <>
       <View style={[CommonSpinnerStyles.title]}>
-       <Text style={[CommonSpinnerStyles.textStyleTitle]}>
-          {props.title}
-        </Text>
+      {renderTitle()}
     </View>
       <View
         style={[
@@ -135,7 +157,7 @@ const CommonSpinner = (props) => {
             colors={["#0044A9", "#4384DA", "#75B4FF"]}
             style={CommonSpinnerStyles.dropDownBtnContainer}
           >
-            <Text style={{ fontSize: 12 }}>Select</Text>
+            <Text style={{ fontSize: 12, color:'white', fontFamily: Fonts.POPPINS_BOLD }}>Select</Text>
 
             <Icon_angleDown fill={Colors.WHITE} />
           </LinearGradient>
@@ -208,6 +230,8 @@ export default CommonSpinner;
 
 
 //How to Use
+
+
 {/* <CommonSpinner
 width={"90%"}
 data={[

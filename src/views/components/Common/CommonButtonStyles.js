@@ -14,7 +14,7 @@ const CommonButtonStyles = StyleSheet.create({
     fontFamily: Fonts.POPPINS_SEMIBOLD,
     fontSize: 20,
     alignItems: "center",
-    //padding: 10,
+    textAlign: "center",
     color: Colors.BLUE_ACCENT,
   },
 //Button 0 is Rectangle Shape Button
@@ -25,11 +25,10 @@ const CommonButtonStyles = StyleSheet.create({
     backgroundColor: Colors.GRAY,
     borderRadius: 10,
     alignItems: "center",
-
+    justifyContent: "center",
     alignContent: "center",
-    justifyContent: "space-between",
-
-    height:80
+    height:50
+    
   },
   button0OuterContainer:{
     width: "100%",

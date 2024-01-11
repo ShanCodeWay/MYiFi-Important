@@ -35,7 +35,9 @@ const CommonButton = (props) => {
             ]}
             onPress={props.onPress}
           >
-            <Icon_Lock />
+            {props.icon == null ? null : (
+    <props.icon fill={inputValue ? "#00377B" : Colors.GRAY} />
+  )}
             <Text
               style={[
                 CommonButtonStyles.text,
@@ -48,8 +50,11 @@ const CommonButton = (props) => {
             >
               {props.title}
             </Text>
-
-            <Icon_Forward_Navigate />
+            {props.icon == null ? null : (
+              
+    <props.icon fill={inputValue ? "#00377B" : Colors.GRAY} />
+  )}
+            
           </TouchableOpacity>
         </View>
       );                                      //Button 0 is Rectangle Shape Button

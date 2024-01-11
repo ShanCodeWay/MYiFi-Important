@@ -7,7 +7,7 @@
   import TitleBar from "../../components/Common/TitleBar";
   import PaginationIndicator from "../../components/PaginationIndicator";
   import SignupScreenStyles5 from "./styles/SignupScreen5Styles";
- 
+  import Index from "../../../configs/Index";
   import CommonInputField from '../../components/Common/CommonInputField';
   import Svg, { Path } from 'react-native-svg';
  
@@ -58,14 +58,14 @@
 
     handleNextButtonPress = () => {
       try { 
-      this.props.navigation.replace('FoundTransferScreen1'); 
+      this.props.navigation.replace(Index.FOUND_1); 
       console.log("Next button pressed");}
       catch (error){ console.log("[SignupScreen5] - Next_Button - Error ",error); }
     };
 
     handleLeftButtonPress = () => {
       try{
-        this.props.navigation.replace('SignupScreen4'); 
+        this.props.navigation.replace(Index.SIGNUP_4); 
       console.log("left pressed");
       }
       catch (error){ console.log("[SignupScreen5] - left_Button - Error ",error);}
@@ -120,23 +120,23 @@
   </View>       
 
   <View style={SignupScreenStyles5.middleView}> 
-
+<View style={SignupScreenStyles5.middleView1}>
+      <Text > hi</Text>
+    </View >  
+    
+      <View style={SignupScreenStyles5.middleView2}>
+      <Text > hi </Text>
+    </View> 
+               
   
 
   </View>
-      
+  
+           
   <View style={SignupScreenStyles5.bottomView}>
 
-     
-            
-            <Button
-              type='1'
-              title="Next"
-              borderRadius={35}
-              onPress={this.handleNextButtonPress}
-              textSize={20}
-              btnWidth='30%'
-            />
+
+           
           <View style={SignupScreenStyles5.logoIcon}>
 
           <Icon_apple style={SignupScreenStyles5.logo} width={25} height={25} />
@@ -151,11 +151,44 @@
           </View>
         
         
-          
+    
        
         </KeyboardAwareScrollView>
-        
-        
+        <View style={SignupScreenStyles5.bottomView3}>
+        <View style={SignupScreenStyles5.bottomView1}>
+
+<View style={SignupScreenStyles5.bottomView2}>
+
+
+<Button
+     type='1'
+     title="Next"
+     borderRadius={35}
+     onPress={this.handleNextButtonPress}
+     textSize={20}
+     btnWidth='100%'
+   />
+</View>
+
+
+  <View style={SignupScreenStyles5.bottomView2}>
+
+  <Button
+     type='1'
+     title="Next"
+     borderRadius={35}
+     onPress={this.handleNextButtonPress}
+     textSize={20}
+     btnWidth='100%'
+   /> 
+  </View>
+
+ 
+   
+   
+   </View>
+        </View>
+      
         </SafeAreaView>
 
         </>
