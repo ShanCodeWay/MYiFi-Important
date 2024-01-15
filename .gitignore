@@ -2,3 +2,4 @@
 MyiFiAppDev/.bundle/config
 MyiFiAppDev/android/app/build.gradle
 MyiFiAppDev/android
+MyiFiAppDev/package-lock.json
