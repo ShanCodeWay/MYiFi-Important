@@ -45,7 +45,7 @@ const CommonSpinnerLong = (props) => {
     }
   };
 
-  //Press Cansel Button
+  //Press Cancel Button
   const PressCancel = () => {
     try {
       props.parentReferenceItem("");
@@ -107,7 +107,7 @@ const CommonSpinnerLong = (props) => {
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
             colors={["#0044A9", "#4384DA", "#75B4FF"]}
-            style={CommonSpinnerLongStyles.dropDownBtnContainer}
+            style={[CommonSpinnerLongStyles.dropDownBtnContainer,{width:props.width}]}
           >
 
 <View style={CommonSpinnerLongStyles.left}>

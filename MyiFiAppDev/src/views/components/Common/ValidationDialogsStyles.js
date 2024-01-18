@@ -1,10 +1,13 @@
 // ValidationDialogsStyles.js_Nawodya
 
 import { StyleSheet } from 'react-native';
+import Fonts from '../../../styles/Fonts';
 
 const ValidationDialogsStyles = StyleSheet.create({
   container: {
     flexGrow: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   parientView: {
@@ -15,12 +18,15 @@ const ValidationDialogsStyles = StyleSheet.create({
     top: 0,
     width: '100%',
     height: '100%',
-    backgroundColor: '#1B1F52D9',
+    backgroundColor: '#1B1F52D5',
+    
   },
 
   upperView: {
     flex: 2,
     justifyContent: 'flex-end',
+    alignItems: 'center',
+    
 
 
   },
@@ -42,9 +48,9 @@ const ValidationDialogsStyles = StyleSheet.create({
 
     color: 'white',
     textAlign: 'center',
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#6DC100'
+    fontSize: 36,
+    color: '#6DC100',
+    fontFamily: Fonts.POPPINS_BOLD,
 
   },
 
@@ -53,7 +59,7 @@ const ValidationDialogsStyles = StyleSheet.create({
     color: 'white',
     textAlign: 'center',
     fontSize: 20,
-    fontWeight: 'bold',
+    fontFamily: Fonts.POPPINS_BOLD,
     paddingTop: 25,
 
   },
@@ -63,9 +69,16 @@ const ValidationDialogsStyles = StyleSheet.create({
     color: 'white',
     textAlign: 'center',
     fontSize: 15,
-    fontWeight: 'bold',
+    fontFamily: Fonts.POPPINS_BOLD,
 
   },
+
+  CommonSmallButton:{
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 25,
+    fontFamily: Fonts.POPPINS_BOLD,
+  }
 
 
 

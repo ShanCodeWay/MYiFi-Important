@@ -5,7 +5,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { View, Text } from 'react-native';
 import ValidationDialogsStyles from './ValidationDialogsStyles';
 import CommonSmallButton from '../Common/CommonSmallButton'
-
+import Fonts from "../../../styles/Fonts";
 
 
 const ValidationDialogs = (props) => {
@@ -18,17 +18,22 @@ const ValidationDialogs = (props) => {
         }, [props.isVisible]);
 
 
-        OnPressNo = () => {
-                try {
-                        props.parentReferenceItem(false);
-                } 
-
-                catch (Error) {
-                        console.log("[ValidationDialogs] -onPressNo - Error ", Error);
-                }
-
-
-        };
+       
+  const onPressNo = () => {
+        try {
+          props.parentReferenceItem(false);
+        } catch (Error) {
+          console.log("[ValidationDialogs] -onPressNo - Ex:-", Error);
+        }
+      };
+    
+      const onPressYes = () => {
+        try {
+          props.onPressYes(); 
+        } catch (Error) {
+          console.log("[ValidationDialogs] -onPressYes - Ex:- ", Error);
+        }
+      };
 
         return (
 
@@ -42,15 +47,17 @@ const ValidationDialogs = (props) => {
                                 <Text style={ValidationDialogsStyles.validationDialogsmessage}>{props.message}</Text>
                         </View>
                         <View style={ValidationDialogsStyles.bottomView}>
-                                <CommonSmallButton
-                                        onPress={null}
+                                <CommonSmallButton 
+                                        onPress={onPressYes}
                                         text={"Yes"}
-                                        width={"40%"}/>
+                                        width={"40%"}
+                                        fontFamily={Fonts.POPPINS_BOLD}/>
                                         
                                 <CommonSmallButton
-                                        onPress={this.OnPressNo}
+                                        onPress={onPressNo}
                                         text={"No"}
-                                        width={"40%"}/>
+                                        width={"40%"}
+                                        fontFamily={Fonts.POPPINS_BOLD}/>
                         </View>
                 </View>
                 : null)

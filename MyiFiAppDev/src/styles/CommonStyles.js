@@ -1,7 +1,4 @@
 import { Platform, StatusBar, StyleSheet } from "react-native";
-import Fonts from "./Fonts";
-import Theme from "./Themes"
-
 
 export const GetCommonStyles = (theme) => {
   
@@ -15,54 +12,61 @@ export const GetCommonStyles = (theme) => {
     //Main container style after safe area and title bar views
     mainContainer: {
       flex: 1,
-      backgroundColor: theme.WHITE_COLOR,
+      backgroundColor: theme.BACKGROUND_COLOR,
       justifyContent: "center",
     },
 
-    ScreenUpperSectionStyle: {
-  
+    topTitleContainer: {
+      width: '100%',
+      height:100,
       justifyContent: "center",
       alignItems: "center",
     },
 
+    keyboardAwareView: {
+      //alignItems: "center",
+      flexGrow: 1,
+    },
+
     //Common Text Styles
-    TextStyleH1Medium: {
-      color: theme.TextStyleH1Color,
-      fontSize: 40,
-      fontFamily: Fonts.POPPINS_MEDIUM,
+    textStyleH1Medium: {
+      color: theme.DEEP_BLACK_COLOR,
+      fontSize: theme.FONT_SIZE_HEADER_ONE_MEDIUM,
+      fontFamily: theme.POPPINS_MEDIUM,
+      textAlign:'center'
+    },
+
+    textStyleCaption1Medium: {
+      color: theme.DARK_GRAY_COLOR,
+      fontSize: theme.FONT_SIZE_CAPTION_ONE_MEDIUM,
+      fontFamily: theme.POPPINS_MEDIUM,
+      textAlign:'center'
     },
 
     TextStyleH2Medium: {
       color: theme.TextStyleH1Color,
       fontSize: 24,
-      fontFamily: Fonts.POPPINS_MEDIUM,
+      fontFamily: theme.POPPINS_MEDIUM,
     },
     TextStyleH3Bold: {
       color: theme.TextStyleH3Color,
       fontSize: 20,
-      fontFamily: Fonts.POPPINS_BOLD,
+      fontFamily: theme.POPPINS_BOLD,
     },
     TextStyleH3Medium: {
       color: theme.TextStyleH3Color,
       fontSize: 20,
-      fontFamily: Fonts.POPPINS_MEDIUM,
+      fontFamily: theme.POPPINS_MEDIUM,
     },
     TextStyleBody16Medium: {
       color: theme.TEXTSTYLE_BODY_COLOR,
       fontSize: 16,
-      fontFamily: Fonts.POPPINS_MEDIUM,
-    },
-
-
-    TextStyleCaption12Medium: {
-      color: theme.TextStyleCaptionColor,
-      fontSize: 12,
-      fontFamily: Fonts.POPPINS_MEDIUM,
+      fontFamily: theme.POPPINS_MEDIUM,
     },
     TextStyleBody14Medium: {
       color: theme.TEXTSTYLE_BODY_COLOR,
       fontSize: 14,
-      fontFamily: Fonts.POPPINS_MEDIUM,
+      fontFamily: theme.POPPINS_MEDIUM,
     },
   });
 

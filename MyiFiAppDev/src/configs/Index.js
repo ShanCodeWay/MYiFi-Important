@@ -1,8 +1,13 @@
 export default {
-    SIGNUP_1:'SignupScreen1',
-    SIGNUP_2:'SignupScreen2',
-    SIGNUP_3:'SignupScreen3',
-    SIGNUP_4:'SignupScreen4',
-    SIGNUP_5:'SignupScreen5',
-    FUND_1:'FundTransferScreen1',
+
+  //Signup Screens
+    SIGNUP_1 :'SignupScreen1',
+    SIGNUP_2 :'SignupScreen2',
+    SIGNUP_3 :'SignupScreen3',
+    SIGNUP_4 :'SignupScreen4',
+
+  //FundTransfer Screens  
+    FUND_1   :'FundTransferScreen1',
+    TRS_1    :'TransferReceiptScreen',
+    TRS_2    :'TransferReceiptSuccessScreen',
   };

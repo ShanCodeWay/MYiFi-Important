@@ -1,9 +1,12 @@
 import { StyleSheet } from "react-native";
-import Colors from "../../styles/Colors";
-import Fonts from "../../styles/Fonts";
 
+import {
+  Android_Theme_Light,
+  Android_Theme_Dark,
+} from "../../styles/Themes";
 
 //Done by: Darshana 24/01/02
+export default GetPaginationIndicatorStyles = (theme) => {
 
 const PaginationIndicatorStyles = StyleSheet.create({
 
@@ -31,20 +34,22 @@ const PaginationIndicatorStyles = StyleSheet.create({
       },
     
       activeCircle: {
-        backgroundColor: Colors.GRAY_DARK, // Active color
+        backgroundColor: theme.DARK_GRAY_COLOR, // Active color
       },
     
       inactiveCircle: {
-        backgroundColor: Colors.GRAY, // Inactive color
+        backgroundColor:theme.GRAY_COLOR, // Inactive color
       },
 
       titleText:{
-        fontFamily:Fonts.POPPINS_BOLD, // Font
-        fontSize:26,
-        color: Colors.Dark_Blue, //rs.Dar, //'
+        fontFamily:theme.POPPINS_BOLD, // Font
+        fontSize:theme.FONT_SIZE_HEADER_ONE,
+        color:theme.DARK_BLUE_COLOR, //rs.Dar, //'
       }
+
 
 
   });
 
-  export default PaginationIndicatorStyles; 
+  return PaginationIndicatorStyles;
+}

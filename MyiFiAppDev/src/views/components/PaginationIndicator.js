@@ -1,6 +1,12 @@
 import React, { useEffect } from "react";
 import { View, Text } from "react-native";
-import PaginationIndicatorStyles  from "./PaginationIndicatorStyle ";
+import GetPaginationIndicatorStyles  from "./PaginationIndicatorStyle ";
+import {
+  Android_Theme_Light,
+  Android_Theme_Dark,
+} from "../../styles/Themes";
+import { GetCommonStyles } from "../../styles/CommonStyles";
+
 
 //Done by: Darshana 24/01/02
 
@@ -22,31 +28,31 @@ const PaginationIndicator = (props) => {
       <View
         key={index}
         style={[
-          PaginationIndicatorStyles.circle,
+          GetPaginationIndicatorStyles(Android_Theme_Light).circle,
           index === activeScreen
-            ? PaginationIndicatorStyles.activeCircle
-            : PaginationIndicatorStyles.inactiveCircle,
+            ? GetPaginationIndicatorStyles(Android_Theme_Light).activeCircle
+            : GetPaginationIndicatorStyles(Android_Theme_Light).inactiveCircle,
         ]}
-      />
-    ));
+      />     
+    ));   
       }
     catch (error) {
-      console.error("Error rendering pagination circles:", error);
-      // Handle the error or log it as needed
-      // You can return a fallback UI or null if desired
+      console.error("[Pagination-Indicator]-Error rendering pagination circles EX:", error);
+     
       return null;}
       
   };
-
-  return (
-    <View style={PaginationIndicatorStyles.paginationIndicatorContainer}>
-      <View style={PaginationIndicatorStyles.paginationIndicator}>
-        {renderPaginationCircles()}
-      </View>
-
-      <Text style={PaginationIndicatorStyles.titleText}>{props.text}</Text>
+try {return (
+  <View style={GetPaginationIndicatorStyles(Android_Theme_Light).paginationIndicatorContainer}>
+    <View style={GetPaginationIndicatorStyles(Android_Theme_Light).paginationIndicator}>
+      {renderPaginationCircles()}
     </View>
-  );
+
+    <Text style={GetPaginationIndicatorStyles(Android_Theme_Light).titleText}>{props.text}</Text>
+  </View>
+);
+} catch (error) {{console.error("[Pagination-Indicator]-Error rendering pagination circles EX:", error);}}
+  
 
 };
 

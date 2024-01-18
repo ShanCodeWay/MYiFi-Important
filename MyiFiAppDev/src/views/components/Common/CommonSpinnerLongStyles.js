@@ -31,6 +31,7 @@ const CommonSpinnerStyles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     width:"100%",
+  
     
     
   },
@@ -47,7 +48,7 @@ const CommonSpinnerStyles = StyleSheet.create({
     justifyContent: "space-between",
     alignContent: "center",
 
-    borderRadius: 5,
+    borderRadius: 15,
     
   },
 
@@ -149,9 +150,7 @@ const CommonSpinnerStyles = StyleSheet.create({
     width:"100%",
     height: 50,
     alignContent: "center",
-    marginVertical: 5,
-    marginLeft: 25,
-    marginRight: 25,
+    
   },
   itemSelectedContainer: {
 

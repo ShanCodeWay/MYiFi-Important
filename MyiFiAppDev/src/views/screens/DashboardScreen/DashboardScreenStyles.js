@@ -1,75 +1,132 @@
 import { StyleSheet } from "react-native";
-import Colors from "../../../styles/Colors";
 
-const DashboardScreenStyles = StyleSheet.create({
-  ParentContainer: {
-    justifyContent: "center",
-    alignItems: "center",
-    flex: 1,
-  },
-  titleBarView: {
-    flexDirection: "row",
-    width: "95%",
+export default GetDashboardScreenStyles = (theme) => {
+  return StyleSheet.create({
+    titleBarView: {
+      flexDirection: "row",
+      width: "100%",
+      paddingHorizontal: 10,
+      paddingTop: 10,
+ 
+      alignItems: "flex-start",
+      justifyContent: "space-between",
+    },
+    balanceContainerView: {
+      flexDirection: "row",
+      width: "100%",
+      alignContent: "center",
+      alignItems: "center",
+      justifyContent: "flex-start",
+      marginBottom: 10,
+      marginTop: 10,
+    },
+    easyAccessContainerView: {
+      flexDirection: "row",
+      width: "95%",
+      alignContent: "center",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    middleContainerView: {
+      width: "100%",
+      justifyContent: "center",
+      alignItems: "center",
+      paddingHorizontal: 10,
+    },
+    bottomContainerView: {
+      flex: 1,
+      width: "100%",
+      justifyContent: "flex-start",
+      alignItems: "center",
+    },
+    greetingView: {
+      flex: 1,
+      paddingLeft: 20,
+    },
+    topUpView: {
+      justifyContent: "center",
+      alignItems: "center",
+      width: 80,
+      height: 50,
+      backgroundColor: theme.BLUE_COLOR,
+      borderRadius: 10,
+      marginRight: 10,
+    },
+    easyAccessIconButtonView: {
+      justifyContent: "center",
+      padding: 10,
+      borderRadius: 10,
+      backgroundColor: theme.LIGHT_BLUE_COLOR,
+    },
+    easyAccessButtonView: {
+      alignContent: "center",
+      alignItems: "center",
+      margin: 5,
+    },
+    textUserName: {
+      fontSize: theme.FONT_SIZE_HEADER_TWO_MEDIUM,
+      color: theme.DEEP_BLACK_COLOR,
+    },
+    transactionItemRowContainer: {
+      padding: 10,
+      width: "100%",
+      justifyContent: "space-between",
+      flexDirection: "row",
+      alignContent: "flex-start",
+      alignItems:"flex-start",
+      alignSelf: "center",
+    },
+    texttransactionDescription: {
+      color: theme.DARK_GRAY_COLOR,
+      fontSize: theme.FONT_SIZE_MEDIUM,
+      fontFamily: theme.POPPINS_MEDIUM,
+      flex: 1,
+    },
+    textTransactionAmount: {
+      fontSize: theme.FONT_SIZE_LARGE,
+      fontFamily: theme.POPPINS_MEDIUM,
+      color: theme.DEEP_BLACK_COLOR,
+    },
+    textTransactionAmountDescription: {
+      fontSize: theme.FONT_SIZE_SMALL,
+      fontFamily: theme.POPPINS_MEDIUM,
+      color: theme.DARK_GRAY_COLOR,
+    },
+    textGreeting: {
+      color: theme.DARK_GRAY_COLOR,
+      fontSize: theme.FONT_SIZE_LARGE,
+      fontFamily: theme.POPPINS_MEDIUM,
+    },
+    textTopUP: {},
 
-    alignItems: "flex-start",
-    justifyContent: "space-between",
-  },
-  balanceContainerView: {
-    flexDirection: "row",
-    width: "95%",
-    alignContent: "center",
-    alignItems: "center",
-    justifyContent: "flex-start",
-    marginBottom: 20
-  },
-  easyAccessContainerView: {
-    flexDirection: "row",
-    width: "95%",
-    alignContent: "center",
-    alignItems: "center",
-    justifyContent: 'center',
+    textBalance: {
+      color: theme.DARK_GRAY_COLOR,
+      fontSize: theme.FONT_SIZE_LARGE,
+      fontFamily: theme.POPPINS_MEDIUM,
+    },
+    textBalanceAmount: {
+      color: theme.DARK_GREEN_COLOR,
+      fontSize: theme.FONT_SIZE_HEADER_TWO,
+      fontFamily: theme.POPPINS_MEDIUM,
+    },
+    textEasyAccess: {
+      color: theme.DEEP_BLACK_COLOR,
+      fontSize: theme.FONT_SIZE_HEADER_TWO,
+      fontFamily: theme.POPPINS_MEDIUM,
+    },
+    textEasyAccessbtnTitle: {
+      marginTop: 10,
+      color: theme.DEEP_BLACK_COLOR,
+    },
+    textRecentTransaction: {
+      color: theme.DEEP_BLACK_COLOR,
+      fontSize: theme.FONT_SIZE_HEADER_TWO,
+      fontFamily: theme.POPPINS_MEDIUM,
+    },
+    transactionAmountContainer: {
+      justifyContent: "flex-end",
 
-  },
-  middleContainerView: {
-
-
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  bottomContainerView: {
-    flex: 1,
-    width: "100%",
-    justifyContent: 'flex-start',
-    alignItems: "center",
-
-  },
-  greetingView: {
-    flex: 1,
-    paddingLeft: 20,
-  },
-  topUpView: {
-    justifyContent: "center",
-    alignItems: "center",
-    width: 80,
-    height: 50,
-    backgroundColor: Colors.Blue,
-    borderRadius: 10,
-    marginRight: 10
-  },
-  easyAccessIconButtonView: {
-
-    justifyContent: "center",
-    padding: 10,
-    borderRadius: 10,
-    backgroundColor: Colors.LIGHT_Blue,
-  }, 
-  easyAccessButtonView:{
-
-    alignContent: 'center',
-    alignItems: 'center',
-    margin: 5
-  }
-});
-
-export default DashboardScreenStyles;
+      alignItems: "flex-end",
+    },
+  });
+};

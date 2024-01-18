@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import FingerPrintLoginStyles from "./FingerPrintLoginStyles";
 import Colors from "../../../../styles/Colors";
-import CommonButton from "../../../components/Common/CommonButton";
+import CommonButton from "../../../components/Common/MainButton/CommonButton";
 import Fonts from "../../../../styles/Fonts";
 import Icon_fingerPrint from "../../../../assets/icons/Icon_fingerPrint.svg";
 import { GetCommonStyles } from "../../../../styles/CommonStyles";

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Button from '../../../../src/views/components/Common/CommonButton';
-import CommonInputField from '../../../../src/views/components/Common/CommonInputField';
+import Button from '../../components/Common/MainButton/CommonButton';
+import CommonInputField from '../../components/Common/TextInput/CommonInputField';
 //import Colors from '../../../styles/Colors';
 import Icon_Verfied from '../../../assets/icons/Icon_Verfied';
 import OtpScreenStylestyles from '../../../../src/views/screens/OtpScreen/OtpScreenStyles';
-import TitleBar from '../../components/Common/TitleBar';
+import TitleBar from '../../components/Common/TitleBar/MainTitleBar';
 import Icon_navLeft from '../../../assets/icons/Icon_navLeft.svg'
 //import Fonts from '../../../assets/fonts/Poppins-ExtraBold';
 

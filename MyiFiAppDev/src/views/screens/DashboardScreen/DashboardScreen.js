@@ -9,19 +9,9 @@ import {
   Android_Theme_Light,
   Android_Theme_Dark,
 } from "../../../styles/Themes";
-import Colors from "../../../styles/Colors";
-import Fonts from "../../../styles/Fonts";
-import DashboardScreenStyles from "./DashboardScreenStyles";
-import TitleBar from "../../components/Common/TitleBar";
-import Icon_navMenu from "../../../assets/icons/Icon_navMenu.svg";
+import GetDashboardScreenStyles from "./DashboardScreenStyles";
+
 import CommonCardButton from "../../components/Common/CommonCardButton";
-import Icon_send from "../../../assets/icons/Icon_send.svg";
-import Icon_invest from "../../../assets/icons/Icon_invest.svg";
-import Icon_payments from "../../../assets/icons/Icon_payments.svg";
-import Icon_loan from "../../../assets/icons/Icon_loan.svg";
-import Icon_externalOpen from "../../../assets/icons/Icon_externalOpen.svg";
-import LinearGradient from "react-native-linear-gradient";
-import EasyAcessButton from "./EasyAcessButton";
 import Icon_arrowUp from "../../../assets/icons/Icon_arrowUp.svg";
 import Icon_arrowDown from "../../../assets/icons/Icon_arrowDown.svg";
 
@@ -40,24 +30,28 @@ class DashboardScreen extends Component {
       type: "0",
       description: "CEFT/7181819/Dasun",
       amount: "- Rs. 1800.00",
+      amountDescription: "Savings",
     },
     {
       id: 2,
       type: "1",
       description: "Silps/234535/Aurdi",
       amount: "  Rs. 23,000.00",
+      amountDescription: "Wallet",
     },
     {
       id: 3,
       type: "0",
       description: "Pay/GoldL/Mercantile",
       amount: "- Rs. 12,300.00",
+      amountDescription: "Wallet",
     },
     {
       id: 4,
       type: "0",
       description: "CEFT/7181819/Dasun",
       amount: "- Rs. 1800.00",
+      amountDescription: "Savings",
     },
 
     {
@@ -65,37 +59,29 @@ class DashboardScreen extends Component {
       type: "1",
       description: "Silps/234535/Aurdi",
       amount: "  Rs. 23,000.00",
+      amountDescription: "Savings",
     },
     {
       id: 6,
       type: "0",
       description: "Pay/GoldL/Mercantile",
       amount: "- Rs. 12,300.00",
+      amountDescription: "Savings",
     },
     {
       id: 7,
       type: "0",
       description: "CEFT/7181819/Dasun",
       amount: "- Rs. 1800.00",
+      amountDescription: "Wallet",
     },
   ];
 
   transactionRenderItem = ({ item }) => (
     <View
       style={[
-        ,
-        //DashboardScreenStyles.transactionRenderItemView
-        {
-          padding: 10,
-          width: "100%",
-          // backgroundColor: 'red',
-          justifyContent: "space-between",
-          flexDirection: "row",
-          alignContent: "flex-start",
-          alignItems: "center",
-
-          alignSelf: "center",
-        },
+        GetDashboardScreenStyles(Android_Theme_Light)
+          .transactionItemRowContainer,
       ]}
     >
       <View style={{ marginHorizontal: 10 }}>
@@ -104,81 +90,143 @@ class DashboardScreen extends Component {
 
       <Text
         style={[
-          GetCommonStyles(Android_Theme_Light).TextStyleBody14Medium,
-          { color: Colors.BLACK_DEEP, flex: 1 },
+          GetDashboardScreenStyles(Android_Theme_Light)
+            .texttransactionDescription,
         ]}
       >
         {item.description}
       </Text>
-      <Text
+      <View
         style={[
-          GetCommonStyles(Android_Theme_Light).TextStyleBody16Medium,
-          { color: Colors.BLACK_DEEP },
+          GetDashboardScreenStyles(Android_Theme_Light)
+            .transactionAmountContainer,
         ]}
       >
-        {item.amount}
-      </Text>
+        <Text
+          style={[
+            GetDashboardScreenStyles(Android_Theme_Light).textTransactionAmount,
+          ]}
+        >
+          {item.amount}
+        </Text>
+        <Text
+          style={[
+            GetDashboardScreenStyles(Android_Theme_Light)
+              .textTransactionAmountDescription,
+          ]}
+        >
+          {item.amountDescription}
+        </Text>
+      </View>
     </View>
   );
+
+  EasyAcessButton = ({ onPress, icon: IconComponent, title }) => {
+    return (
+      <View>
+        <TouchableOpacity
+          style={[
+            GetDashboardScreenStyles(Android_Theme_Light).easyAccessButtonView,
+          ]}
+          onPress={onPress}
+        >
+          <View
+            style={[
+              GetDashboardScreenStyles(Android_Theme_Light)
+                .easyAccessIconButtonView,
+            ]}
+          >
+            <IconComponent />
+          </View>
+          <Text
+            style={[
+              GetDashboardScreenStyles(Android_Theme_Light)
+                .textEasyAccessbtnTitle,
+              {
+                marginTop: 10,
+              },
+            ]}
+          >
+            {title}
+          </Text>
+        </TouchableOpacity>
+      </View>
+    );
+  };
 
   componentDidMount() {
     try {
     } catch (Error) {
-      console.log("[] - componentDidMount - Error ", Error);
+      console.log("[DashboardScreen] - componentDidMount() EX: " + Error);
     }
   }
 
   componentWillUnmount() {
     try {
     } catch (Error) {
-      console.log("[] - componentWillUnmount - Error ", Error);
+      console.log("[DashboardScreen] - componentWillUnmount() EX: " + Error);
     }
   }
-
-  testFunction = () => {
-    try {
-    } catch (Error) {
-      console.log("[] - testFunction - Error ", Error);
-    }
-  };
 
   render() {
     return (
       <SafeAreaView style={GetCommonStyles(Android_Theme_Light).safeAreaView}>
-        <View style={DashboardScreenStyles.ParentContainer}>
-          <View style={[DashboardScreenStyles.titleBarView]}>
-            <Icon_navMenu />
+        <View style={GetCommonStyles(Android_Theme_Light).mainContainer}>
+          <View
+            style={[GetDashboardScreenStyles(Android_Theme_Light).titleBarView]}
+          >
+            <TouchableOpacity>
+              <Android_Theme_Light.ICON_DRAWERMENU />
+            </TouchableOpacity>
 
-            <View style={[DashboardScreenStyles.greetingView]}>
+            <View
+              style={[
+                GetDashboardScreenStyles(Android_Theme_Light).greetingView,
+              ]}
+            >
               <Text
-                style={[GetCommonStyles(Android_Theme_Light).TextStyleH2Medium]}
+                style={[
+                  GetDashboardScreenStyles(Android_Theme_Light).textUserName,
+                ]}
               >
                 Hi Dhamitha,
               </Text>
               <Text
                 style={[
-                  GetCommonStyles(Android_Theme_Light).TextStyleBody16Medium,
+                  GetDashboardScreenStyles(Android_Theme_Light).textGreeting,
                 ]}
               >
                 Good Morning!
               </Text>
             </View>
-            <Image
-              source={require("../../../assets/images/Img_avatarPerson.png")}
-              style={{ width: 40, height: 40 }}
-            />
+
+            <TouchableOpacity>
+              <Image
+                source={require("../../../assets/images/Img_avatarPerson.png")}
+                style={{ width: 40, height: 40 }}
+              />
+            </TouchableOpacity>
           </View>
 
-          <View style={[DashboardScreenStyles.middleContainerView]}>
-            <View style={[DashboardScreenStyles.balanceContainerView]}>
-              <View style={[DashboardScreenStyles.topUpView]}>
+          <View
+            style={[
+              GetDashboardScreenStyles(Android_Theme_Light).middleContainerView,
+            ]}
+          >
+            <View
+              style={[
+                GetDashboardScreenStyles(Android_Theme_Light)
+                  .balanceContainerView,
+              ]}
+            >
+              <View
+                style={[
+                  GetDashboardScreenStyles(Android_Theme_Light).topUpView,
+                ]}
+              >
                 <Text
                   style={[
-                    GetCommonStyles(Android_Theme_Light)
-                      .TextStyleCaption12Medium,
-                    {
-                      color: Colors.BLUE_ACCENT,
-                    },
+                    GetDashboardScreenStyles(Android_Theme_Light).textTopUP,
                   ]}
                 >
                   Top Up
@@ -187,7 +235,7 @@ class DashboardScreen extends Component {
 
               <Text
                 style={[
-                  GetCommonStyles(Android_Theme_Light).TextStyleBody16Medium,
+                  GetDashboardScreenStyles(Android_Theme_Light).textBalance,
                 ]}
               >
                 Balance
@@ -195,8 +243,8 @@ class DashboardScreen extends Component {
 
               <Text
                 style={[
-                  GetCommonStyles(Android_Theme_Light).TextStyleH3Medium,
-                  { color: Colors.GREEN_DARK },
+                  GetDashboardScreenStyles(Android_Theme_Light)
+                    .textBalanceAmount,
                 ]}
               >
                 {"  Rs. 6,700,450.00"}
@@ -204,63 +252,77 @@ class DashboardScreen extends Component {
             </View>
 
             <CommonCardButton
-              width={"95%"}
+              width={"100%"}
               height={64}
-              icon={Icon_send}
+              icon={ Android_Theme_Light.ICON_SEND}
               text={"Send"}
             />
             <CommonCardButton
-              width={"95%"}
+              width={"100%"}
               height={64}
-              icon={Icon_invest}
+              icon={Android_Theme_Light.ICON_INVEST}
               text={"Invest"}
             />
             <CommonCardButton
-              width={"95%"}
+              width={"100%"}
               height={64}
-              icon={Icon_payments}
+              icon={Android_Theme_Light.ICON_PAYMENT}
               text={"Payments"}
             />
             <CommonCardButton
-              width={"95%"}
+              width={"100%"}
               height={64}
-              icon={Icon_loan}
+              icon={Android_Theme_Light.ICON_LOAN}
               text={"Leasing/ Loans"}
             />
           </View>
 
-          <View style={[DashboardScreenStyles.bottomContainerView]}>
+          <View
+            style={[
+              GetDashboardScreenStyles(Android_Theme_Light).bottomContainerView,
+            ]}
+          >
             <Text
-              style={[GetCommonStyles(Android_Theme_Light).TextStyleH3Medium]}
+              style={[
+                GetDashboardScreenStyles(Android_Theme_Light).textEasyAccess,
+              ]}
             >
               Easy Access
             </Text>
 
-            <View style={[DashboardScreenStyles.easyAccessContainerView]}>
-              <EasyAcessButton
+            <View
+              style={[
+                GetDashboardScreenStyles(Android_Theme_Light)
+                  .easyAccessContainerView,
+              ]}
+            >
+              <this.EasyAcessButton
                 title={"Transfer"}
-                icon={Icon_externalOpen}
+                icon={Android_Theme_Light.ICON_EXTERNALOPEN}
                 onPress={null}
               />
-              <EasyAcessButton
+              <this.EasyAcessButton
                 title={"Payments"}
-                icon={Icon_payments}
+                icon={Android_Theme_Light.ICON_PAYMENT}
                 onPress={null}
               />
-              <EasyAcessButton title={"FD"} icon={Icon_invest} onPress={null} />
-              <EasyAcessButton
+
+              <this.EasyAcessButton
+                title={"FD"}
+                icon={Android_Theme_Light.ICON_INVEST}
+                onPress={null}
+              />
+              <this.EasyAcessButton
                 title={"Savings"}
-                icon={Icon_loan}
-                onPress={null}
-              />
-              <EasyAcessButton
-                title={"Transfer"}
-                icon={Icon_externalOpen}
+                icon={Android_Theme_Light.ICON_SAVINGS}
                 onPress={null}
               />
             </View>
             <Text
-              style={[GetCommonStyles(Android_Theme_Light).TextStyleH3Medium]}
+              style={[
+                GetDashboardScreenStyles(Android_Theme_Light)
+                  .textRecentTransaction,
+              ]}
             >
               Recent Transactions
             </Text>

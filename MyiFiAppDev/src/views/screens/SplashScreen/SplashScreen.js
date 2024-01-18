@@ -5,9 +5,10 @@ import { Android_Theme_Light } from "../../../styles/Themes";
 
 import { StatusBar } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import MainTitleBar from "../../components/Common/TitleBar/MainTitleBar";
 
 import { GetCommonStyles } from "../../../styles/CommonStyles";
-import { GetSplashScreenStyles } from "./SplashScreenStyles";
+import GetSplashScreenStyles from "./SplashScreenStyles";
 
 class SplashScreen extends Component {
 
@@ -22,7 +23,7 @@ class SplashScreen extends Component {
 
     }
     catch(Error){
-      console.log('SplashScreen - componentDidMount() EX: ' + Error)
+      console.log('[SplashScreen] - componentDidMount() EX: ' + Error)
     }
   }
 
@@ -34,7 +35,7 @@ class SplashScreen extends Component {
 
     }
     catch(Error){
-      console.log('SplashScreen - componentWillUnmount() EX: ' + Error)
+      console.log('[SplashScreen] - componentWillUnmount() EX: ' + Error)
     }
   }
 

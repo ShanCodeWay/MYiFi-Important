@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import {Android_Theme_Dark} from "../../styles/Themes";
 import Fonts from "../../../styles/Fonts";
 
-export const GetSplashScreenStyles = (theme) => {
+export default GetSplashScreenStyles = (theme) => {
 
   const SplashScreenStyles = StyleSheet.create({
     
