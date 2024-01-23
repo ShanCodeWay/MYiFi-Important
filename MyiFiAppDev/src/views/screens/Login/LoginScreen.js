@@ -123,15 +123,13 @@ class LoginScreen extends Component {
             keyboardShouldPersistTaps="always"
             behavior="padding"
             //keyboardShouldPersistTaps="handled"
-            //enableAutomaticScroll={true}
+            enableAutomaticScroll={true}
             //extraScrollHeight={150}
             //contentInset={{ bottom: this.state.contentBottom }}
             //onKeyboardWillHide={() => this.setState({ contentBottom: 0 })}
             //onKeyboardDidHide={() => this.setState({ contentBottom: 0 })}
             //onKeyboardDidShow={() => this.setState({ contentBottom: 0, })}
-            contentContainerStyle={
-              GetCommonStyles(Android_Theme_Light).keyboardAwareView
-            }>
+            contentContainerStyle={GetCommonStyles(Android_Theme_Light).keyboardAwareView}>
 
             <View style={GetCommonStyles(Android_Theme_Light).topTitleContainer}>
             
@@ -211,7 +209,7 @@ class LoginScreen extends Component {
                 textColor = {Android_Theme_Light.DEEP_BLACK_COLOR}
                 backgroundColor={Android_Theme_Light.DARK_GREEN_COLOR}
                 onPress={this.OnPressSignIn}
-                //btnWidth={"80%"}
+                //Width={"80%"}
               />
 
               {/* Gap */}

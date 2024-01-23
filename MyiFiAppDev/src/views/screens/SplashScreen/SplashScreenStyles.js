@@ -8,6 +8,7 @@ export default GetSplashScreenStyles = (theme) => {
     
     topLogoContainer: {
       flex: 2,
+      width: '100%',
       backgroundColor: theme.BACKGROUND_COLOR,
       justifyContent: "flex-end",
       alignItems: "flex-start",
@@ -16,6 +17,7 @@ export default GetSplashScreenStyles = (theme) => {
     
     bottomNameContainer: {
       flex:1,
+      width: '100%',
       backgroundColor: theme.SPLASH_BOTTOM_COLOR,
       alignItems: "topleft",
     },

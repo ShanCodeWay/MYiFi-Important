@@ -45,7 +45,7 @@ export default GetCommonButtonStyles = (theme) => {
     },
 
     buttonText: {
-     marginLeft: 10,
+     //marginLeft: 10,
     
     },
     

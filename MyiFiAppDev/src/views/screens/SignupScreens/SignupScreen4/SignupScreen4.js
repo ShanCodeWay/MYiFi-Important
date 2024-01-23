@@ -129,7 +129,7 @@
               borderRadius= {35}
               onPress     = {this.handleNextButtonPress}
               textSize    = {20}
-              btnWidth    = {"60%"}
+              width       = {"60%"}
             />   
         
 <View style = {GetSignupScreenStyles4(Android_Theme_Light).logoIcon}>

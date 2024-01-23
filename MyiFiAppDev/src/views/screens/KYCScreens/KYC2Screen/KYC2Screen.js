@@ -34,21 +34,23 @@ class KYC2Screen extends Component {
     }
   }
 
-  handleInputChange = (value) => {
+  handleNICInputChange = (value) => {
     this.setState({ nicNumber: value });
   };
 
   handleSearch = () => {
     const { nicNumber } = this.state;
-
+  
     const sampleNICs = ["1234", "1111", "5555"];
-
+  
     if (sampleNICs.includes(nicNumber)) {
-      this.props.navigation.navigate("KYC3Screen");
+      this.props.navigation.navigate("KYC3Screen2", { nicNumber }); 
+      console.log(nicNumber)
     } else {
       Alert.alert("NIC not found");
     }
   };
+  
 
   OnPress_BackButton = () => {
     try {
@@ -80,12 +82,12 @@ class KYC2Screen extends Component {
               value={""}
               title={"NIC Number*"}
               placeholder={""}
-              onInputChange={this.handleInputChange}
+              onInputChange={this.handleNICInputChange}
               // icon={Icon_Eye}
               width={"90%"}
-              inputRef={this.inputRef2}
+              //inputRef={this.inputRef2}
             />
-
+            <View style={{height: 10}}></View>
             <CommonButton
               type={"1"} // 0 or 1
               text={""}

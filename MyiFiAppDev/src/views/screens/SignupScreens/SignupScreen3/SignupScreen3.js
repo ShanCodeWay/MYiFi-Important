@@ -3,7 +3,7 @@
   import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
   import CommonButton from "../../../components/Common/MainButton/CommonButton";
   import MainTitleBar from "../../../components/Common/TitleBar/MainTitleBar";
-  import PaginationIndicator from "../../../components/PaginationIndicator";
+  import PaginationIndicator from "../../../components/Common/PageIndicator/PageIndicator";
  
   import Index from "../../../../configs/Index";
   import CommonInputField from "../../../components/Common/TextInput/CommonInputField";
@@ -147,9 +147,10 @@
             : 'Oh no,Your time is up. If you have not received the OTP yeet,try resending.or contact our call center for assistence'}
           </Text>
   </View>       
+  <View style = {{height:20}}/>
           <View style = {GetSignupScreenStyles3(Android_Theme_Light).middleView}>
-        
-        <CommonInputField
+          <View style = {{height:20}}/>
+          <CommonInputField
             value        = {""} // Set value to the input field
             title        = {"OTP"}
             onInputChange= {this.handleOtpChange}
@@ -157,6 +158,7 @@
             inputRef     = {this.inputRef2}
             nextInputRef = {this.inputRef1}
         />
+        <View style = {{height:20}}/>
             
              <CommonButton
                 type           = '1'
@@ -166,9 +168,10 @@
                 textSize       = {15}
                 backgroundColor= "#6Dc100"
                 textColor      = 'black'
-                btnWidth       = {"60%"}
+                Width       = {"60%"}
               />
              
+             <View style = {{height:20}}/>
       
 
             {timer > 0 && (
@@ -187,7 +190,7 @@
                   borderRadius= {15}
                   onPress     = {this.handleLoginPress}
                   textSize    = {15}
-                  btnWidth    = {"80%"}
+                  Width    = {"80%"}
                 />
           
           
@@ -207,14 +210,10 @@
               type        = '1'
               title       = "Go Back"
               borderRadius= {35}
-              btnWidth    = '30%'
+              width       = {"60%"}
               onPress = {this.handleLeftButtonPress}
               textSize= {20}
             />
-  <View style= {GetSignupScreenStyles3(Android_Theme_Light).logoIcon}>
-
-        
-  </View>
             
   </View>
  

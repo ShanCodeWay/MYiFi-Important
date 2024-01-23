@@ -14,6 +14,8 @@ import { Svg, Circle } from "react-native-svg";
 import Colors from "../../../../styles/Colors";
 import Camera from "../../../../assets/icons/Icon_camera.svg";
 import MainTitleBar from "../../../components/Common/TitleBar/MainTitleBar";
+import PaginationIndicator from "../../../components/Common/PageIndicator/PageIndicator";
+import CommonCardButton from "../../../components/Common/CommonCardButton";
 //Done by: Randima
 class KYC3Screen2 extends Component {
   componentDidMount() {
@@ -30,7 +32,7 @@ class KYC3Screen2 extends Component {
     }
   }
 
-  handleCameraPress = () => {
+  handleCameraButtonPress = () => {
     try {
       console.log("camera pressed");
     } catch (Error) {
@@ -50,7 +52,7 @@ class KYC3Screen2 extends Component {
   OnPress_BackButton = () => {
     try {
       console.log("Next button pressed");
-      this.props.navigation.navigate("KYC3Screen");
+      this.props.navigation.navigate("KYC2Screen");
     } catch (Error) {
       console.log("[KYC3Screen2] - OnPress_BackButton - Error ", Error);
     }
@@ -68,51 +70,65 @@ class KYC3Screen2 extends Component {
         />
 
         <View style={GetCommonStyles(Android_Theme_Light).mainContainer}>
+          {/* <View style={{ height: 20 }}></View> */}
+          {/* <PaginationIndicator></PaginationIndicator> */}
+          {/* <View style={{ height: 5 ,backgroundColor: 'pink'}}></View> */}
+          {/* <View
+            style={
+              GetKYC3Screen2Styles(Android_Theme_Light).indictorContainer
+            }
+          ></View> */}
+          <View style={{ height: 10 }}></View>
+          <PaginationIndicator></PaginationIndicator>
           <View
             style={
-              GetKYC3Screen2Styles(Android_Theme_Light).profilePicContainer
+              GetKYC3Screen2Styles(Android_Theme_Light).profilePicTextContainer
             }
           >
             <Text style={GetKYC3Screen2Styles(Android_Theme_Light).titleText}>
-              {"Smile for the Camera"}
+              {"Smile for the \nCamera"}
             </Text>
-            <View
-              style={GetKYC3Screen2Styles(Android_Theme_Light).profilePicCircle}
-            ></View>
+            {/* <View style={{ height: 15 }}></View> */}
+            <Text style={GetKYC3Screen2Styles(Android_Theme_Light).subText}>
+              {"Make it good..\nThis is going to be your profile picture."}
+            </Text>
+            {/* <View style={{ height: 15 }}></View> */}
+
+            {/* <View style={{ height: 5 }}></View> */}
+          </View>
+          <View
+            style={GetKYC3Screen2Styles(Android_Theme_Light).profilePictureBox}
+          >
+            <Image     style={GetKYC3Screen2Styles(Android_Theme_Light).profilePicture}
+              source={require("../../../../assets/images/sample_person.png")}
+            />
           </View>
 
           <View
             style={GetKYC3Screen2Styles(Android_Theme_Light).buttonContainer}
           >
-            <Text style={GetKYC3Screen2Styles(Android_Theme_Light).subText}>
-              {"Tap to snap"}
-            </Text>
-            <TouchableOpacity onPress={this.handleCameraPress}>
-              <View
-                style={GetKYC3Screen2Styles(Android_Theme_Light).cameraCircle}
-              >
-                <Android_Theme_Light.ICON_CAMERA
-                  width={30}
-                  height={30}
-                  fill={Android_Theme_Light.WHITE_COLOR}
-                />
-              </View>
-            </TouchableOpacity>
-          </View>
-          <View
-            style={
-              GetKYC3Screen2Styles(Android_Theme_Light).nextButtonContainer
-            }
-          >
+            {/* <View style={{ height: 30 }}></View> */}
+            <CommonButton
+              type={"0"} // 0 or 1
+              text={""}
+              borderRadius={60}
+              title={null}
+              width={"20%"}
+              leftIcon={Android_Theme_Light.ICON_CAMERA}
+              backgroundColor={Android_Theme_Light.DARK_GREEN_COLOR}
+              onPress={() => this.handleCameraButtonPress()}
+            />
+            {/* <View style={{ height: 40 }}></View> */}
             <CommonButton
               type={"1"} // 0 or 1
               text={""}
               title={"Next"}
-              width={"90%"}
+              width={"35%"}
               backgroundColor={Android_Theme_Light.DARK_BLUE_COLOR}
               onPress={() => this.handleNextButtonPress()}
             />
           </View>
+          {/* <View style={{ height: 25 }}></View> */}
         </View>
       </SafeAreaView>
     );

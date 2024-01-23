@@ -38,7 +38,9 @@ import Icon_ExternalOpen_Android from "../assets/icons/android/Icon_externalOpen
 import Icon_ExternalOpen_Ios from "../assets/icons/ios/Icon_externalOpen.svg";
 import Icon_Savings_Android from "../assets/icons/android/Icon_Savings.svg";
 import Icon_Savings_Ios from "../assets/icons/ios/Icon_Savings.svg";
-
+import Icon_PLUS_Android from "../assets/icons/android/Icon_plus.svg"
+import Icon_PayNow_Android from "../assets/icons/android/Icon_PayNow.svg"
+import Icon_PayNow_Ios from "../assets/icons/ios/Icon_PayNow.svg"
 
 
 export default {
@@ -81,7 +83,11 @@ export default {
   ICON_EXTERNALOPEN_ANDROID_LIGHT : Icon_ExternalOpen_Android,
   ICON_EXTERNALOPEN_IOS_LIGHT : Icon_ExternalOpen_Ios,
   ICON_SAVINGS_ANDROID_LIGHT : Icon_Savings_Android,
+  ICON_PLUS_ANDROID_LIGHT : Icon_PLUS_Android,
   ICON_SAVINGS_IOS_LIGHT : Icon_Savings_Ios,
+  ICON_PAYNOW_ANDROID_LIGHT : Icon_PayNow_Android,
+  ICON_PAYNOW_IOS_LIGHT : Icon_PayNow_Ios
+  
 
 
 };

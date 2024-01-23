@@ -10,4 +10,9 @@ export default {
     FUND_1   :'FundTransferScreen1',
     TRS_1    :'TransferReceiptScreen',
     TRS_2    :'TransferReceiptSuccessScreen',
+    FUND_OTP :'FundTransferOTPScreen',
+
+  //BillPayement Screens 
+    BILL_1   :'BillPayement',
+    ADD_BILL :'AddBiller',    
   };

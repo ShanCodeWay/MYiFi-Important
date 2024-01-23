@@ -12,8 +12,9 @@ export const GetCommonStyles = (theme) => {
     //Main container style after safe area and title bar views
     mainContainer: {
       flex: 1,
-      backgroundColor: theme.BACKGROUND_COLOR,
+      backgroundColor: "theme.BACKGROUND_COLOR",
       justifyContent: "center",
+      alignItems: "center",
     },
 
     topTitleContainer: {
@@ -24,8 +25,9 @@ export const GetCommonStyles = (theme) => {
     },
 
     keyboardAwareView: {
-      //alignItems: "center",
+      alignItems: "center",
       flexGrow: 1,
+      width: '100%',
     },
 
     //Common Text Styles

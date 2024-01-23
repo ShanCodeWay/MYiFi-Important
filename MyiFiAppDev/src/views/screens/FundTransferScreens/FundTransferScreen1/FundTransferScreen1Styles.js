@@ -1,10 +1,11 @@
 import { StyleSheet } from "react-native";
 import { Android_Theme_Light } from "../../../../styles/Themes";
-import Fonts from "../../../../styles/Fonts";
 //Done by: Darshana 24/01/02
 
 export const  GetFundTransferScreen1Styles = (theme) => {
 
+
+const transparentBackgroundColor = theme.BACKGROUND_COLOR + '33';    
 const FundTransferScreen1Styles = StyleSheet.create({
            
     topView: {
@@ -17,24 +18,42 @@ const FundTransferScreen1Styles = StyleSheet.create({
     
     middleView: {
         flex         : 1,
-        elevation    : 10,
-        marginLeft   : 20,
-        marginRight  : 20,
-        
+       
+        justifyContent: 'space-evenly',
+        width : '90%',
+        justifyContent: 'flex-end',
        
     },
 
     bottomView: {
-        height               : 140,
-        justifyContent       : "center",
+        height               : 70,
         alignItems           : "center",
-        borderTopEndRadius   : 40,
-        borderTopStartRadius : 40,
-        backgroundColor      : theme.GRAY_COLOR,
         
       
         
-    },    
+      
+        
+    },   
+    modalView: {
+        width: '100%',
+        height: 130,
+        justifyContent: "center",
+        alignItems: "center",
+        borderTopEndRadius: 40,
+        borderTopStartRadius: 40,
+        backgroundColor: theme.GRAY_COLOR,
+        zIndex: 1, 
+      },
+      
+      modalViewBackground: {
+        flex: 1,
+        justifyContent: 'flex-end',
+        alignItems: "center",
+        borderTopEndRadius: 40,
+        borderTopStartRadius: 40,
+        backgroundColor: 'transparent',
+        zIndex: 0, 
+      },
     
     titleView: {
         
@@ -142,9 +161,19 @@ bankView:{
     justifyContent  : "center",
     alignItems      : "center",
     width           : "100%",
-    marginLeft      : 10,
+    
     
 
+},
+
+textTransfer: {
+    fontFamily    : theme.POPPINS_SEMIBOLD,
+    fontSize      : theme.FONT_SIZE_HEADER_TWO_MEDIUM,
+    color         : theme.DARK_BLUE_COLOR,
+    justifyContent: "center",
+    alignItems    : "center",
+    textAlign     : 'center',
+    width         : '100%',
 },
 
 });

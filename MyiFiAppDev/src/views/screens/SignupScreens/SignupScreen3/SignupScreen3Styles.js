@@ -24,8 +24,7 @@ const SignupScreenStyles3 = StyleSheet.create({
     },
 
     bottomView: {
-        height         : 150,
-        justifyContent : "center",
+        height         : 70,
         alignItems     : "center",
     },    
     
@@ -51,13 +50,10 @@ const SignupScreenStyles3 = StyleSheet.create({
         fontFamily     : theme.POPPINS_MEDIUM,
         fontSize       : theme.FONT_SIZE_HEADER_TWO,
         color          : theme.DARK_GRAY_COLOR,
-        marginBottom   : 10,
-        marginTop      : 12,
         justifyContent : 'center',
         alignItems     : 'center',
         textAlign      : 'center',
-        marginLeft     : 10,
-        marginRight    : 10,
+       
         
 
     },

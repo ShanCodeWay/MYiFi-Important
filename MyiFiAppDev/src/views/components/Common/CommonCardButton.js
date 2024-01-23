@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
-import CommonCardButtonStyles from "./CommonCardButtonStyles";
+import GetCommonCardButtonStyles from "./CommonCardButtonStyles";
 import Colors from "../../../styles/Colors";
 import { GetCommonStyles } from "../../../styles/CommonStyles";
 import { Android_Theme_Light } from "../../../styles/Themes";
@@ -11,7 +11,7 @@ const CommonCardButton = (props) => {
   return (
     <View
       style={[
-        CommonCardButtonStyles.buttonOuterContainer,
+        GetCommonCardButtonStyles(Android_Theme_Light).buttonOuterContainer,
         {
           width: props.width == null ? "100%" : props.width,
           height: props.height == null ? 50 : props.height,
@@ -26,14 +26,18 @@ const CommonCardButton = (props) => {
           end={{ x: 1, y: 1 }}
           colors={["#0044A9", "#4384DA", "#75B4FF"]}
           style={[
-            CommonCardButtonStyles.buttonContainer,
+            GetCommonCardButtonStyles(Android_Theme_Light).buttonContainer,
             {
               justifyContent: props.text == null ? "center" : "flex-start",
             },
           ]}
         >
           {props.icon ? (
-            <View style={CommonCardButtonStyles.IconOuterStyle}>
+            <View
+              style={
+                GetCommonCardButtonStyles(Android_Theme_Light).IconOuterStyle
+              }
+            >
               <props.icon fill={Colors.WHITE} />
             </View>
           ) : null}
@@ -49,6 +53,22 @@ const CommonCardButton = (props) => {
             >
               {props.text}
             </Text>
+          ) : null}
+
+          {props.amount ? (
+            <View
+              style={[
+                GetCommonCardButtonStyles(Android_Theme_Light).amountContainer,
+              ]}
+            >
+              <Text
+                style={[
+                  GetCommonCardButtonStyles(Android_Theme_Light).textAmount,
+                ]}
+              >
+                {"Rs. " + props.amount}
+              </Text>
+            </View>
           ) : null}
         </LinearGradient>
       </TouchableOpacity>

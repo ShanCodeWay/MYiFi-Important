@@ -37,9 +37,9 @@ export const GetTransferReceiptScreenStyles = (theme) => {
             width: 150,
             height: 60,
             borderRightWidth: 1,
-            borderRightColor: theme.TextStyleCaptionColor,
+            borderRightColor: theme.DARK_GRAY_COLOR,
             borderBottomWidth: 1,
-            borderBlockColor: theme.TextStyleCaptionColor,
+            borderBlockColor: theme.DARK_GRAY_COLOR,
             justifyContent: 'space-between',
         },
 
@@ -47,7 +47,7 @@ export const GetTransferReceiptScreenStyles = (theme) => {
             width: 150,
             height: 60,
             borderBottomWidth: 1,
-            borderBlockColor: theme.TextStyleCaptionColor,
+            borderBlockColor: theme.DARK_GRAY_COLOR,
             justifyContent: 'space-between',
 
         },
@@ -55,40 +55,40 @@ export const GetTransferReceiptScreenStyles = (theme) => {
             width: 150,
             height: 40,
             borderRightWidth: 1,
-            borderBlockColor: theme.TextStyleCaptionColor,
-            borderRightColor: theme.TextStyleCaptionColor,
+            borderBlockColor: theme.DARK_GRAY_COLOR,
+            borderRightColor: theme.DARK_GRAY_COLOR,
         },
 
         middlelastViewRight: {
             width: 150,
             height: 40,
-            borderBlockColor: theme.TextStyleCaptionColor,
+            borderBlockColor: theme.DARK_GRAY_COLOR,
 
         },
         bottomView: {
             flex: 1,
+            alignItems: 'flex-end',
 
         },
         textSmall: {
             fontSize: theme.FONT_SIZE_SMALL,
             marginLeft: 8,
-            color: theme.TextStyleCaptionColor,
+            color: theme.DARK_GRAY_COLOR,
             marginBottom: 5,
         },
         textLarge: {
             fontSize:theme.FONT_SIZE_LARGE,
             marginLeft: 8,
-            color: theme.TextStyleCaptionColor,
+            color: theme.DARK_GRAY_COLOR,
 
         },
         title: {
             marginTop:30,
             fontSize: theme.FONT_SIZE_HEADER_ONE,
-            color: theme.TextStyleH1Color,
+            color: theme.DEEP_BLACK_COLOR,
             textAlign: 'center',
             fontWeight:'500',
-            
-            
+                  
         },
         secondTitle: {
             fontSize: theme.FONT_SIZE_LARGE,
@@ -96,35 +96,35 @@ export const GetTransferReceiptScreenStyles = (theme) => {
             textAlign: 'center',
             fontWeight:'500',
 
-
         },
         prize: {
             fontSize: theme.FONT_SIZE_HEADER_ONE,
             textAlign: 'center',
-            color: theme.TextStyleH1Color,
+            color: theme.DEEP_BLACK_COLOR,
             fontWeight:'500',
         },
 
         logo: {
-            marginHorizontal: 40,
+            marginHorizontal: 10,
             alignContent: 'center',
             alignItems: 'center',
             justifyContent: 'flex-start',
-           //backgroundColor: 'blue',
+            height: '10%',
+     
         },
 
         middleFirstViewLeft: {
             width: 150,
             height: 40,
-            borderBlockColor: theme.TextStyleCaptionColor,
+            borderBlockColor: theme.DARK_GRAY_COLOR,
             borderBottomWidth:1,
             borderRightWidth: 1,
-            borderColor:theme.TextStyleCaptionColor,
+            borderColor:theme.DARK_GRAY_COLOR,
         },
         middleFirstViewRight: {
             width: 150,
             height: 40,
-            borderBlockColor: theme.TextStyleCaptionColor,
+            borderBlockColor: theme.DARK_GRAY_COLOR,
             borderBottomWidth: 1,
 
         },

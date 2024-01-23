@@ -23,8 +23,8 @@ const SignupScreenStyles4 = StyleSheet.create({
     },
 
     bottomView: {
-        height        : 150,
-        justifyContent: "center",
+        height        : 70,
+        
         alignItems    : "center",
     },    
     

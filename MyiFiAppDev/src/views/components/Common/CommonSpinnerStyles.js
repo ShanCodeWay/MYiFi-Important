@@ -124,7 +124,7 @@ const CommonSpinnerStyles = StyleSheet.create({
     width: "100%",
     height: "100%",
 
-    margin: 10,
+    
   },
 
   mainviewcol1: {
@@ -154,14 +154,14 @@ const CommonSpinnerStyles = StyleSheet.create({
   textStyleTitle: {
     color: Colors.Dark_Blue,
     textAlign: "left",
-    fontSize: 16,
+    fontSize: 12,
     fontFamily: Fonts.POPPINS_MEDIUM,
   },
 
   title: {
-    marginLeft: 10,
+    
     width: "100%",
-    fontSize: 16,
+    fontSize: 12,
     fontFamily: Fonts.POPPINS_MEDIUM,
   },
 });

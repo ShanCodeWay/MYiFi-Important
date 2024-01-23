@@ -6,10 +6,6 @@
  */
 
 import React from 'react';
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import SplashScreen from "./src/views/screens/SplashScreen/SplashScreen";
-import LoginScreen from "./src/views/screens/LoginScreen/LoginScreen";
 //const Stack = createNativeStackNavigator();
 import {
   SafeAreaView,

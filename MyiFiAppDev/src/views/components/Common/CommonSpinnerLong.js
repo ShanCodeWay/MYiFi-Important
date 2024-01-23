@@ -11,7 +11,7 @@ import {
   Modal,
 } from "react-native";
 
-import CommonSpinnerLongStyles from "./CommonSpinnerLongStyles";
+import {GetCommonSpinnerLongStyles} from "./CommonSpinnerLongStyles";
 import { Android_Theme_Light } from "../../../styles/Themes";
 import Icon_angleDown from "../../../assets/icons/Icon_angleDown.svg";
 import Colors from "../../../styles/Colors";
@@ -20,6 +20,11 @@ import Icon_SpinnerItem_Selected from "../../../assets/icons/Icon_SpinnerItem_Se
 import LinearGradient from "react-native-linear-gradient";
 
 import Icon_search from "../../../assets/icons/Icon_search.svg";
+
+
+
+
+
 const CommonSpinnerLong = (props) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [leadingIcon, setleadingIcon] = useState(props.leadingIcon);
@@ -96,7 +101,7 @@ const CommonSpinnerLong = (props) => {
         <TouchableOpacity
           onPress={() => setIsModalVisible(true)}
           disabled={props.disabled}
-          style={CommonSpinnerLongStyles.IconOuterStyle}
+          style={GetCommonSpinnerLongStyles(Android_Theme_Light).IconOuterStyle}
         >
           
 
@@ -107,15 +112,15 @@ const CommonSpinnerLong = (props) => {
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
             colors={["#0044A9", "#4384DA", "#75B4FF"]}
-            style={[CommonSpinnerLongStyles.dropDownBtnContainer,{width:props.width}]}
+            style={[GetCommonSpinnerLongStyles(Android_Theme_Light).dropDownBtnContainer,{width:props.width}]}
           >
 
-<View style={CommonSpinnerLongStyles.left}>
+<View style={GetCommonSpinnerLongStyles(Android_Theme_Light).left}>
 <Text
               style={
                 props.value
-                  ? { ...CommonSpinnerLongStyles.text,  color:Colors.WHITE, fontFamily: Fonts.POPPINS_BOLD }
-                  : { ...CommonSpinnerLongStyles.textPlaceholder,  color:Colors.WHITE, fontFamily: Fonts.POPPINS_BOLD }
+                  ? { ...GetCommonSpinnerLongStyles(Android_Theme_Light).text,  color:Colors.WHITE, fontFamily: Fonts.POPPINS_BOLD }
+                  : { ...GetCommonSpinnerLongStyles(Android_Theme_Light).textPlaceholder,  color:Colors.WHITE, fontFamily: Fonts.POPPINS_BOLD }
               }
             >
               {props.value ? props.value : props.placeholder}
@@ -124,31 +129,31 @@ const CommonSpinnerLong = (props) => {
 </View>
 
 
-<View style={CommonSpinnerLongStyles.middle}>
+<View style={GetCommonSpinnerLongStyles(Android_Theme_Light).middle}>
   <Text style={{ fontSize: 14, color: Colors.WHITE, fontFamily: Fonts.POPPINS_BOLD }}>
     
-   LKR  {props.value ? `${props.value1}` : props.value}
+   {props.currency}  {props.value ? `${props.value1}` : props.value}
     
   </Text>
 
 </View>
 
 
-<View>
+{/*<View>
+
 {leadingIcon ? (
-            <View style={CommonSpinnerLongStyles.IconOuterStyle}>
-              {/* //Method for change color of passed sVG
-                {React.cloneElement(leadingIcon, { fill: "red" })}  */}
-                
+            <View style={GetCommonSpinnerLongStyles(Android_Theme_Light).IconOuterStyle}>  
               {leadingIcon}
             </View>
           ) : null}
-          <View style={CommonSpinnerLongStyles.itemSelectedContainer}>
-            {props.value ? <Icon_SpinnerItem_Selected   fill={Colors.WHITE} /> : null}
+          <View style={GetCommonSpinnerLongStyles(Android_Theme_Light).itemSelectedContainer}>
+            {props.value ? <Icon_SpinnerItem_Selected   fill={''} /> : null}
           </View>
 </View>
 
- <View style={CommonSpinnerLongStyles.right}> 
+// if you want icon after fill uncomment this*/} 
+
+ <View style={GetCommonSpinnerLongStyles(Android_Theme_Light).right}> 
  <Icon_angleDown fill={Colors.WHITE} />
  </View>
            
@@ -173,21 +178,21 @@ const CommonSpinnerLong = (props) => {
         transparent={true}
         animationType="slide"
       >
-        <View style={CommonSpinnerLongStyles.ModelOuterView}>
-          <View style={CommonSpinnerLongStyles.ModelInnerView}>
-            <View style={CommonSpinnerLongStyles.searchView}>
+        <View style={GetCommonSpinnerLongStyles(Android_Theme_Light).ModelOuterView}>
+          <View style={GetCommonSpinnerLongStyles(Android_Theme_Light).ModelInnerView}>
+            <View style={GetCommonSpinnerLongStyles(Android_Theme_Light).searchView}>
               <TextInput
-                style={CommonSpinnerLongStyles.SearchTextInput}
+                style={GetCommonSpinnerLongStyles(Android_Theme_Light).SearchTextInput}
                 placeholder={"Select Item"}
                 placeholderTextColor={Colors.GRAY}
                 onChangeText={HandleSearch}
               ></TextInput>
-              <TouchableOpacity style={CommonSpinnerLongStyles.SearchIconView}>
+              <TouchableOpacity style={GetCommonSpinnerLongStyles(Android_Theme_Light).SearchIconView}>
                 <Icon_search height={20} width={20} />
               </TouchableOpacity>
             </View>
 
-            <View style={CommonSpinnerLongStyles.QuestionListOuterView}>
+            <View style={GetCommonSpinnerLongStyles(Android_Theme_Light).QuestionListOuterView}>
                 <FlatList
                   data={
                     (filterText === "" && filterData === undefined) ||
@@ -199,21 +204,21 @@ const CommonSpinnerLong = (props) => {
                   }
                   renderItem={({ item }) => (
                     <TouchableOpacity
-                      style={CommonSpinnerLongStyles.singleQuestionView}
+                      style={GetCommonSpinnerLongStyles(Android_Theme_Light).singleQuestionView}
                       onPress={() => SelectItem(item.label, item.value, item.value1)}
                     >
 
 
-                      <View style={CommonSpinnerLongStyles.ItemTextView}>
-                      <View style={CommonSpinnerLongStyles.ItemMoneyLeftTextView} >
+                      <View style={GetCommonSpinnerLongStyles(Android_Theme_Light).ItemTextView}>
+                      <View style={GetCommonSpinnerLongStyles(Android_Theme_Light).ItemMoneyLeftTextView} >
 
-                      <Text style={CommonSpinnerLongStyles.ItemText}>
+                      <Text style={GetCommonSpinnerLongStyles(Android_Theme_Light).ItemText}>
                         {item.label}  
                       </Text>
                       </View>
 
-                      <View style={CommonSpinnerLongStyles.ItemMoneyRightTextView} >
-                      <Text style={CommonSpinnerLongStyles.ItemMoneyText}>- LKR {item.value}</Text> 
+                      <View style={GetCommonSpinnerLongStyles(Android_Theme_Light).ItemMoneyRightTextView} >
+                      <Text style={GetCommonSpinnerLongStyles(Android_Theme_Light).ItemMoneyText}>-{props.currency} {item.value}</Text> 
                       
                       </View>
                       
@@ -232,10 +237,10 @@ const CommonSpinnerLong = (props) => {
 
 
             <TouchableOpacity
-              style={CommonSpinnerLongStyles.CanselButtonView}
+              style={GetCommonSpinnerLongStyles(Android_Theme_Light).CanselButtonView}
               onPress={() => PressCancel()}
             >
-              <Text style={CommonSpinnerLongStyles.CanselButtonText}>Cancel</Text>
+              <Text style={GetCommonSpinnerLongStyles(Android_Theme_Light).CanselButtonText}>Cancel</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -265,6 +270,7 @@ data={[
 //title={"Select Account"}
 placeholder={"Select Bank"}
 value={this.state.selecteBank}
+currency={"LKR"}
 onRef={(ref) => (this.parentReferenceItem = ref)}
 parentReferenceItem={this.test.bind(this)}
 /> */}

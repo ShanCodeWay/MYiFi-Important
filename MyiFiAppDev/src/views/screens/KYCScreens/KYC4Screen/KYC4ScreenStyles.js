@@ -4,20 +4,21 @@ import Colors from "../../../../styles/Colors";
 export const GetKYC4ScreenStyles = (theme) => {
   const KYC4ScreenStyles = StyleSheet.create({
     text1: {
+      color: theme.DARK_BLUE_COLOR,
       fontSize: theme.FONT_SIZE_HEADER_ONE,
-      color: theme.TextStyleH1Color,
+      fontFamily: theme.POPPINS_SEMIBOLD,
       textAlign: "center",
     },
     text2: {
-      fontSize: theme.FONT_SIZE_HEADER_TWO,
       color: theme.TextStyleCaptionColor,
+      fontSize: theme.FONT_SIZE_HEADER_TWO,
+      fontFamily: theme.POPPINS_REGULAR,
       textAlign: "center",
-      // marginTop: 20,
-      // marginLeft: 20,
     },
     text3: {
-      fontSize: theme.FONT_SIZE_HEADER_TWO,
       color: theme.BLUE_COLOR,
+      fontSize: theme.FONT_SIZE_HEADER_TWO,
+      fontFamily: theme.POPPINS_SEMIBOLD,
       textAlign: "center",
     },
 
@@ -59,23 +60,19 @@ export const GetKYC4ScreenStyles = (theme) => {
     box: {
       width: 180,
       height: 180,
-      // backgroundColor: Colors.GRAY,
-      // marginRight: 5,
       justifyContent: "space-around",
       alignItems: "center",
-      // borderWidth: 2,
       // borderColor: Colors.GRAY,
     },
     boxText: {
       color: theme.TextStyleCaptionColor,
-      // marginBottom: 20,
       fontSize: theme.FONT_SIZE_LARGE,
+      fontFamily: theme.POPPINS_REGULAR,
       justifyContent: 'flex-start',
 
     },
     alignContainer: {
       alignItems: "center",
-      // marginTop: 15,
     },
     cameraCircle: {
       backgroundColor: theme.COMMON_BUTTON_BACKGROUND_COLOR,

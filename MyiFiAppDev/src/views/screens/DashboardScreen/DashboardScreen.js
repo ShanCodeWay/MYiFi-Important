@@ -77,6 +77,15 @@ class DashboardScreen extends Component {
     },
   ];
 
+  handleInvestButton= () =>{
+    try {
+      this.props.navigation.navigate("InvestScreen")
+      console.log("n....")
+
+    }catch{
+
+    }}
+
   transactionRenderItem = ({ item }) => (
     <View
       style={[
@@ -262,6 +271,7 @@ class DashboardScreen extends Component {
               height={64}
               icon={Android_Theme_Light.ICON_INVEST}
               text={"Invest"}
+              onPress={()=>this.handleInvestButton()}
             />
             <CommonCardButton
               width={"100%"}

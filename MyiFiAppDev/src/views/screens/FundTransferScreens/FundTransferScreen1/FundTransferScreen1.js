@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-  import { View, Text, ScrollView, SafeAreaView, StatusBar, } from "react-native";
+  import { View, Text, ScrollView, SafeAreaView, StatusBar,Modal } from "react-native";
   import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
   import CommonButton from "../../../components/Common/MainButton/CommonButton";
   import MainTitleBar from "../../../components/Common/TitleBar/MainTitleBar";
@@ -41,16 +41,30 @@ import React, { Component } from "react";
         toAccount:           null,
         amount:                '',
         isVisibleValidationDialog:false,
+        isModalVisible:       false,
 
         
       };
     }
     
-    componentDidMount() 
-    {
+
+    /*componentDidUpdate(prevProps, prevState) {
+      const { isVisibleValidationDialog } = this.state;
+    
+      
+      if (isVisibleValidationDialog !== prevState.isVisibleValidationDialog) {
+        if (isVisibleValidationDialog) {
+          StatusBar.setBackgroundColor("#1B1F52D5");
+        } else {
+          StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
+        }
+      }
+    }*/  // This can use to colour change status bar when validation Dialog pop-up
+
+    componentDidMount() {
       try {
+          StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
         
-        StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
       } catch (Error) {
         console.log("[fundTransferScreen1] - componentDidMount - Error ", Error);
       }
@@ -124,22 +138,35 @@ import React, { Component } from "react";
 
     handleValidationDialog = () => {
       this.setState({ isVisibleValidationDialog   : true });
+      
     };
 
 
 
     handleValidationDialogNo = () => {
       this.setState({ isVisibleValidationDialog   : false });
+      this.setState({ isModalVisible  : false });
     };
 
 
     handleValidationDialogYes = () => {
      
-      this.props.navigation.navigate(Index.TRS_1); 
+      this.props.navigation.navigate(Index.FUND_OTP); 
       this.setState({ isVisibleValidationDialog   : false });
+      this.setState({ isModalVisible   : false });
     };
+
+    toggleModal = () => {
+      this.setState((prevState) => ({
+        isModalVisible: !prevState.isModalVisible,
+      }));
+    };
+  
     
     render() {
+
+      const { isModalVisible } = this.state;
+
       return (
 
         <> 
@@ -154,7 +181,7 @@ import React, { Component } from "react";
               onPressLeft = {this.handleLeftButtonPress }/>
 
        <KeyboardAwareScrollView
-            contentContainerStyle     =  {{ flexGrow: 1 }}
+            contentContainerStyle     =  {{ flexGrow: 1, justifyContent: "flex-end", alignItems:"center" }}
             keyboardShouldPersistTaps ="handled"
             extraScrollHeight         ={10}
             enableOnAndroid           ={true}
@@ -175,6 +202,7 @@ import React, { Component } from "react";
         <Text style={GetFundTransferScreen1Styles(Android_Theme_Light).titleText}>
           TRANSFER FROM
         </Text>
+        <View style = {{height:5}}/>
         <View style={GetFundTransferScreen1Styles(Android_Theme_Light).bankView}> 
 
                         <CommonSpinnerLong
@@ -198,6 +226,7 @@ import React, { Component } from "react";
                           onRef               = {(ref) => (this.parentReferenceItem = ref)}
                           inputRef            = {this.transferFrom}
                           nextInputRef        = {this.transferTo}
+                          currency            = {"LKR"}
                           parentReferenceItem = {(label, value1) => {
                             this.setState({
                               selectedLabel   : label,
@@ -206,12 +235,14 @@ import React, { Component } from "react";
                           }}
                         />
         </View>
+        <View style = {{height:20}}/>
 
 
  
         <Text style = {GetFundTransferScreen1Styles(Android_Theme_Light).titleText}>
           TRANSFER TO
         </Text>
+        <View style = {{height:5}}/>
            <CommonSpinner
               title  = {"Type *"}
 
@@ -225,11 +256,11 @@ import React, { Component } from "react";
               ]}
               placeholder           = {"Select Your Account Type"}
               value                 = {this.state.selectedAccountType}
-              lable                 = {this.state.selectedAccountType}
+              label                 = {this.state.selectedAccountType}
               onRef                 = {(ref) => (this.parentReferenceItem = ref)}
               parentReferenceItem   = {this.handleAccountType}
            />
- 
+ <View style = {{height:10}}/>
           <CommonSpinner
             title                 = {"To Account *"}
 
@@ -247,6 +278,7 @@ import React, { Component } from "react";
             onRef                 = {(ref) => (this.parentReferenceItem = ref)}
             parentReferenceItem   = {this.handleToAccount}
           />
+           <View style = {{height:10}}/>
        
    
             <CommonInputField
@@ -256,8 +288,10 @@ import React, { Component } from "react";
               inputRef        = {this.transferTo}
               nextInputRef    = {this.transferRemark}
               type            = {'currency'}
+              width           = {"100%"}
              
             />
+            <View style = {{height:10}}/>
           
  
             <CommonInputField
@@ -267,14 +301,16 @@ import React, { Component } from "react";
               inputRef        = {this.transferRemark}
               nextInputRef    = {this.transferPurpose}
               placeholder     = {"Remark"}
+              width           = {"100%"}
               
             />
  
-
+       <View style = {{height:20}}/>
 
          <Text style = {GetFundTransferScreen1Styles(Android_Theme_Light).titleText}>
           OTHER DETAILS
         </Text>
+        <View style = {{height:10}}/>
           <CommonSpinner
             title       = {"Purpose *"}
             width       = {"100%"}
@@ -308,31 +344,63 @@ import React, { Component } from "react";
 
   </View>
   </View>
-        </KeyboardAwareScrollView>
-  
-            <View style={GetFundTransferScreen1Styles(Android_Theme_Light).bottomView}>
 
-                  <CommonButton
-                        type         = '1'
-                        title        = {"Transfer "+ this.state.amount}
-                        borderRadius = {35}
-                        onPress      = {this.handleValidationDialog}
-                        textSize     = {20}
-                        btnWidth     = {"60%"}
-                  />
+
+        </KeyboardAwareScrollView>
+        
+        <View style={GetFundTransferScreen1Styles(Android_Theme_Light).bottomView}
+              >
+
+            <CommonButton
+                  type         = '1'
+                  title        = {"Next"}
+                  borderRadius = {35}
+                  onPress      = {this.toggleModal}
+                  textSize     = {20}
+                  width        = {"60%"}
+                  
+            />
 
             </View>
-            
-                  <ValidationDialogs
-                    title               = {"Verification"}
-                    description         = {"Transfer"}
-                    message             = {"Do You wish\n to Transfer "+ this.state.amount +" ?"}
-                    isVisible           = {this.state.isVisibleValidationDialog}
-                    onRef               = {(ref) => (this.parentReferenceItem = ref)}
-                    parentReferenceItem = {this.handleValidationDialogNo}
-                    onPressYes          = {this.handleValidationDialogYes}
-                    onpressNo           = {this.handleValidationDialogNo}
-                  />
+
+            <Modal
+            animationType="slide"
+            transparent={true}
+            visible={isModalVisible}
+            onRequestClose={this.toggleModal}
+          >
+            <View style={GetFundTransferScreen1Styles(Android_Theme_Light).modalViewBackground}>
+             
+
+              <View style={GetFundTransferScreen1Styles(Android_Theme_Light).modalView}>
+              <Text style={GetFundTransferScreen1Styles(Android_Theme_Light).textTransfer}>
+                {this.state.amount} 
+              
+              </Text>
+
+                <CommonButton
+                  type="1"
+                  title={"Transfer " + this.state.amount}
+                  borderRadius={35}
+                  onPress={this.handleValidationDialog}
+                  width={"60%"}
+                />
+              </View>
+            </View>
+            <ValidationDialogs
+            title={"Verification"}
+            description={"Transfer"}
+            message={"Do You wish\n to Transfer "}
+            transparent={true}
+            isVisible={this.state.isVisibleValidationDialog}
+            onRef={(ref) => (this.parentReferenceItem = ref)}
+            parentReferenceItem={this.handleValidationDialogNo}
+            onPressYes={this.handleValidationDialogYes}
+            onPressNo={this.handleValidationDialogNo}
+          />
+          </Modal>
+
+         
      
 </SafeAreaView>
 

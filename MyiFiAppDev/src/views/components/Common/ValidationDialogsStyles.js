@@ -8,6 +8,7 @@ const ValidationDialogsStyles = StyleSheet.create({
     flexGrow: 1,
     alignItems: 'center',
     justifyContent: 'center',
+   
   },
 
   parientView: {

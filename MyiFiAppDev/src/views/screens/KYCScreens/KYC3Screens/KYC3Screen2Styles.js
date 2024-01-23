@@ -4,64 +4,52 @@ import Fonts from "../../../../styles/Fonts";
 
 export const GetKYC3Screen2Styles = (theme) => {
   const KYC3Screen2Styles = StyleSheet.create({
-    
     titleText: {
-      // marginTop: 70,
       textAlign: "center",
-      color: theme.TextStyleH1Color,
-      // fontFamily: Fonts.POPPINS_BOLD,
+      color: theme.DARK_BLUE_COLOR,
+      fontFamily: theme.POPPINS_SEMIBOLD,
       fontSize: theme.FONT_SIZE_HEADER_ONE,
     },
 
-    profilePicCircle: {
-      backgroundColor: theme.GRAY_COLOR,
-      borderRadius: 500,
-      height: 200,
-      width: 200,
-      justifyContent: "center",
+    profilePicTextContainer: {
+      //backgroundColor: "yellow",
       alignItems: "center",
-      alignContent: "center",
-      // marginTop: 50
+      justifyContent: "space-evenly",
+      flex: 2,
+      width: "100%",
+      height: "100%",
+    },
+
+    profilePictureBox: {
+      backgroundColor: theme.BACKGROUND_COLOR,
+      //boxfit: true,
+      width: "100%",
+      //height: 400,
+      padding: 10,
+      alignItems: "center",
+      justifyContent: "center",
+      flex: 3,
+      //backgroundColor: "red",
+    },
+
+    profilePicture: {
+      height: "100%",
     },
 
     subText: {
-        // paddingTop: 30,
-        textAlign: 'center',
-        // alignContent: 'center',
-        color: theme.TextStyleCaptionColor ,
-        // fontFamily: Fonts.POPPINS_BOLD,
-        fontSize: theme.FONT_SIZE_HEADER_TWO
-       
+      textAlign: "center",
+      color: theme.TextStyleCaptionColor,
+      fontSize: theme.FONT_SIZE_LARGE,
+      fontFamily: theme.POPPINS_SEMIBOLD,
     },
-    profilePicContainer: {
-      alignItems: 'center',
-      justifyContent:'space-around',
-      flex: 3,
-      // backgroundColor: 'red'
-  },
+
     buttonContainer: {
-        alignItems: 'center',
-        justifyContent: 'space-evenly',
-        flex: 2,
-        // backgroundColor: 'blue'
+      alignItems: "center",
+      justifyContent: "space-evenly",
+      flex: 2,
+      //backgroundColor: "blue",
+      width: "100%",
     },
-
-    nextButtonContainer: {
-      flex: 1,
-      justifyContent: "flex-end",
-    
-    },
-    cameraCircle:{
-        backgroundColor: theme.COMMON_BUTTON_BACKGROUND_COLOR,
-        borderRadius: 500,
-        height: 100,
-        width: 100,
-        justifyContent: 'center',
-        alignItems: 'center',
-        alignContent: 'center',
-    }
-
-    
   });
 
   return KYC3Screen2Styles;

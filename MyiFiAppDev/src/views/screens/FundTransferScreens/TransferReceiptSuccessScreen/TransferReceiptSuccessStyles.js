@@ -57,7 +57,7 @@ export const GetTransferReceiptSuccessStyles = (theme) => {
         },
         middlelastViewLeft: {
             width: 150,
-            height: 30,
+            height: 40,
             borderRightWidth: 1,
             borderBlockColor: theme.DARK_GRAY_COLOR,
             borderRightColor: theme.DARK_GRAY_COLOR,
@@ -114,7 +114,6 @@ export const GetTransferReceiptSuccessStyles = (theme) => {
             alignContent: 'center',
             alignItems: 'center',
             justifyContent: 'flex-start',
-            //backgroundColor: 'blue',
             height: '10%',
 
         },

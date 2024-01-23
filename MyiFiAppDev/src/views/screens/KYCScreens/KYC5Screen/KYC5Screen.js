@@ -13,8 +13,36 @@ import { Svg, Circle } from "react-native-svg";
 import Colors from "../../../../styles/Colors";
 import MainTitleBar from "../../../components/Common/TitleBar/MainTitleBar";
 import Icon_angleDown from "../../../../assets/icons/Icon_angleDown.svg";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import CommonSpinner from "../../../components/Common/CommonSpinner";
 
 class KYC5Screen extends Component {
+  constructor(props) {
+    super(props);
+    this.NICInputRef = React.createRef();
+    this.DOBInputRef = React.createRef();
+    this.TitleInputRef = React.createRef();
+    this.LastNameInputRef = React.createRef();
+    this.OtherNamesInputRef = React.createRef();
+    this.InitialsInputRef = React.createRef();
+    this.GenderInputRef = React.createRef();
+    this.EmailInputRef = React.createRef();
+    this.MobileInputRef = React.createRef();
+    this.ResidenceTelNoInputRef = React.createRef();
+    this.Address_1InputRef = React.createRef();
+    this.Address_2InputRef = React.createRef();
+    this.Address_3InputRef = React.createRef();
+    this.CityInputRef = React.createRef();
+    this.DistrictInputRef = React.createRef();
+    this.ProvinceInputRef = React.createRef();
+
+    this.state = {
+      //nicNumber: props.nicNumber || "",
+      selectedTitle: null,
+      selectedCity: null,
+    };
+  }
+
   componentDidMount() {
     try {
     } catch (Error) {
@@ -29,7 +57,31 @@ class KYC5Screen extends Component {
     }
   }
 
+  handleTitle = (selectedTitle) => {
+    try {
+      this.setState({ selectedTitle });
+    } catch (Error) {
+      console.log("[KYC5Screen] - handleTitleSelction - Error ", Error);
+    }
+  };
+
+  handleCity = (selectedCity) => {
+    try {
+      this.setState({ selectedCity });
+    } catch (Error) {
+      console.log("[KYC5Screen] - handleCitySelction - Error ", Error);
+    }
+  };
+
   handleInputChange = (value) => {
+    try {
+      console.log("Input value:", value);
+    } catch (Error) {
+      console.log("[KYC5Screen] - handleInputChange() EX: " + Error);
+    }
+  };
+
+  handleNICInputChange = (value) => {
     try {
       console.log("Input value:", value);
     } catch (Error) {
@@ -74,6 +126,19 @@ class KYC5Screen extends Component {
                 GetKYC5ScreenStyles(Android_Theme_Light).backgroundContainer
               }
             >
+              {/* <KeyboardAwareScrollView
+            keyboardShouldPersistTaps="always"
+            behavior="padding"
+            //keyboardShouldPersistTaps="handled"
+            //enableAutomaticScroll={true}
+            //extraScrollHeight={150}
+            //contentInset={{ bottom: this.state.contentBottom }}
+            //onKeyboardWillHide={() => this.setState({ contentBottom: 0 })}
+            //onKeyboardDidHide={() => this.setState({ contentBottom: 0 })}
+            //onKeyboardDidShow={() => this.setState({ contentBottom: 0, })}
+            contentContainerStyle={
+              GetCommonStyles(Android_Theme_Light).keyboardAwareView
+            }> */}
               {/* NIC */}
               <View
                 style={[
@@ -84,10 +149,13 @@ class KYC5Screen extends Component {
                 <CommonInputField
                   value={""}
                   title={"NIC"}
-                  placeholder={"NIC Number"}
-                  width={"90%"}
+                  placeholder={this.props.nicNumber}
+                  width={"100%"}
                   icon={Android_Theme_Light.ICON_NIC}
-                  onInputChange={this.handleInputChange}
+                  onInputChange={this.handleNICInputChange}
+                  inputRef={this.NICInputRef}
+                  nextInputRef={this.DOBInputRef}
+                  editable={false}
                 />
               </View>
 
@@ -101,13 +169,16 @@ class KYC5Screen extends Component {
                 <CommonInputField
                   value={""}
                   title={"Date of Birth"}
-                  placeholder={"DOB"}
-                  width={"90%"}
+                  placeholder={""}
+                  width={"100%"}
                   icon={Android_Theme_Light.ICON_CALENDER}
                   onInputChange={this.handleInputChange}
+                  inputRef={this.DOBInputRef}
+                  nextInputRef={this.TitleInputRef}
+                  editable={false}
                 />
               </View>
-
+              <View style={{ height: 5 }}></View>
               {/* Title */}
               <View
                 style={[
@@ -115,14 +186,24 @@ class KYC5Screen extends Component {
                     .commonInputFieldContainer,
                 ]}
               >
-                <CommonInputField
-                  value={""}
-                  title={"Title"}
-                  placeholder={".."}
-                  width={"90%"}
-                  icon={Android_Theme_Light.ICON_DROPDOWN}
-                  onInputChange={this.handleInputChange}
+                <CommonSpinner
+                  title={null}
+                  width={"100%"}
+                  data={[
+                    { label: "Title_01", value: "Title_01" },
+                    { label: "Title_02", value: "Title_02" },
+                    {
+                      label: "Title_03",
+                      value: "Title_03",
+                    },
+                  ]}
+                  placeholder={"Title"}
+                  value={this.state.selectedTitle}
+                  lable={this.state.selectedTitle}
+                  //onRef={(ref) => (this.parentReferenceItem = ref)}
+                  parentReferenceItem={this.handleTitle}
                 />
+              
               </View>
 
               {/* Last Name */}
@@ -135,9 +216,11 @@ class KYC5Screen extends Component {
                 <CommonInputField
                   value={""}
                   title={"Last Name"}
-                  placeholder={"DOB"}
-                  width={"90%"}
+                  placeholder={""}
+                  width={"100%"}
                   onInputChange={this.handleInputChange}
+                  inputRef={this.LastNameInputRef}
+                  nextInputRef={this.OtherNamesInputRef}
                 />
               </View>
 
@@ -153,8 +236,10 @@ class KYC5Screen extends Component {
                   value={""}
                   title={"Other Names"}
                   placeholder={"Other Names"}
-                  width={"90%"}
+                  width={"100%"}
                   onInputChange={this.handleInputChange}
+                  inputRef={this.OtherNamesInputRef}
+                  nextInputRef={this.InitialsInputRef}
                 />
               </View>
 
@@ -169,8 +254,10 @@ class KYC5Screen extends Component {
                   value={""}
                   title={"Initials"}
                   placeholder={"Initials"}
-                  width={"90%"}
+                  width={"100%"}
                   onInputChange={this.handleInputChange}
+                  inputRef={this.InitialsInputRef}
+                  nextInputRef={this.GenderInputRef}
                 />
               </View>
 
@@ -186,8 +273,10 @@ class KYC5Screen extends Component {
                   value={""}
                   title={"Gender"}
                   placeholder={"Gender"}
-                  width={"90%"}
+                  width={"100%"}
                   onInputChange={this.handleInputChange}
+                  inputRef={this.GenderInputRef}
+                  nextInputRef={this.EmailInputRef}
                 />
               </View>
 
@@ -202,8 +291,10 @@ class KYC5Screen extends Component {
                   value={""}
                   title={"Email"}
                   placeholder={"Email"}
-                  width={"90%"}
+                  width={"100%"}
                   onInputChange={this.handleInputChange}
+                  inputRef={this.EmailInputRef}
+                  nextInputRef={this.MobileInputRef}
                 />
               </View>
 
@@ -219,8 +310,10 @@ class KYC5Screen extends Component {
                   value={""}
                   title={"Mobile"}
                   placeholder={"Mobile"}
-                  width={"90%"}
+                  width={"100%"}
                   onInputChange={this.handleInputChange}
+                  inputRef={this.MobileInputRef}
+                  nextInputRef={this.ResidenceTelNoInputRef}
                 />
               </View>
 
@@ -236,8 +329,10 @@ class KYC5Screen extends Component {
                   value={""}
                   title={"Residence Tel No"}
                   placeholder={"Residence Tel No"}
-                  width={"90%"}
+                  width={"100%"}
                   onInputChange={this.handleInputChange}
+                  inputRef={this.ResidenceTelNoInputRef}
+                  nextInputRef={this.Address_1InputRef}
                 />
               </View>
 
@@ -251,9 +346,11 @@ class KYC5Screen extends Component {
                 <CommonInputField
                   value={""}
                   title={"Address 01"}
-                  placeholder={".."}
-                  width={"90%"}
+                  placeholder={""}
+                  width={"100%"}
                   onInputChange={this.handleInputChange}
+                  inputRef={this.Address_1InputRef}
+                  nextInputRef={this.Address_2InputRef}
                 />
               </View>
 
@@ -267,9 +364,11 @@ class KYC5Screen extends Component {
                 <CommonInputField
                   value={""}
                   title={"Address 02"}
-                  placeholder={".."}
-                  width={"90%"}
+                  placeholder={""}
+                  width={"100%"}
                   onInputChange={this.handleInputChange}
+                  inputRef={this.Address_2InputRef}
+                  nextInputRef={this.Address_3InputRef}
                 />
               </View>
 
@@ -284,9 +383,11 @@ class KYC5Screen extends Component {
                 <CommonInputField
                   value={""}
                   title={"Address 03"}
-                  placeholder={".."}
-                  width={"90%"}
+                  placeholder={""}
+                  width={"100%"}
                   onInputChange={this.handleInputChange}
+                  inputRef={this.Address_3InputRef}
+                  nextInputRef={this.CityInputRef}
                 />
               </View>
 
@@ -298,14 +399,24 @@ class KYC5Screen extends Component {
                     .commonInputFieldContainer,
                 ]}
               >
-                <CommonInputField
-                  value={""}
-                  title={"City"}
-                  placeholder={".."}
-                  width={"90%"}
-                  icon={Icon_angleDown}
-                  onInputChange={this.handleInputChange}
+                <CommonSpinner
+                  title={null}
+                  width={"100%"}
+                  data={[
+                    { label: "City_01", value: "City_01" },
+                    { label: "City_02", value: "City_02" },
+                    {
+                      label: "City_03",
+                      value: "City_03",
+                    },
+                  ]}
+                  placeholder={"City"}
+                  value={this.state.selectedTitle}
+                  lable={this.state.selectedTitle}
+                  //onRef={(ref) => (this.parentReferenceItem = ref)}
+                  parentReferenceItem={this.handleCity}
                 />
+                
               </View>
 
               {/* District */}
@@ -318,9 +429,12 @@ class KYC5Screen extends Component {
                 <CommonInputField
                   value={""}
                   title={"District"}
-                  placeholder={".."}
-                  width={"90%"}
+                  placeholder={""}
+                  width={"100%"}
                   onInputChange={this.handleInputChange}
+                  inputRef={this.DistrictInputRef}
+                  nextInputRef={this.ProvinceInputRef}
+                  editable={false}
                 />
               </View>
 
@@ -334,19 +448,22 @@ class KYC5Screen extends Component {
                 <CommonInputField
                   value={""}
                   title={"Province"}
-                  placeholder={".."}
-                  width={"90%"}
+                  placeholder={""}
+                  width={"100%"}
                   onInputChange={this.handleInputChange}
+                  inputRef={this.ProvinceInputRef}
+                  editable={false}
                 />
               </View>
 
               {/* <View style={{ height: 20 }}></View> */}
+              {/* </KeyboardAwareScrollView> */}
             </View>
           </ScrollView>
           <CommonButton
             type={"1"} // 0 or 1
             text={""}
-            title={"CONTINUE"}
+            title={"Next"}
             width={"90%"}
             backgroundColor={Android_Theme_Light.DARK_BLUE_COLOR}
             hideIcon={"0"}

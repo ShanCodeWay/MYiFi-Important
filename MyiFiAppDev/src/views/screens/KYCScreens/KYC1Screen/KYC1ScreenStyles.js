@@ -20,11 +20,12 @@ export const GetKYC1ScreenStyles = (theme) => {
       // alignContent: "center",
       // alignItems: "center",
       //width: '100%',
-      height: 90,
+      height: '15%',
    //backgroundColor: 'pink',
     },
     textNumber: {
       color: theme.WHITE_COLOR,
+      fontFamily: theme.POPPINS_SEMIBOLD
     },
     textNumberCircle: {
       width: 50,
@@ -37,7 +38,7 @@ export const GetKYC1ScreenStyles = (theme) => {
     },
     numberCircleLine: {
       width: 2,
-      height: 40,
+      height: '100%',
       backgroundColor: theme.DARK_BLUE_COLOR,
       justifyContent: "center",
       alignContent: "center",
@@ -46,12 +47,14 @@ export const GetKYC1ScreenStyles = (theme) => {
     text1: {
       fontSize: theme.FONT_SIZE_18,
       color: theme.DEEP_BLACK_COLOR,
+      fontFamily: theme.POPPINS_REGULAR
     },
     text2: {
       fontSize: theme.FONT_SIZE_MEDIUM,
       color: theme.TEXTSTYLE_BODY_COLOR,
       // fontFamily: theme.POPPINS_MEDIUM,
       textAlign: 'justify',
+      fontFamily: theme.POPPINS_LIGHT
     },
     nextButtonContainer: {
       // backgroundColor: 'pink',

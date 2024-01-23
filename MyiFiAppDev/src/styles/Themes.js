@@ -54,12 +54,13 @@ export const Android_Theme_Light = {
   FONT_SIZE_10: 10,
   FONT_SIZE_18: 18,
   FONT_SIZE_15: 15,
+  FONT_SIZE_30: 30,
 
 
   //Text Style Colors
   TextStyleH1Color : Colors.DEEP_BLACK_COLOR,
   TextStyleH3Color: Colors.BLACK_DEEP,
-  TextStyleCaptionColor: Colors.GRAY_DARK,
+  TextStyleCaptionColor: Colors.DARK_GRAY_COLOR,
   TextStyleH1MediumColor : Colors.GRAY,
   TEXTSTYLE_BODY_COLOR : Colors.GRAY,
 
@@ -83,7 +84,9 @@ export const Android_Theme_Light = {
  ICON_PAYMENT : images.ICON_PAYMENT_ANDROID_LIGHT,
  ICON_LOAN : images.ICON_LOAN_ANDROID_LIGHT,
  ICON_EXTERNALOPEN : images.ICON_EXTERNALOPEN_ANDROID_LIGHT,
- ICON_SAVINGS : images.ICON_SAVINGS_ANDROID_LIGHT
+ ICON_SAVINGS : images.ICON_SAVINGS_ANDROID_LIGHT,
+ ICON_PLUS:images.ICON_PLUS_ANDROID_LIGHT,
+ ICON_PAYNOW : images.ICON_PAYNOW_ANDROID_LIGHT
  
 };
 export const Android_Theme_Dark = { 

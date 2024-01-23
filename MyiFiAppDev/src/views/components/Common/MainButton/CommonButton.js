@@ -103,6 +103,7 @@ const CommonButton = (props) => {
                 style={[
                   GetCommonButtonStyles(Android_Theme_Light).buttonText,
                   {
+                    marginLeft: props.textAlign == "flex-start" ? 10 : 0,
                     color: props.textColor || Android_Theme_Light.WHITE_COLOR,
                     fontFamily: props.fontFamily || Android_Theme_Light.POPPINS_SEMIBOLD,
                     fontSize: props.textSize || 15,

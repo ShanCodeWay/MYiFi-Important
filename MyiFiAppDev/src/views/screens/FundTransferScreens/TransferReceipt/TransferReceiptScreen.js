@@ -12,6 +12,8 @@ import { GetTransferReceiptScreenStyles } from "./TransferReceiptScreenStyles";
 import Index from "../../../../configs/Index";
 
 class TransferReceiptScreen extends Component {
+
+    
     componentDidMount() {
 
         try {
@@ -59,6 +61,7 @@ class TransferReceiptScreen extends Component {
     };
 
     render() {
+      
 
         return (
 
@@ -130,7 +133,7 @@ class TransferReceiptScreen extends Component {
 
                     </View>
                     <View style={GetTransferReceiptScreenStyles(Android_Theme_Light).logo}>
-                        <Main_Logo width={"30%"} />
+                        <Main_Logo width={70} height={70} />
                     </View>
 
                     <View style={GetTransferReceiptScreenStyles(Android_Theme_Light).bottomView}>

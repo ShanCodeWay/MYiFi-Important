@@ -8,13 +8,13 @@ import { Android_Theme_Light } from "../../../../styles/Themes";
 import { GetCommonStyles } from "../../../../styles/CommonStyles";
 import { GetTransferReceiptSuccessStyles } from "./TransferReceiptSuccessStyles";
 import CommonSmallButton from "../../../components/Common/CommonSmallButton";
-
+import Index from '../../../../configs/Index';
 
 class TransferReceiptSuccessScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            success: false, // Set this to true for success, false for error
+            success: false, // true for success, false for error
         };
     }
 
@@ -40,7 +40,7 @@ class TransferReceiptSuccessScreen extends Component {
 
     handleBack = () => {
         try {
-            this.props.navigation.replace(Index.TRS_1);
+            this.props.navigation.replace(Index.Bill_1);
             console.log("Back button pressed to Navigate to Fund Transfer Screen");
         } catch (error) {
             console.log("[TransRecieptScreen] - Back_Button - Error ", error);
@@ -57,12 +57,12 @@ class TransferReceiptSuccessScreen extends Component {
     };
 
     render() {
-        const { success } = this.state;
+        // const { success } = this.state;
 
         return (
             <SafeAreaView style={GetCommonStyles(Android_Theme_Light).safeAreaView}>
                 <View style={GetCommonStyles(Android_Theme_Light).mainContainer}>
-                    {success ? (
+                    { this.state.success ? (
                         <>
                             <View style={GetTransferReceiptSuccessStyles(Android_Theme_Light).outView}>
                                 <View>
@@ -153,9 +153,22 @@ class TransferReceiptSuccessScreen extends Component {
 
                             <Text style={GetTransferReceiptSuccessStyles(Android_Theme_Light).errorMsg}>Error: Data is incorrect</Text>
 
+                           
                         </View>
+
+
+
+                        
                     )}
                 </View>
+                <View style={GetTransferReceiptSuccessStyles(Android_Theme_Light).bottomView}>
+                                <BottomTitleBar
+                                    icon1={Icon_backArrows}
+                                    icon2={Icon_home}
+                                    onPressIcon1={this.handleBack}
+                                    onPressIcon2={this.handleHome}
+                                />
+                            </View>
             </SafeAreaView>
         );
     }
