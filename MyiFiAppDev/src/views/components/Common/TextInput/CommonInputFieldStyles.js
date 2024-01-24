@@ -2,15 +2,16 @@ import { StyleSheet } from "react-native";
 import Colors from "../../../../styles/Colors";
 import Fonts from "../../../../styles/Fonts";
 
+import { Android_Theme_Light } from "../../../../styles/Themes";
+
 export default GetCommonInputFieldStyle = (theme) => {
 
   const CommonInputFieldStyles = StyleSheet.create({
 
     labelText: {
-      color: theme.DEEP_BLACK_COLOR,
-      //marginLeft: 10,
-      fontSize: theme.FONT_SIZE_CAPTION_ONE_MEDIUM,
-      fontFamily: theme.POPPINS_MEDIUM,
+      fontFamily : theme.POPPINS_BOLD,
+      color      : theme.DARK_BLUE_COLOR,
+      fontSize   : theme.FONT_SIZE_MEDIUM,
     },
     
     parentContainer: {
@@ -23,7 +24,7 @@ export default GetCommonInputFieldStyle = (theme) => {
       flexDirection: "row",
       alignItems: "center",
       width:'100%',
-      height:45,
+      height:48,
       borderBottomWidth: 1,
       borderBottomColor: theme.GRAY_COLOR,
     },

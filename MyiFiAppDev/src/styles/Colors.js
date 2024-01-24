@@ -2,7 +2,7 @@ export default {
   Blue: "#00377B",
   Dark_Blue: "#1B1F52",
   LIGHT_Blue: "#007BC2",
-  WHITE: "#FAFBFC",
+  WHITE: "#FFFFFF",
   BLACK: "#000000",
   GREEN_DARK: "#6DC100",
   GRAY: "#A5B4CB",

@@ -15,6 +15,8 @@ import CommonCardButton from "../../components/Common/CommonCardButton";
 import Icon_arrowUp from "../../../assets/icons/Icon_arrowUp.svg";
 import Icon_arrowDown from "../../../assets/icons/Icon_arrowDown.svg";
 import CommonButton from "../../components/Common/MainButton/CommonButton";
+import { AmountSeperation } from "../../../utils/helpers";
+import BottomTitleBar from "../../components/Common/BottomTitleBar";
 
 //Done by: Dinuranga 23/01/19
 class FixedDepositsScreen extends Component {
@@ -145,6 +147,18 @@ class FixedDepositsScreen extends Component {
     </View>
   );
 
+  handleBack = () => {
+    try {
+      this.props.navigation.navigate("InvestScreen");
+    } catch {}
+  };
+
+  handleHome = () => {
+    try {
+      this.props.navigation.navigate("DashboardScreen");
+    } catch {}
+  };
+
   componentDidMount() {
     try {
       this.setState({
@@ -199,28 +213,26 @@ class FixedDepositsScreen extends Component {
                 {"FD Investments"}
               </Text>
               <View
-                style={[
-                  GetFixedDepositsScreenStyles(Android_Theme_Light)
-                    .AmountContainer,
-                ]}
+                style={[GetCommonStyles(Android_Theme_Light).amountContainer]}
               >
                 <Text
-                  style={[
-                    GetFixedDepositsScreenStyles(Android_Theme_Light).TextRs,
-                  ]}
+                  style={[GetCommonStyles(Android_Theme_Light).amountRsText]}
                 >
                   {"Rs. "}
                 </Text>
                 <Text
                   style={[
-                    GetFixedDepositsScreenStyles(Android_Theme_Light)
-                      .TextTotalInvest,
+                    GetCommonStyles(Android_Theme_Light).amountIntegerText,
                   ]}
                 >
-                  {this.state.TotalInvest.toString().replace(
-                    /\B(?=(\d{3})+(?!\d))/g,
-                    ","
-                  )}
+                  {AmountSeperation(this.state.TotalInvest)[0]}
+                </Text>
+                <Text
+                  style={[
+                    GetCommonStyles(Android_Theme_Light).amountDecimalText,
+                  ]}
+                >
+                  {AmountSeperation(this.state.TotalInvest)[1]}
                 </Text>
               </View>
             </View>
@@ -241,8 +253,6 @@ class FixedDepositsScreen extends Component {
                 .middleContainerView,
             ]}
           >
-
-            
             <CommonCardButton
               width={"100%"}
               height={64}
@@ -286,6 +296,17 @@ class FixedDepositsScreen extends Component {
             </View>
           </View>
           {/* Investments List End */}
+
+          <View
+            style={GetFixedDepositsScreenStyles(Android_Theme_Light).bottomView}
+          >
+            <BottomTitleBar
+              icon1={Android_Theme_Light.ICON_BACK_ARROWS}
+              icon2={Android_Theme_Light.ICON_HOME}
+              onPressIcon1={this.handleBack}
+              onPressIcon2={this.handleHome}
+            />
+          </View>
         </View>
       </SafeAreaView>
     );

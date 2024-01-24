@@ -30,20 +30,10 @@ export default GetFixedDepositsScreenStyles = (theme) => {
       fontSize: theme.FONT_SIZE_LARGE,
       fontFamily: theme.POPPINS_MEDIUM,
     },
-    TextRs: {
-      color: theme.DARK_GRAY_COLOR,
-      fontSize: theme.FONT_SIZE_LARGE,
-      fontFamily: theme.POPPINS_MEDIUM,
-    },
-    TextTotalInvest: {
-      color: theme.DARK_GREEN_COLOR,
-      fontSize: theme.FONT_SIZE_HEADER_TWO,
-      fontFamily: theme.POPPINS_MEDIUM,
-    },
-    AmountContainer: {
-      flexDirection: "row",
-      alignItems: "flex-end",
-    },
+  
+  
+ 
+
     middleContainerView: {
       width: "100%",
       justifyContent: "center",
@@ -104,5 +94,10 @@ export default GetFixedDepositsScreenStyles = (theme) => {
       fontFamily: theme.POPPINS_MEDIUM,
       color: theme.DEEP_BLACK_COLOR,
     },
+    bottomView: {
+      height: '10%',
+      width: '100%',
+
+    }
   });
 };

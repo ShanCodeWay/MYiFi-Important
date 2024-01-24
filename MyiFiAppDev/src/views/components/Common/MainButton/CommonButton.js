@@ -79,7 +79,7 @@ const CommonButton = (props) => {
           <TouchableOpacity
             style={[GetCommonButtonStyles(Android_Theme_Light).ButtonContainer,
               {
-                height: props.height || 40, 
+                height: props.height || 45, 
                 width: props.width || "100%",
                 backgroundColor: props.backgroundColor || Android_Theme_Light.BLUE_COLOR,
                 borderRadius: props.borderRadius || 25

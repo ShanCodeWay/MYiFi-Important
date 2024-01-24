@@ -18,15 +18,6 @@ const CommonSpinnerLongStyles = StyleSheet.create({
     flexDirection     : 'row',
   },
 
-  spinnerOuterStyle: {
-    flexDirection     : "row",
-    alignItems        : "center",
-    borderBottomWidth : 1,
-    height            : 50,
-    backgroundColor   : "white",
-    
-  },
-
   IconOuterStyle: {
     justifyContent    : "center",
     alignItems        : "center",
@@ -42,8 +33,6 @@ const CommonSpinnerLongStyles = StyleSheet.create({
     padding           : 12,
 
     maxHeight         : "80%",
-    // minHeight: "20%",
-    //  height: "60%",
     alignSelf         : "center",
     justifyContent    : "space-between",
     alignContent      : "center",
@@ -95,7 +84,7 @@ const CommonSpinnerLongStyles = StyleSheet.create({
     alignItems        : "flex-start",
   },
 
-  CanselButtonView: {
+  CancelButtonView: {
     height            : 50,
     marginTop         : 15,
     justifyContent    : "center",
@@ -105,7 +94,7 @@ const CommonSpinnerLongStyles = StyleSheet.create({
     borderRadius      : 10,
   },
 
-  CanselButtonText: {
+  CancelButtonText: {
     color             : theme.WHITE_COLOR,
   },
 
@@ -145,11 +134,12 @@ const CommonSpinnerLongStyles = StyleSheet.create({
     flexDirection     : 'row',
     justifyContent    : "center",
     alignItems        : "center",
-    borderRadius      : 10,
+    borderRadius      : 15,
     height            : "100%",
     width             : "100%",
-    height            : 50,
+    height            : 80,
     alignContent      : "center",
+    paddingHorizontal:10
     
   },
   itemSelectedContainer: {
@@ -186,7 +176,7 @@ const CommonSpinnerLongStyles = StyleSheet.create({
 
   middle:{  
 
-    flex              : 6,
+    flex              : 4,
     flexDirection     : "row",
     justifyContent    : "flex-start",
     alignItems        : "flex-start",

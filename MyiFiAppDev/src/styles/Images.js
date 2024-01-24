@@ -41,7 +41,20 @@ import Icon_Savings_Ios from "../assets/icons/ios/Icon_Savings.svg";
 import Icon_PLUS_Android from "../assets/icons/android/Icon_plus.svg"
 import Icon_PayNow_Android from "../assets/icons/android/Icon_PayNow.svg"
 import Icon_PayNow_Ios from "../assets/icons/ios/Icon_PayNow.svg"
-
+import Icon_Biller_Management_Android from "../assets/icons/android/Icon_Biller_Management.svg"
+import Icon_Biller_Management_Ios from "../assets/icons/ios/Icon_Biller_Management.svg"
+import Icon_Forward_Navigate_Android from "../assets/icons/android/Icon_Forward_Navigate.svg"
+import Icon_Forward_Navigate_Ios from "../assets/icons/ios/Icon_Forward_Navigate.svg"
+import Icon_plus_Android from "../assets/icons/android/Icon_plus.svg"
+import Icon_plus_Ios from "../assets/icons/ios/Icon_plus.svg"
+import Icon_SplashBottom_Android from "../assets/icons/android/Icon_SplashBottom.svg"
+import Icon_SplashBottom_Ios from "../assets/icons/ios/Icon_SplashBottom.svg"
+import Icon_MiLogo_Android from "../assets/icons/android/MI_Logo.svg"
+import Icon_MiLogo_Ios from "../assets/icons/ios/MI_Logo.svg"
+import Icon_BackArrows_Android from "../assets/icons/android/Icon_backArrows.svg"
+import Icon_BackArrows_Ios from "../assets/icons/ios/Icon_backArrows.svg"
+import Icon_Home_Android from "../assets/icons/android/Icon_home.svg"
+import Icon_Home_Ios from "../assets/icons/ios/Icon_home.svg"
 
 export default {
   ICON_BACK_ARROW_ANDROID_LIGHT: Icon_BackArrow_Android,
@@ -86,8 +99,20 @@ export default {
   ICON_PLUS_ANDROID_LIGHT : Icon_PLUS_Android,
   ICON_SAVINGS_IOS_LIGHT : Icon_Savings_Ios,
   ICON_PAYNOW_ANDROID_LIGHT : Icon_PayNow_Android,
-  ICON_PAYNOW_IOS_LIGHT : Icon_PayNow_Ios
-  
-
+  ICON_PAYNOW_IOS_LIGHT : Icon_PayNow_Ios,
+  ICON_BILLER_MANAGEMENT_ANDROID_LIGHT : Icon_Biller_Management_Android,
+  ICON_BILLER_MANAGEMENT_IOS_LIGHT : Icon_Biller_Management_Ios,
+  ICON_FORWARD_NAVIGATE_ANDROID_LIGHT : Icon_Forward_Navigate_Android,
+  ICON_FORWARD_NAVIGATE_IOS_LIGHT :Icon_Forward_Navigate_Ios,
+  ICON_PLUS_ANDROID_LIGHT : Icon_plus_Android,
+  ICON_PLUS_IOS_LIGHT : Icon_plus_Ios,
+  ICON_SPLASH_BOTTOM_ANDROID_LIGHT : Icon_SplashBottom_Android,
+  ICON_SPLASH_BOTTOM_IOS_LIGHT : Icon_SplashBottom_Ios,
+  ICON_MI_LOGO_ANDROID_LIGHT : Icon_MiLogo_Android,
+  ICON_MI_LOGO_IOS_LIGHT : Icon_MiLogo_Ios,
+  ICON_BACK_ARROWS_ANDROID_LIGHT : Icon_BackArrows_Android,
+  ICON_BACK_ARROWS_IOS_LIGHT : Icon_BackArrows_Ios,
+  ICON_HOME_ANDROID_LIGHT : Icon_Home_Android,
+  ICON_HOME_IOS_LIGHT : Icon_Home_Ios
 
 };

@@ -2,31 +2,22 @@ import { StyleSheet } from "react-native";
 
 export default GetSignup_PasswordScreenStyles = (theme) => {
 
-    const Signup_PasswordScreenStyles = StyleSheet.create({
-
-        topView: {
-            height         : 150,
-            justifyContent : "center",
-            alignItems     : "center",
-            width          : '100%',
-            marginTop      : -20,
-        },  
+    const Signup_PasswordScreenStyles = StyleSheet.create({ 
         
         middleView: {
-        
-            flex           : 1,
-            marginTop      : 20,
-            margin         : 20,
-            
-            
-        
+            flex : 1,
+            marginTop : 20,
+            margin : 20,
         },
 
-        bottomView: {
-            height        : 70,
-            alignItems    : "center",
-            
-        },    
+        bottombuttonContainer: {
+
+            //height: 100,
+            width:'100%',
+            justifyContent: "flex-start",
+            alignItems: "flex-start",
+            marginBottom:20,
+          },    
         
         titleView: {
             

@@ -24,11 +24,11 @@ export default GetLoginScreenStyles = (theme) => {
 
     ContainerBottomDescription: {
       flexDirection: 'row',
-      width:'100%',
+      //width:'100%',
       marginTop: 20,
       //marginBottom: 20,
       alignItems:'center',
-      justifyContent:'center'
+      justifyContent:'center',
     },
     textStyleBottomDescription: {
       //color: "#7C8DA6",

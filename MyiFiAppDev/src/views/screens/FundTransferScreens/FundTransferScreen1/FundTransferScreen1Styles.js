@@ -13,19 +13,19 @@ const FundTransferScreen1Styles = StyleSheet.create({
         justifyContent : "center",
         alignItems     : "center",
         width          : '100%',
-        marginTop      : -20,
+        
     },  
     
     middleView: {
         flex         : 1,
-       
         justifyContent: 'space-evenly',
-        width : '90%',
+        width : '100%',
         justifyContent: 'flex-end',
        
     },
 
     bottomView: {
+        paddingTop:10,
         height               : 70,
         alignItems           : "center",
         
@@ -175,6 +175,44 @@ textTransfer: {
     textAlign     : 'center',
     width         : '100%',
 },
+
+buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    
+  },
+buttonContainer1: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "80%",
+   
+  },
+
+  button: {
+    width:120,
+    height:50,
+    borderRadius:20,
+    borderWidth:2,
+    borderColor:theme.BLUE_COLOR,
+    marginHorizontal:0,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  buttonText: {
+    textAlign:'center',
+    fontFamily    : theme.POPPINS_MEDIUM,
+    fontSize      : theme. FONT_SIZE_BODY_ONE_REGULAR,
+    color: Android_Theme_Light.DARK_BLUE_COLOR
+  },
+
+  expandContainer: {
+    justifyContent: "center",
+    width: "100%",
+  },
 
 });
 

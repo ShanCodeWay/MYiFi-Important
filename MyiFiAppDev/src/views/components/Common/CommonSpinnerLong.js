@@ -16,14 +16,8 @@ import { Android_Theme_Light } from "../../../styles/Themes";
 import Icon_angleDown from "../../../assets/icons/Icon_angleDown.svg";
 import Colors from "../../../styles/Colors";
 import Fonts from "../../../styles/Fonts";
-import Icon_SpinnerItem_Selected from "../../../assets/icons/Icon_SpinnerItem_Selected.svg";
 import LinearGradient from "react-native-linear-gradient";
-
 import Icon_search from "../../../assets/icons/Icon_search.svg";
-
-
-
-
 
 const CommonSpinnerLong = (props) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -35,18 +29,17 @@ const CommonSpinnerLong = (props) => {
   useEffect(() => {
     setleadingIcon(props.leadingIcon);
     setAllData(props.data);
-    setFilterData(filterText == "" ? props.data : filterData);
-  }, [props.data][props.leadingIcon]);
+    setFilterData(filterText === "" ? props.data : filterData);
+  }, [props.data, props.leadingIcon]);
 
   //Select  Item
-  const SelectItem = (value,value1) => {
+  const SelectItem = (label_1,label_2, value) => {
     try {
-      props.parentReferenceItem(value,value1);
-      
+      props.parentReferenceItem(label_1,label_2, value);
       HandleSearch("");
       setIsModalVisible(false);
     } catch (error) {
-      console.log("[CommonSpinner] - SelectItem - Error ", error);
+      console.log("[CommonSpinnerLong] - SelectItem - Error ", error);
     }
   };
 
@@ -57,7 +50,7 @@ const CommonSpinnerLong = (props) => {
       HandleSearch("");
       setIsModalVisible(false);
     } catch (error) {
-      console.log("[CommonSpinner] - PressCancel - Error ", error);
+      console.log("[CommonSpinnerLong] - PressCancel - Error ", error);
     }
   };
 
@@ -84,7 +77,7 @@ const CommonSpinnerLong = (props) => {
         setFilterText("");
       }
     } catch (error) {
-      console.log("[CommonSpinner] - HandleSearch - Error ", error);
+      console.log("[CommonSpinnerLong] - HandleSearch - Error ", error);
     }
   };
 
@@ -94,7 +87,7 @@ const CommonSpinnerLong = (props) => {
     <>
     
 
-      <View
+  <View
      
       >
        
@@ -118,25 +111,31 @@ const CommonSpinnerLong = (props) => {
 <View style={GetCommonSpinnerLongStyles(Android_Theme_Light).left}>
 <Text
               style={
-                props.value
+                props.lable_1
                   ? { ...GetCommonSpinnerLongStyles(Android_Theme_Light).text,  color:Colors.WHITE, fontFamily: Fonts.POPPINS_BOLD }
                   : { ...GetCommonSpinnerLongStyles(Android_Theme_Light).textPlaceholder,  color:Colors.WHITE, fontFamily: Fonts.POPPINS_BOLD }
               }
             >
-              {props.value ? props.value : props.placeholder}
+              {props.lable_1 ? props.lable_1 : props.lable_1}
             </Text>
 
 </View>
 
 
-<View style={GetCommonSpinnerLongStyles(Android_Theme_Light).middle}>
-  <Text style={{ fontSize: 14, color: Colors.WHITE, fontFamily: Fonts.POPPINS_BOLD }}>
-    
-   {props.currency}  {props.value ? `${props.value1}` : props.value}
-    
-  </Text>
 
-</View>
+{props.lable_2Show !== false && (
+  <View style={GetCommonSpinnerLongStyles(Android_Theme_Light).middle}>
+    <Text style={{ fontSize: 14, color: Colors.WHITE, fontFamily: Fonts.POPPINS_BOLD }}>
+      {`${props.lable_2 !== undefined ? props.lable_2 : ''} ${props.currency !== undefined ? props.currency : ''}`}
+    </Text>
+  </View>
+)}
+
+{/*lable_2Show={false}*/}
+
+
+
+
 
 
 {/*<View>
@@ -192,55 +191,55 @@ const CommonSpinnerLong = (props) => {
               </TouchableOpacity>
             </View>
 
+
+
             <View style={GetCommonSpinnerLongStyles(Android_Theme_Light).QuestionListOuterView}>
-                <FlatList
-                  data={
-                    (filterText === "" && filterData === undefined) ||
-                    (filterText === "" &&
-                      filterData !== undefined &&
-                      filterData.length === 0)
-                      ? props.data
-                      : filterData
-                  }
-                  renderItem={({ item }) => (
-                    <TouchableOpacity
-                      style={GetCommonSpinnerLongStyles(Android_Theme_Light).singleQuestionView}
-                      onPress={() => SelectItem(item.label, item.value, item.value1)}
-                    >
+            
+            <FlatList
+             data={
+              (filterText === "" && filterData === undefined) ||
+              (filterText === "" &&
+                filterData !== undefined &&
+                filterData.length === 0)
+                ? props.data
+                : filterData
+            }
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                key={item.value} 
+                style={GetCommonSpinnerLongStyles(Android_Theme_Light).singleQuestionView}
+                onPress={() => SelectItem(item.label_1,item.label_2, item.value)}
+             >
 
-
-                      <View style={GetCommonSpinnerLongStyles(Android_Theme_Light).ItemTextView}>
-                      <View style={GetCommonSpinnerLongStyles(Android_Theme_Light).ItemMoneyLeftTextView} >
-
+                  <View style={GetCommonSpinnerLongStyles(Android_Theme_Light).ItemTextView}>
+                    <View style={GetCommonSpinnerLongStyles(Android_Theme_Light).ItemMoneyLeftTextView} >
                       <Text style={GetCommonSpinnerLongStyles(Android_Theme_Light).ItemText}>
-                        {item.label}  
+                        {item.label_1}
                       </Text>
-                      </View>
+                    </View>
 
-                      <View style={GetCommonSpinnerLongStyles(Android_Theme_Light).ItemMoneyRightTextView} >
-                      <Text style={GetCommonSpinnerLongStyles(Android_Theme_Light).ItemMoneyText}>-{props.currency} {item.value}</Text> 
-                      
-                      </View>
-                      
-                       </View>
-                      
-                      
+                    {props.lable_2Show!== false && (
+                    <View style={GetCommonSpinnerLongStyles(Android_Theme_Light).ItemMoneyRightTextView} >
+                      <Text style={GetCommonSpinnerLongStyles(Android_Theme_Light).ItemMoneyText}>{props.currency !== undefined ? props.currency : ''} {':'}
+                      {item.label_2 !== undefined ? item.label_2:''}</Text>
+                    </View>
+                    )}
 
 
-
-                    </TouchableOpacity>
+                  </View>
+                  </TouchableOpacity>
                   )}
-                  keyExtractor={(item) => item.value}
+                  keyExtractor={(item) => item.value}  
                 ></FlatList>
-              </View>
+          </View>
 
 
 
             <TouchableOpacity
-              style={GetCommonSpinnerLongStyles(Android_Theme_Light).CanselButtonView}
+              style={GetCommonSpinnerLongStyles(Android_Theme_Light).CancelButtonView}
               onPress={() => PressCancel()}
             >
-              <Text style={GetCommonSpinnerLongStyles(Android_Theme_Light).CanselButtonText}>Cancel</Text>
+              <Text style={GetCommonSpinnerLongStyles(Android_Theme_Light).CancelButtonText}>Cancel</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -256,21 +255,36 @@ export default CommonSpinnerLong;
 //How to Use
 
 
-{/* <CommonSpinner
-width={"90%"}
-data={[
-  { label: "Sampath Bank", value: "B02" },
-  { label: "Seylan Bank", value: "B03" },
-  { label: "Bank of Ceylon", value: "B04" },
-  { label: "Peoples Bank", value: "B05" },
-  { label: "Amana Bank", value: "B076" },
-  { label: "Sampath Bank", value: "B08" },
-  { label: "Seylan Bank", value: "B09" },
-]}
-//title={"Select Account"}
-placeholder={"Select Bank"}
-value={this.state.selecteBank}
-currency={"LKR"}
-onRef={(ref) => (this.parentReferenceItem = ref)}
-parentReferenceItem={this.test.bind(this)}
-/> */}
+{/*        <CommonSpinnerLong
+                          width={"100%"}
+                          data={[
+                            { label_1: "MyFi",           label_2: '457,685',     value:'001' },  
+                            { label_1: "Seylan Bank",    label_2: '546,685.33',  value:'002' },
+                            { label_1: "Bank of Ceylon", label_2: '757,685.45',  value:'003' },
+                            { label_1: "Peoples Bank",   label_2: '36,685.56',   value:'004' },
+                            { label_1: "Amana Bank",     label_2: '257,685.76',  value:'005' },
+                            { label_1: "Sampath Bank",   label_2: '44,685.88',   value:'006' },
+                            { label_1: "Seylan Bank",    label_2: '37,685.65',   value:'007' },
+                          ]}
+
+
+
+                          placeholder         = {this.state.selectedAccount}
+                          lable_1             = {this.state.selectedAccount || "MyiFi"}
+                          lable_2             = {this.state.selectedAmount  || '457,685.54'}   <---This is optional
+                          lable_2Show         = {false}   <---This is mandorety **********
+                          value               = {this.state.selected_ID  || ''}
+                          onRef               = {(ref) => (this.parentReferenceItem = ref)}
+                          inputRef            = {this.transferFrom}
+                          nextInputRef        = {this.transferTo}
+                          currency            = {"LKR"}    <---This is optional
+                          parentReferenceItem = {(label_1,label_2,value) => {
+                            this.setState({
+                              selectedAccount: label_1,
+                              selectedAmount: label_2,
+                              selected_ID: value,
+                            });
+                          }}
+                        />
+                      
+                      */}

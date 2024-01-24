@@ -43,7 +43,7 @@ const CommonSummeryView = (props) => {
           ]}
         >
           <Text
-            style={[GetCommonSummeryViewStyles(Android_Theme_Light).TextValue]}
+            style={[GetCommonSummeryViewStyles(Android_Theme_Light).TextValue ,{    color: props.TextColor == null ? Android_Theme_Light.DEEP_BLACK_COLOR : props.TextColor }]}
           >
             {item.value}
           </Text>

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { View, Text } from "react-native";
-import Main_Logo from "../../../assets/icons/MI_Logo.svg";
 import { Android_Theme_Light } from "../../../styles/Themes";
 
 import { StatusBar } from "react-native";
@@ -48,7 +47,7 @@ class SplashScreen extends Component {
 
           <View style={GetSplashScreenStyles(Android_Theme_Light).topLogoContainer}>
 
-            <Main_Logo width = {"30%"}/>
+            <Android_Theme_Light.ICON_MI_LOGO width = {"30%"}/>
            
           </View>
           
@@ -68,9 +67,11 @@ class SplashScreen extends Component {
             
             <View style={GetSplashScreenStyles(Android_Theme_Light).footerView}>
 
-              <Text style={GetSplashScreenStyles(Android_Theme_Light).footerText}>
+              {/*<Text style={GetSplashScreenStyles(Android_Theme_Light).footerText}>
                 Mercantile Investments
-              </Text>
+               </Text>*/}
+
+              <Android_Theme_Light.ICON_SPLASH_BOTTOM width = {"70%"}/>
 
             </View>
 

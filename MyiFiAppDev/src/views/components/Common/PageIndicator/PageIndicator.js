@@ -40,6 +40,7 @@ export default PageIndicator = (props) => {
         return (
 
           <View 
+            key={index}
             style = {[GetPageIndicatorStyles(Android_Theme_Light).circleIndicator,{
               backgroundColor: obj.isActive ? Android_Theme_Light.DARK_GRAY_COLOR : 
               Android_Theme_Light.GRAY_COLOR}]}>

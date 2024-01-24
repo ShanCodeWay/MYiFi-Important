@@ -10,6 +10,7 @@ export const GetInvestScreenStyles = (theme) => {
             flex: 1,
             //backgroundColor: 'red',
             marginHorizontal: 20,
+            width:'95%',
         },
 
         twoButtonContainer: {
@@ -22,13 +23,12 @@ export const GetInvestScreenStyles = (theme) => {
 
             height: '30%',
             //backgroundColor:'green',
-            marginLeft: 5,
             marginTop: 10,
             justifyContent: 'space-around',
         },
 
         toperText: {
-            fontSize: theme.FONT_SIZE_HEADER_TWO,
+            fontSize: theme.FONT_SIZE_HEADER_ONE,
             color: theme.BLACK_COLOR,
             fontWeight: '700',
             marginBottom: 10,
@@ -41,18 +41,9 @@ export const GetInvestScreenStyles = (theme) => {
 
 
         },
-        bottomTextSmall: {
-            fontSize: theme.FONT_SIZE_SMALL,
-            fontWeight: '400',
-            color: theme.DARK_GREEN_COLOR,
-            paddingTop: 7,
+   
 
-        },
-        bottomTextLarge: {
-            fontSize: theme.FONT_SIZE_HEADER_TWO,
-            fontWeight: '400',
-            color: theme.DARK_GREEN_COLOR,
-        },
+
 
         spaceContainer: {
             height: '10%',
@@ -68,10 +59,13 @@ export const GetInvestScreenStyles = (theme) => {
 
         bottomView: {
             height: '10%',
+            width: '100%',
 
         },
         prizeTextContainer: {
-            flexDirection: 'row',
+            flexDirection: "row",
+      alignContent: "center",
+      alignItems: "center",
 
         },
 

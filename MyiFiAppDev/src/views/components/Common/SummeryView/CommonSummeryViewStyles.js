@@ -31,7 +31,7 @@ TextValue:{
     paddingLeft: 10,
     fontSize: Android_Theme_Light.FONT_SIZE_LARGE,
     fontFamily: Android_Theme_Light.POPPINS_MEDIUM,
-    color: Android_Theme_Light.DEEP_BLACK_COLOR,
+
 }
 
 

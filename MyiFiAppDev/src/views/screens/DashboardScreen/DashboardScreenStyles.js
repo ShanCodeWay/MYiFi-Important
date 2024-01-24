@@ -7,7 +7,7 @@ export default GetDashboardScreenStyles = (theme) => {
       width: "100%",
       paddingHorizontal: 10,
       paddingTop: 10,
- 
+
       alignItems: "flex-start",
       justifyContent: "space-between",
     },
@@ -22,7 +22,7 @@ export default GetDashboardScreenStyles = (theme) => {
     },
     easyAccessContainerView: {
       flexDirection: "row",
-      width: "95%",
+      width: "100%",
       alignContent: "center",
       alignItems: "center",
       justifyContent: "center",
@@ -38,6 +38,7 @@ export default GetDashboardScreenStyles = (theme) => {
       width: "100%",
       justifyContent: "flex-start",
       alignItems: "center",
+      paddingHorizontal: 10,
     },
     greetingView: {
       flex: 1,
@@ -54,9 +55,11 @@ export default GetDashboardScreenStyles = (theme) => {
     },
     easyAccessIconButtonView: {
       justifyContent: "center",
-      padding: 10,
+      width: 60 ,
+      height: 60,
       borderRadius: 10,
       backgroundColor: theme.LIGHT_BLUE_COLOR,
+      alignItems: "center",
     },
     easyAccessButtonView: {
       alignContent: "center",
@@ -68,19 +71,21 @@ export default GetDashboardScreenStyles = (theme) => {
       color: theme.DEEP_BLACK_COLOR,
     },
     transactionItemRowContainer: {
-      padding: 10,
+     
       width: "100%",
       justifyContent: "space-between",
       flexDirection: "row",
       alignContent: "flex-start",
-      alignItems:"flex-start",
+      alignItems: "flex-start",
       alignSelf: "center",
+ 
     },
     texttransactionDescription: {
       color: theme.DARK_GRAY_COLOR,
       fontSize: theme.FONT_SIZE_MEDIUM,
       fontFamily: theme.POPPINS_MEDIUM,
       flex: 1,
+      paddingLeft: 10,
     },
     textTransactionAmount: {
       fontSize: theme.FONT_SIZE_LARGE,
@@ -100,13 +105,24 @@ export default GetDashboardScreenStyles = (theme) => {
     textTopUP: {},
 
     textBalance: {
+      color: theme.DEEP_BLACK_COLOR,
+      fontSize: theme.FONT_SIZE_HEADER_TWO,
+      fontFamily: theme.POPPINS_MEDIUM,
+    },
+    textBalanceRs: {
       color: theme.DARK_GRAY_COLOR,
       fontSize: theme.FONT_SIZE_LARGE,
       fontFamily: theme.POPPINS_MEDIUM,
+      marginLeft: 5,
     },
-    textBalanceAmount: {
+    textBalanceIntegerAmount: {
       color: theme.DARK_GREEN_COLOR,
-      fontSize: theme.FONT_SIZE_HEADER_TWO,
+      fontSize: theme.FONT_SIZE_HEADER_TWO_MEDIUM,
+      fontFamily: theme.POPPINS_MEDIUM,
+    },
+    textBalanceDecimalAmount: {
+      color: theme.DARK_GREEN_COLOR,
+      fontSize: theme.FONT_SIZE_LARGE,
       fontFamily: theme.POPPINS_MEDIUM,
     },
     textEasyAccess: {
@@ -122,11 +138,18 @@ export default GetDashboardScreenStyles = (theme) => {
       color: theme.DEEP_BLACK_COLOR,
       fontSize: theme.FONT_SIZE_HEADER_TWO,
       fontFamily: theme.POPPINS_MEDIUM,
+      alignSelf: "flex-start",
+      marginVertical: 5,
     },
     transactionAmountContainer: {
       justifyContent: "flex-end",
 
       alignItems: "flex-end",
+    },
+    AmountContainer: {
+      flexDirection: "row",
+      alignContent: "center",
+      alignItems: "center",
     },
   });
 };

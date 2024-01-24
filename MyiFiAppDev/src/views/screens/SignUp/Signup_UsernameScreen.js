@@ -46,7 +46,7 @@ class Signup_UsernameScreen extends Component {
     }
   }
  
-  handleNextButtonPress = () => {
+  OnNextButtonPress = () => {
 
     try { 
       
@@ -54,27 +54,36 @@ class Signup_UsernameScreen extends Component {
       console.log("Next button pressed to navigate to SignupScreen2");
     }
     catch (error){ 
-      console.log("[SignupScreen1] - Next_Button Ex: ",error); 
+      console.log("[SignupScreen1] - OnBackButtonPress Ex: ",error); 
     }
   };
 
-  handleLeftButtonPress = () => {
+  OnBackButtonPress = () => {
     try{ 
       
       this.props.navigation.replace('LoginScreen'); 
       console.log("left pressed to navigate to LoginScreen");
     }
     catch (error){ 
-      console.log("[SignupScreen1] - left_Button Ex: ",error);
+      console.log("[SignupScreen1] - OnBackButtonPress Ex: ",error);
     }
   };
 
-  handlePasswordInputChange = (text) => {
+  Handle_Nic = (text) => {
 
     try{ 
     }
     catch (error){ 
-      console.log("[SignupScreen1] - handlePasswordInputChange Ex: ",error);
+      console.log("[SignupScreen1] - Handle_Nic Ex: ",error);
+    }
+  }
+
+  Handle_Username = (text) => {
+
+    try{ 
+    }
+    catch (error){ 
+      console.log("[SignupScreen1] - Handle_Username Ex: ",error);
     }
   }
 
@@ -86,7 +95,7 @@ class Signup_UsernameScreen extends Component {
      
         <MainTitleBar
           IconLeft = {Android_Theme_Light.ICON_BACK_ARROW}
-          onPressLeft   = {this.handleLeftButtonPress }/>
+          onPressLeft   = {()=>this.OnBackButtonPress() }/>
           
         <PageIndicator
           totalNoOfPages = {3}
@@ -108,19 +117,22 @@ class Signup_UsernameScreen extends Component {
             }}
           >*/}
 
-        <KeyboardAwareScrollView
-          keyboardShouldPersistTaps="always"
-          behavior="padding"
-          //keyboardShouldPersistTaps="handled"
-          enableAutomaticScroll={true}
-          //extraScrollHeight={150}
-          //contentInset={{ bottom: this.state.contentBottom }}
-          //onKeyboardWillHide={() => this.setState({ contentBottom: 0 })}
-          //onKeyboardDidHide={() => this.setState({ contentBottom: 0 })}
-          //onKeyboardDidShow={() => this.setState({ contentBottom: 0, })}
-          contentContainerStyle={GetCommonStyles(Android_Theme_Light).keyboardAwareView}>
+        
 
-          <View style = {GetCommonStyles(Android_Theme_Light).mainContainer}>
+        <View style = {GetCommonStyles(Android_Theme_Light).mainContainer}>
+
+          <KeyboardAwareScrollView
+            keyboardShouldPersistTaps="always"
+            behavior="padding"
+            //keyboardShouldPersistTaps="handled"
+            enableAutomaticScroll={false}
+            enableOnAndroid = {true}
+            //extraScrollHeight={150}
+            //contentInset={{ bottom: this.state.contentBottom }}
+            //onKeyboardWillHide={() => this.setState({ contentBottom: 0 })}
+            //onKeyboardDidHide={() => this.setState({ contentBottom: 0 })}
+            //onKeyboardDidShow={() => this.setState({ contentBottom: 0, })}
+            contentContainerStyle={GetCommonStyles(Android_Theme_Light).keyboardAwareView}>
 
             <View style = {GetCommonStyles(Android_Theme_Light).topTitleContainer} >
         
@@ -140,10 +152,11 @@ class Signup_UsernameScreen extends Component {
                 value = {""}
                 title = {"NIC Number"}
                 placeholder = {"Enter Your NIC Number"}
-                onInputChange = {(text) => this.handlePasswordInputChange(text)}
+                onInputChange = {(text) => this.Handle_Nic(text)}
                 icon={Android_Theme_Light.ICON_VERIFIED}
                 inputRef = {this.inputNIC}
-                nextInputRef = {this.inputUserName}/>
+                nextInputRef = {this.inputUserName}
+                returnKeyType="next"/>
 
               <View style = {{height:20}}/>
                         
@@ -151,30 +164,32 @@ class Signup_UsernameScreen extends Component {
                 value = {""}
                 title = {"User Name"}
                 placeholder = {"Enter Your User Name"}
-                onInputChange = {(text) => this.handlePasswordInputChange(text)}
+                onInputChange = {(text) => this.Handle_Username(text)}
                 icon={Android_Theme_Light.ICON_VERIFIED}
                 inputRef = {this.inputUserName}/>
 
-              <View style = {{height:50}}/>
-
-              {/* Next Button  */}
-              <CommonButton
-                type={"1"}
-                title={"Next"}
-                fontFamily = {Android_Theme_Light.POPPINS_SEMIBOLD}
-                textSize = {Android_Theme_Light.FONT_SIZE_15}
-                textColor = {Android_Theme_Light.WHITE_COLOR}
-                backgroundColor={Android_Theme_Light.BLUE_COLOR}
-                onPress={this.handleNextButtonPress}
-                width={"50%"}
-              />
 
             </View>
-    
+
+          </KeyboardAwareScrollView>
+
+          <View style = {GetCommonStyles(Android_Theme_Light).bottombuttonContainer}>
+
+            {/* Next Button  */}
+            <CommonButton
+              type={"1"}
+              title={"Next"}
+              fontFamily = {Android_Theme_Light.POPPINS_SEMIBOLD}
+              textSize = {Android_Theme_Light.FONT_SIZE_15}
+              textColor = {Android_Theme_Light.WHITE_COLOR}
+              backgroundColor={Android_Theme_Light.BLUE_COLOR}
+              onPress={()=>this.OnNextButtonPress()}
+              width={"50%"}/>
+
           </View>
+    
+        </View>
           
-        </KeyboardAwareScrollView>
-      
       </SafeAreaView>
 
     );

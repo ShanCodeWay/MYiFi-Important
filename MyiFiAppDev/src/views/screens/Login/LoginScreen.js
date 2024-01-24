@@ -77,7 +77,7 @@ class LoginScreen extends Component {
 
   OnPressSignIn = () => {
     try {
-      this.props.navigation.navigate("KYC1Screen");
+      this.props.navigation.navigate("DashboardScreen");
     } 
     catch (Error) {
       console.log("[LoginScreen] - OnPressSignIn Ex: ", Error);
@@ -223,7 +223,7 @@ class LoginScreen extends Component {
                 fontFamily = {Android_Theme_Light.POPPINS_REGULAR}
                 textSize = {Android_Theme_Light.FONT_SIZE_BODY_TWO_REGULAR}
                 textColor = {Android_Theme_Light.WHITE_COLOR}
-                backgroundColor={Android_Theme_Light.LIGHT_BLUE_COLOR}
+                backgroundColor={Android_Theme_Light.BLUE_COLOR}
                 onPress={this.onPressSignUp}
               />
 

@@ -83,27 +83,34 @@ const CommonSpinner = (props) => {
   };
 
   
-  const renderTitle = () => { {/* Darshana 11.01.2024*/}
-    
-    try{ 
-    const { title } = props;
-
-    return (
-      <Text style={CommonSpinnerStyles.textStyleTitle}>
-        {title.split("").map((char, index) => (
-          <Text
-            key={index}
-            style={{
-              color: char === '*' ? 'red' : Colors.BLACK,
-            }}
-          >
-            {char}
-          </Text>
-        ))}
-      </Text>
-    );}
-    catch(error) { console.log("[CommonSpinner] - renderTitle - Error ", error);}
+  const renderTitle = () => { // Darshana 24.01.24
+    try {
+      const { title } = props || {};
+  
+      if (!title) {
+        
+        return null; 
+      }
+  
+      return (
+        <Text style={CommonSpinnerStyles.textStyleTitle}>
+          {title.split("").map((char, index) => (
+            <Text
+              key={index}
+              style={{
+                color: char === '*' ? 'red' : Colors.BLACK,
+              }}
+            >
+              {char}
+            </Text>
+          ))}
+        </Text>
+      );
+    } catch (error) {
+      console.log("[CommonSpinner] - renderTitle - Error ", error);
+    }
   };
+  
 
   return (
     <>

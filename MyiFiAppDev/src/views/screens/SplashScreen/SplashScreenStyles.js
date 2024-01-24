@@ -12,7 +12,7 @@ export default GetSplashScreenStyles = (theme) => {
       backgroundColor: theme.BACKGROUND_COLOR,
       justifyContent: "flex-end",
       alignItems: "flex-start",
-      paddingStart:10,
+      paddingStart:20,
     },
     
     bottomNameContainer: {
@@ -28,21 +28,25 @@ export default GetSplashScreenStyles = (theme) => {
 
     footerView: {
       height:40,
+      justifyContent: "flex-start",
+      alignItems: "flex-start",
+      marginLeft:20
     },
 
     titleText:{
-      fontSize: theme.FONT_SIZE_HEADER_ONE,
-      fontWeight: "bold",
-      color: theme.WHITE_COLOR,
-      marginLeft: 10,
-      marginTop:20,
+      fontSize: theme.FONT_SIZE_HEADER_ONE_MEDIUM,
+      fontFamily:theme.POPPINS_MEDIUM,
+      color: theme.BACKGROUND_COLOR,
+      marginLeft: 20,
+      marginTop:0,
     },
 
     descriptionTest:{
-      fontSize: theme.FONT_SIZE_SMALL,
-      color: theme.WHITE_COLOR,
-      marginTop: 5,
-      marginLeft: 10,
+      fontSize: theme.FONT_SIZE_BODY_TWO_REGULAR,
+      fontFamily: theme.POPPINS_REGULAR,
+      color: theme.BACKGROUND_COLOR,
+      //marginTop: 5,
+      marginLeft: 20,
         
     },
 
@@ -50,7 +54,7 @@ export default GetSplashScreenStyles = (theme) => {
       fontSize: theme.FONT_SIZE_HEADER_TWO,
       color: theme.WHITE_COLOR,
       marginTop: 0,
-      marginLeft: 10,  
+      marginLeft: 20,  
     },
 
   });

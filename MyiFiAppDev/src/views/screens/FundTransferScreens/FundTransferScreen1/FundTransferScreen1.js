@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-  import { View, Text, ScrollView, SafeAreaView, StatusBar,Modal } from "react-native";
+  import { View, Text, ScrollView, SafeAreaView, StatusBar,Modal, TouchableOpacity } from "react-native";
   import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
   import CommonButton from "../../../components/Common/MainButton/CommonButton";
   import MainTitleBar from "../../../components/Common/TitleBar/MainTitleBar";
@@ -36,14 +36,25 @@ import React, { Component } from "react";
 
       this.state = {
         scrollEnabled:      false,
-        selectedAccount:     null,
         selectedAccountType: null,
         toAccount:           null,
         amount:                '',
         isVisibleValidationDialog:false,
         isModalVisible:       false,
+        isExpanded: false,
+        isExpanded1: false,
+        isExpanded2: false,
+        isExpanded3: true,
 
-        
+        selectedAccountNum: '',
+        selectedAccount:'',
+        selectedBank:'',
+        selectedBankNum:'',
+        selectedAmount: '',
+        selected_ID:'',
+        selectedShedual:'',
+        selectedType:'',
+        selectedAccountType:'',
       };
     }
     
@@ -161,11 +172,51 @@ import React, { Component } from "react";
         isModalVisible: !prevState.isModalVisible,
       }));
     };
+
+    toggleExpand = () => {
+      this.setState((prevState) => ({
+        isExpanded: !prevState.isExpanded,
+      }));
+    };
+
+
+    handleSpinnerSelection = (label_1) => {
+      this.setState({
+        selectedShedual: label_1,
+      });
+    
+      if (label_1 === "Many") {
+        this.setState({ isExpanded1: true });
+      } else {
+        this.setState({ isExpanded1: false });
+      }
+    };
+
+    handleTypeSelection = (label_1) => {
+      this.setState({
+        selectedType: label_1,
+      });
+    
+      if (label_1 === "Local Account Transfer" || label_1 === "International Account Transfer") {
+        this.setState({ isExpanded2: true });
+        this.setState({ isExpanded3: false });
+      } else {
+        this.setState({ isExpanded3: true });
+        this.setState({ isExpanded2: false });
+      }
+    };
+    
+    
   
     
     render() {
 
       const { isModalVisible } = this.state;
+      const { isExpanded } = this.state;
+      const { isExpanded1 } = this.state;
+      const { isExpanded2 } = this.state;
+      const { isExpanded3 } = this.state;
+      
 
       return (
 
@@ -173,12 +224,16 @@ import React, { Component } from "react";
         
 <SafeAreaView style={GetCommonStyles(Android_Theme_Light).safeAreaView}>
         
-        <MainTitleBar
-              IconLeft    = {Android_Theme_Light.ICON_BACK_ARROW}
-              TitleText   = {"Transfer Money"}
+       {/* <MainTitleBar
+              IconLeft    = {null}
+              TitleText   = {null}
               TextAlign   = {'left'}
               IconRight   = {null}
               onPressLeft = {this.handleLeftButtonPress }/>
+
+        Tittle Bar invisible
+
+      */}     
 
        <KeyboardAwareScrollView
             contentContainerStyle     =  {{ flexGrow: 1, justifyContent: "flex-end", alignItems:"center" }}
@@ -195,140 +250,350 @@ import React, { Component } from "react";
              
             }}
           > 
-  <View style={GetCommonStyles(Android_Theme_Light).mainContainer}>  
+
+     
+  <View style={GetCommonStyles(Android_Theme_Light).mainContainer}>
+  <View style={GetCommonStyles(Android_Theme_Light).titleContainer}> 
+ <Text style={GetCommonStyles(Android_Theme_Light).titleContainertitleText}>
+          Transfer
+  </Text>
+ </View>    
+ 
   <View style={GetFundTransferScreen1Styles(Android_Theme_Light).middleView}> 
  
   <ScrollView> 
-        <Text style={GetFundTransferScreen1Styles(Android_Theme_Light).titleText}>
-          TRANSFER FROM
-        </Text>
         <View style = {{height:5}}/>
         <View style={GetFundTransferScreen1Styles(Android_Theme_Light).bankView}> 
 
                         <CommonSpinnerLong
                           width={"100%"}
                           data={[
-                            { label: "Sampath Bank", value:'457685', value1: "A"},  
-                            { label: "Seylan Bank", value: '546685', value1: "B" },
-                            { label: "Bank of Ceylon", value: '757685', value1: "C" },
-                            { label: "Peoples Bank", value: '36685', value1: "D" },
-                            { label: "Amana Bank", value: '257685', value1: "E" },
-                            { label: "Sampath Bank", value: '44685', value1: "F" },
-                            { label: "Seylan Bank", value: '37685', value1: "G" },
+                            { label_1: "MyFi",           label_2: '457,685',     value:'001' },  
+                            { label_1: "Venum",    label_2: '546,685.33',  value:'002' },
+                            { label_1: "Infinity", label_2: '757,685.45',  value:'003' },
+                            { label_1: "Havlock",   label_2: '36,685.56',   value:'004' },
+                            { label_1: "Nirwaan",     label_2: '257,685.76',  value:'005' },
+                            { label_1: "Focus",   label_2: '44,685.88',   value:'006' },
+                            { label_1: "Cedar",    label_2: '37,685.65',   value:'007' },
                           ]}
 
 
 
-                          placeholder         = {"Select Bank"}
-
-                          value               = {this.state.selectedLabel}
-                          value1              = {this.state.selectedValue1}
+                          placeholder         = {this.state.selectedAccount}
+                          lable_1             = {this.state.selectedAccount || "MyiFi"}
+                          lable_2             = {this.state.selectedAmount  || '457,685.54'}
+                          lable_2Show         = {true}
+                          value               = {this.state.selected_ID  || ''}
                           onRef               = {(ref) => (this.parentReferenceItem = ref)}
                           inputRef            = {this.transferFrom}
                           nextInputRef        = {this.transferTo}
                           currency            = {"LKR"}
-                          parentReferenceItem = {(label, value1) => {
+                          parentReferenceItem = {(label_1,label_2,value) => {
                             this.setState({
-                              selectedLabel   : label,
-                              selectedValue1  : value1,
+                              selectedAccount: label_1,
+                              selectedAmount:  label_2,
+                              selected_ID:     value,
                             });
                           }}
                         />
         </View>
         <View style = {{height:20}}/>
-
-
- 
         <Text style = {GetFundTransferScreen1Styles(Android_Theme_Light).titleText}>
-          TRANSFER TO
-        </Text>
-        <View style = {{height:5}}/>
-           <CommonSpinner
-              title  = {"Type *"}
+          Type
+        </Text> 
 
-              width  = {"100%"}
-              data={[
+        <CommonSpinnerLong
+                width={"100%"}
+                data={[
+                  { label_1: "Own Account Transfer", value: "Own-Account" },
+                  { label_1: "Local Account Transfer", value: "Local-Account" },
+                  { label_1: "International Account Transfer", value: "International-Account" },
+                ]}
+                placeholder={this.state.selectedType}
+                lable_1={this.state.selectedType || "Own Account Transfer"}
+                lable_2Show={false}
+                value={''}
+                onRef={(ref) => (this.parentReferenceItem = ref)}
+                parentReferenceItem={(label_1, label_2, value) => {
+                  this.setState({
+                    selectedType: label_1,
+                  });
+                  this.handleTypeSelection(label_1, value);
+                }}
+              />
 
-                    { label : "Own Account Transfer", value: "Own-Account" },
-                    { label : "Local Account Transfer", value: "Local-Account" },
-                    { label : "International Account Transfer", value: "International-Account" },
               
-              ]}
-              placeholder           = {"Select Your Account Type"}
-              value                 = {this.state.selectedAccountType}
-              label                 = {this.state.selectedAccountType}
-              onRef                 = {(ref) => (this.parentReferenceItem = ref)}
-              parentReferenceItem   = {this.handleAccountType}
-           />
- <View style = {{height:10}}/>
-          <CommonSpinner
-            title                 = {"To Account *"}
 
-            width                 = {"100%"}
-            data={[
+              {this.state.isExpanded2 && (<> 
+                <View style={{ height: 20 }} />
+                <View> 
+                <Text style = {GetFundTransferScreen1Styles(Android_Theme_Light).titleText}>
+                Send to
+              </Text>
 
-                    { label : "BOC-234382432", value: "BOC-234382432" },
-                    { label : "PET-364637463", value: "PET-364637463" },
-                    { label : "SAM-534654387", value: "SAM-534654387" },
-                  
-            ]}
-            placeholder           = {"Select Transfer Account *"}
-            value                 = {this.state.toAccount}
-            lable                 = {this.state.toAccount}
-            onRef                 = {(ref) => (this.parentReferenceItem = ref)}
-            parentReferenceItem   = {this.handleToAccount}
-          />
-           <View style = {{height:10}}/>
-       
-   
+              <CommonInputField
+              value           = {this.state.selectedName}
+              title           = {"Name"}
+              onInputChange   = {(text) => this.handlePasswordInputChange(text)}
+              inputRef        = {this.transferName}
+              nextInputRef    = {this.transferPurpose}
+              placeholder     = {"Insert Name"}
+              width           = {"100%"}
+              icon={Android_Theme_Light.ICON_VERIFIED}
+              
+            />
+ <View style={{ height: 20 }} />
             <CommonInputField
-               value          = {this.state.amount}
+              value           = {this.state.selectedName}
+              title           = {"Account Number"}
+              onInputChange   = {(text) => this.handlePasswordInputChange(text)}
+              inputRef        = {this.transferName}
+              nextInputRef    = {this.transferPurpose}
+              placeholder     = {"Insert Account Number"}
+              width           = {"100%"}
+              icon={Android_Theme_Light.ICON_VERIFIED}
+              
+            />
+          
+ <View style = {{height:20}}/>
+       <Text style = {GetFundTransferScreen1Styles(Android_Theme_Light).titleText}>
+          Bank
+        </Text>
+        <View style={GetFundTransferScreen1Styles(Android_Theme_Light).bankView}> 
+
+                      <CommonSpinnerLong
+                        width={"100%"}
+                        data={[
+                          { label_1: "MyFi",            label_2: "BOC-234382432"  , value:'001' },  
+                          { label_1: "Seylan Bank",     label_2: "PET-364637463"  , value:'002'},
+                          { label_1: "Bank of Ceylon",  label_2: "SAM-09980387"   , value:'003'},
+                          { label_1: "Peoples Bank",    label_2: "SAM-5347978387" , value:'004'},
+                          { label_1: "Amana Bank",      label_2: "SAM-57554387"  ,  value:'005'},
+                          { label_1: "Sampath Bank",    label_2: "SAM-53499887"  ,  value:'006'},
+                          
+                        ]}
+
+
+
+                        placeholder         = {this.state.selectedBank}
+                        lable_1             = {this.state.selectedBank || "Hatton National Bank"}
+                        value               = {this.state.selectedBankNum}
+                        lable_2Show         = {false}  /* Set valueShow to false to hide the middle section */
+                        onRef               = {(ref) => (this.parentReferenceItem = ref)}
+                        inputRef            = {this.transferFrom}
+                        nextInputRef        = {this.transferTo}
+                        currency            = {""}
+                        parentReferenceItem = {(label_1, value) => {
+                          this.setState({
+                            selectedBank: label_1,
+                            selectedBankNum: value,
+                          });
+                        }}
+                      />
+                      </View>
+                  <View style = {{height:20}}/>
+              
+
+            </View>
+            </>
+              )}           
+
+        
+        
+ {this.state.isExpanded3 && (<> 
+                <View style={{ height: 20 }} />
+                <View> 
+                <Text style = {GetFundTransferScreen1Styles(Android_Theme_Light).titleText}>
+                Account
+              </Text>
+      
+      <CommonSpinnerLong
+                width={"100%"}
+                data={[
+                  { label_1: "Current Account", value: "C-Account" },
+                  { label_1: "Saving Account", value: "S-Account" },
+                  { label_1: "Fixed Account", value: "FD-Account" },
+                ]}
+                placeholder={this.state.selectedAccountType}
+                lable_1={this.state.selectedAccountType|| "Current Account"}
+                lable_2Show={false}
+                value={''}
+                onRef={(ref) => (this.parentReferenceItem = ref)}
+                parentReferenceItem={(label_1, label_2, value) => {
+                  this.setState({
+                    selectedAccountType: label_1,
+                  });
+                }}
+              />
+ <View style = {{height:20}}/>
+            </View>
+            </>
+              )} 
+
+
+
+
+
+
+
+
+
+          
+          
+
+            <CommonInputField
+              value          = {this.state.amount || '8000,677'}
               title           = {"Amount *"}
               onInputChange   = {(text) => this.handleAmountInputChange(text)}
               inputRef        = {this.transferTo}
               nextInputRef    = {this.transferRemark}
               type            = {'currency'}
               width           = {"100%"}
+              icon={Android_Theme_Light.ICON_VERIFIED}
              
             />
             <View style = {{height:10}}/>
           
  
             <CommonInputField
-              value           = {this.state.selectedName}
+              value           = {this.state.selectedName || "trip collection"}
               title           = {"Remark"}
               onInputChange   = {(text) => this.handlePasswordInputChange(text)}
               inputRef        = {this.transferRemark}
               nextInputRef    = {this.transferPurpose}
               placeholder     = {"Remark"}
               width           = {"100%"}
+              icon={Android_Theme_Light.ICON_VERIFIED}
               
             />
  
-       <View style = {{height:20}}/>
+       <View style = {{height:20}}/> 
 
-         <Text style = {GetFundTransferScreen1Styles(Android_Theme_Light).titleText}>
-          OTHER DETAILS
-        </Text>
-        <View style = {{height:10}}/>
-          <CommonSpinner
-            title       = {"Purpose *"}
-            width       = {"100%"}
-            data={[
+       {isExpanded && (
+                <View
+                  style={
+                    GetFundTransferScreen1Styles(Android_Theme_Light).expandContainer
+                  }
+                >
+                  <Text
+                    style={GetFundTransferScreen1Styles(Android_Theme_Light).titleText}
+                  >
+                    Shedual Type
+                  </Text>
+                  <View style={{ height: 5 }} />
+                  <View
+                    style={GetFundTransferScreen1Styles(Android_Theme_Light).bankView}
+                  >
+                    <CommonSpinnerLong
+                      width={"100%"}
+                      data={[
+                        { label_1: "One Time",  label_2: "One-time" ,value:'01'   },
+                        { label_1: "Favourite", label_2: "Favourite",value:'02'   },
+                        { label_1: "Many",      label_2: "Many"     ,value:'03'    },
+                      ]}
+                      placeholder         = {this.state.selectedShedual}
+                      lable_1             = {this.state.selectedShedual || "One Time"}
+                      lable_2Show         = {false}   
+                      value               = { ''}
+                      onRef               = {(ref) => (this.parentReferenceItem = ref)}
+                      currency            = {"LKR"}    
+                      parentReferenceItem = {(label_1,label_2,value) => {
+                        this.setState({
+                          selectedShedual: label_1,
+                        });
+                        this.handleSpinnerSelection(label_1, value);
+                      }}      
 
-              { label   : "Personal", value: "Personal" },
-              { label   : "Bill-pay", value: "Bill-pay" },
-              { label   : "Loan-Pay", value: "Loan-Pay" },
-            
-            ]}
-            placeholder = {"Purpose"}
-            value       = {this.state.toAccount}
-            lable       = {this.state.toAccount}
-            onRef       = {(ref) => (this.parentReferenceItem = ref)}
-            
-            parentReferenceItem   = {this.handleToAccount}
-          />
+                    />
+
+                  </View>
+                  <View style={{ height: 20 }} />
+
+                  {this.state.isExpanded1 && (
+          
+                       <CommonInputField
+                        value           = {this.state.selectedFrequency }
+                        title           = {"Frequency"}
+                        onInputChange   = {(text) => this.handlePasswordInputChange(text)}
+        
+                        placeholder     = {"Frequency"}
+                        width           = {"100%"}
+                        icon={Android_Theme_Light.ICON_VERIFIED}
+                        
+                      />
  
+                )}
+                  <View style={{ height: 20 }} />
+                  <CommonInputField
+                    value={""}
+                    title={"Transaction Date *"}
+                    onInputChange={""}
+                    inputRef={this.transferTo}
+                    nextInputRef={this.transferRemark}
+                    type={"date"}
+                    width={"100%"}
+                    icon={Android_Theme_Light.ICON_CALENDER}
+                    readOnly={true}
+                  />
+                   <View style={{ height: 20 }} />
+                </View>
+              )}
+
+       <View style={GetFundTransferScreen1Styles(Android_Theme_Light).buttonContainer}>
+       <View style={GetFundTransferScreen1Styles(Android_Theme_Light).buttonContainer1}>
+
+      <TouchableOpacity onPress={() => this.setState({ isExpanded: false })}>
+      <View
+          style={[
+            GetFundTransferScreen1Styles(Android_Theme_Light).button,
+            {
+              backgroundColor: this.state.isExpanded
+                ? Android_Theme_Light.WHITE_COLOR
+                : Android_Theme_Light.BLUE_COLOR
+            }
+          ]}
+        >
+          <Text style={[GetFundTransferScreen1Styles(Android_Theme_Light).buttonText,
+             {
+              color: this.state.isExpanded
+                ? Android_Theme_Light.DARK_BLUE_COLOR
+                : Android_Theme_Light.WHITE_COLOR
+            }
+        
+          
+          ]}>
+            Now
+          </Text>
+        </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={this.toggleExpand}>
+        <View
+          style={[
+            GetFundTransferScreen1Styles(Android_Theme_Light).button,
+            {
+              backgroundColor: this.state.isExpanded
+                ? Android_Theme_Light.BLUE_COLOR
+                : Android_Theme_Light.WHITE_COLOR
+            }
+          ]}
+        >
+          <Text style={[GetFundTransferScreen1Styles(Android_Theme_Light).buttonText,
+             {
+              color: this.state.isExpanded
+                ? Android_Theme_Light.WHITE_COLOR
+                : Android_Theme_Light.DARK_BLUE_COLOR
+            }
+        
+          
+          ]}>
+            Later
+          </Text>
+        </View>
+      </TouchableOpacity>
+    </View>
+    </View>
+    <View style = {{height:20}}/>
 
   <View style={GetFundTransferScreen1Styles(Android_Theme_Light).bottomView3}>
           <View style={GetFundTransferScreen1Styles(Android_Theme_Light).bottomView1}>
@@ -380,7 +645,7 @@ import React, { Component } from "react";
 
                 <CommonButton
                   type="1"
-                  title={"Transfer " + this.state.amount}
+                  title={"Transfer " + this.state.amount }
                   borderRadius={35}
                   onPress={this.handleValidationDialog}
                   width={"60%"}
@@ -400,7 +665,7 @@ import React, { Component } from "react";
           />
           </Modal>
 
-         
+        
      
 </SafeAreaView>
 

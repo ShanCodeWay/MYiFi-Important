@@ -14,14 +14,15 @@ import GetDashboardScreenStyles from "./DashboardScreenStyles";
 import CommonCardButton from "../../components/Common/CommonCardButton";
 import Icon_arrowUp from "../../../assets/icons/Icon_arrowUp.svg";
 import Icon_arrowDown from "../../../assets/icons/Icon_arrowDown.svg";
-
+import { AmountSeperation, AmountSeperationDecimal } from "../../../utils/helpers";
+ 
 //Done by: Dinuranga 23/01/05
 class DashboardScreen extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      state1: "",
+      Balance: 6700450.35,
     };
   }
   tansactionList = [
@@ -77,14 +78,22 @@ class DashboardScreen extends Component {
     },
   ];
 
-  handleInvestButton= () =>{
+  handleInvestButton = () => {
     try {
-      this.props.navigation.navigate("InvestScreen")
-      console.log("n....")
+      this.props.navigation.navigate("InvestScreen");
+    } catch {}
+  };
+  handlePaymentButton = () => {
+    try {
+      this.props.navigation.navigate("BillPayement");
+    } catch {}
+  };
 
-    }catch{
-
-    }}
+  handleBillerManagement = () => {
+    try {
+      this.props.navigation.navigate("BillerManagementScreen");
+    } catch {}
+  };
 
   transactionRenderItem = ({ item }) => (
     <View
@@ -93,9 +102,7 @@ class DashboardScreen extends Component {
           .transactionItemRowContainer,
       ]}
     >
-      <View style={{ marginHorizontal: 10 }}>
-        {item.type == "0" ? <Icon_arrowUp /> : <Icon_arrowDown />}
-      </View>
+      {item.type == "0" ? <Icon_arrowUp /> : <Icon_arrowDown />}
 
       <Text
         style={[
@@ -249,21 +256,42 @@ class DashboardScreen extends Component {
               >
                 Balance
               </Text>
-
-              <Text
+              <View
                 style={[
-                  GetDashboardScreenStyles(Android_Theme_Light)
-                    .textBalanceAmount,
+                  GetDashboardScreenStyles(Android_Theme_Light).AmountContainer,
                 ]}
               >
-                {"  Rs. 6,700,450.00"}
-              </Text>
+                <Text
+                  style={[
+                    GetDashboardScreenStyles(Android_Theme_Light).textBalanceRs,
+                  ]}
+                >
+                  {"Rs."}
+                </Text>
+
+                <Text
+                  style={[
+                    GetDashboardScreenStyles(Android_Theme_Light)
+                      .textBalanceIntegerAmount,
+                  ]}
+                >
+                  {AmountSeperation(this.state.Balance)[0]}
+                </Text>
+                <Text
+                  style={[
+                    GetDashboardScreenStyles(Android_Theme_Light)
+                      .textBalanceDecimalAmount,
+                  ]}
+                >
+                  {AmountSeperation(this.state.Balance)[1]}
+                </Text>
+              </View>
             </View>
 
             <CommonCardButton
               width={"100%"}
               height={64}
-              icon={ Android_Theme_Light.ICON_SEND}
+              icon={Android_Theme_Light.ICON_SEND}
               text={"Send"}
             />
             <CommonCardButton
@@ -271,19 +299,27 @@ class DashboardScreen extends Component {
               height={64}
               icon={Android_Theme_Light.ICON_INVEST}
               text={"Invest"}
-              onPress={()=>this.handleInvestButton()}
+              onPress={() => this.handleInvestButton()}
             />
             <CommonCardButton
               width={"100%"}
               height={64}
               icon={Android_Theme_Light.ICON_PAYMENT}
               text={"Payments"}
+              onPress={() => this.handlePaymentButton()}
             />
             <CommonCardButton
               width={"100%"}
               height={64}
               icon={Android_Theme_Light.ICON_LOAN}
               text={"Leasing/ Loans"}
+            />
+            <CommonCardButton
+              width={"100%"}
+              height={64}
+              icon={Android_Theme_Light.ICON_BILLER_MANAGEMENT}
+              text={"Billers Management"}
+              onPress={() => this.handleBillerManagement()}
             />
           </View>
 

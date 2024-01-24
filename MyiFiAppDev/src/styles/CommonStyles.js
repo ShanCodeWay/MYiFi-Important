@@ -3,7 +3,6 @@ import { Platform, StatusBar, StyleSheet } from "react-native";
 export const GetCommonStyles = (theme) => {
   
   const CommonStyles = StyleSheet.create({
-    
     safeAreaView: {
       flex: 1,
       backgroundColor: theme.SAFEAREA_BACKGROUND_COLOR,
@@ -18,16 +17,24 @@ export const GetCommonStyles = (theme) => {
     },
 
     topTitleContainer: {
-      width: '100%',
-      height:100,
+      width: "100%",
+      height: 100,
       justifyContent: "center",
       alignItems: "center",
+    },
+
+    bottombuttonContainer: {
+      height: 100,
+      width: "100%",
+      justifyContent: "flex-start",
+      alignItems: "flex-start",
+      margin: 20,
     },
 
     keyboardAwareView: {
       alignItems: "center",
       flexGrow: 1,
-      width: '100%',
+      width: "100%",
     },
 
     //Common Text Styles
@@ -35,14 +42,14 @@ export const GetCommonStyles = (theme) => {
       color: theme.DEEP_BLACK_COLOR,
       fontSize: theme.FONT_SIZE_HEADER_ONE_MEDIUM,
       fontFamily: theme.POPPINS_MEDIUM,
-      textAlign:'center'
+      textAlign: "center",
     },
 
     textStyleCaption1Medium: {
       color: theme.DARK_GRAY_COLOR,
       fontSize: theme.FONT_SIZE_CAPTION_ONE_MEDIUM,
       fontFamily: theme.POPPINS_MEDIUM,
-      textAlign:'center'
+      textAlign: "center",
     },
 
     TextStyleH2Medium: {
@@ -68,6 +75,43 @@ export const GetCommonStyles = (theme) => {
     TextStyleBody14Medium: {
       color: theme.TEXTSTYLE_BODY_COLOR,
       fontSize: 14,
+      fontFamily: theme.POPPINS_MEDIUM,
+    },
+
+    titleContainer: {
+      flexDirection: "row",
+      justifyContent: "center",
+      width: "90%",
+      alignItems: "center",
+      height: 60,
+    },
+
+    titleContainertitleText: {
+      fontFamily: theme.POPPINS_REGULAR,
+      fontSize: theme.FONT_SIZE_HEADER_TWO_MEDIUM,
+      color: theme.DARK_BLUE_COLOR,
+      width: "100%",
+    },
+
+    // Amount View Styles (Eg: Rs. 34500.56)
+    amountContainer: {
+      flexDirection: "row",
+      alignContent: "center",
+      alignItems: "center",
+    },
+    amountRsText: {
+      color: theme.DARK_GRAY_COLOR,
+      fontSize: theme.FONT_SIZE_LARGE,
+      fontFamily: theme.POPPINS_MEDIUM,
+    },
+    amountIntegerText: {
+      color: theme.DARK_GREEN_COLOR,
+      fontSize: theme.FONT_SIZE_HEADER_TWO,
+      fontFamily: theme.POPPINS_MEDIUM,
+    },
+    amountDecimalText: {
+      color: theme.DARK_GREEN_COLOR,
+      fontSize: theme.FONT_SIZE_LARGE,
       fontFamily: theme.POPPINS_MEDIUM,
     },
   });

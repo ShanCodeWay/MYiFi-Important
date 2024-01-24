@@ -17,7 +17,7 @@ class InvestScreen extends Component {
   handleBack= () =>{
     try {
       this.props.navigation.navigate("DashboardScreen")
-      console.log("n....")
+   
 
     }catch{
 
@@ -27,7 +27,7 @@ class InvestScreen extends Component {
   handleHome= () =>{
     try {
       this.props.navigation.navigate("DashboardScreen")
-      console.log("n....")
+                                      
 
     }catch{
 
@@ -36,57 +36,82 @@ class InvestScreen extends Component {
 
   render() {
     return (
-
       <SafeAreaView style={GetCommonStyles(Android_Theme_Light).safeAreaView}>
         <View style={GetCommonStyles(Android_Theme_Light).mainContainer}>
-
           <View style={GetInvestScreenStyles(Android_Theme_Light).topView}>
-            <View style={GetInvestScreenStyles(Android_Theme_Light).textContainer}>
-              <View style={GetInvestScreenStyles(Android_Theme_Light).textAndImage}>
-                <Text style={GetInvestScreenStyles(Android_Theme_Light).toperText}> INVEST</Text>
+            <View
+              style={GetInvestScreenStyles(Android_Theme_Light).textContainer}
+            >
+              <View
+                style={GetInvestScreenStyles(Android_Theme_Light).textAndImage}
+              >
+                <Text
+                  style={GetInvestScreenStyles(Android_Theme_Light).toperText}
+                >
+                  {"Invest"}
+                </Text>
                 <Image
-                  source={require('../../../../assets/images/Img_avatarPerson.png')}
+                  source={require("../../../../assets/images/Img_avatarPerson.png")}
                   style={GetInvestScreenStyles(Android_Theme_Light).image}
                 />
               </View>
 
-              <Text style={GetInvestScreenStyles(Android_Theme_Light).middleText}>Total Investments</Text>
+              <Text
+                style={GetInvestScreenStyles(Android_Theme_Light).middleText}
+              >
+                Total Investments
+              </Text>
 
-              <View style={GetInvestScreenStyles(Android_Theme_Light).prizeTextContainer}>
-                <Text style={GetInvestScreenStyles(Android_Theme_Light).bottomTextSmall}>Rs.</Text>
-                <Text style={GetInvestScreenStyles(Android_Theme_Light).bottomTextLarge}>1,200,000</Text>
-                <Text style={GetInvestScreenStyles(Android_Theme_Light).bottomTextSmall}>.00</Text>
+              <View
+                style={GetCommonStyles(Android_Theme_Light).amountContainer}
+              >
+                <Text style={GetCommonStyles(Android_Theme_Light).amountRsText}>
+                  Rs.
+                </Text>
+                <Text
+                  style={GetCommonStyles(Android_Theme_Light).amountIntegerText}
+                >
+                  1,200,000
+                </Text>
+                <Text
+                  style={GetCommonStyles(Android_Theme_Light).amountDecimalText}
+                >
+                  .00
+                </Text>
               </View>
-
             </View>
-            <View style={GetInvestScreenStyles(Android_Theme_Light).twoButtonContainer}>
+            <View
+              style={
+                GetInvestScreenStyles(Android_Theme_Light).twoButtonContainer
+              }
+            >
               <CommonCardButton
-                onPress={() => null}
                 text={"Fixed Deposits"}
-                width={"95%"}
-                height={"50%"}
+                height={90}
                 amount={"900,000.00"}
                 icon={Android_Theme_Light.ICON_INVEST}
+                onPress={() =>
+                  this.props.navigation.navigate("FixedDepositsScreen")
+                }
               />
               <CommonCardButton
                 onPress={() => null}
                 text={"Savings"}
-                width={"95%"}
-                height={"50%"}
+                height={90}
                 amount={"300,000.00"}
                 icon={Android_Theme_Light.ICON_LOAN}
               />
             </View>
-            <View style={GetInvestScreenStyles(Android_Theme_Light).spaceContainer}>
-            </View>
-
+            <View
+              style={GetInvestScreenStyles(Android_Theme_Light).spaceContainer}
+            ></View>
           </View>
+
           <View style={GetInvestScreenStyles(Android_Theme_Light).middleView}>
             <Image
-              style={{ width: 250, height: 250 }}
+              style={{ width: 300, height: 350, borderRadius: 10 }}
               source={{
-                uri: "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/international-day-of-banks-design-template-30daffb4ab91d92b63906a7fe5d9df6a_screen.jpg?ts=1637390247"
-
+                uri: "https://i.postimg.cc/sgbVwBMM/417154212-694920426120079-3500684663587443534-n.jpg",
               }}
             />
           </View>
@@ -98,7 +123,6 @@ class InvestScreen extends Component {
               onPressIcon2={this.handleHome}
             />
           </View>
-
         </View>
       </SafeAreaView>
     );

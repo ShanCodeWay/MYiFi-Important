@@ -32,7 +32,14 @@ import FixedDepositsScreen from "../screens/FixedDeposits/FixedDepositsScreen.js
 import FixedDepositsViewScreen from "../screens/FixedDeposits/FixedDepositsViewScreen/FixedDepositsViewScreen.js";
 {/*Bill Payment Screens */ }
 import BillPayement from "../screens/BillPayementScreens/BillPayement/BillPayement.js";
-import AddBiller from "../screens/BillPayementScreens/AddBiller//AddBiller.js";
+import BillerManagementScreen from "../screens/BillerManagementScreen/BillerManagementScreen.js";
+import InvestScreen from "../screens/DashboardScreen/InvestScreen/InvestScreen.js";
+{/*Make a Payment Screen*/}
+import MakeAPayementScreen from "../screens/MakeAPayementScreens/MakeAPayementScreen.js";
+import MakeAPaymentViewScreen from "../screens/MakeAPayementScreens/MakeAPaymentViewScreen/MakeAPaymentViewScreen.js";
+import MakeAPaymentOtpScreen from "../screens/MakeAPayementScreens/MakeAPaymentOtpScreen/MakeAPaymentOtpScreen.js";
+import MakeAPaymentSuccessfulScreen from "../screens/MakeAPayementScreens/MakeAPaymentSuccessfulScreen/MakeAPaymentSuccessfulScreen.js";
+
 
 const Stack = createStackNavigator();
 //navigationRef - is used to navigation inside the actions
@@ -40,7 +47,7 @@ function NavContainer() {
   return (
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator
-        initialRouteName={Index.BILL_1}
+        initialRouteName="SplashScreen"
         screenOptions={{
           gestureEnabled: false,
           headerShown: false,
@@ -66,6 +73,7 @@ function NavContainer() {
 
         {/*DASHBOARD Screens */ }
         <Stack.Screen name="DashboardScreen"component={DashboardScreen} />
+        <Stack.Screen name="InvestScreen"component={InvestScreen} />
 
         {/*KYC Screens */ }
         <Stack.Screen name="KYC1Screen"     component={KYC1Screen} />
@@ -83,7 +91,16 @@ function NavContainer() {
 
         {/*Bill Payement Screens */ }
         <Stack.Screen name={Index.BILL_1}   component={BillPayement}/>
-        <Stack.Screen name={Index.ADD_BILL}   component={AddBiller}/>
+
+        {/* BillerManagementScreen */}
+        <Stack.Screen name="BillerManagementScreen"     component={BillerManagementScreen} />
+
+        {/*Make a Payment Screen*/}
+         <Stack.Screen name="MakeAPayementScreen" component={MakeAPayementScreen}/>
+         <Stack.Screen name="MakeAPaymentViewScreen" component={MakeAPaymentViewScreen} />
+         <Stack.Screen name="MakeAPaymentOtpScreen" component={MakeAPaymentOtpScreen} />
+         <Stack.Screen name="MakeAPaymentSuccessfulScreen" component={MakeAPaymentSuccessfulScreen} />
+
    
       </Stack.Navigator>
     </NavigationContainer>
