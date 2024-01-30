@@ -14,11 +14,11 @@ export default GetMakeAPayementScreenStyles = (theme) => {
       flex: 2,
       //backgroundColor: "green",
       width: "90%",
-      justifyContent:"space-evenly"
+      justifyContent:"space-around"
     },
 
     bottomContainer: {
-      height: 150,
+      height: 170,
       //backgroundColor: "gray",
       width: "90%",
       justifyContent:"center",
@@ -81,6 +81,12 @@ export default GetMakeAPayementScreenStyles = (theme) => {
     textTitle: {
       color: theme.DARK_BLUE_COLOR,
       fontSize: theme.FONT_SIZE_HEADER_TWO_MEDIUM,
+      fontFamily: theme.POPPINS_MEDIUM,
+    },
+
+    textSubTitle: {
+      color: theme.DARK_BLUE_COLOR,
+      fontSize: theme.FONT_SIZE_LARGE,
       fontFamily: theme.POPPINS_MEDIUM,
     },
   });

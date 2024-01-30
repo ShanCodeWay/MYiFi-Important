@@ -17,7 +17,7 @@ class SplashScreen extends Component {
 
       this.timeout = setTimeout(() => {
 
-        this.props.navigation.navigate("LoginScreen");
+        this.props.navigation.navigate("WelcomeScreen");
       }, 4000);
 
     }
@@ -47,7 +47,7 @@ class SplashScreen extends Component {
 
           <View style={GetSplashScreenStyles(Android_Theme_Light).topLogoContainer}>
 
-            <Android_Theme_Light.ICON_MI_LOGO width = {"30%"}/>
+            <Android_Theme_Light.MI_LOGO width = {"30%"}/>
            
           </View>
           

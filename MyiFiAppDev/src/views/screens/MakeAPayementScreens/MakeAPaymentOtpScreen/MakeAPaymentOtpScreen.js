@@ -9,13 +9,12 @@ import Index from "../../../../configs/Index";
 import CommonInputField from "../../../components/Common/TextInput/CommonInputField";
 import Colors from "../../../../styles/Colors";
 import { GetCommonStyles } from "../../../../styles/CommonStyles";
-import GetMakeAPaymentOtpScreenStyles from "./MakeAPaymentOtpScreenStyles"
+import GetMakeAPaymentOtpScreenStyles from "./MakeAPaymentOtpScreenStyles";
 
 import {
   Android_Theme_Light,
   Android_Theme_Dark,
 } from "../../../../styles/Themes";
-
 
 class MakeAPaymentOtpScreen extends Component {
   constructor(props) {
@@ -24,6 +23,8 @@ class MakeAPaymentOtpScreen extends Component {
       scrollEnabled: false,
       otp: "",
       timer: 5,
+      FdAmountPayed: "",
+      //sucess: true,
     };
   }
 
@@ -36,16 +37,26 @@ class MakeAPaymentOtpScreen extends Component {
       try {
         StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
       } catch (Error) {
-        console.log("[MakeAPaymentOtpScreen] - componentDidMount - Error ", Error);
+        console.log(
+          "[MakeAPaymentOtpScreen] - componentDidMount - Error ",
+          Error
+        );
       }
     }, 1000);
+
+    this.setState({
+      FdAmountPayed: this.props.route.params.amountPayed,
+    });
   }
 
   componentWillUnmount() {
     clearInterval(this.interval);
     try {
     } catch (Error) {
-      console.log("[MakeAPaymentOtpScreen] - componentWillUnmount - Error ", Error);
+      console.log(
+        "[MakeAPaymentOtpScreen] - componentWillUnmount - Error ",
+        Error
+      );
     }
   }
 
@@ -67,8 +78,18 @@ class MakeAPaymentOtpScreen extends Component {
 
   handleNextButtonPress = () => {
     try {
-      this.props.navigation.navigate("MakeAPaymentSuccessfulScreen");
-      console.log("Next button pressed to Navigate to MakeAPaymentSuccessfulScreen");
+      //const sucess = true;
+      if (this.props.route.params.amountPayed == "0.00") {
+        const success = true;
+        this.props.navigation.navigate("TransferReceiptSuccessScreen",{success});
+      } else {
+        this.props.navigation.navigate("MakeAPaymentSuccessfulScreen", {
+          amountInSummary: this.state.FdAmountPayed,
+        });
+        console.log(
+          "Next button pressed to Navigate to MakeAPaymentSuccessfulScreen"
+        );
+      }
     } catch (error) {
       console.log("[MakeAPaymentOtpScreen] - Next_Button - Error ", error);
     }
@@ -76,7 +97,7 @@ class MakeAPaymentOtpScreen extends Component {
 
   handleLeftButtonPress = () => {
     try {
-      this.props.navigation.navigate("MakeAPaymentViewScreen"); 
+      this.props.navigation.navigate("MakeAPaymentViewScreen");
       console.log("left pressed to Navigate to MakeAPaymentViewScreen");
     } catch (error) {
       console.log("[MakeAPaymentOtpScreen] - left_Button - Error ", error);
@@ -112,13 +133,21 @@ class MakeAPaymentOtpScreen extends Component {
             onKeyboardDidHide={(frames) => {}}
           >
             <View style={GetCommonStyles(Android_Theme_Light).mainContainer}>
-              <View style={GetMakeAPaymentOtpScreenStyles(Android_Theme_Light).topView}>
+              <View
+                style={
+                  GetMakeAPaymentOtpScreenStyles(Android_Theme_Light).topView
+                }
+              >
                 <View
-                  style={GetMakeAPaymentOtpScreenStyles(Android_Theme_Light).titleView}
+                  style={
+                    GetMakeAPaymentOtpScreenStyles(Android_Theme_Light)
+                      .titleView
+                  }
                 >
                   <Text
                     style={
-                      GetMakeAPaymentOtpScreenStyles(Android_Theme_Light).mainTitle
+                      GetMakeAPaymentOtpScreenStyles(Android_Theme_Light)
+                        .mainTitle
                     }
                   >
                     {"OTP"}
@@ -126,7 +155,8 @@ class MakeAPaymentOtpScreen extends Component {
                 </View>
                 <Text
                   style={
-                    GetMakeAPaymentOtpScreenStyles(Android_Theme_Light).secondTitle
+                    GetMakeAPaymentOtpScreenStyles(Android_Theme_Light)
+                      .secondTitle
                   }
                 >
                   {timer > 0
@@ -135,7 +165,9 @@ class MakeAPaymentOtpScreen extends Component {
                 </Text>
               </View>
               <View
-                style={GetMakeAPaymentOtpScreenStyles(Android_Theme_Light).middleView}
+                style={
+                  GetMakeAPaymentOtpScreenStyles(Android_Theme_Light).middleView
+                }
               >
                 <CommonInputField
                   value={""} // Set value to the input field
@@ -153,7 +185,7 @@ class MakeAPaymentOtpScreen extends Component {
                   borderRadius={35}
                   onPress={this.handleNextButtonPress}
                   textSize={15}
-                  backgroundColor= {Android_Theme_Light.DARK_GREEN_COLOR}
+                  backgroundColor={Android_Theme_Light.DARK_GREEN_COLOR}
                   textColor={Android_Theme_Light.DEEP_BLACK_COLOR}
                   width={"90%"}
                 />
@@ -161,11 +193,15 @@ class MakeAPaymentOtpScreen extends Component {
                 {timer > 0 && (
                   <View
                     style={
-                        GetMakeAPaymentOtpScreenStyles(Android_Theme_Light).timerOuter
+                      GetMakeAPaymentOtpScreenStyles(Android_Theme_Light)
+                        .timerOuter
                     }
                   >
                     <Text
-                      style={GetMakeAPaymentOtpScreenStyles(Android_Theme_Light).timer}
+                      style={
+                        GetMakeAPaymentOtpScreenStyles(Android_Theme_Light)
+                          .timer
+                      }
                     >
                       {timer}
                     </Text>
@@ -186,7 +222,9 @@ class MakeAPaymentOtpScreen extends Component {
               </View>
 
               <View
-                style={GetMakeAPaymentOtpScreenStyles(Android_Theme_Light).bottomView}
+                style={
+                  GetMakeAPaymentOtpScreenStyles(Android_Theme_Light).bottomView
+                }
               >
                 <CommonButton
                   type="1"
@@ -197,7 +235,9 @@ class MakeAPaymentOtpScreen extends Component {
                   textSize={20}
                 />
                 <View
-                  style={GetMakeAPaymentOtpScreenStyles(Android_Theme_Light).logoIcon}
+                  style={
+                    GetMakeAPaymentOtpScreenStyles(Android_Theme_Light).logoIcon
+                  }
                 ></View>
               </View>
             </View>

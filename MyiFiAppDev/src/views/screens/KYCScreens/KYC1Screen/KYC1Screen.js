@@ -27,6 +27,15 @@ class KYC1Screen extends Component {
     }
   }
 
+  OnPress_BackButton = () => {
+    try {
+      console.log("back button pressed");
+      this.props.navigation.navigate("WelcomeScreen");
+    } catch (Error) {
+      console.log("[KYC1Screen] - OnPress_BackButton - Error ", Error);
+    }
+  };
+
   handleLeftButtonPress = () => {
     try {
       this.props.navigation.replace("LoginScreen");

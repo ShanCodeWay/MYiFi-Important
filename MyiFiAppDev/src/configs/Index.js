@@ -1,9 +1,9 @@
 export default {
 
   //Signup Screens
-    SIGNUP_1 :'SignupScreen1',
-    SIGNUP_2 :'SignupScreen2',
-    SIGNUP_3 :'SignupScreen3',
+    SIGNUP_1 :'Signup_UsernameScreen',
+    SIGNUP_2 :'Signup_PasswordScreen',
+    SIGNUP_3 :'Signup_OtpScreen',
     SIGNUP_4 :'SignupScreen4',
 
   //FundTransfer Screens  
@@ -13,6 +13,9 @@ export default {
     FUND_OTP :'FundTransferOTPScreen',
 
   //BillPayement Screens 
-    BILL_1   :'BillPayement',
-    ADD_BILL :'AddBiller',    
+    BILL_1   :'BillPayment', 
+    
+    
+   //Settings Screen 
+    SETT_1 :'SettingsScreen', 
   };

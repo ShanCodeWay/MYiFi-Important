@@ -5,6 +5,7 @@ import GetCommonCardButtonStyles from "./CommonCardButtonStyles";
 import Colors from "../../../styles/Colors";
 import { GetCommonStyles } from "../../../styles/CommonStyles";
 import { Android_Theme_Light } from "../../../styles/Themes";
+import { AmountSeperation } from "../../../utils/helpers";
 
 //Done by : Dinuranga
 const CommonCardButton = (props) => {
@@ -58,16 +59,29 @@ const CommonCardButton = (props) => {
           {props.amount ? (
             <View
               style={[
-                GetCommonCardButtonStyles(Android_Theme_Light).amountContainer,
+                GetCommonCardButtonStyles(Android_Theme_Light).BalanceContainer,
               ]}
             >
-              <Text
-                style={[
-                  GetCommonCardButtonStyles(Android_Theme_Light).textAmount,
-                ]}
+ 
+
+              <View
+                style={GetCommonStyles(Android_Theme_Light).amountContainer}
               >
-                {"Rs. " + props.amount}
-              </Text>
+                
+                <Text style={[ GetCommonStyles(Android_Theme_Light).amountRsText , {color: Android_Theme_Light.DARK_GREEN_COLOR }]}>
+                  Rs.
+                </Text>
+                <Text
+                  style={GetCommonStyles(Android_Theme_Light).amountIntegerText}
+                >
+                  {AmountSeperation(props.amount)[0]}
+                </Text>
+                <Text
+                  style={GetCommonStyles(Android_Theme_Light).amountDecimalText}
+                >
+                  {AmountSeperation(props.amount)[1]}
+                </Text>
+              </View>
             </View>
           ) : null}
         </LinearGradient>

@@ -33,21 +33,21 @@ class FixedDepositsScreen extends Component {
 
       date: "2023-08-07",
       MDate: "2023-12-09",
-      amount: 300000,
+      amount: 300000.45,
     },
     {
       id: 2,
 
       date: "2024-11-27",
       MDate: "2024-12-21",
-      amount: 1200000,
+      amount: 1200000.50,
     },
     {
       id: 3,
 
       date: "2024-03-27",
       MDate: "2024-10-27",
-      amount: 600000,
+      amount: 600000.80,
     },
   ];
 
@@ -102,7 +102,7 @@ class FixedDepositsScreen extends Component {
               .InvestementRowRightView,
           ]}
         >
-          <View
+          {/* <View
             style={[
               GetFixedDepositsScreenStyles(Android_Theme_Light).AmountContainer,
             ]}
@@ -120,10 +120,46 @@ class FixedDepositsScreen extends Component {
             >
               {item.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
             </Text>
-          </View>
+          </View> */}
+
+
+          <View
+                style={[
+                  GetDashboardScreenStyles(Android_Theme_Light).AmountContainer,
+                ]}
+              >
+                <Text
+                  style={[
+                    GetDashboardScreenStyles(Android_Theme_Light).textBalanceRs,
+                  ]}
+                >
+                  {"Rs. "}
+                </Text>
+
+                <Text
+                  style={[
+                    GetDashboardScreenStyles(Android_Theme_Light)
+                      .textBalanceIntegerAmount,{fontSize:Android_Theme_Light.FONT_SIZE_HEADER_TWO} ,
+                  ]}
+                >
+                  {AmountSeperation(item.amount)[0]}
+                </Text>
+                <Text
+                  style={[
+                    GetDashboardScreenStyles(Android_Theme_Light)
+                      .textBalanceDecimalAmount,
+                  ]}
+                >
+                  {AmountSeperation(item.amount)[1]}
+                </Text>
+              </View>
+
+
+          
 
           <CommonButton
             type={"1"}
+            height={40}
             width={"100%"}
             title={"View More"}
             fontFamily={Android_Theme_Light.POPPINS_REGULAR}
@@ -149,7 +185,7 @@ class FixedDepositsScreen extends Component {
 
   handleBack = () => {
     try {
-      this.props.navigation.navigate("InvestScreen");
+      this.props.navigation.navigate("InvestMainScreen");
     } catch {}
   };
 

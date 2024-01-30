@@ -49,12 +49,18 @@ import Icon_plus_Android from "../assets/icons/android/Icon_plus.svg"
 import Icon_plus_Ios from "../assets/icons/ios/Icon_plus.svg"
 import Icon_SplashBottom_Android from "../assets/icons/android/Icon_SplashBottom.svg"
 import Icon_SplashBottom_Ios from "../assets/icons/ios/Icon_SplashBottom.svg"
-import Icon_MiLogo_Android from "../assets/icons/android/MI_Logo.svg"
-import Icon_MiLogo_Ios from "../assets/icons/ios/MI_Logo.svg"
+import MiLogo from "../assets/icons/MI_Logo.svg"
 import Icon_BackArrows_Android from "../assets/icons/android/Icon_backArrows.svg"
 import Icon_BackArrows_Ios from "../assets/icons/ios/Icon_backArrows.svg"
 import Icon_Home_Android from "../assets/icons/android/Icon_home.svg"
 import Icon_Home_Ios from "../assets/icons/ios/Icon_home.svg"
+import Icon_DownArrow_Android from "../assets/icons/android/Icon_angleDown.svg"
+import Icon_DownArrow_Ios from "../assets/icons/ios/Icon_angleDown.svg"
+import Background_Dropdown_Select from "../assets/icons/Background_dropdown_select.svg"
+import Icon_GoldLoan_Andrpid from "../assets/icons/android/Icon_GoldLoan.svg"
+import Icon_GoldLoan_Ios from "../assets/icons/ios/Icon_GoldLoan.svg"
+import Icon_Search_Android from "../assets/icons/android/Icon_Search.svg"
+import Icon_Search_Ios from "../assets/icons/ios/Icon_Search.svg"
 
 export default {
   ICON_BACK_ARROW_ANDROID_LIGHT: Icon_BackArrow_Android,
@@ -108,11 +114,17 @@ export default {
   ICON_PLUS_IOS_LIGHT : Icon_plus_Ios,
   ICON_SPLASH_BOTTOM_ANDROID_LIGHT : Icon_SplashBottom_Android,
   ICON_SPLASH_BOTTOM_IOS_LIGHT : Icon_SplashBottom_Ios,
-  ICON_MI_LOGO_ANDROID_LIGHT : Icon_MiLogo_Android,
-  ICON_MI_LOGO_IOS_LIGHT : Icon_MiLogo_Ios,
+  MI_LOGO : MiLogo,
   ICON_BACK_ARROWS_ANDROID_LIGHT : Icon_BackArrows_Android,
   ICON_BACK_ARROWS_IOS_LIGHT : Icon_BackArrows_Ios,
   ICON_HOME_ANDROID_LIGHT : Icon_Home_Android,
-  ICON_HOME_IOS_LIGHT : Icon_Home_Ios
+  ICON_HOME_IOS_LIGHT : Icon_Home_Ios,
+  ICON_DOWN_ARROW_ANDROID_LIGHT : Icon_DownArrow_Android,
+  ICON_DOWN_ARROW_IOS_LIGHT : Icon_DownArrow_Ios,
+  BACKGROUND_DROPDOWN_SELECT : Background_Dropdown_Select,
+  ICON_SEARCH_ANDROID_LIGHT : Icon_Search_Android,
+  ICON_SEARCH_IOS_LIGHT : Icon_Search_Ios,
+  ICON_GOLDLOAN_ANDROID_LIGHT : Icon_GoldLoan_Andrpid,
+  ICON_GOLDLOAN_IOS_LIGHT : Icon_GoldLoan_Ios
 
 };

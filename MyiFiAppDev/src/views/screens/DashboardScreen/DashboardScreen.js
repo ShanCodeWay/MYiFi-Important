@@ -14,14 +14,16 @@ import GetDashboardScreenStyles from "./DashboardScreenStyles";
 import CommonCardButton from "../../components/Common/CommonCardButton";
 import Icon_arrowUp from "../../../assets/icons/Icon_arrowUp.svg";
 import Icon_arrowDown from "../../../assets/icons/Icon_arrowDown.svg";
-import { AmountSeperation, AmountSeperationDecimal } from "../../../utils/helpers";
- 
+import Index from "../../../configs/Index"; 
+
+import { AmountSeperation, GetGreeting } from "../../../utils/helpers";
 //Done by: Dinuranga 23/01/05
 class DashboardScreen extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      UserName: 'Hi Dhamitha',
       Balance: 6700450.35,
     };
   }
@@ -78,12 +80,34 @@ class DashboardScreen extends Component {
     },
   ];
 
+
+  handleSendButton = () => {
+    try {
+      this.props.navigation.navigate("FundTransferScreen1");
+    } catch {}
+  };
+
   handleInvestButton = () => {
     try {
-      this.props.navigation.navigate("InvestScreen");
+      this.props.navigation.navigate("InvestMainScreen");
     } catch {}
   };
   handlePaymentButton = () => {
+    try {
+      this.props.navigation.navigate(Index.BILL_1);
+    } catch {}
+  };
+  handleLeasingLoanButton = () => {
+    try {
+      this.props.navigation.navigate('LeasingLoanMainScreen');
+    } catch {}
+  };
+  handleTransferButton = () => {
+    try {
+      this.props.navigation.navigate(Index.FUND_1);
+    } catch {}
+  };
+  handleLeasingLoas = () => {
     try {
       this.props.navigation.navigate("BillPayement");
     } catch {}
@@ -92,6 +116,12 @@ class DashboardScreen extends Component {
   handleBillerManagement = () => {
     try {
       this.props.navigation.navigate("BillerManagementScreen");
+    } catch {}
+  };
+
+  handleSettings = () => {
+    try {
+      this.props.navigation.navigate("SettingsScreen");
     } catch {}
   };
 
@@ -191,7 +221,8 @@ class DashboardScreen extends Component {
           <View
             style={[GetDashboardScreenStyles(Android_Theme_Light).titleBarView]}
           >
-            <TouchableOpacity>
+            <TouchableOpacity 
+            onPress={this.handleSettings}>
               <Android_Theme_Light.ICON_DRAWERMENU />
             </TouchableOpacity>
 
@@ -205,14 +236,14 @@ class DashboardScreen extends Component {
                   GetDashboardScreenStyles(Android_Theme_Light).textUserName,
                 ]}
               >
-                Hi Dhamitha,
+              {this.state.UserName}
               </Text>
               <Text
                 style={[
                   GetDashboardScreenStyles(Android_Theme_Light).textGreeting,
                 ]}
               >
-                Good Morning!
+              {GetGreeting()} 
               </Text>
             </View>
 
@@ -293,6 +324,7 @@ class DashboardScreen extends Component {
               height={64}
               icon={Android_Theme_Light.ICON_SEND}
               text={"Send"}
+              onPress={() => this.handleSendButton()}
             />
             <CommonCardButton
               width={"100%"}
@@ -313,6 +345,7 @@ class DashboardScreen extends Component {
               height={64}
               icon={Android_Theme_Light.ICON_LOAN}
               text={"Leasing/ Loans"}
+              onPress={() => this.handleLeasingLoanButton()}
             />
             <CommonCardButton
               width={"100%"}
@@ -345,12 +378,12 @@ class DashboardScreen extends Component {
               <this.EasyAcessButton
                 title={"Transfer"}
                 icon={Android_Theme_Light.ICON_EXTERNALOPEN}
-                onPress={null}
+                onPress={() => this.handleTransferButton()}
               />
               <this.EasyAcessButton
                 title={"Payments"}
                 icon={Android_Theme_Light.ICON_PAYMENT}
-                onPress={null}
+                onPress={() => this.handlePaymentButton()}
               />
 
               <this.EasyAcessButton
@@ -381,6 +414,9 @@ class DashboardScreen extends Component {
               />
             </View>
           </View>
+
+
+          
         </View>
       </SafeAreaView>
     );

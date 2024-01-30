@@ -11,6 +11,7 @@ import GetFixedDepositsViewScreenStyles from "./FixedDepositsViewScreenStyles";
 import Index from "../../../../configs/Index";
 import CommonCardButton from "../../../components/Common/CommonCardButton";
 import CommonSummeryView from "../../../components/Common/SummeryView/CommonSummeryView";
+import { AmountSeperation } from "../../../../utils/helpers";
 
 class FixedDepositsViewScreen extends Component {
   constructor(props) {
@@ -58,54 +59,7 @@ class FixedDepositsViewScreen extends Component {
     },
   ];
 
-  SingleSummeryView = ({ item, index }) => {
-    const isEven = index % 2 === 0;
 
-    return (
-      <View
-        style={{
-          width: "50%",
-          height: 80,
-          borderRightColor: isEven ? Android_Theme_Light.DARK_GRAY_COLOR : null,
-          borderRightWidth: isEven ? 1 : 0,
-        }}
-      >
-        <View style={{ flex: 1, justifyContent: "flex-end" }}>
-          <Text
-            style={{
-              paddingLeft: 10,
-              fontSize: Android_Theme_Light.FONT_SIZE_SMALL,
-              fontFamily: Android_Theme_Light.POPPINS_REGULAR,
-              color: Android_Theme_Light.DARK_GRAY_COLOR,
-            }}
-          >
-            {item.label}
-          </Text>
-        </View>
-
-        <View
-          style={{
-            flexDirection: "row",
-            height: 1,
-            width: "100%",
-            backgroundColor: Android_Theme_Light.DARK_GRAY_COLOR,
-          }}
-        />
-        <View style={{ flex: 1 }}>
-          <Text
-            style={{
-              paddingLeft: 10,
-              fontSize: Android_Theme_Light.FONT_SIZE_LARGE,
-              fontFamily: Android_Theme_Light.POPPINS_MEDIUM,
-              color: Android_Theme_Light.DEEP_BLACK_COLOR,
-            }}
-          >
-            {item.value}
-          </Text>
-        </View>
-      </View>
-    );
-  };
 
   componentDidMount() {
     try {
@@ -174,7 +128,25 @@ class FixedDepositsViewScreen extends Component {
             >
               {this.state.FdObject.date}
             </Text>
-            <Text
+            
+            <View
+              style={[GetCommonStyles(Android_Theme_Light).amountContainer]}
+            >
+              <Text style={[GetCommonStyles(Android_Theme_Light).amountRsText]}>
+                {"Rs "}
+              </Text>
+              <Text
+                style={[GetCommonStyles(Android_Theme_Light).amountIntegerText]}
+              >
+                {AmountSeperation(this.state.FdAmount)[0]}
+              </Text>
+              <Text
+                style={[GetCommonStyles(Android_Theme_Light).amountDecimalText]}
+              >
+                {AmountSeperation(this.state.FdAmount)[1]}
+              </Text>
+            </View>
+            {/* <Text
               style={[
                 GetFixedDepositsViewScreenStyles(Android_Theme_Light)
                   .TextTotalAmount,
@@ -185,7 +157,7 @@ class FixedDepositsViewScreen extends Component {
                   /\B(?=(\d{3})+(?!\d))/g,
                   ","
                 )}
-            </Text>
+            </Text> */}
           </View>
 
           {/* Middle Container */}
@@ -214,6 +186,9 @@ class FixedDepositsViewScreen extends Component {
               height={60}
               icon={Android_Theme_Light.ICON_PAYNOW}
               text={"Make a Payment"}
+              onPress={() =>
+                this.props.navigation.navigate("MakeAPayementScreen")
+              }
             />
 
             <CommonCardButton

@@ -5,7 +5,7 @@
   
   import Index from "../../../configs/Index";
   import CommonInputField from "../../components/Common/TextInput/CommonInputField";
-  import CommonSpinner from "../../components/Common/CommonSpinner"; 
+  import SelectDropDown from "../../components/Common/Dropdown/SelectDropDown"; 
   import MainTitleBar from "../../components/Common/TitleBar/MainTitleBar";
   import CommonButton from "../../components/Common/MainButton/CommonButton";
   import PaginationIndicator from "../../components/Common/PageIndicator/PageIndicator";
@@ -27,7 +27,11 @@
       
       this.state = {
         scrollEnabled : false,
-        selectedName  : null,
+        SelectedQuestion : null,
+        SelectedQuestionLabel:'',
+        SecurityQuestionList : [
+          {label:"WHAT IS YOUR PET NAME", value:1}, {label:"WHAT IS YOUR NICK NAME", value:2}
+        ]
       };
     }
     
@@ -38,7 +42,7 @@
 
       } 
       catch (Error) {
-        console.log("[SignupScreen2] - componentDidMount Ex: ", Error);
+        console.log("[Signup_PasswordScreen] - componentDidMount Ex: ", Error);
       }
     }
 
@@ -46,18 +50,29 @@
       try {
       } 
       catch (Error) {
-        console.log("[SignupScreen2] - componentWillUnmount Ex: ", Error);
+        console.log("[Signup_PasswordScreen] - componentWillUnmount Ex: ", Error);
       }
     }
 
-    handleNameSelection = (selectedName) => {
+    HandleSecQuestion = (SelectVal) => {
       
       try {
+
+        console.log('SelectVal--',SelectVal)
+
+        var QuestionLabel = this.state.SecurityQuestionList.find(option => option.value == SelectVal);
+        var QuestionLabeltmp = this.state.SecurityQuestionList.filter((option) => option.value !== SelectVal)
+
+        console.log('QuestionLabel--',QuestionLabel)
+        console.log('QuestionLabeltmp--',QuestionLabeltmp)
         
-        this.setState({ selectedName });
+        this.setState({ 
+          SelectedQuestion:SelectVal,
+          SelectedQuestionLabel: QuestionLabel.label
+        });
       }
       catch (Error) {
-        console.log("[SignupScreen2] - handleNameSelction Ex: ", Error);
+        console.log("[Signup_PasswordScreen] - HandleSecQuestion Ex: ", Error);
       }
     };
 
@@ -67,7 +82,7 @@
         console.log("Next button pressed to Navigate to SignupScreen3");
       }
       catch (error){ 
-        console.log("[SignupScreen2] - OnNextButtonPress Ex: ",error);
+        console.log("[Signup_PasswordScreen] - OnNextButtonPress Ex: ",error);
       }
     };
 
@@ -77,7 +92,7 @@
         console.log("left pressed to Navigate to SignupScreen1");
       }
       catch (error){ 
-        console.log("[SignupScreen2] - OnBackButtonPress Ex: ",error);}
+        console.log("[Signup_PasswordScreen] - OnBackButtonPress Ex: ",error);}
       
     };
 
@@ -86,10 +101,6 @@
     }
 
     render() {
-
-      const SecurityQuestion = [
-        {label:"WHAT IS YOUR PET NAME", value:1}, {label:"WHAT IS YOUR NICK NAME", value:1}
-      ]
 
       return (
         
@@ -133,20 +144,20 @@
             
               <View style= {GetSignup_PasswordScreenStyles(Android_Theme_Light).middleView}>
       
-                <CommonSpinner
+                <SelectDropDown
                   title = {"Security Question"}
-                  width = {"100%"}
-                  data={SecurityQuestion}
+                  //width = {"100%"}
+                  data={this.state.SecurityQuestionList}
                   placeholder = {"Select security question"}
-                  value = {this.state.selectedName}
-                  lable = {this.state.selectedName}
+                  value = {this.state.SelectedQuestion}
+                  lable = {this.state.SelectedQuestionLabel}
                   onRef = {(ref) => (this.parentReferenceItem = ref)}
-                  parentReferenceItem= {this.handleNameSelection}/>
+                  parentReferenceItem= {this.HandleSecQuestion}/>
                 
                 <View style = {{height:10}}/>
 
                 <CommonInputField
-                  value = {this.state.selectedName}
+                  value = {""}
                   title = {"Security Answer"}
                   placeholder = {"Enter Your Security Answer"}
                   onInputChange = {(text) => this.handlePasswordInputChange(text)}

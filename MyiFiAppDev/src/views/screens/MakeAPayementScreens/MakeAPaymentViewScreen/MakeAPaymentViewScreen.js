@@ -12,6 +12,7 @@ import Index from "../../../../configs/Index";
 import CommonCardButton from "../../../components/Common/CommonCardButton";
 import CommonSummeryView from "../../../components/Common/SummeryView/CommonSummeryView";
 import CommonButton from "../../../components/Common/MainButton/CommonButton";
+import { AmountSeperation } from "../../../../utils/helpers";
 
 // done by: Randima 2024/01/23
 class MakeAPaymentViewScreen extends Component {
@@ -19,44 +20,13 @@ class MakeAPaymentViewScreen extends Component {
     super(props);
 
     this.state = {
-      //Date: "2023-11-23",
-      FdAmount: 300000,
+      // Date: "2023-11-23",
+      FdAmount: "",
+      FDAccountNumber: "",
+      FDPayNowArray: [],
     };
   }
-  InvestmentsList = [
-    {
-      label: "Recipient",
-      value: "ATPD Jayamaha",
-    },
-    {
-      label: "From",
-      value: "",
-    },
-    {
-      label: "Nick Name",
-      value: "",
-    },
-    {
-      label: "Time",
-      value: "",
-    },
-    {
-      label: "Type",
-      value: "",
-    },
-    {
-      label: "Date",
-      value: "",
-    },
-    {
-      label: "Reference",
-      value: "",
-    },
-    {
-      label: "Remarks",
-      value: "gold loan",
-    },
-  ];
+  
 
   SingleSummeryView = ({ item, index }) => {
     const isEven = index % 2 === 0;
@@ -109,7 +79,7 @@ class MakeAPaymentViewScreen extends Component {
 
   handleNextButtonPress = () => {
     try {
-      this.props.navigation.navigate("MakeAPaymentOtpScreen");
+      this.props.navigation.navigate("MakeAPaymentOtpScreen",{amountPayed: this.state.FdAmount});
       console.log("button pressed to navigate to MakeAPaymentOtpScreen");
     } catch (error) {
       console.log("[MakeAPaymentViewScreen] - Next_Button - Error ", error);
@@ -118,6 +88,23 @@ class MakeAPaymentViewScreen extends Component {
 
   componentDidMount() {
     try {
+      console.log("this.props.params.data", this.props.route.params.data);
+      console.log("this.props.params.amountEntered", this.props.route.params.amountEntered)
+      
+      this.setState({
+        FDPayNowArray: this.props.route.params.data.map((item) => {
+          return {
+            label: item.key,
+            value: item.value,
+          };
+        }),
+        
+        FdAmount : this.props.route.params.amountEntered
+      },
+      
+      );
+
+
     } catch (Error) {
       console.log(
         "[MakeAPaymentViewScreen] - componentDidMount() EX: " + Error
@@ -134,13 +121,18 @@ class MakeAPaymentViewScreen extends Component {
     }
   }
 
-
+  handleBack = () => {
+    try {
+      this.props.navigation.replace("MakeAPayementScreen");
+    } catch (error) {
+      console.log("[MakeAPaymentViewScreen] - handleBack - Error ", error);
+    }
+  };
 
   render() {
     return (
       <SafeAreaView style={GetCommonStyles(Android_Theme_Light).safeAreaView}>
         <View style={GetCommonStyles(Android_Theme_Light).mainContainer}>
-
           {/* Upper Container */}
           <View
             style={[
@@ -166,18 +158,24 @@ class MakeAPaymentViewScreen extends Component {
               {"Make a payment"}
             </Text>
             <View style={{ height: 30 }}></View>
-            <Text
-              style={[
-                GetFixedDepositsViewScreenStyles(Android_Theme_Light)
-                  .TextTotalAmount,
-              ]}
+
+            <View
+              style={[GetCommonStyles(Android_Theme_Light).amountContainer]}
             >
-              {"Rs." +
-                this.state.FdAmount.toString().replace(
-                  /\B(?=(\d{3})+(?!\d))/g,
-                  ","
-                )}
-            </Text>
+              <Text style={[GetCommonStyles(Android_Theme_Light).amountRsText]}>
+                {"Rs "}
+              </Text>
+              <Text
+                style={[GetCommonStyles(Android_Theme_Light).amountIntegerText]}
+              >
+                {AmountSeperation(this.state.FdAmount)[0]}
+              </Text>
+              <Text
+                style={[GetCommonStyles(Android_Theme_Light).amountDecimalText]}
+              >
+                {AmountSeperation(this.state.FdAmount)[1]}
+              </Text>
+            </View>
           </View>
 
           <View style={{ height: 10 }}></View>
@@ -190,12 +188,12 @@ class MakeAPaymentViewScreen extends Component {
                 .middleContainer
             }
           >
-          <CommonSummeryView
-            data={this.InvestmentsList}
-            width={"90%"}
-            numColumns={2}
-            TextColor={Android_Theme_Light.DARK_GRAY_COLOR}
-          />
+            <CommonSummeryView
+              data={this.state.FDPayNowArray}
+              width={"90%"}
+              numColumns={2}
+              TextColor={Android_Theme_Light.DARK_GRAY_COLOR}
+            />
           </View>
 
           {/* Bottom Container Start */}
@@ -205,15 +203,15 @@ class MakeAPaymentViewScreen extends Component {
                 .bottomContainer
             }
           >
-            <Android_Theme_Light.ICON_MI_LOGO_DESCRIPTION_ANDROID/>
+            <Android_Theme_Light.ICON_MI_LOGO_DESCRIPTION_ANDROID />
             <CommonButton
-                type={"1"} // 0 or 1
-                text={""}
-                title={"Next"}
-                width={"100%"}
-                backgroundColor={Android_Theme_Light.DARK_BLUE_COLOR}
-                onPress={this.handleNextButtonPress}
-              />
+              type={"1"} // 0 or 1
+              text={""}
+              title={"Next"}
+              width={"50%"}
+              backgroundColor={Android_Theme_Light.DARK_BLUE_COLOR}
+              onPress={this.handleNextButtonPress}
+            />
           </View>
 
           {/* Bottom Bar */}

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { View, TextInput, StyleSheet, Image, Text } from "react-native";
 import GetCommonInputFieldStyle from "./CommonInputFieldStyles";
-import Colors from "../../../../styles/Colors";
 import { Android_Theme_Light } from "../../../../styles/Themes";
 
 const CommonInputField = (props) => {
@@ -40,18 +39,23 @@ const CommonInputField = (props) => {
       const { title } = props;
 
       return (
-        <Text style={GetCommonInputFieldStyle(Android_Theme_Light).labelText}>
-          {title.split("").map((char, index) => (
-            <Text
-              key={index}
-              style={{
-                color: char === '*' ? 'red' : Colors.Dark_Blue,
-              }}
-            >
-              {char}
-            </Text>
-          ))}
-        </Text>
+        <View style = {GetCommonInputFieldStyle(Android_Theme_Light).labelContainer}>
+
+          <Text style={GetCommonInputFieldStyle(Android_Theme_Light).labelText}>
+            {title.split("").map((char, index) => (
+              <Text
+                key={index}
+                style={{
+                  color: char === '*' ? 'red' : Android_Theme_Light.DARK_BLUE_COLOR,
+                }}
+              >
+                {char}
+              </Text>
+            ))}
+          </Text>
+
+        </View>
+  
       );
     } catch (error) {
       console.log("[CommonInputField] -SetLabel- Error ", error);
@@ -61,7 +65,7 @@ const CommonInputField = (props) => {
   const FormatCurrency = (value) => {
     try {
       const formattedValue = (value / 100).toFixed(2);
-      return `LKR: ${formattedValue.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+      return `${formattedValue.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
     } catch (error) {
       console.log("[CommonInputField] -FormatCurrency- Error ", error);
     }
@@ -90,7 +94,7 @@ const CommonInputField = (props) => {
             secureTextEntry={props.isSecureText == null ? false : props.isSecureText}
             keyboardType={props.type === 'currency' ? 'numeric' : props.keyboardType == null ? 'default' : props.keyboardType == 1 ? 'numeric' : props.keyboardType == 2 ? 'email-address' : 'default'}
             placeholder={props.placeholder}
-            placeholderTextColor={Colors.GRAY}
+            placeholderTextColor={Android_Theme_Light.GRAY_COLOR}
             onChangeText={OnChangeText}
             value={inputValue}
             ref={props.inputRef == null ? null : props.inputRef}
@@ -102,7 +106,7 @@ const CommonInputField = (props) => {
           />
           {props.icon == null ? null : (
             <View style={GetCommonInputFieldStyle(Android_Theme_Light).iconContainer}>
-              <props.icon fill={inputValue ? "#00377B" : Android_Theme_Light.GRAY_COLOR} />
+              <props.icon fill={inputValue ? Android_Theme_Light.BLUE_COLOR : Android_Theme_Light.GRAY_COLOR} />
             </View>
           )}
         </View>

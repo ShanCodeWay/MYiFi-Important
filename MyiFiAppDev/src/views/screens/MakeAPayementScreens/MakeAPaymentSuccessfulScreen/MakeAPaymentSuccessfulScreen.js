@@ -18,6 +18,7 @@ import {
   Android_Theme_Dark,
 } from "../../../../styles/Themes";
 import BottomTitleBar from "../../../components/Common/BottomTitleBar";
+import { AmountSeperation } from "../../../../utils/helpers";
 
 // done by: Randima 2024/01/24
 class MakeAPaymentSuccessfulScreen extends Component {
@@ -26,13 +27,19 @@ class MakeAPaymentSuccessfulScreen extends Component {
 
     this.state = {
       //Date: "2023-11-23",
-      FdAmount: 300000,
+      amountInSummaryView: "",
     };
   }
 
   componentDidMount() {
     try {
       StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
+      this.setState({
+
+        amountInSummaryView : this.props.route.params.amountInSummary
+      },
+      
+      );
     } catch (Error) {
       console.log(
         "[MakeAPaymentSuccessfulScreen] - componentDidMount - Error ",
@@ -132,18 +139,23 @@ class MakeAPaymentSuccessfulScreen extends Component {
                 {"Success"}
               </Text>
 
-              <Text
-                style={[
-                  GetFixedDepositsViewScreenStyles(Android_Theme_Light)
-                    .TextTotalAmount,
-                ]}
-              >
-                {"Rs." +
-                  this.state.FdAmount.toString().replace(
-                    /\B(?=(\d{3})+(?!\d))/g,
-                    ","
-                  )}
+              <View
+              style={[GetCommonStyles(Android_Theme_Light).amountContainer]}
+            >
+              <Text style={[GetCommonStyles(Android_Theme_Light).amountRsText]}>
+                {"Rs "}
               </Text>
+              <Text
+                style={[GetCommonStyles(Android_Theme_Light).amountIntegerText]}
+              >
+                 {  AmountSeperation(this.state.amountInSummaryView)[0]}
+              </Text>
+              <Text
+                style={[GetCommonStyles(Android_Theme_Light).amountDecimalText]}
+              >
+                 {AmountSeperation(this.state.amountInSummaryView)[1]}
+              </Text>
+            </View>
             </View>
 
             {/* <View style={{ height: 50 }}></View> */}

@@ -34,7 +34,7 @@ export default GetSplashScreenStyles = (theme) => {
     },
 
     titleText:{
-      fontSize: theme.FONT_SIZE_HEADER_ONE_MEDIUM,
+      fontSize: theme.FONT_SIZE_HEADER_TWO_MEDIUM,
       fontFamily:theme.POPPINS_MEDIUM,
       color: theme.BACKGROUND_COLOR,
       marginLeft: 20,

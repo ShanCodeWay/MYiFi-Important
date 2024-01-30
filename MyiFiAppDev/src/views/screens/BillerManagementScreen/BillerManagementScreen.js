@@ -11,7 +11,7 @@ import CommonSmallButton from '../../components/Common/CommonSmallButton';
 import MainTitleBar from "../../components/Common/TitleBar/MainTitleBar";
 
 
-class BillerManagementScreen extends Component {
+class BillerManagementScreen extends Component {             //Done by Nawodya
     constructor(props) {
         super(props);
 
@@ -43,6 +43,15 @@ class BillerManagementScreen extends Component {
     handleLeftButtonPress = () => {
         try {
             this.props.navigation.navigate("DashboardScreen")
+
+
+        } catch {
+
+        }
+    }
+    handlAddBiller = () => {
+        try {
+            this.props.navigation.navigate("AddNewBillerScreen")
 
 
         } catch {
@@ -87,7 +96,7 @@ class BillerManagementScreen extends Component {
                             </View> */}
                             <MainTitleBar
                                 IconLeft={Android_Theme_Light.ICON_BACK_ARROW}
-                                TitleText={"Biller Management"}
+                                //TitleText={"Biller Management"}
                                 TextAlign={'left'}
                                 IconRight={null}
                                 onPressLeft={this.handleLeftButtonPress} />
@@ -119,10 +128,11 @@ class BillerManagementScreen extends Component {
                     <View style={GetBillerManagementScreenStyles(Android_Theme_Light).bottomView}>
                         <View style={GetBillerManagementScreenStyles(Android_Theme_Light).bottomIcon}>
                             <CommonSmallButton
-                                onPress={() => null}
+                                onPress={this.handlAddBiller}
                                 text={"Add Biller"}
                                 width={"50%"}
                                 icon={Android_Theme_Light.ICON_PLUS}
+                           
                             />
                         </View>
                         <BottomTitleBar

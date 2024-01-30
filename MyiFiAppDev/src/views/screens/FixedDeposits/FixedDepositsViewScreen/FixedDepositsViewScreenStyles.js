@@ -16,12 +16,14 @@ export default GetFixedDepositsViewScreenStyles = (theme) => {
       justifyContent: "center",
       alignContent: "center",
       alignItems: "center",
+  
     },
 
     bottomView: {
       alignItems: "flex-end",
       justifyContent: "flex-end",
-      height: 70,
+      height: 60,
+
     },
     TextFD: {
       color: theme.DEEP_BLACK_COLOR,

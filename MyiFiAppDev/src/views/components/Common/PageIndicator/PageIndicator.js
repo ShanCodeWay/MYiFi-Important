@@ -33,8 +33,6 @@ export default PageIndicator = (props) => {
         ArrIndicatorList.push(ArrTotalIndicators)
       }
 
-      console.log('ArrIndicatorList--', ArrIndicatorList)
-
       return ArrIndicatorList.map((obj, index) => {
 
         return (

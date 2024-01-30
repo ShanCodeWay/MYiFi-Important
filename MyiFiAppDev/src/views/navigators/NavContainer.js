@@ -9,9 +9,9 @@ import SplashScreen from "../screens/SplashScreen/SplashScreen.js";
  {/*LOGIN Screen */ }
 import LoginScreen from "../screens/Login/LoginScreen.js";
  {/*SIGNUP Screens */ }
-import SignupScreen1 from "../screens/SignUp/Signup_UsernameScreen.js";
-import SignupScreen2 from "../screens/SignUp/Signup_PasswordScreen.js";
-import SignupScreen3 from "../screens/SignupScreens/SignupScreen3/SignupScreen3.js";
+import Signup_UsernameScreen from "../screens/SignUp/Signup_UsernameScreen.js";
+import Signup_PasswordScreen from "../screens/SignUp/Signup_PasswordScreen.js";
+import Signup_OtpScreen from "../screens/SignUp/Signup_OtpScreen.js";
 import SignupScreen4 from "../screens/SignupScreens/SignupScreen4/SignupScreen4.js";
  {/*FUNDTRANSFER Screens*/}
 import FundTransferScreen1 from "../screens/FundTransferScreens/FundTransferScreen1/FundTransferScreen1";
@@ -20,6 +20,7 @@ import TransferReceiptSuccessScreen from "../screens/FundTransferScreens/Transfe
 import FundTransferOTPScreen from "../screens/FundTransferScreens/FundTransferOTPScreen/FundTransferOTPScreen.js"; 
 {/*DASHBOARD Screen */ }
 import DashboardScreen from "../screens/DashboardScreen/DashboardScreen.js";
+import InvestMainScreen from "../screens/DashboardScreen/Invest/InvestMainScreen.js";
  {/*KYC Screens */ }
 import KYC1Screen from "../screens/KYCScreens/KYC1Screen/KYC1Screen.js";
 import KYC2Screen from "../screens/KYCScreens/KYC2Screen/KYC2Screen.js";
@@ -31,14 +32,20 @@ import KYC6Screen from "../screens/KYCScreens/KYC6Screen/KYC6Screen.js";
 import FixedDepositsScreen from "../screens/FixedDeposits/FixedDepositsScreen.js";
 import FixedDepositsViewScreen from "../screens/FixedDeposits/FixedDepositsViewScreen/FixedDepositsViewScreen.js";
 {/*Bill Payment Screens */ }
-import BillPayement from "../screens/BillPayementScreens/BillPayement/BillPayement.js";
+import BillPayment from "../screens/BillPaymentScreens/BillPayment/BillPayment";
 import BillerManagementScreen from "../screens/BillerManagementScreen/BillerManagementScreen.js";
-import InvestScreen from "../screens/DashboardScreen/InvestScreen/InvestScreen.js";
 {/*Make a Payment Screen*/}
 import MakeAPayementScreen from "../screens/MakeAPayementScreens/MakeAPayementScreen.js";
 import MakeAPaymentViewScreen from "../screens/MakeAPayementScreens/MakeAPaymentViewScreen/MakeAPaymentViewScreen.js";
 import MakeAPaymentOtpScreen from "../screens/MakeAPayementScreens/MakeAPaymentOtpScreen/MakeAPaymentOtpScreen.js";
 import MakeAPaymentSuccessfulScreen from "../screens/MakeAPayementScreens/MakeAPaymentSuccessfulScreen/MakeAPaymentSuccessfulScreen.js";
+import LeasingLoanMainScreen from "../screens/DashboardScreen/LeasingLoan/LeasingLoanMainScreen.js";
+import AddNewBillerScreen from "../screens/BillerManagementScreen/AddNewBillerScreen.js";
+import WelcomeScreen from "../screens/KYCScreens/WelcomeScreen/WelcomeScreen.js";
+
+{ /*LEASING LOAN SCREEN */ }
+import LeasingLoanScreen from "../screens/LeasingLoansScreen/LeasingLoanScreen.js";
+import LeasingLoanViewScreen from "../screens/LeasingLoansScreen/LeasingLoanViewScreen/LeasingLoanViewScreen.js";
 
 
 const Stack = createStackNavigator();
@@ -60,9 +67,9 @@ function NavContainer() {
         <Stack.Screen name="LoginScreen"    component={LoginScreen} />
 
         {/*SIGNUP Screens */ }
-        <Stack.Screen name={Index.SIGNUP_1} component={SignupScreen1} />
-        <Stack.Screen name={Index.SIGNUP_2} component={SignupScreen2} />
-        <Stack.Screen name={Index.SIGNUP_3} component={SignupScreen3} />
+        <Stack.Screen name={Index.SIGNUP_1} component={Signup_UsernameScreen} />
+        <Stack.Screen name={Index.SIGNUP_2} component={Signup_PasswordScreen} />
+        <Stack.Screen name={Index.SIGNUP_3} component={Signup_OtpScreen} />
         <Stack.Screen name={Index.SIGNUP_4} component={SignupScreen4} />
 
         {/*FUNDTRANSFER Screens */ }
@@ -73,9 +80,11 @@ function NavContainer() {
 
         {/*DASHBOARD Screens */ }
         <Stack.Screen name="DashboardScreen"component={DashboardScreen} />
-        <Stack.Screen name="InvestScreen"component={InvestScreen} />
+        <Stack.Screen name="InvestMainScreen"component={InvestMainScreen} />
+        <Stack.Screen name="LeasingLoanMainScreen"component={LeasingLoanMainScreen} />
 
         {/*KYC Screens */ }
+        <Stack.Screen name="WelcomeScreen"     component={WelcomeScreen} />
         <Stack.Screen name="KYC1Screen"     component={KYC1Screen} />
         <Stack.Screen name="KYC2Screen"     component={KYC2Screen} />
         <Stack.Screen name="KYC3Screen"     component={KYC3Screen} />
@@ -90,7 +99,7 @@ function NavContainer() {
         <Stack.Screen name="FixedDepositsViewScreen"     component={FixedDepositsViewScreen} />
 
         {/*Bill Payement Screens */ }
-        <Stack.Screen name={Index.BILL_1}   component={BillPayement}/>
+        <Stack.Screen name={Index.BILL_1}   component={BillPayment}/>
 
         {/* BillerManagementScreen */}
         <Stack.Screen name="BillerManagementScreen"     component={BillerManagementScreen} />
@@ -101,6 +110,13 @@ function NavContainer() {
          <Stack.Screen name="MakeAPaymentOtpScreen" component={MakeAPaymentOtpScreen} />
          <Stack.Screen name="MakeAPaymentSuccessfulScreen" component={MakeAPaymentSuccessfulScreen} />
 
+        <Stack.Screen name="AddNewBillerScreen"     component={AddNewBillerScreen} />
+
+        
+        {/* Lease/Loan Screens */}
+        <Stack.Screen name="LeasingLoanScreen"component={LeasingLoanScreen} />
+        <Stack.Screen name="LeasingLoanViewScreen"component={LeasingLoanViewScreen} />
+   
    
       </Stack.Navigator>
     </NavigationContainer>

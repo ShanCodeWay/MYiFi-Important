@@ -37,7 +37,7 @@ export default GetCommonCardButtonStyles = (theme) => {
       marginRight: 10,
     },
 
-    amountContainer: {
+    BalanceContainer: {
       flex: 1,
       alignItems: "flex-end",
       height: "100%",

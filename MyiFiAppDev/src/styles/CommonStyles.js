@@ -87,8 +87,8 @@ export const GetCommonStyles = (theme) => {
     },
 
     titleContainertitleText: {
-      fontFamily: theme.POPPINS_REGULAR,
-      fontSize: theme.FONT_SIZE_HEADER_TWO_MEDIUM,
+      fontFamily: theme.POPPINS_MEDIUM,
+      fontSize: theme.FONT_SIZE_HEADER_ONE,
       color: theme.DARK_BLUE_COLOR,
       width: "100%",
     },

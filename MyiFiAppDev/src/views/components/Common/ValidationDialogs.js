@@ -3,9 +3,10 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { View, Text } from 'react-native';
-import ValidationDialogsStyles from './ValidationDialogsStyles';
+import GetValidationDialogStyles from './ValidationDialogsStyles'
 import CommonSmallButton from '../Common/CommonSmallButton'
 import Fonts from "../../../styles/Fonts";
+import { Android_Theme_Light } from "../../../styles/Themes";
 
 
 const ValidationDialogs = (props) => {
@@ -38,26 +39,26 @@ const ValidationDialogs = (props) => {
         return (
 
                 (isDialogVisible 
-                ? <View style={ValidationDialogsStyles.parientView}>
-                        <View style={ValidationDialogsStyles.upperView}>
-                                <Text style={ValidationDialogsStyles.validationDialogstitle}>{props.title}</Text>
-                                <Text style={ValidationDialogsStyles.validationDialogsdiscription}>{props.discription}</Text>
+                ? <View style={GetValidationDialogStyles(Android_Theme_Light).parientView}>
+                        <View style={GetValidationDialogStyles(Android_Theme_Light).upperView}>
+                                <Text style={GetValidationDialogStyles(Android_Theme_Light).validationDialogstitle}>{props.title}</Text>
+                                <Text style={GetValidationDialogStyles(Android_Theme_Light).validationDialogsdiscription}>{props.discription}</Text>
                         </View>
-                        <View style={ValidationDialogsStyles.middleView}>
-                                <Text style={ValidationDialogsStyles.validationDialogsmessage}>{props.message}</Text>
+                        <View style={GetValidationDialogStyles(Android_Theme_Light).middleView}>
+                                <Text style={GetValidationDialogStyles(Android_Theme_Light).validationDialogsmessage}>{props.message}</Text>
                         </View>
-                        <View style={ValidationDialogsStyles.bottomView}>
+                        <View style={GetValidationDialogStyles(Android_Theme_Light).bottomView}>
                                 <CommonSmallButton 
                                         onPress={onPressYes}
                                         text={"Yes"}
                                         width={"40%"}
-                                        fontFamily={Fonts.POPPINS_BOLD}/>
+                                        fontFamily={Android_Theme_Light.POPPINS_BOLD}/>
                                         
                                 <CommonSmallButton
                                         onPress={onPressNo}
                                         text={"No"}
                                         width={"40%"}
-                                        fontFamily={Fonts.POPPINS_BOLD}/>
+                                        fontFamily={Android_Theme_Light.POPPINS_BOLD}/>
                         </View>
                 </View>
                 : null)

@@ -97,47 +97,53 @@
     render() {
       const { otp, timer } = this.state;
       return (
+ 
+        <SafeAreaView style={GetCommonStyles(Android_Theme_Light).safeAreaView}>
+     
+     <MainTitleBar
+       IconLeft = {Android_Theme_Light.ICON_BACK_ARROW}
+       onPressLeft   = {()=>this.OnBackButtonPress() }/>
+       
+     <PageIndicator
+       totalNoOfPages = {3}
+       pageNumber = {3}/> 
+   
+     {/*<KeyboardAwareScrollView
+         contentContainerStyle       = {{ flexGrow: 1 }}
+         keyboardShouldPersistTaps   = "handled"
+         extraScrollHeight           = {50}
+         enableOnAndroid             = {true}
+         enableAutomaticScroll       = {false}
+         keyboardOpeningTime         = {300}
+         scrollToPosition            = {{ x: 0, y: 0, animated: true }}
+         onKeyboardDidShow={(frames) => {
+           
+         }}
+         onKeyboardDidHide={(frames) => {
+         
+         }}
+       >*/}
 
-        <> 
-        
-         <SafeAreaView style = {GetCommonStyles(Android_Theme_Light).safeAreaView}>
-        
-         <MainTitleBar
-          IconLeft   = {Android_Theme_Light.ICON_BACK_ARROW}
-          TitleText  = {""}
-          TextAlign  = {'left'}
-          IconRight  = {null}
-          onPressLeft= {this.handleLeftButtonPress }
-         />
+     
 
-          
-        <PaginationIndicator
-          text      = "Step 3/3"
-          pageNumber= {3}
-        /> 
-        
-        <KeyboardAwareScrollView
-              contentContainerStyle       = {{ flexGrow: 1 }}
-              keyboardShouldPersistTaps   = "handled"
-              extraScrollHeight           = {50}
-              enableOnAndroid             = {true}
-              enableAutomaticScroll       = {false}
-              keyboardOpeningTime         = {300}
-              scrollToPosition            = {{ x: 0, y: 0, animated: true }}
-              onKeyboardDidShow={(frames) => {
-                
-              }}
-              onKeyboardDidHide={(frames) => {
-              
-              }}
-         >
+     <View style = {GetCommonStyles(Android_Theme_Light).mainContainer}>
 
-<View style= {GetCommonStyles(Android_Theme_Light).mainContainer}>
-        
-          <View style= {GetSignupScreenStyles3(Android_Theme_Light).topView} >
-          <View style= {GetSignupScreenStyles3(Android_Theme_Light).titleView} >
+       <KeyboardAwareScrollView
+         keyboardShouldPersistTaps="always"
+         behavior="padding"
+         //keyboardShouldPersistTaps="handled"
+         enableAutomaticScroll={false}
+         enableOnAndroid = {true}
+         //extraScrollHeight={150}
+         //contentInset={{ bottom: this.state.contentBottom }}
+         //onKeyboardWillHide={() => this.setState({ contentBottom: 0 })}
+         //onKeyboardDidHide={() => this.setState({ contentBottom: 0 })}
+         //onKeyboardDidShow={() => this.setState({ contentBottom: 0, })}
+         contentContainerStyle={GetCommonStyles(Android_Theme_Light).keyboardAwareView}>
 
-          <Text style= {GetSignupScreenStyles3(Android_Theme_Light).mainTitle}>
+         <View style = {GetCommonStyles(Android_Theme_Light).topTitleContainer} >
+     
+           <Text style = {GetCommonStyles(Android_Theme_Light).textStyleH1Medium}>
             OTP
           </Text>
           </View>
@@ -146,7 +152,7 @@
             ? 'Enter the one-time password shared to +94717718910'
             : 'Oh no,Your time is up. If you have not received the OTP yeet,try resending.or contact our call center for assistence'}
           </Text>
-  </View>       
+       
   <View style = {{height:20}}/>
           <View style = {GetSignupScreenStyles3(Android_Theme_Light).middleView}>
           <View style = {{height:20}}/>
@@ -204,7 +210,9 @@
 
  
       
-  <View style = {GetSignupScreenStyles3(Android_Theme_Light).bottomView}>
+      </KeyboardAwareScrollView>
+
+      <View style = {GetCommonStyles(Android_Theme_Light).bottombuttonContainer}>
 
            <CommonButton
               type        = '1'
@@ -214,20 +222,15 @@
               onPress = {this.handleLeftButtonPress}
               textSize= {20}
             />
-            
-  </View>
- 
- 
-  </View>   
 
- </KeyboardAwareScrollView>
- 
-</SafeAreaView>
- </>
+</View>
+    
+    </View>
+      
+  </SafeAreaView>
 
-        
-      );
-    }
-  }
+);
+}
+}
 
 export default SignupScreen3;

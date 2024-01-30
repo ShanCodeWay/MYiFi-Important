@@ -9,22 +9,28 @@ export default GetCommonInputFieldStyle = (theme) => {
   const CommonInputFieldStyles = StyleSheet.create({
 
     labelText: {
-      fontFamily : theme.POPPINS_BOLD,
-      color      : theme.DARK_BLUE_COLOR,
-      fontSize   : theme.FONT_SIZE_MEDIUM,
+      fontFamily : theme.POPPINS_MEDIUM,
+      color : theme.DEEP_BLACK_COLOR,
+      fontSize : theme.FONT_SIZE_CAPTION_ONE_MEDIUM,
     },
     
     parentContainer: {
       flexDirection: "column",
       alignItems: "flex-start",
-      //height: 100,
+      height: 63,
+    },
+
+    labelContainer: {
+      alignItems: 'flex-start',
+      width:'100%',
+      height:15,
     },
   
     inputContainer: {
       flexDirection: "row",
       alignItems: "center",
       width:'100%',
-      height:48,
+      flex:1,
       borderBottomWidth: 1,
       borderBottomColor: theme.GRAY_COLOR,
     },

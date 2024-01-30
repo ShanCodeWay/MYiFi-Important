@@ -102,7 +102,10 @@ export default GetDashboardScreenStyles = (theme) => {
       fontSize: theme.FONT_SIZE_LARGE,
       fontFamily: theme.POPPINS_MEDIUM,
     },
-    textTopUP: {},
+    textTopUP: {
+      color: theme.WHITE_COLOR,
+
+    },
 
     textBalance: {
       color: theme.DEEP_BLACK_COLOR,
