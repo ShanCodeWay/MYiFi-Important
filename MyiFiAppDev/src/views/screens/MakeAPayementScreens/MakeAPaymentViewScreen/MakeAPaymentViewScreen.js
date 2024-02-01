@@ -1,15 +1,14 @@
-import React, { Component } from "react"; //Nawodya
+// MakeAPaymentViewScreen.js
+
+import React, { Component } from "react";
 import { View, Text, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Main_Logo from "../../../../assets/icons/Icon_MI_LOGO_Description.svg";
 import Icon_backArrows from "../../../../assets/icons/Icon_backArrows.svg";
 import Icon_home from "../../../../assets/icons/Icon_home.svg";
 import BottomTitleBar from "../../../components/Common/BottomTitleBar";
 import { Android_Theme_Light } from "../../../../styles/Themes";
 import { GetCommonStyles } from "../../../../styles/CommonStyles";
 import GetMakeAPaymentViewScreenStyles from "./MakeAPaymentViewScreenStyles";
-import Index from "../../../../configs/Index";
-import CommonCardButton from "../../../components/Common/CommonCardButton";
 import CommonSummeryView from "../../../components/Common/SummeryView/CommonSummeryView";
 import CommonButton from "../../../components/Common/MainButton/CommonButton";
 import { AmountSeperation } from "../../../../utils/helpers";
@@ -20,7 +19,6 @@ class MakeAPaymentViewScreen extends Component {
     super(props);
 
     this.state = {
-      // Date: "2023-11-23",
       FdAmount: "",
       FDAccountNumber: "",
       FDPayNowArray: [],
@@ -133,6 +131,8 @@ class MakeAPaymentViewScreen extends Component {
     return (
       <SafeAreaView style={GetCommonStyles(Android_Theme_Light).safeAreaView}>
         <View style={GetCommonStyles(Android_Theme_Light).mainContainer}>
+          
+
           {/* Upper Container */}
           <View
             style={[
@@ -180,8 +180,8 @@ class MakeAPaymentViewScreen extends Component {
 
           <View style={{ height: 10 }}></View>
 
-          {/* Middle Container */}
 
+          {/* Middle Container */}
           <View
             style={
               GetMakeAPaymentViewScreenStyles(Android_Theme_Light)
@@ -196,16 +196,18 @@ class MakeAPaymentViewScreen extends Component {
             />
           </View>
 
-          {/* Bottom Container Start */}
+
+          {/* Bottom Container */}
           <View
             style={
               GetMakeAPaymentViewScreenStyles(Android_Theme_Light)
                 .bottomContainer
             }
           >
+            {/* MI_LOGO */}
             <Android_Theme_Light.ICON_MI_LOGO_DESCRIPTION_ANDROID />
             <CommonButton
-              type={"1"} // 0 or 1
+              type={"1"}
               text={""}
               title={"Next"}
               width={"50%"}
@@ -214,12 +216,15 @@ class MakeAPaymentViewScreen extends Component {
             />
           </View>
 
+
           {/* Bottom Bar */}
           <View
             style={
               GetMakeAPaymentViewScreenStyles(Android_Theme_Light).bottomView
             }
           >
+
+            {/* Bottom Title Bar */}
             <BottomTitleBar
               icon1={Icon_backArrows}
               icon2={Icon_home}

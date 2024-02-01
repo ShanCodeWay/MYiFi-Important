@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 
 export default GetKYC6ScreenStyles = (theme) => {
-  const KYC6ScreenStyles = StyleSheet.create({
+  return StyleSheet.create({
     backgroundContainer: {
       flex: 1,
       justifyContent: "center",
@@ -82,8 +82,10 @@ export default GetKYC6ScreenStyles = (theme) => {
       //padding: 10,
     },
 
-   
+    nextButtonContainer: {
+      height: 55,
+      justifyContent: "center",
+    },
+     
   });
-
-  return KYC6ScreenStyles;
 };

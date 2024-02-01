@@ -1,21 +1,16 @@
-// Splash.js
+// MakeAPayementScreen.js
+
 import React, { Component } from "react";
-import { View, Text, Touchable, Modal, Image, FlatList } from "react-native";
-import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
+import { View, Text } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { GetCommonStyles } from "../../../styles/CommonStyles";
 import Icon_backArrows from "../../../assets/icons/Icon_backArrows.svg";
 import Icon_home from "../../../assets/icons/Icon_home.svg";
-import {
-  Android_Theme_Light,
-  Android_Theme_Dark,
-} from "../../../styles/Themes";
-import MainTitleBar from "../../components/Common/TitleBar/MainTitleBar";
+import { Android_Theme_Light } from "../../../styles/Themes";
 import GetMakeAPayementScreenStyles from "./MakeAPayementScreenStyles";
 import CommonButton from "../../components/Common/MainButton/CommonButton";
 import CommonInputField from "../../components/Common/TextInput/CommonInputField";
-import CommonSpinner from "../../components/Common/CommonSpinner";
 import ValidationDialogs from "../../components/Common/ValidationDialogs";
 import CommonSpinnerLong from "../../components/Common/CommonSpinnerLong";
 import BottomTitleBar from "../../components/Common/BottomTitleBar";
@@ -25,24 +20,17 @@ class MakeAPayementScreen extends Component {
   constructor(props) {
     super(props);
     this.TransferFromRef = React.createRef();
-    //this.RemarksInputRef = React.createRef();
     this.AmountInputRef = React.createRef();
     this.RemarksInputRef = React.createRef();
 
     this.state = {
-      selectedAccountFrom: null,
-      selectedAccountType: null,
+     
       isVisibleValidationDialog: false,
-
       selectedAmount: "",
-      //selected_ID: "",
       amount: "",
-      //selectedAccountNum: "",
       selectedAccount: "40011122211",
       valueRemark: "",
-      // isModalVisible: false,
       FdAccountNo: "405205405207",
-      //selectedCity: null,
     };
   }
 
@@ -51,25 +39,20 @@ class MakeAPayementScreen extends Component {
   };
 
   handleValidationDialogYes = () => {
-
     const dataArray = [
       { key: "FD Account No", value: this.state.FdAccountNo },
       { key: "From", value: this.state.selectedAccount },
       { key: "Date", value: "2024-01-01" },
       { key: "Time", value: "15.23" },
-      {key: "Remark", value: this.state.valueRemark},
-      {key: "", value: ""},
+      { key: "Remark", value: this.state.valueRemark },
+      { key: "", value: "" },
     ];
-  
+
     this.props.navigation.navigate("MakeAPaymentViewScreen", {
       data: dataArray,
-      amountEntered: this.state.amount
+      amountEntered: this.state.amount,
     });
 
-    // this.props.navigation.navigate("MakeAPaymentViewScreen", {
-    //   FDANumber: this.state.FdAccountNo,
-    //   remark: this.state.valueRemark,
-    // });
     this.setState({ isVisibleValidationDialog: false });
   };
 
@@ -86,40 +69,15 @@ class MakeAPayementScreen extends Component {
     }
   };
 
-  handleAccountType = (selectedAccountType) => {
-    try {
-      this.setState({ selectedAccountType });
-    } catch (Error) {
-      console.log("[MakeAPayementScreen] - handleNameSelction - Error ", Error);
-    }
-  };
-
-  // toggleModal = () => {
-  //   this.setState((prevState) => ({
-  //     isModalVisible: !prevState.isModalVisible,
-  //   }));
-  // };
-
-  handleAccountFrom = (selectedAccountFrom) => {
-    try {
-      this.setState({ selectedAccountFrom });
-    } catch (Error) {
-      console.log("[TransferMoneyScreen] - handleAccountFrom - Error ", Error);
-    }
-  };
-
-  // handleFDAccountNoChange = (FdAccountNo) => {
-  //   try {
-  //     this.setState({ FdAccountNo: FdAccountNo });
-  //   } catch (Error) {
-
-  //   }
-  // };
   handleAmountInputChange = (amount) => {
     try {
-
-      this.setState({ amount: parseFloat(amount.replace(/,/g, '')) });
-    } catch (Error) {}
+      console.log("*************", amount);
+      this.setState({ amount: parseFloat(amount.replace(/,/g, "")) });
+    } catch (Error) {
+      console.log(
+        "[MakeAPayementScreen] -  handleAmountInputChange() EX: " + Error
+      );
+    }
   };
 
   handleRemarkInputChange = (valueRemark) => {
@@ -128,7 +86,7 @@ class MakeAPayementScreen extends Component {
       console.log("Input value:", valueRemark);
     } catch (Error) {
       console.log(
-        "[TransferMoneyScreen] -  handleRemarkInputChange() EX: " + Error
+        "[MakeAPayementScreen] -  handleRemarkInputChange() EX: " + Error
       );
     }
   };
@@ -160,7 +118,7 @@ class MakeAPayementScreen extends Component {
   componentDidMount() {
     try {
     } catch (Error) {
-      console.log("[TransferMoneyScreen] - componentDidMount() EX: " + Error);
+      console.log("[MakeAPaymentScreen] - componentDidMount() EX: " + Error);
     }
   }
 
@@ -168,20 +126,19 @@ class MakeAPayementScreen extends Component {
     try {
     } catch (Error) {
       console.log(
-        "[TransferMoneyScreen] - componentWillUnmount() EX: " + Error
+        "[MakeAPaymentScreen] - componentWillUnmount() EX: " + Error
       );
     }
   }
 
   render() {
-    const { isModalVisible } = this.state;
+    //const { isModalVisible } = this.state;
     return (
       <SafeAreaView style={GetCommonStyles(Android_Theme_Light).safeAreaView}>
         <KeyboardAwareScrollView
           contentContainerStyle={{
             flexGrow: 1,
             justifyContent: "flex-end",
-            //alignItems: "center",
           }}
           keyboardShouldPersistTaps="handled"
           extraScrollHeight={10}
@@ -193,83 +150,77 @@ class MakeAPayementScreen extends Component {
           onKeyboardDidHide={(frames) => {}}
         >
           <View style={GetCommonStyles(Android_Theme_Light).mainContainer}>
-            {/* <View style={{ height: 40 }}></View> */}
-
-            {/* upperContainer View Starts */}
+            {/* upperContainer */}
             <View
               style={
                 GetMakeAPayementScreenStyles(Android_Theme_Light).upperContainer
               }
             >
               <Text
-                style={[
-                  GetMakeAPayementScreenStyles(Android_Theme_Light).textTitle,
-                ]}
+                style={
+                  GetMakeAPayementScreenStyles(Android_Theme_Light).textTitle
+                }
               >
                 {"Pay Now"}
               </Text>
 
-                <Text
-                style={[
-                  GetMakeAPayementScreenStyles(Android_Theme_Light).textSubTitle,
-                ]}
+              <Text
+                style={
+                  GetMakeAPayementScreenStyles(Android_Theme_Light)
+                    .textSubTitle
+                }
               >
                 {"From"}
               </Text>
-                <CommonSpinnerLong
-                  width={"100%"}
-                  data={[
-                    {
-                      label_1: "40011122211",
-                      label_2: "457,685",
-                      value: "001",
-                    },
-                    {
-                      label_1: "40011122212",
-                      label_2: "546,685.33",
-                      value: "002",
-                    },
-                    {
-                      label_1: "40011122213",
-                      label_2: "757,685.45",
-                      value: "003",
-                    },
-                    {
-                      label_1: "40011122214",
-                      label_2: "36,685.56",
-                      value: "004",
-                    },
-                  ]}
-                  placeholder={this.state.selectedAccount}
-                  lable_1={this.state.selectedAccount || "40011122211"}
-                  lable_2={this.state.selectedAmount || "457,685.54"}
-                  lable_2Show={true}
-                  value={this.state.selected_ID || ""}
-                  onRef={(ref) => (this.parentReferenceItem = ref)}
-                  inputRef={this.transferFrom}
-                  nextInputRef={this.transferTo}
-                  currency={"LKR"}
-                  parentReferenceItem={(label_1, label_2, value) => {
-                    this.setState({
-                      selectedAccount: label_1,
-                      selectedAmount: label_2,
-                      selected_ID: value,
-                    });
-                  }}
-                />
-              
+
+              {/* CommonSpinnerLong  */}
+              <CommonSpinnerLong
+                width={"100%"}
+                data={[
+                  {
+                    label_1: "40011122211",
+                    label_2: "457,685",
+                    value: "001",
+                  },
+                  {
+                    label_1: "40011122212",
+                    label_2: "546,685.33",
+                    value: "002",
+                  },
+                  {
+                    label_1: "40011122213",
+                    label_2: "757,685.45",
+                    value: "003",
+                  },
+                  {
+                    label_1: "40011122214",
+                    label_2: "36,685.56",
+                    value: "004",
+                  },
+                ]}
+                placeholder={this.state.selectedAccount}
+                lable_1={this.state.selectedAccount || "40011122211"}
+                lable_2={this.state.selectedAmount || "457,685.54"}
+                lable_2Show={true}
+                value={this.state.selected_ID || ""}
+                onRef={(ref) => (this.parentReferenceItem = ref)}
+                inputRef={this.transferFrom}
+                nextInputRef={this.transferTo}
+                currency={"LKR"}
+                parentReferenceItem={(label_1, label_2, value) => {
+                  this.setState({
+                    selectedAccount: label_1,
+                    selectedAmount: label_2,
+                    selected_ID: value,
+                  });
+                }}
+              />
             </View>
-            {/* upperContainer View ends */}
 
-            {/* middleContainer View Starts */}
+            {/* middleContainer */}
             <View
-              style={
-                GetMakeAPayementScreenStyles(Android_Theme_Light)
-                  .middleContainer
-              }
+              style={GetMakeAPayementScreenStyles(Android_Theme_Light).middleContainer}
             >
-              {/* <View style={{ height: 5 }}></View> */}
-
               {/* FD Account No */}
               <CommonInputField
                 value={this.state.FdAccountNo}
@@ -277,11 +228,10 @@ class MakeAPayementScreen extends Component {
                 placeholder={""}
                 width={"100%"}
                 icon={Android_Theme_Light.ICON_VERIFIED}
-                onInputChange={()=> null}
+                onInputChange={() => null}
                 nextInputRef={this.AmountInputRef}
                 readOnly={true}
               />
-              {/* <View style={{ height: 5 }}></View> */}
 
               {/* Amount(LKR) */}
               <CommonInputField
@@ -294,7 +244,6 @@ class MakeAPayementScreen extends Component {
                 type={"currency"}
                 width={"100%"}
               />
-              {/* <View style={{ height: 5 }}></View> */}
 
               {/* Remark */}
               <CommonInputField
@@ -307,9 +256,8 @@ class MakeAPayementScreen extends Component {
                 inputRef={this.RemarksInputRef}
               />
             </View>
-            {/* middleContainer View ends */}
 
-            {/* <View style={{ height: 0 }}></View> */}
+            {/* bottomContainer */}
             <View
               style={
                 GetMakeAPayementScreenStyles(Android_Theme_Light)
@@ -317,7 +265,7 @@ class MakeAPayementScreen extends Component {
               }
             >
               <CommonButton
-                type={"1"} // 0 or 1
+                type={"1"}
                 text={""}
                 title={"Next"}
                 width={"50%"}
@@ -332,6 +280,7 @@ class MakeAPayementScreen extends Component {
                 GetMakeAPayementScreenStyles(Android_Theme_Light).bottomView
               }
             >
+              {/* Bottom Title Bar */}
               <BottomTitleBar
                 icon1={Icon_backArrows}
                 icon2={Icon_home}
@@ -342,6 +291,7 @@ class MakeAPayementScreen extends Component {
           </View>
         </KeyboardAwareScrollView>
 
+        {/* ValidationDialogs*/}
         <ValidationDialogs
           title={"Verification"}
           discription={"payment"}

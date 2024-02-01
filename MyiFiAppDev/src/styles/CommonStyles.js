@@ -52,10 +52,18 @@ export const GetCommonStyles = (theme) => {
       textAlign: "center",
     },
 
+    textStyleCaption1MediumPO: {
+      color: theme.DEEP_BLACK_COLOR,
+      fontSize: theme.FONT_SIZE_CAPTION_ONE_MEDIUM,
+      fontFamily: theme.POPPINS_MEDIUM,
+      textAlign: "center",
+    },
+
     TextStyleH2Medium: {
       color: theme.TextStyleH1Color,
       fontSize: 24,
       fontFamily: theme.POPPINS_MEDIUM,
+      textAlign: "center"
     },
     TextStyleH3Bold: {
       color: theme.TextStyleH3Color,

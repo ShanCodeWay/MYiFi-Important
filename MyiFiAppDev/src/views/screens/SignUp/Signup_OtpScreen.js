@@ -3,7 +3,8 @@ import { View, Text, SafeAreaView, StatusBar} from "react-native";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import CommonButton from "../../components/Common/MainButton/CommonButton";
 import MainTitleBar from "../../components/Common/TitleBar/MainTitleBar";
-import PaginationIndicator from "../../components/Common/PageIndicator/PageIndicator";
+import PageIndicator from "../../components/Common/PageIndicator/PageIndicator";
+import OTPTimer from "../../components/Common/OTPTimer/OTPTimer";
 
 import Index from "../../../configs/Index";
 import CommonInputField from "../../components/Common/TextInput/CommonInputField";
@@ -21,9 +22,7 @@ class Signup_OtpScreen extends Component {
         this.inputOTP = React.createRef();
     
         this.state = {
-            scrollEnabled: false,
-            otp : '',
-            timer : 5,
+            timeout:false,
         };
     }
     
@@ -31,15 +30,7 @@ class Signup_OtpScreen extends Component {
 
         try {
       
-            this.interval = setInterval(() => {
-                const { timer } = this.state;
-                
-                if (timer > 0) {
-                    this.setState({ 
-                        timer: timer - 1 
-                    });
-                } 
-            }, 1000);
+            
         } 
         catch (Error) {
             console.log("[Signup_OtpScreen] - componentDidMount - Ex: ", Error);
@@ -51,7 +42,7 @@ class Signup_OtpScreen extends Component {
     
         try {
 
-            clearInterval(this.interval);
+          
         } 
         catch (Error) {
             console.log("[Signup_OtpScreen] - componentWillUnmount - Ex: ", Error);
@@ -63,45 +54,12 @@ class Signup_OtpScreen extends Component {
         try {
 
             this.setState({ otp: text });
+            console.log('handleOtpChange text:',text)
         } 
         catch (Error) {
             console.log("[Signup_OtpScreen] - handleOtpChange - Ex: ", Error);
         }
     };
-
-    handleResend = () => {
-        
-        try {
-
-            console.log('Resend button pressed!');
-        } 
-        catch (Error) {
-        console.log("[Signup_OtpScreen] - handleResend - Ex: ", Error);
-        }
-    };
-
-  
-    handleNextButtonPress = () => {
-        try { 
-            this.props.navigation.replace(Index.SIGNUP_4); 
-            console.log("Next button pressed to Navigate to SignupScreen4");
-        }
-        catch (error){
-            console.log("[Signup_OtpScreen] - Next_Button - Ex: ",error);
-        }
-    };
-
-    handleLeftButtonPress = () => {
-        try{
-            this.props.navigation.replace(Index.SIGNUP_2); 
-            console.log("left pressed to Navigate to SignupScreen2");
-        }
-        catch(error){ 
-            console.log("[Signup_OtpScreen] - left_Button - Ex: ",error);
-        }
-    
-    };
-
 
     handlePasswordInputChange = (text) => {
         try{
@@ -112,9 +70,54 @@ class Signup_OtpScreen extends Component {
         }
     }
 
+    OnTimerTick(seconds, minutes) {
+        try{
+           
+        }
+        catch(error){ 
+            console.log("[Signup_OtpScreen] - OnTimerTick - Ex: ",error);
+        }
+    }
+
+    onTimerExpired(seconds, minutes) {
+    
+        console.log('seconds--',seconds, '--minutes--',minutes)
+        this.setState({ timeout: true })
+    }
+
+    OnPress_SubmitButton = () => {
+        try { 
+            this.props.navigation.replace(Index.SIGNUP_4); 
+            console.log("Next button pressed to Navigate to SignupScreen4");
+        }
+        catch (error){
+            console.log("[Signup_OtpScreen] - OnPress_SubmitButton - Ex: ",error);
+        }
+    };
+
+    OnPress_ResendButton(){
+        try {
+
+            this.setState({ timeout: false })
+
+        }
+        catch(error){
+            console.log("[Signup_OtpScreen] - OnPress_ResendButton - Ex: ",error);
+        }
+    }
+
+    OnPress_BackButton = () => {
+        try{
+            this.props.navigation.replace(Index.LOGIN_SCREEN); 
+            console.log("left pressed to Navigate to SignupScreen2");
+        }
+        catch(error){ 
+            console.log("[Signup_OtpScreen] - OnPress_BackButton - Ex: ",error);
+        }
+    
+    };
+
     render() {
-        
-        const { otp, timer } = this.state;
             
         return (
 
@@ -122,7 +125,7 @@ class Signup_OtpScreen extends Component {
    
                 <MainTitleBar
                     IconLeft = {Android_Theme_Light.ICON_BACK_ARROW}
-                    onPressLeft = {()=>this.OnBackButtonPress() }/>
+                    onPressLeft = {()=>this.OnPress_BackButton() }/>
      
                 <PageIndicator
                     totalNoOfPages = {3}
@@ -151,9 +154,12 @@ class Signup_OtpScreen extends Component {
       
                             <Text style = {GetCommonStyles(Android_Theme_Light).textStyleCaption1Medium}>
                                 {
-                                    timer > 0 ? 'Enter the one time password shared to' + "\n" + '+94717718910' : 
-                                    'Oh no,Your time is up. If you have not received the' + "\n" +  
-                                    'OTP yet,try resending.or contact our call center for' + "\n" +  'assistence'
+                                    !this.state.timeout ? 
+                                    
+                                        'Enter the one time password shared to' + "\n" + '+94717718910' 
+                                    : 
+                                        'Oh no,Your time is up. If you have not received the' + "\n" +  
+                                        'OTP yet,try resending.or contact our call center for' + "\n" +  'assistence'
                                 }
                             </Text>
 
@@ -161,54 +167,67 @@ class Signup_OtpScreen extends Component {
 
                         <View style = {GetSignup_OtpScreenStyles(Android_Theme_Light).middleView}>
 
+                            {/*OTP Field */}
                             <CommonInputField
                                 value = {""}
                                 title = {"OTP"}
-                                placeholder = {"Enter Your NIC Number"}
+                                placeholder = {"Enter OTP"}
                                 onInputChange = {(text) => this.handleOtpChange(text)}
                                 icon={Android_Theme_Light.ICON_VERIFIED}
                                 inputRef = {this.inputOTP}/>
 
-                            <CommonInputField
-                                value        = {""} // Set value to the input field
-                                title        = {"OTP"}
-                                onInputChange= {this.handleOtpChange}
-                                icon         = {Android_Theme_Light.ICON_VERIFIED}
-                                inputRef     = {this.inputRef2}
-                                nextInputRef = {this.inputRef1}/>
+                            {/* Gap */}
+                            <View style = {{height:20}}/>
 
-                            <CommonButton
-                                type           = '1'
-                                title          = 'Submit'
-                                borderRadius   = {35}
-                                onPress        = {this.handleNextButtonPress}
-                                textSize       = {15}
-                                backgroundColor= "#6Dc100"
-                                textColor      = 'black'
-                                Width       = {"60%"}
-                                        />
+                            {
+                                !this.state.timeout ? 
 
-{timer > 0 && (
-            <View style = {GetSignup_OtpScreenStyles(Android_Theme_Light).timerOuter}>
-              <Text style = {GetSignup_OtpScreenStyles(Android_Theme_Light).timer}>
-                {timer}
-              </Text>
-            </View>
-          )}
-          {timer === 0 && (
-              
-              <CommonButton
-                type        = '0'
-                title       = "Resend the OTP"
-                textColor   = 'black'
-                borderRadius= {15}
-                onPress     = {this.handleLoginPress}
-                textSize    = {15}
-                Width    = {"80%"}
-              />
+                                <>
+
+                                    {/*Submit Button*/}
+                                    <CommonButton
+                                        type = '1'
+                                        //width={"60%"}
+                                        title = 'Submit'
+                                        onPress = {this.OnPress_SubmitButton}
+                                        fontFamily = {Android_Theme_Light.POPPINS_SEMIBOLD}
+                                        textSize = {Android_Theme_Light.FONT_SIZE_15}
+                                        textColor = {Android_Theme_Light.BLACK_COLOR}
+                                        backgroundColor={Android_Theme_Light.DARK_GREEN_COLOR}/>
+
+                                    {/* Gap */}
+                                    <View style = {{height:15}}/>
+                                
+                                </> : null
+                            }
+
+                            { 
+                                !this.state.timeout ?
+
+                                    <OTPTimer
+                                        width = {150}
+                                        onTimerTick = { this.OnTimerTick.bind(this) }
+                                        //OnTimer = { ref => (this.OnTimer = ref) }
+                                        onTimerExpired = { this.onTimerExpired.bind(this) }
+                                    /> 
+                                :
+                               
+                                    <CommonButton
+                                        type={"0"}
+                                        width={"90%"}
+                                        title={"Resend the OTP"}
+                                        height={50}
+                                        //backgroundColor={Android_Theme_Light.DARK_GREEN_COLOR}
+                                        //textColor={Android_Theme_Light.DEEP_BLACK_COLOR}
+                                        fontFamily = {Android_Theme_Light.POPPINS_REGULAR}
+                                        textSize = {Android_Theme_Light.FONT_SIZE_BODY_TWO_REGULAR}
+                                        textColor = {Android_Theme_Light.DEEP_BLACK_COLOR}
+                                        //textAlign = {"flex-start"}
+                                        onPress = {this.OnPress_ResendButton.bind(this)}
+                                        //leftIcon = {Android_Theme_Light.ICON_LOCK}
+                                        RightIcon = {Android_Theme_Light.ICON_FORWARD}/> 
         
-        
-          )}
+                            }
 
                         </View>
 
@@ -216,27 +235,25 @@ class Signup_OtpScreen extends Component {
 
                     <View style = {GetCommonStyles(Android_Theme_Light).bottombuttonContainer}>
 
-                    <CommonButton
-            type        = '1'
-            title       = "Go Back"
-            borderRadius= {35}
-            width       = {"60%"}
-            onPress = {this.handleLeftButtonPress}
-            textSize= {20}
-          />
+                        {/* Go Back Button */}
+                        <CommonButton
+                            type={"1"}
+                            width={"50%"}
+                            title={"Go Back"}
+                            fontFamily = {Android_Theme_Light.POPPINS_REGULAR}
+                            textSize = {Android_Theme_Light.FONT_SIZE_BODY_TWO_REGULAR}
+                            textColor = {Android_Theme_Light.BACKGROUND_COLOR}
+                            backgroundColor={Android_Theme_Light.BLUE_COLOR}
+                            onPress={this.OnPress_BackButton}/>
 
                     </View>
 
-                    
-     
-
-  
-  </View>
+                </View>
     
-</SafeAreaView>
+            </SafeAreaView>
 
-);
-}
+        );
+    }
 }
 
 export default Signup_OtpScreen;

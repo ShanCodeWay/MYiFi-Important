@@ -72,7 +72,7 @@ class FundTransferOTPScreen extends Component {
   handleSubmit = () => {
     try { 
     const sucess = true;
-    this.props.navigation.replace(Index.TRS_1,{sucess}); 
+    this.props.navigation.replace(Index.TRS_2,{sucess: true}); 
     console.log("Next button pressed to Navigate to FundTransfer SucessScreen");}
     catch (error)
     { console.log("[FundTransferOTPScreen] - Next_Button - Error ",error); }

@@ -1,9 +1,8 @@
 
 import { StyleSheet } from "react-native";
-import Colors from "../../../../styles/Colors";
 
 
-export default GetKYC5ScreenStyles = (theme) => {
+export default GetKYC5ScreenStyles = () => {
   return StyleSheet.create({
     backgroundContainer: {
       flex: 1,
@@ -13,7 +12,11 @@ export default GetKYC5ScreenStyles = (theme) => {
     },
     commonInputFieldContainer: {
         marginVertical: 5
-    }
+    },
+    nextButtonContainer: {
+      height: 55,
+      justifyContent: "center",
+    },
   });
 };
 

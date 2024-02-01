@@ -24,7 +24,7 @@ class MakeAPaymentOtpScreen extends Component {
       otp: "",
       timer: 5,
       FdAmountPayed: "",
-      //sucess: true,
+      // success: true,
     };
   }
 
@@ -43,6 +43,8 @@ class MakeAPaymentOtpScreen extends Component {
         );
       }
     }, 1000);
+
+    console.log("*****//--",this.props.route.params.amountPayed)
 
     this.setState({
       FdAmountPayed: this.props.route.params.amountPayed,
@@ -78,22 +80,20 @@ class MakeAPaymentOtpScreen extends Component {
 
   handleNextButtonPress = () => {
     try {
-      //const sucess = true;
+     
       if (this.props.route.params.amountPayed == "0.00") {
-        const success = true;
-        this.props.navigation.navigate("TransferReceiptSuccessScreen",{success});
+        const success = false;
+        this.props.navigation.navigate("MakeAPaymentSuccessfulScreen", { success , fdpayment : this.state.FdAmountPayed});
       } else {
-        this.props.navigation.navigate("MakeAPaymentSuccessfulScreen", {
-          amountInSummary: this.state.FdAmountPayed,
-        });
-        console.log(
-          "Next button pressed to Navigate to MakeAPaymentSuccessfulScreen"
-        );
+        const success = true; 
+        this.props.navigation.navigate("MakeAPaymentSuccessfulScreen", { success , fdpayment : this.state.FdAmountPayed });
+        console.log("Next button pressed to Navigate to MakeAPaymentSuccessfulScreen");
       }
     } catch (error) {
       console.log("[MakeAPaymentOtpScreen] - Next_Button - Error ", error);
     }
   };
+  
 
   handleLeftButtonPress = () => {
     try {

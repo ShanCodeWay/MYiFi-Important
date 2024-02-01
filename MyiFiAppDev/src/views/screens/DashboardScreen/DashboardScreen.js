@@ -83,7 +83,7 @@ class DashboardScreen extends Component {
 
   handleSendButton = () => {
     try {
-      this.props.navigation.navigate("FundTransferScreen1");
+      this.props.navigation.navigate("FTScreen");
     } catch {}
   };
 
@@ -121,7 +121,7 @@ class DashboardScreen extends Component {
 
   handleSettings = () => {
     try {
-      this.props.navigation.navigate("SettingsScreen");
+      this.props.navigation.navigate(Index.SETT_1);
     } catch {}
   };
 

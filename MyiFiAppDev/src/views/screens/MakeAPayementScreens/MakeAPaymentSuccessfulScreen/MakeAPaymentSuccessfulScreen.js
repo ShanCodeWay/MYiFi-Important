@@ -1,11 +1,5 @@
 import React, { Component } from "react";
 import { View, Text, SafeAreaView, StatusBar } from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import CommonButton from "../../../components/Common/MainButton/CommonButton";
-import MainTitleBar from "../../../components/Common/TitleBar/MainTitleBar";
-
-import Index from "../../../../configs/Index";
-import Svg, { Path } from "react-native-svg";
 import Icon_backArrows from "../../../../assets/icons/Icon_backArrows.svg";
 import Icon_home from "../../../../assets/icons/Icon_home.svg";
 import Colors from "../../../../styles/Colors";
@@ -13,10 +7,7 @@ import Colors from "../../../../styles/Colors";
 import { GetCommonStyles } from "../../../../styles/CommonStyles";
 import GetMakeAPaymentSuccessfulScreenStyles from "./MakeAPaymentSuccessfulScreenStyles";
 
-import {
-  Android_Theme_Light,
-  Android_Theme_Dark,
-} from "../../../../styles/Themes";
+import { Android_Theme_Light } from "../../../../styles/Themes";
 import BottomTitleBar from "../../../components/Common/BottomTitleBar";
 import { AmountSeperation } from "../../../../utils/helpers";
 
@@ -26,20 +17,20 @@ class MakeAPaymentSuccessfulScreen extends Component {
     super(props);
 
     this.state = {
-      //Date: "2023-11-23",
-      amountInSummaryView: "",
+      successChecked: false,
+      amountPayment: "",
     };
   }
 
   componentDidMount() {
     try {
       StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
+      console.log("final", this.props.route.params.fdpayment);
+      console.log("final", this.props.route.params.success);
       this.setState({
-
-        amountInSummaryView : this.props.route.params.amountInSummary
-      },
-      
-      );
+        amountPayment: this.props.route.params.fdpayment,
+        successChecked: this.props.route.params.success,
+      });
     } catch (Error) {
       console.log(
         "[MakeAPaymentSuccessfulScreen] - componentDidMount - Error ",
@@ -56,18 +47,6 @@ class MakeAPaymentSuccessfulScreen extends Component {
       );
     }
   }
-
-  handleNextButtonPress = () => {
-    try {
-      //   this.props.navigation.replace(Index.FUND_1);
-      console.log("Next button pressed to NAvigate _");
-    } catch (error) {
-      console.log(
-        "[MakeAPaymentSuccessfulScreen] - Next_Button - Error ",
-        error
-      );
-    }
-  };
 
   handleBack = () => {
     try {
@@ -99,8 +78,6 @@ class MakeAPaymentSuccessfulScreen extends Component {
     return (
       <>
         <SafeAreaView style={GetCommonStyles(Android_Theme_Light).safeAreaView}>
-          
-
           <View style={GetCommonStyles(Android_Theme_Light).mainContainer}>
             {/* Middle Container */}
             <View
@@ -109,7 +86,6 @@ class MakeAPaymentSuccessfulScreen extends Component {
                   .middleContainer,
               ]}
             >
-              {/* <View style={{ height: 100 }}></View> */}
 
               <Text
                 style={[
@@ -128,39 +104,62 @@ class MakeAPaymentSuccessfulScreen extends Component {
               >
                 {"FD Payment"}
               </Text>
-              <Android_Theme_Light.ICON_CIRCLECHECKED></Android_Theme_Light.ICON_CIRCLECHECKED>
 
+              {/* ICON_CIRCLECHECKED or ICON_CIRCLE_X */}
+              {this.state.successChecked ? (
+                <Android_Theme_Light.ICON_CIRCLECHECKED />
+              ) : (
+                <Android_Theme_Light.ICON_CIRCLE_X width={100} height={100} />
+              )}
+
+              {/* Success or Failed Text */}
               <Text
                 style={[
                   GetMakeAPaymentSuccessfulScreenStyles(Android_Theme_Light)
                     .subText2,
                 ]}
               >
-                {"Success"}
+                {this.state.successChecked ? (
+                  "Success"
+                ) : (
+                  <Text
+                    style={
+                      GetMakeAPaymentSuccessfulScreenStyles(Android_Theme_Light)
+                        .errorMsg
+                    }
+                  >
+                    {"Payment Failed"}
+                  </Text>
+                )}
               </Text>
 
-              <View
-              style={[GetCommonStyles(Android_Theme_Light).amountContainer]}
-            >
-              <Text style={[GetCommonStyles(Android_Theme_Light).amountRsText]}>
-                {"Rs "}
-              </Text>
-              <Text
-                style={[GetCommonStyles(Android_Theme_Light).amountIntegerText]}
-              >
-                 {  AmountSeperation(this.state.amountInSummaryView)[0]}
-              </Text>
-              <Text
-                style={[GetCommonStyles(Android_Theme_Light).amountDecimalText]}
-              >
-                 {AmountSeperation(this.state.amountInSummaryView)[1]}
-              </Text>
+              {/* Amount displayed or not */}
+              {this.state.successChecked ? (
+                <View
+                  style={[GetCommonStyles(Android_Theme_Light).amountContainer]}
+                >
+                  <Text
+                    style={[GetCommonStyles(Android_Theme_Light).amountRsText]}
+                  >
+                    {"Rs "}
+                  </Text>
+                  <Text
+                    style={[
+                      GetCommonStyles(Android_Theme_Light).amountIntegerText,
+                    ]}
+                  >
+                    {AmountSeperation(this.state.amountPayment)[0]}
+                  </Text>
+                  <Text
+                    style={[
+                      GetCommonStyles(Android_Theme_Light).amountDecimalText,
+                    ]}
+                  >
+                    {AmountSeperation(this.state.amountPayment)[1]}
+                  </Text>
+                </View>
+              ) : null}
             </View>
-            </View>
-
-            {/* <View style={{ height: 50 }}></View> */}
-
-            {/* Middle Container */}
 
             {/* Bottom Container*/}
             <View

@@ -1,19 +1,15 @@
 // KYC5Screen.js (KYC details screeen 2)
 
-import { faKeycdn } from "@fortawesome/free-brands-svg-icons";
 import React, { Component } from "react";
-import { View, Text, StatusBar, ScrollView } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { GetCommonStyles } from "../../../../styles/CommonStyles";
 import { Android_Theme_Light } from "../../../../styles/Themes";
 import CommonButton from "../../../components/Common/MainButton/CommonButton";
 import CommonInputField from "../../../components/Common/TextInput/CommonInputField";
-import { Svg, Circle } from "react-native-svg";
-import Colors from "../../../../styles/Colors";
 import MainTitleBar from "../../../components/Common/TitleBar/MainTitleBar";
 import GetKYC6ScreenStyles from "./KYC6ScreenStyles";
-import Icon_angleDown from "../../../../assets/icons/Icon_angleDown.svg";
-import CommonSpinner from "../../../components/Common/CommonSpinner";
+import SelectDropDown from "../../../components/Common/Dropdown/SelectDropDown";
 
 class KYC6Screen extends Component {
   constructor(props) {
@@ -88,12 +84,20 @@ class KYC6Screen extends Component {
     }
   };
 
-  OnPress_BackButton = () => {
+  OnBackButtonPress = () => {
     try {
       console.log("Next button pressed");
       this.props.navigation.navigate("KYC5Screen");
     } catch (Error) {
-      console.log("[KYC6Screen] - OnPress_BackButton Ex: ", Error);
+      console.log("[KYC6Screen] - OnBackButtonPress Ex: ", Error);
+    }
+  };
+
+  OnForwardButtonPress = () => {
+    try {
+      this.props.navigation.navigate("KYCOtpScreen");
+    } catch (Error) {
+      console.log("[KYC6Screen] - OnForwardButtonPress - Error ", Error);
     }
   };
 
@@ -101,27 +105,31 @@ class KYC6Screen extends Component {
     return (
       <SafeAreaView style={GetCommonStyles(Android_Theme_Light).safeAreaView}>
         <MainTitleBar
+          TitleText={"                    "}
           IconLeft={Android_Theme_Light.ICON_BACK_ARROW}
-          TitleText={"KYC Details"}
-          // TextAlign={"center"}
-          IconRight={null}
-          onPressLeft={() => this.OnPress_BackButton()}
+          onPressLeft={() => this.OnBackButtonPress()}
+          IconRight={Android_Theme_Light.ICON_FORWARD_NAVIGATE}
+          onPressRight={() => this.OnForwardButtonPress()}
         />
 
+        {/* PageIndicator */}
+        <PageIndicator totalNoOfPages={7} pageNumber={6} />
         <View style={GetCommonStyles(Android_Theme_Light).mainContainer}>
           {/* Title Text */}
-          <View style={GetKYC6ScreenStyles(Android_Theme_Light).titleContainer}>
-            <Text style={GetKYC6ScreenStyles(Android_Theme_Light).titleText}>
+          <View style={GetCommonStyles(Android_Theme_Light).topTitleContainer}>
+            {/* <Text
+              style={GetCommonStyles(Android_Theme_Light).textStyleH1Medium}
+            >
               {"Employment Information"}
-            </Text>
-          </View>
-          <ScrollView style={{ width: "100%" }}>
-            {/* <View
-              style={
-                GetKYC6ScreenStyles(Android_Theme_Light).backgroundContainer
-              }
-            > */}
+            </Text> */}
 
+            {/* <Text style = {GetCommonStyles(Android_Theme_Light).textStyleCaption1Medium}>
+                Create account so you can {"\n"} manage your personal finances
+              </Text> */}
+          </View>
+
+          {/* ScrollView */}
+          <ScrollView style={{ width: "100%" }}>
             {/* Employment Status */}
             <View
               style={
@@ -137,13 +145,18 @@ class KYC6Screen extends Component {
                 {"Employment Status"}
               </Text>
             </View>
+
+            {/* Gap */}
+            <View style={{ height: 5 }} />
+
+
             <View
               style={[
                 GetKYC6ScreenStyles(Android_Theme_Light)
                   .commonInputFieldContainer,
               ]}
             >
-              <CommonSpinner
+              <SelectDropDown
                 title={null}
                 width={"100%"}
                 data={[
@@ -166,7 +179,6 @@ class KYC6Screen extends Component {
                 parentReferenceItem={this.handleEmploymentStatus}
               />
             </View>
-            <View style={{ height: 10 }}></View>
 
             {/* Occupation */}
             <View
@@ -183,13 +195,17 @@ class KYC6Screen extends Component {
                 {"Occupation"}
               </Text>
             </View>
+
+             {/* Gap */}
+            <View style={{ height: 5 }} />
+            
             <View
               style={[
                 GetKYC6ScreenStyles(Android_Theme_Light)
                   .commonInputFieldContainer,
               ]}
             >
-              <CommonSpinner
+              <SelectDropDown
                 title={null}
                 width={"100%"}
                 data={[
@@ -206,7 +222,6 @@ class KYC6Screen extends Component {
                 parentReferenceItem={this.handleOccupation}
               />
             </View>
-            <View style={{ height: 10 }}></View>
 
             {/* Name of the Employer */}
             <View
@@ -234,10 +249,10 @@ class KYC6Screen extends Component {
                 title={""}
                 placeholder={""}
                 width={"100%"}
+                icon={Android_Theme_Light.ICON_VERIFIED}
                 onInputChange={this.handleInputChange}
               />
             </View>
-            <View style={{ height: 10 }}></View>
 
             {/* Nature of the Business */}
             <View
@@ -265,10 +280,10 @@ class KYC6Screen extends Component {
                 title={""}
                 placeholder={""}
                 width={"100%"}
+                icon={Android_Theme_Light.ICON_VERIFIED}
                 onInputChange={this.handleInputChange}
               />
             </View>
-            <View style={{ height: 10 }}></View>
 
             {/* Average Monthly Income (LKR) */}
             <View
@@ -296,6 +311,8 @@ class KYC6Screen extends Component {
                 title={""}
                 placeholder={""}
                 width={"100%"}
+                type={"currency"}
+                icon={Android_Theme_Light.ICON_VERIFIED}
                 onInputChange={this.handleInputChange}
               />
             </View>
@@ -327,6 +344,7 @@ class KYC6Screen extends Component {
                 title={""}
                 placeholder={""}
                 width={"100%"}
+                icon={Android_Theme_Light.ICON_VERIFIED}
                 onInputChange={this.handleInputChange}
               />
             </View>
@@ -374,9 +392,9 @@ class KYC6Screen extends Component {
                   GetKYC6ScreenStyles(Android_Theme_Light).leftButtonContainer,
                 ]}
               >
-                {/* cameraButton */}
+                {/* Camera Button */}
                 <CommonButton
-                  type={"0"} // 0 or 1
+                  type={"0"}
                   text={""}
                   borderRadius={60}
                   title={null}
@@ -392,9 +410,9 @@ class KYC6Screen extends Component {
                   GetKYC6ScreenStyles(Android_Theme_Light).rightButtonContainer,
                 ]}
               >
-                {/* fileButton */}
+                {/* File Button */}
                 <CommonButton
-                  type={"0"} // 0 or 1
+                  type={"0"}
                   text={""}
                   borderRadius={60}
                   title={null}
@@ -405,18 +423,23 @@ class KYC6Screen extends Component {
                 />
               </View>
             </View>
-
-            {/* <View style={{ height: 20 }}></View> */}
-            {/* </View> */}
           </ScrollView>
 
-          <CommonButton
-            type={"1"} // 0 or 1
-            title={"Next"}
-            width={"90%"}
-            backgroundColor={Android_Theme_Light.DARK_BLUE_COLOR}
-            onPress={() => this.handleNextButtonPress()}
-          />
+          <View
+            style={GetKYC6ScreenStyles(Android_Theme_Light).nextButtonContainer}
+          >
+            {/* Next Button */}
+            <CommonButton
+              type={"1"}
+              title={"Next"}
+              width={"50%"}
+              fontFamily={Android_Theme_Light.POPPINS_REGULAR}
+              textSize={Android_Theme_Light.FONT_SIZE_BODY_TWO_REGULAR}
+              textColor={Android_Theme_Light.WHITE_COLOR}
+              backgroundColor={Android_Theme_Light.DARK_BLUE_COLOR}
+              onPress={() => this.handleNextButtonPress()}
+            />
+          </View>
         </View>
       </SafeAreaView>
     );

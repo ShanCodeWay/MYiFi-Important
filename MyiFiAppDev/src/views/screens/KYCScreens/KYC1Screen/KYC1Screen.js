@@ -1,13 +1,12 @@
 // KYC1Screen.js (Getting started)
 
 import React, { Component } from "react";
-import { View, Text, StatusBar, ScrollView } from "react-native";
+import { View, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { GetCommonStyles } from "../../../../styles/CommonStyles";
 import { Android_Theme_Light } from "../../../../styles/Themes";
 import CommonButton from "../../../components/Common/MainButton/CommonButton";
-import { GetKYC1ScreenStyles } from "./KYC1ScreenStyles";
-import Colors from "../../../../styles/Colors";
+import GetKYC1ScreenStyles from "./KYC1ScreenStyles";
 import MainTitleBar from "../../../components/Common/TitleBar/MainTitleBar";
 
 //Done by: Randima
@@ -26,15 +25,6 @@ class KYC1Screen extends Component {
       console.log("[KYC1Screen] - componentDidMount() Ex:  ", Error);
     }
   }
-
-  OnPress_BackButton = () => {
-    try {
-      console.log("back button pressed");
-      this.props.navigation.navigate("WelcomeScreen");
-    } catch (Error) {
-      console.log("[KYC1Screen] - OnPress_BackButton - Error ", Error);
-    }
-  };
 
   handleLeftButtonPress = () => {
     try {
@@ -60,9 +50,6 @@ class KYC1Screen extends Component {
         style={[GetKYC1ScreenStyles(Android_Theme_Light).singleRowContainer]}
       >
         <View style={{ alignItems: "center", width: 60, height: "100%" }}>
-          {/* <View
-            style={[GetKYC1ScreenStyles(Android_Theme_Light).numberCircleLine]}
-          /> */}
           <View
             style={[GetKYC1ScreenStyles(Android_Theme_Light).textNumberCircle]}
           >
@@ -91,25 +78,41 @@ class KYC1Screen extends Component {
     );
   };
 
+  OnBackButtonPress = () => {
+    try {
+      this.props.navigation.navigate("WelcomeScreen");
+    } catch (Error) {
+      console.log("[KYC1Screen] - OnBackButtonPress - Error ", Error);
+    }
+  };
+
+  OnForwardButtonPress = () => {
+    try {
+      this.props.navigation.navigate("KYC2Screen");
+    } catch (Error) {
+      console.log("[KYC1Screen] - OnForwardButtonPress - Error ", Error);
+    }
+  };
+
   render() {
     return (
       <SafeAreaView style={GetCommonStyles(Android_Theme_Light).safeAreaView}>
-        {/* <StatusBar/> */}
-
         <MainTitleBar
+          TitleText={" "}
           IconLeft={Android_Theme_Light.ICON_BACK_ARROW}
-          TitleText={"Getting Started"}
-          TextAlign={"left"}
-          IconRight={null}
-          onPressLeft={() => this.OnPress_BackButton()}
+          onPressLeft={() => this.OnBackButtonPress()}
+          IconRight={Android_Theme_Light.ICON_FORWARD_NAVIGATE}
+          onPressRight={() => this.OnForwardButtonPress()}
         />
+
         <View style={GetCommonStyles(Android_Theme_Light).mainContainer}>
+
+          {/* List Container */}
           <View
             style={[
               GetKYC1ScreenStyles(Android_Theme_Light).listOuterContainer,
             ]}
           >
-            {/*<ScrollView>*/}
             {/* 1 */}
             <this.renderSingleRow
               number={1}
@@ -166,17 +169,20 @@ class KYC1Screen extends Component {
                 "Almost there. Enter the OTP and submit the details."
               }
             />
-            {/*</View></ScrollView>*/}
           </View>
-          {/* <View style={{ height: 20 }}></View> */}
+
+          {/* OK,GOT IT Button */}
           <View
             style={GetKYC1ScreenStyles(Android_Theme_Light).nextButtonContainer}
           >
             <CommonButton
-              type={"1"} // 0 or 1
+              type={"1"}
               text={""}
               title={"OK,GOT IT!"}
-              width={"90%"}
+              width={"50%"}
+              fontFamily={Android_Theme_Light.POPPINS_REGULAR}
+              textSize={Android_Theme_Light.FONT_SIZE_BODY_TWO_REGULAR}
+              textColor={Android_Theme_Light.WHITE_COLOR}
               backgroundColor={Android_Theme_Light.DARK_BLUE_COLOR}
               onPress={() => this.handleNextButtonPress()}
             />

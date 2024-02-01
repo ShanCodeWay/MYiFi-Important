@@ -1,10 +1,10 @@
 
 import { StyleSheet } from "react-native";
-import Colors from "../../../../styles/Colors";
 
-export const GetKYC2ScreenStyles = (theme) => {
 
-    const KYC2ScreenStyles = StyleSheet.create({
+export default GetKYC2ScreenStyles = () => {
+
+    return StyleSheet.create({
 
         middleContainer:{
             justifyContent: 'center',
@@ -15,5 +15,5 @@ export const GetKYC2ScreenStyles = (theme) => {
         }
     });
     
-    return KYC2ScreenStyles;
+ 
 };

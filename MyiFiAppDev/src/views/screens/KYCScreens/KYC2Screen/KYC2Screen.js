@@ -1,15 +1,15 @@
 // KYC2Screen.js (Validate your NIC)
 
 import React, { Component } from "react";
-import { View, Text, StatusBar, ScrollView, Alert } from "react-native";
+import { View, Alert, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { GetCommonStyles } from "../../../../styles/CommonStyles";
 import { Android_Theme_Light } from "../../../../styles/Themes";
 import CommonButton from "../../../components/Common/MainButton/CommonButton";
 import CommonInputField from "../../../components/Common/TextInput/CommonInputField";
-import { GetKYC2ScreenStyles } from "./KYC2ScreenStyles";
-import Colors from "../../../../styles/Colors";
+import GetKYC2ScreenStyles from "./KYC2ScreenStyles";
 import MainTitleBar from "../../../components/Common/TitleBar/MainTitleBar";
+import PageIndicator from "../../../components/Common/PageIndicator/PageIndicator";
 
 //Done by: Randima
 class KYC2Screen extends Component {
@@ -40,59 +40,86 @@ class KYC2Screen extends Component {
 
   handleSearch = () => {
     const { nicNumber } = this.state;
-  
+
     const sampleNICs = ["1234", "1111", "5555"];
-  
+
     if (sampleNICs.includes(nicNumber)) {
-      this.props.navigation.navigate("KYC3Screen2", { nicNumber }); 
-      console.log(nicNumber)
+      this.props.navigation.navigate("KYC3Screen", { nicNumber });
+      console.log(nicNumber);
     } else {
       Alert.alert("NIC not found");
     }
   };
-  
 
-  OnPress_BackButton = () => {
+  OnBackButtonPress = () => {
     try {
-      console.log("back button pressed");
       this.props.navigation.navigate("KYC1Screen");
     } catch (Error) {
       console.log("[KYC2Screen] - OnPress_BackButton - Error ", Error);
     }
   };
 
+  OnForwardButtonPress = () => {
+    try {
+      this.props.navigation.navigate("KYC3Screen");
+    } catch (Error) {
+      console.log("[KYC2Screen] - OnForwardButtonPress - Error ", Error);
+    }
+  };
+
   render() {
     return (
       <SafeAreaView style={GetCommonStyles(Android_Theme_Light).safeAreaView}>
-        {/* <StatusBar /> */}
-
         <MainTitleBar
+          TitleText={"                    "}
           IconLeft={Android_Theme_Light.ICON_BACK_ARROW}
-          TitleText={"Validate Your NIC"}
-          TextAlign={"left"}
-          IconRight={null}
-          onPressLeft={() => this.OnPress_BackButton()}
+          onPressLeft={() => this.OnBackButtonPress()}
+          IconRight={Android_Theme_Light.ICON_FORWARD_NAVIGATE}
+          onPressRight={() => this.OnForwardButtonPress()}
         />
-        {/* <PaginationIndicator/> */}
+
+        {/* PageIndicator */}
+        <PageIndicator totalNoOfPages={7} pageNumber={2} />
+
         <View style={GetCommonStyles(Android_Theme_Light).mainContainer}>
+          {/* Title Text */}
+          {/* <View style={GetCommonStyles(Android_Theme_Light).topTitleContainer}>
+            <Text
+              style={GetCommonStyles(Android_Theme_Light).textStyleH1Medium}
+            >
+              {"Validate Your NIC"}
+            </Text> */}
+
+          {/* <Text style = {GetCommonStyles(Android_Theme_Light).textStyleCaption1Medium}>
+                Create account so you can {"\n"} manage your personal finances
+              </Text> */}
+          {/* </View> */}
           <View
             style={GetKYC2ScreenStyles(Android_Theme_Light).middleContainer}
           >
+            {/* NIC Search Box */}
             <CommonInputField
               value={""}
               title={"NIC Number*"}
               placeholder={""}
               onInputChange={this.handleNICInputChange}
-              // icon={Icon_Eye}
+              icon={Android_Theme_Light.ICON_VERIFIED}
               width={"90%"}
               //inputRef={this.inputRef2}
             />
-            <View style={{height: 10}}></View>
+
+            {/* Gap */}
+            <View style={{ height: 10 }}></View>
+
+            {/* Search Button */}
             <CommonButton
-              type={"1"} // 0 or 1
+              type={"1"}
               text={""}
               title={"Search"}
-              width={"90%"}
+              width={"50%"}
+              fontFamily={Android_Theme_Light.POPPINS_REGULAR}
+              textSize={Android_Theme_Light.FONT_SIZE_BODY_TWO_REGULAR}
+              textColor={Android_Theme_Light.WHITE_COLOR}
               backgroundColor={Android_Theme_Light.DARK_BLUE_COLOR}
               onPress={() => this.handleSearch()}
             />

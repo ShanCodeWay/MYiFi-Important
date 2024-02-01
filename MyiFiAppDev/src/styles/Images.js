@@ -61,6 +61,8 @@ import Icon_GoldLoan_Andrpid from "../assets/icons/android/Icon_GoldLoan.svg"
 import Icon_GoldLoan_Ios from "../assets/icons/ios/Icon_GoldLoan.svg"
 import Icon_Search_Android from "../assets/icons/android/Icon_Search.svg"
 import Icon_Search_Ios from "../assets/icons/ios/Icon_Search.svg"
+import Icon_Fingerprint from "../assets/icons/android/Icon_fingerPrint.svg"
+import Icon_LogOut from "../assets/icons/android/icon_log_out.svg"
 
 export default {
   ICON_BACK_ARROW_ANDROID_LIGHT: Icon_BackArrow_Android,
@@ -125,6 +127,8 @@ export default {
   ICON_SEARCH_ANDROID_LIGHT : Icon_Search_Android,
   ICON_SEARCH_IOS_LIGHT : Icon_Search_Ios,
   ICON_GOLDLOAN_ANDROID_LIGHT : Icon_GoldLoan_Andrpid,
-  ICON_GOLDLOAN_IOS_LIGHT : Icon_GoldLoan_Ios
+  ICON_GOLDLOAN_IOS_LIGHT : Icon_GoldLoan_Ios,
+  ICON_FINGER_PRINT_LIGHT : Icon_Fingerprint,
+  ICON_LOG_OUT_ANDROID_LIGHT: Icon_LogOut,
 
 };

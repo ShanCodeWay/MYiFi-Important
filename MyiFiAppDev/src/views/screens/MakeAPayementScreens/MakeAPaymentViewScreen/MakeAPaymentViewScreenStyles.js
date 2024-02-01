@@ -6,7 +6,6 @@ export default GetMakeAPaymentViewScreenStyles = (theme) => {
       justifyContent: "center",
       alignContent: "center",
       alignItems: "center",
-      //backgroundColor: "pink",
       width: "100%",
     },
     middleContainer: {
@@ -14,7 +13,6 @@ export default GetMakeAPaymentViewScreenStyles = (theme) => {
       width: "90%",
       justifyContent: "center",
       alignItems: "center",
-      //backgroundColor: "green",
     },
     bottomContainer: {
       height: 250,
@@ -22,7 +20,6 @@ export default GetMakeAPaymentViewScreenStyles = (theme) => {
       justifyContent: "space-evenly",
       alignContent: "center",
       alignItems: "center",
-      //backgroundColor: "gray",
     },
 
     bottomView: {

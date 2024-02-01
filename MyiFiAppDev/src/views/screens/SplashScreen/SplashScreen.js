@@ -8,6 +8,7 @@ import MainTitleBar from "../../components/Common/TitleBar/MainTitleBar";
 
 import { GetCommonStyles } from "../../../styles/CommonStyles";
 import GetSplashScreenStyles from "./SplashScreenStyles";
+import Index from "../../../configs/Index";
 
 class SplashScreen extends Component {
 
@@ -18,6 +19,7 @@ class SplashScreen extends Component {
       this.timeout = setTimeout(() => {
 
         this.props.navigation.navigate("WelcomeScreen");
+        //this.props.navigation.navigate(Index.SIGNUP_3);
       }, 4000);
 
     }
