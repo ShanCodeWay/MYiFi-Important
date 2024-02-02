@@ -84,6 +84,15 @@ class LoginScreen extends Component {
     }
   };
 
+  OnForgotPassword = () => {
+    try {
+      this.props.navigation.navigate("ForgotPasswordScreen");
+    } 
+    catch (Error) {
+      console.log("[LoginScreen] - OnForgotPassword Ex: ", Error);
+    }
+  };
+
   onPressSignUp = () => {
     try {
       this.props.navigation.navigate(Index.SIGNUP_1);
@@ -191,7 +200,7 @@ class LoginScreen extends Component {
                 textSize = {Android_Theme_Light.FONT_SIZE_BODY_TWO_REGULAR}
                 textColor = {Android_Theme_Light.DEEP_BLACK_COLOR}
                 textAlign = {"flex-start"}
-                onPress = {this.OnPressSignIn}
+                onPress = {this.OnForgotPassword}
                 leftIcon = {Android_Theme_Light.ICON_LOCK}
                 RightIcon = {Android_Theme_Light.ICON_FORWARD}
                 //btnWidth={"80%"}

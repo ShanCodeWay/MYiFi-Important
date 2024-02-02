@@ -21,13 +21,9 @@ class Signup_UsernameScreen extends Component {
     
     this.inputNIC = React.createRef();
     this.inputUserName = React.createRef();
-    
-    this.state = {
-      scrollEnabled: false,
-    };
+  
   }
-  
-  
+
   componentDidMount() {
     try {
     

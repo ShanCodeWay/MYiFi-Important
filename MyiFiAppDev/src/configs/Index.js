@@ -22,6 +22,8 @@ export default {
    //Settings Screen 
     SETT_1      :'SettingsScreen',
     RESTPASSWORD:'RestPasswordScreen', 
+    RESTOTP: 'RestOTPScreen',
+    RESTSUC: 'RestSuccessScreen',
 
     //Dashboard Screen
     DASHBOARD :'DashboardScreen',

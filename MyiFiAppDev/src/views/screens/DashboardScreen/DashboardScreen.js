@@ -17,6 +17,9 @@ import Icon_arrowDown from "../../../assets/icons/Icon_arrowDown.svg";
 import Index from "../../../configs/Index"; 
 
 import { AmountSeperation, GetGreeting } from "../../../utils/helpers";
+
+//import { DrawerActions } from '@react-navigation/native';
+
 //Done by: Dinuranga 23/01/05
 class DashboardScreen extends Component {
   constructor(props) {
@@ -121,6 +124,7 @@ class DashboardScreen extends Component {
 
   handleSettings = () => {
     try {
+      //this.props.navigation.dispatch(DrawerActions.toggleDrawer());
       this.props.navigation.navigate(Index.SETT_1);
     } catch {}
   };

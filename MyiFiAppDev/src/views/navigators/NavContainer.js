@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { navigationRef } from "./RootNavigation.js";
 import Index from "../../configs/Index";
+//import DrawerNavigator from "../screens/Dashboard/drawer/DrawerNavigator.js";
 
  {/*SPLASH Screen */ }
 import SplashScreen from "../screens/SplashScreen/SplashScreen.js";
@@ -54,11 +55,16 @@ import LeasingLoanViewScreen from "../screens/LeasingLoansScreen/LeasingLoanView
 { /*Setting SCREEN */ }
 import SettingsScreen from "../screens/SettingsScreen/SettingsScreen/SettingsScreen.js";
 import ResetPasswordScreen from "../screens/SettingsScreen/ResetPasswordScreen/ResetPasswordScreen";
-
+import ResetPasswordOTPScreen from "../screens/SettingsScreen/ResetPasswordOTP/ResetPasswordOTPScreen.js";
+import ResetPasswordSucessScreen from "../screens/SettingsScreen/ResetPasswordSucess/ResetPasswordSucessScreen.js";
 {/*Welcome Screen*/ } 
 import WelcomeScreen from "../screens/WelcomeScreen/WelcomeScreen.js";
 import BillPaymentTransferReceiptSuccessScreen from "../screens/BillPaymentScreens/BillPaymentTransferReceiptSuccessScreen/BillPaymentTransferReceiptSuccessScreen.js";
 
+{/* Merchant Payment Screen */}
+import MerchantPaymentScreen from "../screens/MerchantPayment/MerchantPaymentScreen.js";
+import NotificationsCentreScreen from "../screens/NotificationsCentre/NotificationsCentreScreen.js";
+import NotificationsPage from "../screens/NotificationsCentre/NotificationsPage.js";
 {/* QR Payment Screen */}
 import QR_PaymentScreen from "../screens/QR_Payment/QR_PaymentScreen.js";
 import QR_PaymentSuccessScreen from "../screens/QR_Payment/QR_PaymentSuccessScreen.js";
@@ -101,9 +107,13 @@ function NavContainer() {
         <Stack.Screen name={Index.FUND_OTP} component={FundTransferOTPScreen} />
 
         {/*DASHBOARD Screens */ }
-        <Stack.Screen name="DashboardScreen"component={DashboardScreen} />
+        <Stack.Screen name="DashboardScreen"component={DashboardScreen} 
+        /*children={DrawerNavigator}*//>
         <Stack.Screen name="InvestMainScreen"component={InvestMainScreen} />
         <Stack.Screen name="LeasingLoanMainScreen"component={LeasingLoanMainScreen} />
+        <Stack.Screen name="NotificationsCentreScreen" component={NotificationsCentreScreen} />
+        <Stack.Screen name="NotificationsPage" component={NotificationsPage} />
+
 
         {/*KYC Screens */ }
         <Stack.Screen name="WelcomeScreen"     component={WelcomeScreen} />
@@ -147,13 +157,15 @@ function NavContainer() {
         {/* Settings Screens */}
         <Stack.Screen name={Index.SETT_1}        component={SettingsScreen} />
         <Stack.Screen name={Index.RESTPASSWORD}  component={ResetPasswordScreen} />
+        <Stack.Screen name={Index.RESTOTP}       component={ResetPasswordOTPScreen} />
+        <Stack.Screen name={Index.RESTSUC}   component={ResetPasswordSucessScreen} />
 
         {/* QR Payment Screen */}
         <Stack.Screen name="QR_PaymentScreen"     component={QR_PaymentScreen} />
         <Stack.Screen name="QR_PaymentSuccessScreen"     component={QR_PaymentSuccessScreen} />
 
-                {/* Forgot Password Screen */}
-                <Stack.Screen name="ForgotPasswordScreen"     component={ForgotPasswordScreen} />
+        {/* Forgot Password Screen */}
+        <Stack.Screen name="ForgotPasswordScreen"     component={ForgotPasswordScreen} />
         <Stack.Screen name="Confirmation_Screen"     component={Confirmation_Screen} />
         <Stack.Screen name="Success_Screen"     component={Success_Screen} />
    

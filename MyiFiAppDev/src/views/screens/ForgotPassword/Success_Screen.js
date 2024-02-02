@@ -14,7 +14,7 @@ class Success_Screen extends Component {
     super(props);
 
     this.state = {
-      successChecked: true,
+      successChecked: false,
     };
   }
 

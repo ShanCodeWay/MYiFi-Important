@@ -11,7 +11,6 @@ import {
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import { GetSettingsScreenStyles } from "./SettingsScreenStyles";
 import Index from "../../../../configs/Index";
-import CommonSpinnerLong from "../../../components/Common/CommonSpinnerLong";
 import Colors from "../../../../styles/Colors";
 import { GetCommonStyles } from "../../../../styles/CommonStyles";
 import BottomTitleBar from "../../../components/Common/BottomTitleBar";
@@ -23,7 +22,7 @@ import {
 } from "../../../../styles/Themes";
 import { GetGreeting } from "../../../../utils/helpers";
 import SelectDropDown from "../../../components/Common/Dropdown/SelectDropDown";
-
+import { version } from '../../../../../package.json';
 //Done by: Darshana 26/01/2024
 
 class SettingsScreen extends Component {
@@ -31,7 +30,7 @@ class SettingsScreen extends Component {
     super(props);
     this.state = {
       UserName:  'Dhamitha Bandara',
-      UserEMail: 'damithaB@gmail.com',
+      UserEMail: '',
       LastLogIn: '01/02/2024',
       
       selectedLanguage            : '',
@@ -83,6 +82,15 @@ class SettingsScreen extends Component {
       console.log("Next button pressed to navigate to FundScreen1");
     } catch (error) {
       console.log("[SettingsScreen] - Next_Button - Error ", error);
+    }
+  };
+
+  handleResetPassword = () => {
+    try {
+      this.props.navigation.replace(Index.RESTPASSWORD);
+      console.log("left pressed to navigate signup screen 4");
+    } catch (error) {
+      console.log("[SettingsScreen] - left_Button - Error ", error);
     }
   };
 
@@ -185,66 +193,52 @@ class SettingsScreen extends Component {
                       style={GetSettingsScreenStyles(Android_Theme_Light)
                           .titleBarView
                       }
-                    > 
+       > 
 
 <View style={GetSettingsScreenStyles(Android_Theme_Light).mainTitleTextView}>
       <Text style={GetSettingsScreenStyles(Android_Theme_Light).mainTitleText}>
                 Settings
       </Text>
-            </View>
+</View>
 
-            <View
-              style={[
-                GetSettingsScreenStyles(Android_Theme_Light).titleBarRowView,
-              ]}
-            >
-          
-            <TouchableOpacity 
+            <View style={GetSettingsScreenStyles(Android_Theme_Light).titleBarRowView}>
+           <View style={GetSettingsScreenStyles(Android_Theme_Light).titleBarRowViewFirstColumn}> 
+           <TouchableOpacity 
             onPress={this.handleAccount}>
                <Image
                 source={require("../../../../assets/images/Img_avatarPerson.png")}
                 style={{ width: 40, height: 40 }}
               />
             </TouchableOpacity>
+           </View>
 
-            <View style={GetSettingsScreenStyles(Android_Theme_Light).greetingView}>
-              <View style={GetSettingsScreenStyles(Android_Theme_Light).greetingViewFirstRow}>
+           <View style={GetSettingsScreenStyles(Android_Theme_Light).titleBarRowViewSecondColumn}>
+                      
+            
               <Text style={ GetSettingsScreenStyles(Android_Theme_Light).textUserName}>
               {this.state.UserName}
               </Text>
-              <TouchableOpacity>
+           
+            
+             <Text style={GetSettingsScreenStyles(Android_Theme_Light).textLastLog} >
+                 Last Log In: <Text style={GetSettingsScreenStyles(Android_Theme_Light).textDate}> {this.state.LastLogIn}</Text>
+            </Text>
+           
+             
+          </View> 
 
-              <Android_Theme_Light.ICON_LOG_OUT
+
+           <View style={GetSettingsScreenStyles(Android_Theme_Light).titleBarRowViewThirdColumn}> 
+           <TouchableOpacity>
+
+              <Android_Theme_Light.ICON_POWER
               width={30} 
               height={30}
               fill={Android_Theme_Light.WHITE_COLOR}/>  
            </TouchableOpacity>
-              
-              </View>
-              
+           
+           </View>         
 
-              <View style={
-                  GetSettingsScreenStyles(Android_Theme_Light).textUserDetails
-                }> 
-              <Text
-                style={[
-                  GetSettingsScreenStyles(Android_Theme_Light).textUserEmail,
-                ]}
-              >
-              {this.state.UserEMail}
-              </Text>
-              <Text
-                style={[
-                  GetSettingsScreenStyles(Android_Theme_Light).textLastLog,
-                ]}
-              >
-                
-                 Last Seen:<Text style={[
-                  GetSettingsScreenStyles(Android_Theme_Light).textDate,
-                ]}> {this.state.LastLogIn}</Text>
-              </Text>
-              </View>
-              </View> 
             </View>
 
             
@@ -252,7 +246,7 @@ class SettingsScreen extends Component {
 
           </LinearGradient>
           </View>
-          
+         
 
 
              
@@ -273,24 +267,21 @@ class SettingsScreen extends Component {
                     .middleContainerView,
                 ]}
               >
-                <View style={{ height: 10 }} />
+                <View style={{ height: 20 }} />
 
-                <View style={GetSettingsScreenStyles(Android_Theme_Light).containerTitleView}>
-                  
-                  <Text style={GetSettingsScreenStyles(Android_Theme_Light).titleText}>
-                                  Select Language
-                   </Text>
 
-                </View>  
+
+              
+ 
                 <View style={GetSettingsScreenStyles(Android_Theme_Light)
                           .buttonContainerLanguage
                       }
                     >
                      
                 <SelectDropDown
+              title={"Select Language"}  
               width={"100%"}
               data={this.state.languageList}
-              placeholder={""}
               value={this.state.selectedLanguage || this.state.languageList[0].value}
               lable={this.state.selectedLanguage || this.state.languageList[0].label}
               onRef={(ref) => (this.parentReferenceItem = ref)}
@@ -300,221 +291,150 @@ class SettingsScreen extends Component {
 
                         <View style={{ height: 10 }} />
 
-                    <View style={GetSettingsScreenStyles(Android_Theme_Light).containerTitleView}>
-                     
-                     <Text style={GetSettingsScreenStyles(Android_Theme_Light).titleText}>
-                       Security
-                     </Text>
 
-                    </View>
-                    <View
-                      
-                      style={GetSettingsScreenStyles(Android_Theme_Light)
-                          .buttonContainer
-                      }
-                    >
-                      <View style= {GetSettingsScreenStyles(Android_Theme_Light).buttonMain}>   
-                      <View style= {GetSettingsScreenStyles(Android_Theme_Light).buttonLeft}>
+                          {/*Start of Input Filed View */}
+                          <View style={GetSettingsScreenStyles(Android_Theme_Light).parentContainer}>
+                                      <View style={GetSettingsScreenStyles(Android_Theme_Light).containerTitleView}>
+                                          <Text style={GetSettingsScreenStyles(Android_Theme_Light).titleText}>
+                                           Finger Print 
+                                          </Text>
 
-
-
-
-                      <View style= {GetSettingsScreenStyles(Android_Theme_Light).buttonLeftSecond}>
-                      <View style= {GetSettingsScreenStyles(Android_Theme_Light).notificationTextView}> 
-                       <Text style= {GetSettingsScreenStyles(Android_Theme_Light).notificationText}>
-                       Fingerprint : 
-                       
-                      </Text>
-                      <Text style={[
-                                  GetSettingsScreenStyles(Android_Theme_Light).buttonLeftSecondText,
+                                        </View>
+                                                
+                                                  <View style={GetSettingsScreenStyles(Android_Theme_Light).inputContainer }>
+                                                   
+                                                    <Text style={[
+                                  GetSettingsScreenStyles(Android_Theme_Light).inputFieldText,
                                   { color: this.state.fingerSwitchEnabled ? Android_Theme_Light.DARK_BLUE_COLOR : Android_Theme_Light.DARK_GRAY_COLOR }
                                 ]}>
                                   {this.state.fingerSwitchEnabled ? "Enabled" : "Disabled"}
-                                </Text>     
-                      </View>  
-                       </View>
+                                </Text>  
+                                                    <View style={ GetSettingsScreenStyles(Android_Theme_Light)
+                                                          .iconContainer } >
+                                                      <Switch
+                                                          trackColor={{ false: '#767577', true: '#1B1F52' }}
+                                                          thumbColor={this.state.fingerSwitchEnabled ? '#007BC2' : '#f4f3f4'}
+                                                          onValueChange={this.fingerToggleSwitch} 
+                                                          value={this.state.fingerSwitchEnabled}
+                                                        />
+                                                    </View>
+                          </View>
+                        </View>
+                {/*End of Input Filed View */}
 
-                      </View>
-                      <View style= {GetSettingsScreenStyles(Android_Theme_Light).buttonRight}>
-                      <Switch
-                          trackColor={{ false: '#767577', true: '#1B1F52' }}
-                          thumbColor={this.state.fingerSwitchEnabled ? '#007BC2' : '#f4f3f4'}
-                          onValueChange={this.fingerToggleSwitch} 
-                          value={this.state.fingerSwitchEnabled}
-                        />
-                      </View>
-                     </View>
+                <View style={{ height: 10 }} />
+
+
+{/*Start of Input Filed View */}
+<View style={GetSettingsScreenStyles(Android_Theme_Light).parentContainer}>
+            <View style={GetSettingsScreenStyles(Android_Theme_Light).containerTitleView}>
+                <Text style={GetSettingsScreenStyles(Android_Theme_Light).titleText}>
+                Face ID  
+                </Text>
+
+              </View>
                       
-                    </View>
+                        <View style={GetSettingsScreenStyles(Android_Theme_Light).inputContainer }>
+                         
+                          <Text style={[
+        GetSettingsScreenStyles(Android_Theme_Light).inputFieldText,
+        { color: this.state.faceSwitchEnabled ? Android_Theme_Light.DARK_BLUE_COLOR : Android_Theme_Light.DARK_GRAY_COLOR }
+      ]}>
+        {this.state.faceSwitchEnabled ? "Enabled" : "Disabled"}
+      </Text>  
+                          <View style={ GetSettingsScreenStyles(Android_Theme_Light)
+                                .iconContainer } >
+                            <Switch
+                                trackColor={{ false: '#767577', true: '#1B1F52' }}
+                                thumbColor={this.state.faceSwitchEnabled ? '#007BC2' : '#f4f3f4'}
+                                onValueChange={this.faceToggleSwitch} 
+                                value={this.state.faceSwitchEnabled}
+                              />
+                          </View>
+</View>
+</View>
+{/*End of Input Filed View */}
 
-                    <View style={{ height: 10 }} />
-
-                     <View style={GetSettingsScreenStyles(Android_Theme_Light)
-                          .buttonContainer
-                      }
-                    >
-                      <View style= {GetSettingsScreenStyles(Android_Theme_Light).buttonMain}>   
-                      <View style= {GetSettingsScreenStyles(Android_Theme_Light).buttonLeft}>
-                     
-                     <View style= {GetSettingsScreenStyles(Android_Theme_Light).buttonLeftSecond}>
-                      <View style= {GetSettingsScreenStyles(Android_Theme_Light).notificationTextView}> 
-                       <Text style= {GetSettingsScreenStyles(Android_Theme_Light).notificationText}>
-                       Face ID : 
-                       
-                      </Text>
-                      <Text style={[
-                                  GetSettingsScreenStyles(Android_Theme_Light).buttonLeftSecondText,
-                                  { color: this.state.faceSwitchEnabled ? Android_Theme_Light.DARK_BLUE_COLOR : Android_Theme_Light.DARK_GRAY_COLOR }
-                                ]}>
-                                  {this.state.faceSwitchEnabled ? "Enabled" : "Disabled"}
-                                </Text>      
-                      </View>  
-                       </View>
+<View style={{ height: 10 }} />
 
 
+{/*Start of Input Filed View */}
+<View style={GetSettingsScreenStyles(Android_Theme_Light).parentContainer}>
+            <View style={GetSettingsScreenStyles(Android_Theme_Light).containerTitleView}>
+                <Text style={GetSettingsScreenStyles(Android_Theme_Light).titleText}>
+                 Dark Mode
+                </Text>
 
-
-
-
-                              
-                      </View>
-                      <View style= {GetSettingsScreenStyles(Android_Theme_Light).buttonRight}>
-                      <Switch
-                          trackColor={{ false: '#767577', true: '#1B1F52' }}
-                          thumbColor={this.state.faceSwitchEnabled ? '#007BC2' : '#f4f3f4'}
-                          onValueChange={this.faceToggleSwitch} 
-                          value={this.state.faceSwitchEnabled}
-                        />
-                      </View>
-                     </View>
+              </View>
                       
-                    </View>
-
-                    <View style={{ height: 10 }} />
-                    <View style={GetSettingsScreenStyles(Android_Theme_Light).containerTitleView}>
-                     
-                     <Text style={GetSettingsScreenStyles(Android_Theme_Light).titleText}>
-                       Theme
-                     </Text>
-
-                    </View>
-                    <View
-                      style={GetSettingsScreenStyles(Android_Theme_Light)
-                          .buttonContainer
-                      }
-                    >
-                      <View style= {GetSettingsScreenStyles(Android_Theme_Light).buttonMain}>   
-                      <View style= {GetSettingsScreenStyles(Android_Theme_Light).buttonLeft}>
-                      <View style= {GetSettingsScreenStyles(Android_Theme_Light).buttonLeftSecond}>
-                      <View style= {GetSettingsScreenStyles(Android_Theme_Light).notificationTextView}> 
-                       <Text style= {GetSettingsScreenStyles(Android_Theme_Light).notificationText}>
-                        Dark Mode: 
-                       
-                      </Text>
-                      <Text style={[
-                                  GetSettingsScreenStyles(Android_Theme_Light).buttonLeftSecondText,
-                                  { color: this.state.themeSwitchEnabled ? Android_Theme_Light.DARK_BLUE_COLOR : Android_Theme_Light.DARK_GRAY_COLOR }
-                                ]}>
-                                   {" "}{this.state.themeSwitchEnabled ? "Enabled" : "Disabled"}
-                      </Text>        
-                      </View>  
-                       </View>
-                      </View>
-                      <View style= {GetSettingsScreenStyles(Android_Theme_Light).buttonRight}>
-                      <Switch
-                          trackColor={{ false: '#767577', true: '#1B1F52' }}
-                          thumbColor={this.state.themeSwitchEnabled ? '#007BC2' : '#f4f3f4'}
-                          onValueChange={this.themeToggleSwitch} 
-                          value={this.state.themeSwitchEnabled}
-                        />
-                      </View>
-                     </View>
-                      
-                    </View>  
+                        <View style={GetSettingsScreenStyles(Android_Theme_Light).inputContainer }>
+                         
+                          <Text style={[
+        GetSettingsScreenStyles(Android_Theme_Light).inputFieldText,
+        { color: this.state.themeSwitchEnabled ? Android_Theme_Light.DARK_BLUE_COLOR : Android_Theme_Light.DARK_GRAY_COLOR }
+      ]}>
+        {this.state.themeSwitchEnabled  ? "Enabled" : "Disabled"}
+      </Text>  
+                          <View style={ GetSettingsScreenStyles(Android_Theme_Light)
+                                .iconContainer } >
+                            <Switch
+                                trackColor={{ false: '#767577', true: '#1B1F52' }}
+                                thumbColor={this.state.themeSwitchEnabled  ? '#007BC2' : '#f4f3f4'}
+                                onValueChange={this.themeToggleSwitch} 
+                                value={this.state.themeSwitchEnabled }
+                              />
+                          </View>
+</View>
+</View>
+{/*End of Input Filed View */}
+                
+                <View style={{ height: 5 }} />
 
 
+                  {/*Start of Input Filed View */}
+                  <View style={GetSettingsScreenStyles(Android_Theme_Light).parentContainer}>
+                                      <View style={GetSettingsScreenStyles(Android_Theme_Light).containerTitleView}>
+                                         
 
-                    <View style={{ height: 10 }} />
-                    <View style={GetSettingsScreenStyles(Android_Theme_Light).containerTitleView}>
-                     
-                     <Text style={GetSettingsScreenStyles(Android_Theme_Light).titleText}>
-                       Notification
-                     </Text>
+                                        </View>
+                                                
+                                                    <TouchableOpacity 
+                                                         onPress={this.handleResetPassword}style={GetSettingsScreenStyles(Android_Theme_Light).inputContainer }>
+                                                    
+                                                    <Text style={GetSettingsScreenStyles(Android_Theme_Light)
+                                                          .resetPasswordText}>
+                                                      Reset Password
+                                                    </Text>
+                                                    <View style={ GetSettingsScreenStyles(Android_Theme_Light)
+                                                          .iconContainer } >
+                                                       
+                                                      <Android_Theme_Light.ICON_FORWARD_NAVIGATE/>
+                                                        
+                                                    </View>
+                                                    </TouchableOpacity>
 
-                    </View>
-                    <View
-                      style={GetSettingsScreenStyles(Android_Theme_Light)
-                          .buttonContainer
-                      }
-                    >
-                      <View style= {GetSettingsScreenStyles(Android_Theme_Light).buttonMain}>   
-                      <View style= {GetSettingsScreenStyles(Android_Theme_Light).buttonLeft}>
-                        
-                       <View style= {GetSettingsScreenStyles(Android_Theme_Light).buttonLeftSecond}>
-                      <View style= {GetSettingsScreenStyles(Android_Theme_Light).notificationTextView}> 
-                       <Text style= {GetSettingsScreenStyles(Android_Theme_Light).notificationText}>
-                        Notification: 
-                       
-                      </Text>
-                      <Text style={[
-                                  GetSettingsScreenStyles(Android_Theme_Light).buttonLeftSecondText,
-                                  { color: this.state.notificationSwitchEnabled ? Android_Theme_Light.DARK_BLUE_COLOR : Android_Theme_Light.DARK_GRAY_COLOR }
-                                ]}>
-                                   {" "}{this.state.notificationSwitchEnabled ? "Enabled" : "Disabled"}
-                      </Text>        
-                      </View>  
-                       </View>
-                      </View>
-                      <View style= {GetSettingsScreenStyles(Android_Theme_Light).buttonRight}>
-                      <Switch
-                          trackColor={{ false: '#767577', true: '#1B1F52' }}
-                          thumbColor={this.state.notificationSwitchEnabled ? '#007BC2' : '#f4f3f4'}
-                          onValueChange={this.notificationToggleSwitch} 
-                          value={this.state.notificationSwitchEnabled}
-                        />
-                      </View>
-                     </View>
-                      
-                    </View>
 
-                    <View style={{ height: 10 }} />
+                                                    </View>
+                 {/*End of Input Filed View */}
+                
+                <View style={{ height: 10 }} />
 
-                    <View
-                      style={GetSettingsScreenStyles(Android_Theme_Light)
-                          .buttonContainer
-                      }
-                    >
-                      <View style= {GetSettingsScreenStyles(Android_Theme_Light).buttonMain}>   
-                      <View style= {GetSettingsScreenStyles(Android_Theme_Light).buttonLeft}>
-                       <Text style= {GetSettingsScreenStyles(Android_Theme_Light).buttonLeftFirstText}>
-                            Reset Password
-                       </Text>          
-                      
-                       
-                      </View>
-                      <View style= {GetSettingsScreenStyles(Android_Theme_Light).buttonRight}>
-                        <TouchableOpacity >
-                        {/*onPress={handleResetPassword}*/}
-                       <Android_Theme_Light.ICON_FORWARD_NAVIGATE/>
-                       </TouchableOpacity>
-                      </View>
-                     </View>
-                      
-                    </View>  
+              </View>
+            </View>
             <View style= {GetSettingsScreenStyles(Android_Theme_Light).logoView}>
-              <View style= {GetSettingsScreenStyles(Android_Theme_Light).logoTextView}>       
-              <Text style= {GetSettingsScreenStyles(Android_Theme_Light).logoText}>0.0.0.1V </Text>
-              </View>    
+                 
               <Android_Theme_Light.MI_LOGO
               width={90} 
               height={90}
               />
+              <View style= {GetSettingsScreenStyles(Android_Theme_Light).logoTextView}>       
+              <Text style= {GetSettingsScreenStyles(Android_Theme_Light).logoText}>
+                 version:  { version }
+              </Text>
+              </View> 
             
             </View>          
 
-
-              </View>
-            </View>
             </KeyboardAwareScrollView>
           </View>
 

@@ -12,12 +12,20 @@ export default GetResetPasswordScreenStyles = (theme) => {
 
         bottombuttonContainer: {
 
-            //height: 100,
+            height: 100,
             width:'100%',
             justifyContent: "flex-start",
             alignItems: "flex-start",
             marginBottom:20,
-          },    
+            backgroundColor: 'red`'
+          }, 
+
+          bottomView: {
+            paddingTop: 10,
+            height: 120,
+            alignItems: "center",
+          },
+          
         
         titleView: {
             
@@ -66,7 +74,63 @@ export default GetResetPasswordScreenStyles = (theme) => {
         KeyboardAvoidingView:{
             flexGrowl  : 1,
             
-        }
+        },
+
+        /*POLICY View */
+
+
+        overlay: {
+            ...StyleSheet.absoluteFillObject,
+            backgroundColor: 'rgba(0, 0, 0, 0.5)', // Transparent black background
+            justifyContent: 'center',
+            alignItems: 'center',
+          },
+          policyView: {
+            width: 300,
+            backgroundColor: 'white',
+            padding: 20,
+            borderRadius: 10,
+          },
+          policyContainer: {
+            marginBottom: 10,
+          },
+          policyTitle: {
+            
+            fontFamily: theme.POPPINS_MEDIUM,
+            color: theme.DEEP_BLACK_COLOR,
+            fontSize: theme.FONT_SIZE_CAPTION_ONE_MEDIUM,
+            textAlign: 'right',
+            justifyContent: 'center',
+            alignItems: 'center',
+            
+          },
+          policyTextContainer: {
+            flexDirection: 'row', 
+            alignItems: 'center', 
+            justifyContent: 'flex-end' },
+
+          policyText: {
+            
+            fontFamily: theme.POPPINS_BOLD,
+            color: theme.DEEP_BLACK_COLOR,
+            fontSize: theme.FONT_SIZE_MEDIUM,
+            marginBottom: 5,
+          },
+          policyItem: {
+            fontFamily: theme.POPPINS_MEDIUM,
+            color: theme.DEEP_BLACK_COLOR,
+            fontSize: theme.FONT_SIZE_MEDIUM,
+            marginBottom: 5,
+          },
+
+          bottomButton: {
+            alignSelf: 'flex-end',
+            padding: 10,
+            borderRadius: 15,
+          },
+          buttonText: {
+            color: 'white',
+          },
 
         
     });

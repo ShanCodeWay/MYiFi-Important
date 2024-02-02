@@ -63,6 +63,8 @@ import Icon_Search_Android from "../assets/icons/android/Icon_Search.svg"
 import Icon_Search_Ios from "../assets/icons/ios/Icon_Search.svg"
 import Icon_Fingerprint from "../assets/icons/android/Icon_fingerPrint.svg"
 import Icon_LogOut from "../assets/icons/android/icon_log_out.svg"
+import Icon_Power from "../assets/icons/android/icon_Power.svg"
+import Icon_Info from "../assets/icons/android/Icon_Info.svg"
 
 export default {
   ICON_BACK_ARROW_ANDROID_LIGHT: Icon_BackArrow_Android,
@@ -130,5 +132,7 @@ export default {
   ICON_GOLDLOAN_IOS_LIGHT : Icon_GoldLoan_Ios,
   ICON_FINGER_PRINT_LIGHT : Icon_Fingerprint,
   ICON_LOG_OUT_ANDROID_LIGHT: Icon_LogOut,
+  ICON_POWER_ANDROID_LIGHT:Icon_Power,
+  ICON_INFO_ANDROID_LIGHT:Icon_Info
 
 };

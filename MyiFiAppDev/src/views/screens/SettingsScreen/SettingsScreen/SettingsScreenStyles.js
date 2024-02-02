@@ -35,6 +35,7 @@ const SettingsScreenStyles = StyleSheet.create({
 
   middleContainerView: {
     width: "100%",
+    flexDirection: "column",
   },
 
 
@@ -47,9 +48,10 @@ const SettingsScreenStyles = StyleSheet.create({
   },
   
   titleText: {
-    fontFamily: theme.POPPINS_BOLD,
-    color     : theme.DARK_BLUE_COLOR,
-    fontSize  : theme.FONT_SIZE_MEDIUM,
+      fontFamily : theme.POPPINS_MEDIUM,
+      color : theme.DEEP_BLACK_COLOR,
+      fontSize : theme.FONT_SIZE_SMALL,
+      textAlign: "left"
    
 },  
 
@@ -65,7 +67,6 @@ titleIconView:{
       alignContent: "center",
       alignItems: "center",
       alignSelf: "center",
-      paddingHorizontal: "5%",
       paddingVertical: "2%",
       borderRadius: 12,
       width: "100%",
@@ -148,15 +149,29 @@ titleIconView:{
       flexDirection: "row",
       width: "100%",
       alignItems:"center",
-      borderBottomLeftRadius: 15,
-      borderBottomRightRadius: 15,
-      height: 60,
-      justifyContent: "space-between",
-      paddingHorizontal: 10,
+       height: 60,
+      justifyContent: "center",
+      
     },
 
+  titleBarRowViewFirstColumn:{ 
+    
+   width:60,
+   alignItems:"center",
+  },
+  titleBarRowViewSecondColumn: {
+   
+    flex: 1,
+    alignItems: 'flex-start', 
+    justifyContent: 'flex-start',
+  },
+  titleBarRowViewThirdColumn:{ 
+    
+    width:60,
+    alignItems:"center",
+  },
     mainTitleTextView:{
-      
+      alignItems:"center",
     },
     mainTitleText:{
       fontFamily: theme.POPPINS_MEDIUM,
@@ -180,29 +195,30 @@ titleIconView:{
     },
     greetingView: {
       flex: 1,
-      paddingLeft: 10, 
+      marginLeft: 10,
      },
 
     greetingViewFirstRow:{
+      width: '95%',
       flexDirection: 'row',
       justifyContent: 'space-between',
-      alignItems: "center",  
-      
+      alignItems: "center",
     },
   
-    textUserDetails:{
+    textUserDetails: {
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      width: '100%',
-      alignItems: "center",  
-      
+      width: '75%',
+      justifyContent: 'flex-start', 
+     
     },
+
     textUserName: {
       fontFamily: theme.POPPINS_SEMIBOLD,
       fontSize: theme.FONT_SIZE_BODY_ONE_REGULAR,
       color: theme.WHITE_COLOR,
-      alignItems: "center",  
+      alignItems: "center", 
      
       
     },
@@ -217,9 +233,7 @@ titleIconView:{
       color: theme.WHITE_COLOR,
       fontSize: theme.FONT_SIZE_SMALL,
       fontFamily: theme.POPPINS_MEDIUM,
-      textAlign: 'right',
-      alignItems: "center",   
-     
+       alignItems: "center", 
     },
 
     textDate : {
@@ -230,23 +244,77 @@ titleIconView:{
     },
 
     logoView:{
+      justifyContent: 'center',
       alignItems: 'center',
-      marginTop: 10,
-      marginBottom: 10,
+      
+      
     }
     ,
 
     logoTextView:{
-      position: 'absolute',
+    position:'absolute',
+    alignItems: 'center',
+    
+   
     }
     ,
 
     logoText:{
+      marginTop: 80,
       color: theme.DARK_BLUE_COLOR,
       fontSize: theme. FONT_SIZE_SMALL, 
       fontFamily: theme.POPPINS_MEDIUM, 
+      alignItems: 'center',
      
-    }
+    },
+
+      //Input Filed View
+      labelText: {
+        fontFamily: theme.POPPINS_MEDIUM,
+        color: theme.DEEP_BLACK_COLOR,
+        fontSize: theme.FONT_SIZE_CAPTION_ONE_MEDIUM,
+      },
+  
+      parentContainer: {
+        flexDirection: "column",
+        alignItems: "flex-start",
+        height: 63,
+      },
+  
+      labelContainer: {
+        alignItems: "flex-start",
+        width: "100%",
+        height: 15,
+      },
+  
+      inputContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        width: "100%",
+        flex: 1,
+        borderBottomWidth: 1,
+        borderBottomColor: theme.GRAY_COLOR,
+      },
+      inputFieldText: {
+        flex: 1,
+        fontFamily : theme.POPPINS_REGULAR,
+        color : theme.DEEP_BLACK_COLOR,
+        fontSize : theme.FONT_SIZE_LARGE,
+        textAlign: "left"
+      },
+      iconContainer: {
+        width: 40,
+        height: "100%",
+        alignItems: "center",
+        justifyContent: "center",
+      },
+      resetPasswordText: {
+        flex: 1,
+        fontFamily : theme.POPPINS_MEDIUM,
+        color : theme.DEEP_BLACK_COLOR,
+        fontSize : theme.FONT_SIZE_SMALL,
+        textAlign: "left"
+      },
     
 
 
