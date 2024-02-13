@@ -11,5 +11,12 @@ export default GetForgotPasswordScreenStyles = (theme) => {
       marginLeft: 20,
       marginRight: 20,
     },
+
+    textStyleH1Medium: {
+      color: theme.DEEP_BLACK_COLOR,
+      fontSize: theme.FONT_SIZE_30,
+      fontFamily: theme.POPPINS_MEDIUM,
+      textAlign: "center",
+    },
   });
 };

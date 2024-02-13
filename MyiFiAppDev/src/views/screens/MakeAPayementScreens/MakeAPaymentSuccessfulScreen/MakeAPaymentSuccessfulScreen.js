@@ -8,7 +8,7 @@ import { GetCommonStyles } from "../../../../styles/CommonStyles";
 import GetMakeAPaymentSuccessfulScreenStyles from "./MakeAPaymentSuccessfulScreenStyles";
 
 import { Android_Theme_Light } from "../../../../styles/Themes";
-import BottomTitleBar from "../../../components/Common/BottomTitleBar";
+import BottomTitleBar from "../../../components/Common/BottomBar/BottomBar";
 import { AmountSeperation } from "../../../../utils/helpers";
 
 // done by: Randima 2024/01/24
@@ -24,7 +24,7 @@ class MakeAPaymentSuccessfulScreen extends Component {
 
   componentDidMount() {
     try {
-      StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
+     // StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
       console.log("final", this.props.route.params.fdpayment);
       console.log("final", this.props.route.params.success);
       this.setState({
@@ -54,7 +54,7 @@ class MakeAPaymentSuccessfulScreen extends Component {
       console.log("left pressed to navigate to MakeAPaymentOtpScreen");
     } catch (error) {
       console.log(
-        "[MakeAPaymentSuccessfulScreen] - left_Button - Error ",
+        "[MakeAPaymentSuccessfulScreen] - handleBack - Error ",
         error
       );
     }
@@ -66,13 +66,12 @@ class MakeAPaymentSuccessfulScreen extends Component {
       console.log("left pressed to navigate to MakeAPaymentOtpScreen");
     } catch (error) {
       console.log(
-        "[MakeAPaymentSuccessfulScreen] - left_Button - Error ",
+        "[MakeAPaymentSuccessfulScreen] - handleHome - Error ",
         error
       );
     }
   };
 
-  handlePasswordInputChange = (text) => {};
 
   render() {
     return (

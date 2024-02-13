@@ -65,6 +65,25 @@ import Icon_Fingerprint from "../assets/icons/android/Icon_fingerPrint.svg"
 import Icon_LogOut from "../assets/icons/android/icon_log_out.svg"
 import Icon_Power from "../assets/icons/android/icon_Power.svg"
 import Icon_Info from "../assets/icons/android/Icon_Info.svg"
+import Icon_Bell from "../assets/icons/android/Icon_Bell.svg"
+import Icon_Send_Arrow_Android from "../assets/icons/android/Icon_arrowSend.svg"
+import Icon_Send_Arrow_Ios from "../assets/icons/ios/Icon_arrowSend.svg"
+import Icon_Receive_Arrow_Android from "../assets/icons/android/Icon_arrowReceive.svg"
+import Icon_Receive_Arrow_Ios from "../assets/icons/ios/Icon_arrowReceive.svg"
+import Icon_Settings_Android from "../assets/icons/android/Icon_Settings.svg"
+import Icon_Settings_Ios from "../assets/icons/ios/Icon_Settings.svg"
+import Icon_Payee_Management_Android from "../assets/icons/android/Icon_PayeeManagement.svg"
+import Icon_Payee_Management_Ios from "../assets/icons/ios/Icon_PayeeManagement.svg"
+import Icon_Add_Accounts_Android from "../assets/icons/android/Icon_Addaccounts.svg"
+import Icon_Add_Accounts_Ios from "../assets/icons/ios/Icon_Addaccounts.svg"
+import Icon_Qr_Android from "../assets/icons/android/Icon_Qr.svg"
+import Icon_Qr_Ios from "../assets/icons/ios/Icon_Qr.svg"
+import Icon_Easy_Payment_Android from "../assets/icons/android/Icon_Dashboard_payment.svg"
+import Icon_Easy_Payment_Ios from "../assets/icons/ios/Icon_Dashboard_payment.svg"
+import Icon_More_Android from "../assets/icons/android/Icon_More.svg"
+import Icon_More_Ios from "../assets/icons/ios/Icon_More.svg"
+
+import ProfilePic from "../assets/images/Img_avatarPerson.png"
 
 export default {
   ICON_BACK_ARROW_ANDROID_LIGHT: Icon_BackArrow_Android,
@@ -133,6 +152,27 @@ export default {
   ICON_FINGER_PRINT_LIGHT : Icon_Fingerprint,
   ICON_LOG_OUT_ANDROID_LIGHT: Icon_LogOut,
   ICON_POWER_ANDROID_LIGHT:Icon_Power,
-  ICON_INFO_ANDROID_LIGHT:Icon_Info
+  ICON_INFO_ANDROID_LIGHT:Icon_Info,
+  ICON_BELL_ANDROID_LIGHT:Icon_Bell,
+  ICON_BELL_IOS_LIGHT:Icon_Bell,
+  ICON_SEND_ARROW_ANDROID_LIGHT:Icon_Send_Arrow_Android,
+  ICON_SEND_ARROW_IOS_LIGHT:Icon_Send_Arrow_Ios,
+  ICON_RECEIVE_ARROW_ANDROID_LIGHT:  Icon_Receive_Arrow_Android,
+  ICON_RECEIVE_ARROW_IOS_LIGHT: Icon_Receive_Arrow_Ios,
+  ICON_SETTINGS_ANDROID_LIGHT:  Icon_Settings_Android,
+  ICON_SETTINGS_IOS_LIGHT: Icon_Settings_Ios,
+  ICON_PAYEE_MANAGEMET_ANDROID_LIGHT:  Icon_Payee_Management_Android,
+  ICON_PAYEE_MANAGEMET_IOS_LIGHT: Icon_Payee_Management_Ios,
+  ICON_ADD_ACCOUNTS_ANDROID_LIGHT:  Icon_Add_Accounts_Android,
+  ICON_ADD_ACCOUNTS_IOS_LIGHT: Icon_Add_Accounts_Ios,
+  ICON_QR_ANDROID_LIGHT:  Icon_Qr_Android,
+  ICON_QR_IOS_LIGHT: Icon_Qr_Ios,
+  ICON_EASY_PAYMENT_ANDROID_LIGHT:  Icon_Easy_Payment_Android,
+  ICON_EASY_PAYMENT_IOS_LIGHT: Icon_Easy_Payment_Ios,
+  ICON_MORE_ANDROID_LIGHT:  Icon_More_Android,
+  ICON_MORE_IOS_LIGHT: Icon_More_Ios,
+
+  IMAGE_PROFILE_PIC: ProfilePic
+
 
 };

@@ -4,12 +4,11 @@ import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import { GetCommonStyles } from '../../../styles/CommonStyles';
 import { GetNotificationsCentreScreenStyles } from './NotificationsCentreScreenStyles';
 import { Android_Theme_Light } from '../../../styles/Themes';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import MainTitleBar from '../../components/Common/TitleBar/MainTitleBar';
-import BottomTitleBar from '../../components/Common/BottomTitleBar';
+import BottomTitleBar from '../../components/Common/BottomBar/BottomBar';
 import Icon_backArrows from '../../../assets/icons/Icon_backArrows.svg';
 import Icon_home from '../../../assets/icons/Icon_home.svg';
-
+import { SafeAreaView } from 'react-native-safe-area-context';
+                                                                        // Done by Nawodya 2/6/2024
 class NotificationsCentreScreen extends Component {
   constructor(props) {
     super(props);
@@ -68,6 +67,29 @@ class NotificationsCentreScreen extends Component {
        
       </TouchableOpacity>
     );
+  };
+  handleHome = () => {
+    try {
+      this.props.navigation.navigate("DashboardScreen");
+      console.log("left pressed to navigate to MakeAPaymentOtpScreen");
+    } catch (error) {
+      console.log(
+        "[NotificationsCentreScreen] - left_Button - Error ",
+        error
+      );
+    }
+  };
+
+  handleBack = () => {
+    try {
+      this.props.navigation.navigate("DashboardScreen");
+      console.log("left pressed to navigate to MakeAPaymentOtpScreen");
+    } catch (error) {
+      console.log(
+        "[NotificationsCentreScreen] - left_Button - Error ",
+        error
+      );
+    }
   };
 
   render() {

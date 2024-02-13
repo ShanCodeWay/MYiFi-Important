@@ -1,11 +1,11 @@
 import React, { Component } from "react"; //Nawodya
-import { View, Text, FlatList } from "react-native";
+import { View, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import BottomTitleBar from "../../../components/Common/BottomTitleBar";
+import BottomTitleBar from "../../../components/Common/BottomBar/BottomBar";
 import { Android_Theme_Light } from "../../../../styles/Themes";
 import { GetCommonStyles } from "../../../../styles/CommonStyles";
 import GetLeasingLoanViewScreenStyles from "./LeasingLoanViewScreenStyles";
-import CommonCardButton from "../../../components/Common/CommonCardButton";
+import CommonCardButton from "../../../components/Common/CardButton/CommonCardButton";
 import CommonSummeryView from "../../../components/Common/SummeryView/CommonSummeryView";
 import { AmountSeperation } from "../../../../utils/helpers";
 

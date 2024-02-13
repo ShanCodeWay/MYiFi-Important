@@ -10,7 +10,7 @@ import CommonSummeryView from '../../../components/Common/SummeryView/CommonSumm
 import {
   Android_Theme_Light,
 } from "../../../../styles/Themes";
-import BottomTitleBar from "../../../components/Common/BottomTitleBar";
+import BottomTitleBar from "../../../components/Common/BottomBar/BottomBar";
 import { AmountSeperation } from "../../../../utils/helpers";
 
 
@@ -21,31 +21,23 @@ class BillPaymentTransferReceiptSuccessScreen extends Component {
 
     this.state = {
       successChecked: true,
-      //amountPayment : ""
+      amountPayment : "",
       SummeryList: [],
     };
   }
  
   componentDidMount() {
     try {
-      StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
-
-      console.log("final", this.props.route.params.success)
+      //StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
+      console.log("************",this.props.route.params.amountPaymenToPay)
       this.setState({
         SummeryList: this.props.route.params.data,
-        
-        
-        // this.props.route.params.data.map((item) => {
-        //   return {
-        //     label: item.key,
-        //     value: item.value,
-        //   };
-        // }),
-        successChecked: this.props.route.params.success
+        successChecked: this.props.route.params.success,
+        amountPayment: this.props.route.params.amountPaymenToPay,
       });
     } catch (Error) {
       console.log(
-        "[MakeAPaymentSuccessfulScreen] - componentDidMount - Error ",
+        "[BillPaymentTransferReceiptSuccessScreen ] - componentDidMount - Error ",
         Error
       );
     }
@@ -54,7 +46,7 @@ class BillPaymentTransferReceiptSuccessScreen extends Component {
     try {
     } catch (Error) {
       console.log(
-        "[MakeAPaymentSuccessfulScreen] - componentWillUnmount - Error ",
+        "[BillPaymentTransferReceiptSuccessScreen ] - componentWillUnmount - Error ",
         Error
       );
     }
@@ -66,7 +58,7 @@ class BillPaymentTransferReceiptSuccessScreen extends Component {
       console.log("Next button pressed to NAvigate _");
     } catch (error) {
       console.log(
-        "[MakeAPaymentSuccessfulScreen] - Next_Button - Error ",
+        "[BillPaymentTransferReceiptSuccessScreen ] - Next_Button - Error ",
         error
       );
     }
@@ -78,7 +70,7 @@ class BillPaymentTransferReceiptSuccessScreen extends Component {
       console.log("left pressed to navigate to MakeAPaymentOtpScreen");
     } catch (error) {
       console.log(
-        "[MakeAPaymentSuccessfulScreen] - left_Button - Error ",
+        "[BillPaymentTransferReceiptSuccessScreen ] - left_Button - Error ",
         error
       );
     }
@@ -90,7 +82,7 @@ class BillPaymentTransferReceiptSuccessScreen extends Component {
       console.log("left pressed to navigate to MakeAPaymentOtpScreen");
     } catch (error) {
       console.log(
-        "[MakeAPaymentSuccessfulScreen] - left_Button - Error ",
+        "[BillPaymentTransferReceiptSuccessScreen ] - left_Button - Error ",
         error
       );
     }
@@ -112,7 +104,7 @@ class BillPaymentTransferReceiptSuccessScreen extends Component {
             >
      {this.state.successChecked ? (<View style={GetBillPaymentTransferReceiptSuccessScreenStyles(Android_Theme_Light).outView}>
         <Text style={GetBillPaymentTransferReceiptSuccessScreenStyles(Android_Theme_Light).title}>Almost there</Text>
-       <Text style={GetBillPaymentTransferReceiptSuccessScreenStyles(Android_Theme_Light).secondTitle}>Transfer</Text>
+       <Text style={GetBillPaymentTransferReceiptSuccessScreenStyles(Android_Theme_Light).secondTitle}>BillPayment</Text>
 
              </View> ):null
         
@@ -150,20 +142,25 @@ class BillPaymentTransferReceiptSuccessScreen extends Component {
 
 
               {this.state.successChecked ? (
-                <View
-                  style={[GetCommonStyles(Android_Theme_Light).amountContainer]}
-                >
-                  <Text  style={
-                GetBillPaymentTransferReceiptSuccessScreenStyles(Android_Theme_Light)
-                  .amount }  >Rs.</Text>
-           <Text  style={
-                GetBillPaymentTransferReceiptSuccessScreenStyles(Android_Theme_Light)
-                  .amount }  >4000</Text>
-                        <Text  style={
-                GetBillPaymentTransferReceiptSuccessScreenStyles(Android_Theme_Light)
-                  .textsmall }  >.00</Text>
-                  
-                </View>
+          
+
+          <View
+          style={[GetBillPaymentTransferReceiptSuccessScreenStyles(Android_Theme_Light).prizeContainer]}
+      >
+          <Text style={[GetCommonStyles(Android_Theme_Light).amountRsText]}>
+              {"Rs "}
+          </Text>
+          <Text
+              style={[GetCommonStyles(Android_Theme_Light).amountIntegerText]}
+          >
+              {AmountSeperation(this.state.amountPayment)[0]}
+          </Text>
+          <Text
+              style={[GetCommonStyles(Android_Theme_Light).amountDecimalText]}
+          >
+              {AmountSeperation(this.state.amountPayment)[1]}
+          </Text>
+      </View>
               ) : null}
 
               {this.state.successChecked ? (

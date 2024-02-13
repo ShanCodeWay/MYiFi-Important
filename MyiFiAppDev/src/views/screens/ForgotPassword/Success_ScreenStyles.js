@@ -26,10 +26,11 @@ export default GetSuccess_ScreenStyles = (theme) => {
       //backgroundColor: "green",
     },
 
-    textTitle: {
-      color: theme.DARK_BLUE_COLOR,
-      fontSize: theme.FONT_SIZE_HEADER_TWO_MEDIUM,
-      fontFamily: theme.POPPINS_MEDIUM,
+    textTitle: { 
+        color: theme.DEEP_BLACK_COLOR,
+        fontSize: theme.FONT_SIZE_30,
+        fontFamily: theme.POPPINS_MEDIUM,
+        textAlign: "center",
     },
 
     subText: {

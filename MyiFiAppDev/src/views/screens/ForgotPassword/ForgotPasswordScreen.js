@@ -21,7 +21,6 @@ class ForgotPasswordScreen extends Component {
     this.state = {
       UserName: "",
       Answer: "",
-
       SelectedQuestion: null,
     };
   }
@@ -117,7 +116,7 @@ class ForgotPasswordScreen extends Component {
               style={GetCommonStyles(Android_Theme_Light).topTitleContainer}
             >
               <Text
-                style={GetCommonStyles(Android_Theme_Light).textStyleH1Medium}
+                style={GetForgotPasswordScreenStyles(Android_Theme_Light).textStyleH1Medium}
               >
                 {"Forgot Password"}
               </Text>

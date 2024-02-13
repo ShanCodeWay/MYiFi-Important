@@ -18,8 +18,8 @@ class SplashScreen extends Component {
 
       this.timeout = setTimeout(() => {
 
-        this.props.navigation.navigate("WelcomeScreen");
-        //this.props.navigation.navigate(Index.SIGNUP_3);
+        //this.props.navigation.navigate("WelcomeScreen");
+        this.props.navigation.navigate(Index.DASHBOARD);
       }, 4000);
 
     }

@@ -34,7 +34,7 @@ class KYCOtpScreen extends Component {
         this.setState({ timer: timer - 1 });
       }
       try {
-        StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
+    //    StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
       } catch (Error) {
         console.log("[KYCOtpScreen] - componentDidMount - Error ", Error);
       }

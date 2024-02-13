@@ -13,7 +13,7 @@ import { GetCommonStyles } from "../../../../styles/CommonStyles";
 import GetResetPasswordOTPScreenStyles from "./ResetPasswordOTPScreenStyles";
 
 import {Android_Theme_Light} from "../../../../styles/Themes";
-
+//Done by: Darshana 02/02/2024
 class ResetPasswordOTPScreen extends Component {
     
     constructor(props) {
@@ -108,7 +108,7 @@ class ResetPasswordOTPScreen extends Component {
 
     OnPress_BackButton = () => {
         try{
-            this.props.navigation.replace(Index.SETT_1); 
+            this.props.navigation.replace(Index.SETTINGS_SCREEN_1); 
             console.log("left pressed to Navigate to SignupScreen2");
         }
         catch(error){ 

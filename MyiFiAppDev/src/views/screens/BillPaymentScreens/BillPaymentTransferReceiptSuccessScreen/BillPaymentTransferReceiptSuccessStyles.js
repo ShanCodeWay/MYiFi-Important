@@ -110,7 +110,13 @@ export const GetBillPaymentTransferReceiptSuccessScreenStyles = (theme) => {
       color:theme.DEEP_BLACK_COLOR,
       fontFamily: theme.  POPPINS_MEDIUM,
     },
-
+    prizeContainer: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      //backgroundColor: 'red',
+      height: 50,
+    }
 
   });
 

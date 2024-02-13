@@ -5,7 +5,7 @@ import {
   SafeAreaView,
   StatusBar,
   Switch,
-  Touchable, Modal, Image, FlatList 
+  Touchable, Modal, Image, FlatList , TouchableWithoutFeedback
 
 } from "react-native";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
@@ -13,17 +13,18 @@ import { GetSettingsScreenStyles } from "./SettingsScreenStyles";
 import Index from "../../../../configs/Index";
 import Colors from "../../../../styles/Colors";
 import { GetCommonStyles } from "../../../../styles/CommonStyles";
-import BottomTitleBar from "../../../components/Common/BottomTitleBar";
+import BottomTitleBar from "../../../components/Common/BottomBar/BottomBar";
 import LinearGradient from "react-native-linear-gradient";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import {
   Android_Theme_Light,
   Android_Theme_Dark,
 } from "../../../../styles/Themes";
+import CommonButton from "../../../components/Common/MainButton/CommonButton";
 import { GetGreeting } from "../../../../utils/helpers";
 import SelectDropDown from "../../../components/Common/Dropdown/SelectDropDown";
 import { version } from '../../../../../package.json';
-//Done by: Darshana 26/01/2024
+//Done by: Darshana 02/02/2024
 
 class SettingsScreen extends Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class SettingsScreen extends Component {
       fingerSwitchEnabled: false,
       faceSwitchEnabled: false,
       themeSwitchEnabled: false,
+      isExitExpanded: false,
       notificationSwitchEnabled: false,
       languageList:[
         { label: "English", value: "English" },
@@ -63,7 +65,7 @@ class SettingsScreen extends Component {
 
   componentDidMount() {
     try {
-      StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
+    //  StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
     } catch (Error) {
       console.log("[SettingsScreen] - componentDidMount - Error ", Error);
     }
@@ -120,7 +122,7 @@ class SettingsScreen extends Component {
     }
   };
 
-  fingerToggleSwitch = () => {
+  fingerToggleSwitch = () => { try{
     if (this.state.faceSwitchEnabled) {
       this.setState({
         faceSwitchEnabled: false,
@@ -128,10 +130,13 @@ class SettingsScreen extends Component {
     }
     this.setState((prevState) => ({
       fingerSwitchEnabled: !prevState.fingerSwitchEnabled,
-    }));
+    }));}
+    catch (error) {
+      console.log("[SettingsScreen] - fingerToggleSwitch  Ex: ", error);
+    }
   };
   
-  faceToggleSwitch = () => {
+  faceToggleSwitch = () => { try{
     if (this.state.fingerSwitchEnabled) {
       this.setState({
         fingerSwitchEnabled: false,
@@ -139,21 +144,85 @@ class SettingsScreen extends Component {
     }
     this.setState((prevState) => ({
       faceSwitchEnabled: !prevState.faceSwitchEnabled,
-    }));
+    }));}
+    catch (error) {
+      console.log("[SettingsScreen] - faceToggleSwitch  Ex: ", error);
+    }
   };
 
-  themeToggleSwitch = () => {
+  themeToggleSwitch = () => {try{
     this.setState((prevState) => ({
       themeSwitchEnabled: !prevState.themeSwitchEnabled,
-    }));
+    }));}
+    catch (error) {
+      console.log("[SettingsScreen] - themeToggleSwitch  Ex: ", error);
+    }
   };
-  notificationToggleSwitch = () => {
+
+
+  notificationToggleSwitch = () => { try{
     this.setState((prevState) => ({
       notificationSwitchEnabled: !prevState.notificationSwitchEnabled,
-    }));
+    }));}
+    catch (error) {
+      console.log("[SettingsScreen] - notificationToggleSwitch  Ex: ", error);
+    }
   };
+
+  handlePressOnExit = () => {
+    try {
+      console.log("[SettingsScreen] - handlePressOnExit  ");
+      this.setState((prevState) => ({
+        isExitExpanded: !prevState.isExitExpanded,
+      }));}
+      catch (error) {
+      console.error("[SettingsScreen] - handlePressOnExit Ex: ", error);
+    }
+  };
+
   
   render() {
+
+    const exitView = this.state.isExitExpanded && (
+      <TouchableWithoutFeedback onPress={this.handlePressOnExit}>
+  <View style={GetSettingsScreenStyles(Android_Theme_Light).overlay}>
+    <View style={GetSettingsScreenStyles(Android_Theme_Light).exitView}>
+      <View style={GetSettingsScreenStyles(Android_Theme_Light).exitContainer}>
+        <Text style={GetSettingsScreenStyles(Android_Theme_Light).exitText}>
+          Do You Want to Exit?
+        </Text>
+
+       
+      </View>
+      <View style={GetSettingsScreenStyles(Android_Theme_Light).bottomButtonView}>
+      <View style={GetSettingsScreenStyles(Android_Theme_Light).bottomButton}>
+         <CommonButton
+              type={"1"}
+              title={"YES"}
+              fontFamily = {Android_Theme_Light.POPPINS_SEMIBOLD}
+              textSize = {Android_Theme_Light.FONT_SIZE_15}
+              textColor = {Android_Theme_Light.WHITE_COLOR}
+              backgroundColor={Android_Theme_Light.BLUE_COLOR}
+              onPress={()=>this.handlePressOnExit()}
+              width={"90%"}/>
+        </View>
+        <View style={GetSettingsScreenStyles(Android_Theme_Light).bottomButton}>
+         <CommonButton
+              type={"1"}
+              title={"NO"}
+              fontFamily = {Android_Theme_Light.POPPINS_SEMIBOLD}
+              textSize = {Android_Theme_Light.FONT_SIZE_15}
+              textColor = {Android_Theme_Light.WHITE_COLOR}
+              backgroundColor={Android_Theme_Light.BLUE_COLOR}
+              onPress={()=>this.handlePressOnExit()}
+              width={"90%"}/>
+        </View>
+        </View>
+    </View>
+
+  </View>
+</TouchableWithoutFeedback>
+    );
     
     return (
       <>
@@ -229,7 +298,9 @@ class SettingsScreen extends Component {
 
 
            <View style={GetSettingsScreenStyles(Android_Theme_Light).titleBarRowViewThirdColumn}> 
-           <TouchableOpacity>
+           <TouchableOpacity
+
+           onPress={this.handlePressOnExit}>
 
               <Android_Theme_Light.ICON_POWER
               width={30} 
@@ -312,8 +383,8 @@ class SettingsScreen extends Component {
                                                     <View style={ GetSettingsScreenStyles(Android_Theme_Light)
                                                           .iconContainer } >
                                                       <Switch
-                                                          trackColor={{ false: '#767577', true: '#1B1F52' }}
-                                                          thumbColor={this.state.fingerSwitchEnabled ? '#007BC2' : '#f4f3f4'}
+                                                          trackColor={{  false: Android_Theme_Light.GRAY_COLOR, true:  Android_Theme_Light.DARK_GRAY_COLOR  }}
+                                                          thumbColor={this.state.fingerSwitchEnabled ? Android_Theme_Light.LIGHT_BLUE_COLOR : Android_Theme_Dark.WHITE_COLOR}
                                                           onValueChange={this.fingerToggleSwitch} 
                                                           value={this.state.fingerSwitchEnabled}
                                                         />
@@ -345,8 +416,8 @@ class SettingsScreen extends Component {
                           <View style={ GetSettingsScreenStyles(Android_Theme_Light)
                                 .iconContainer } >
                             <Switch
-                                trackColor={{ false: '#767577', true: '#1B1F52' }}
-                                thumbColor={this.state.faceSwitchEnabled ? '#007BC2' : '#f4f3f4'}
+                                trackColor={{ false: Android_Theme_Light.GRAY_COLOR, true:  Android_Theme_Light.DARK_GRAY_COLOR  }}
+                                thumbColor={this.state.faceSwitchEnabled ? Android_Theme_Light.LIGHT_BLUE_COLOR : Android_Theme_Dark.WHITE_COLOR}
                                 onValueChange={this.faceToggleSwitch} 
                                 value={this.state.faceSwitchEnabled}
                               />
@@ -378,8 +449,8 @@ class SettingsScreen extends Component {
                           <View style={ GetSettingsScreenStyles(Android_Theme_Light)
                                 .iconContainer } >
                             <Switch
-                                trackColor={{ false: '#767577', true: '#1B1F52' }}
-                                thumbColor={this.state.themeSwitchEnabled  ? '#007BC2' : '#f4f3f4'}
+                                trackColor={{ false: Android_Theme_Light.GRAY_COLOR, true:  Android_Theme_Light.DARK_GRAY_COLOR  }}
+                                thumbColor={this.state.themeSwitchEnabled  ? Android_Theme_Light.LIGHT_BLUE_COLOR : Android_Theme_Dark.WHITE_COLOR}
                                 onValueChange={this.themeToggleSwitch} 
                                 value={this.state.themeSwitchEnabled }
                               />
@@ -446,6 +517,7 @@ class SettingsScreen extends Component {
               onPressIcon2={this.handleHome}
             />
           </View>
+          {exitView}
         </SafeAreaView>
       </>
     );

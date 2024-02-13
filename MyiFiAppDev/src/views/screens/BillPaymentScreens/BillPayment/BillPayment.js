@@ -10,13 +10,13 @@ import CommonSpinner from '../../../components/Common/CommonSpinner';
 import CommonSpinnerLong from '../../../components/Common/CommonSpinnerLong';
 import ValidationDialogs from "../../../components/Common/ValidationDialogs";
 import Colors from "../../../../styles/Colors";
-import CommonCardButton from "../../../components/Common/CommonCardButton";
+import CommonCardButton from "../../../components/Common/CardButton/CommonCardButton";
 import { GetCommonStyles } from "../../../../styles/CommonStyles";
 import {
   Android_Theme_Light,
   Android_Theme_Dark,
 } from "../../../../styles/Themes";
-import BottomTitleBar from "../../../components/Common/BottomTitleBar";
+import BottomTitleBar from "../../../components/Common/BottomBar/BottomBar";
 
 //Done by: Darshana 24/01/26
 //Done by:Nawodya
@@ -38,7 +38,7 @@ class BillPayment extends Component {
       scrollEnabled: true,
       selectedAccountType: null,
       toAccount: null,
-      amount: '',
+      amount: "",
       isVisibleValidationDialog: false,
       isModalVisible: false,
       isExpanded: false,
@@ -115,7 +115,7 @@ class BillPayment extends Component {
 
   componentDidMount() {
     try {
-      StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
+      //StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
       const transformedData = this.transformData(this.payementData);
       this.setState({ transformedData });
     } catch (Error) {
@@ -193,9 +193,9 @@ class BillPayment extends Component {
     }
   };
 
-  handleAmountInputChange = (text) => {
+  handleAmountInputChange = (amount) => {
     try {
-      this.setState({ amount: text });
+      this.setState({ amount: parseFloat(amount.replace(/,/g, "")) });
     }
     catch (Error) { console.log("[BillPayment] - handleAmountInputChange - Error ", Error); }
   };
@@ -235,13 +235,13 @@ class BillPayment extends Component {
       { key: "Nick Name", value:this.state.selectedNickName },
       { key: "Select Biller", value: this.state.selectedBillerName },
       { key: "Category", value: this.state.selectedCategory  },
-      { key: "Amount *", value: this.state.amount },
+       { key: "Amount *", value: this.state.amount },
       { key: "Remark", value: this.state.selectedRemark },
 
     ];
     this.props.navigation.navigate("BillPaymentTransferReceiptScreen", {
       data: dataArray,
-      // amountEntered: this.state.amount,
+      amountEntered: this.state.amount,
     });
   };
 

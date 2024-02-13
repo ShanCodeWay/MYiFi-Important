@@ -3,14 +3,8 @@
   import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
   import CommonButton from "../../components/Common/MainButton/CommonButton";
   import MainTitleBar from "../../components/Common/TitleBar/MainTitleBar";
-  
   import Index from "../../../configs/Index";
-  import Svg, { Path } from 'react-native-svg';
-
-  import Icon_CircleChecked from '../../../assets/icons/Icon_CircleChecked.svg';
-  import MI_Logo from '../../../assets/icons/MI_Logo.svg'
-  import Colors from "../../../styles/Colors";
-
+  import { CommonActions } from '@react-navigation/native';
   import { GetCommonStyles } from "../../../styles/CommonStyles";
   import GetSignup_SuccessScreenStyles from "./Signup_SuccessScreenStyles";
 
@@ -50,8 +44,22 @@ import Signup_SuccessScreenStyles from "./Signup_SuccessScreenStyles";
 
     OnPress_SigninButton = () => {
       try { 
-        this.props.navigation.replace(Index.LOGIN_SCREEN); 
-        console.log("Next button pressed to NAvigate Fund transfer Screen");}
+        // this.props.navigation.replace(Index.LOGIN_SCREEN); 
+        // console.log("Next button pressed to NAvigate Fund transfer Screen");
+      
+            
+        this.props.navigation.dispatch(
+          CommonActions.reset({
+            index: 0, // Navigate to the first screen in the stack
+            routes: [{ name: "LoginScreen" }], // Specify the screen
+          })
+        );
+      
+      
+      }
+
+
+        
       catch (error){ 
         console.log("[Signup_SuccessScreen] - OnPress_SigninButton - Ex: ",error); 
       }

@@ -13,14 +13,14 @@ class KYC3Screen extends Component {
   componentDidMount() {
     try {
     } catch (Error) {
-      console.log("[KYC3Screen2] - componentDidMount - Error ", Error);
+      console.log("[KYC3Screen] - componentDidMount - Error ", Error);
     }
   }
 
   componentWillUnmount() {
     try {
     } catch (Error) {
-      console.log("[KYC3Screen2] - componentDidMount - Error ", Error);
+      console.log("[KYC3Screen] - componentDidMount - Error ", Error);
     }
   }
 
@@ -28,7 +28,7 @@ class KYC3Screen extends Component {
     try {
       console.log("camera pressed");
     } catch (Error) {
-      console.log("[KYC3Screen2] - Camera_Button - Error ", Error);
+      console.log("[KYC3Screen] - Camera_Button - Error ", Error);
     }
   };
 
@@ -37,7 +37,7 @@ class KYC3Screen extends Component {
       this.props.navigation.navigate("KYC4Screen");
       console.log("button pressed to navigate to KYC4Screen");
     } catch (error) {
-      console.log("[KYC3Screen2] - Next_Button - Error ", error);
+      console.log("[KYC3Screen] - Next_Button - Error ", error);
     }
   };
 
@@ -46,7 +46,7 @@ class KYC3Screen extends Component {
       console.log("Next button pressed");
       this.props.navigation.navigate("KYC2Screen");
     } catch (Error) {
-      console.log("[KYC3Screen2] - OnPress_BackButton - Error ", Error);
+      console.log("[KYC3Screen] - OnPress_BackButton - Error ", Error);
     }
   };
 
@@ -95,10 +95,10 @@ class KYC3Screen extends Component {
           <View
             style={GetKYC3ScreenStyles(Android_Theme_Light).profilePictureBox}
           >
-            <Image
+            <View
               style={GetKYC3ScreenStyles(Android_Theme_Light).profilePicture}
               // source={require("../../../../assets/images/sample_person.png")}
-              resizeMode="contain"
+              // resizeMode="contain"
             />
           </View>
 

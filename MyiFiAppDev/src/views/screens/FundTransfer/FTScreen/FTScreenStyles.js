@@ -13,7 +13,7 @@ export default GetFTScreenStyles = (theme) => {
     middleView: {
       flex: 1,
       justifyContent: "space-evenly",
-
+      width: "95%",
       justifyContent: "flex-end",
     },
 
@@ -129,7 +129,7 @@ export default GetFTScreenStyles = (theme) => {
     bankView: {
       justifyContent: "center",
       alignItems: "center",
-      width: "95%",
+      width: "100%",
     },
 
     textTransfer: {
@@ -142,13 +142,13 @@ export default GetFTScreenStyles = (theme) => {
       width: "100%",
     },
     textZeroTransfer: {
-      fontFamily: theme.POPPINS_SEMIBOLD,
-      fontSize: theme.FONT_SIZE_HEADER_TWO_MEDIUM,
+      fontFamily: theme.POPPINS_REGULAR,
+      fontSize: theme.FONT_SIZE_MEDIUM,
       color: "red",
       justifyContent: "center",
       alignItems: "center",
       textAlign: "center",
-      width: "100%",
+      width: "90%",
     },
 
     buttonContainer: {

@@ -18,6 +18,7 @@ class KYC2Screen extends Component {
     this.state = {
       nicNumber: "",
     };
+    
   }
 
   componentDidMount() {
@@ -39,13 +40,12 @@ class KYC2Screen extends Component {
   };
 
   handleSearch = () => {
-    const { nicNumber } = this.state;
 
-    const sampleNICs = ["1234", "1111", "5555"];
 
-    if (sampleNICs.includes(nicNumber)) {
-      this.props.navigation.navigate("KYC3Screen", { nicNumber });
-      console.log(nicNumber);
+
+
+    if (this.state.nicNumber != "" ) {
+      this.props.navigation.navigate("KYC3Screen");
     } else {
       Alert.alert("NIC not found");
     }

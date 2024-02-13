@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import {Android_Theme_Dark} from "../../../../styles/Themes";
-
+//Done by: Darshana 02/02/2024
 export default GetResetPasswordOTPScreenStyles = (theme) => {
 
     const ResetPasswordOTPScreenStyles = StyleSheet.create({

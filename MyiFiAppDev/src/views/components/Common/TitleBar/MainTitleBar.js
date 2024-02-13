@@ -55,12 +55,6 @@ const MainTitleBar = (props) => {
             </View> : null
         }
        
-       
-
-        
-
-      
-      
       </View>
     );
   } 

@@ -5,7 +5,7 @@ import Icon_home from "../../../assets/icons/Icon_home.svg";
 import Colors from "../../../styles/Colors";
 import { GetCommonStyles } from "../../../styles/CommonStyles";
 import { Android_Theme_Light } from "../../../styles/Themes";
-import BottomTitleBar from "../../components/Common/BottomTitleBar";
+import BottomTitleBar from "../../components/Common/BottomBar/BottomBar";
 import GetSuccess_ScreenStyles from './Success_ScreenStyles'
 
 // done by: Randima 2024/02/01
@@ -20,7 +20,7 @@ class Success_Screen extends Component {
 
   componentDidMount() {
     try {
-      StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
+    //  StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
       console.log("####", this.props.route.params.success);
       this.setState({
         successChecked: this.props.route.params.success,
@@ -45,8 +45,8 @@ class Success_Screen extends Component {
 
   handleBack = () => {
     try {
-      this.props.navigation.navigate("DashboardScreen");
-      console.log("left pressed to navigate to ....");
+      this.props.navigation.navigate("LoginScreen");
+      console.log("left pressed to navigate to LoginScreen");
     } catch (error) {
       console.log(
         "[Success_Screen] - left_Button - Error ",
@@ -57,8 +57,8 @@ class Success_Screen extends Component {
 
   handleHome = () => {
     try {
-      this.props.navigation.navigate("DashboardScreen");
-      console.log("left pressed to navigate to ....");
+      this.props.navigation.navigate("LoginScreen");
+      console.log("left pressed to navigate to LoginScreen");
     } catch (error) {
       console.log(
         "[Success_Screen] - left_Button - Error ",

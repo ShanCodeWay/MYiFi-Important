@@ -91,7 +91,7 @@ class Signup_UsernameScreen extends Component {
      
         <MainTitleBar
           IconLeft = {Android_Theme_Light.ICON_BACK_ARROW}
-          onPressLeft   = {()=>this.OnBackButtonPress() }/>
+          onPressLeft = {()=>this.OnBackButtonPress() }/>
           
         <PageIndicator
           totalNoOfPages = {3}

@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-import { Android_Theme_Light } from "../../../styles/Themes";
 
 export default GetFixedDepositsScreenStyles = (theme) => {
   return StyleSheet.create({

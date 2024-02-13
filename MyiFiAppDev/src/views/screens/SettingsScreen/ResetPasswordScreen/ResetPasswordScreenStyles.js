@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-
+//Done by: Darshana 02/02/2024
 export default GetResetPasswordScreenStyles = (theme) => {
 
     const ResetPasswordScreenStyles = StyleSheet.create({ 
@@ -80,8 +80,12 @@ export default GetResetPasswordScreenStyles = (theme) => {
 
 
         overlay: {
-            ...StyleSheet.absoluteFillObject,
-            backgroundColor: 'rgba(0, 0, 0, 0.5)', // Transparent black background
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(6, 15, 61, 0.60)', 
             justifyContent: 'center',
             alignItems: 'center',
           },
@@ -92,7 +96,12 @@ export default GetResetPasswordScreenStyles = (theme) => {
             borderRadius: 10,
           },
           policyContainer: {
-            marginBottom: 10,
+           
+          },
+          policyTitleView: {
+            flexDirection: 'row', 
+            textAlign: 'right',
+           
           },
           policyTitle: {
             
@@ -110,7 +119,7 @@ export default GetResetPasswordScreenStyles = (theme) => {
             justifyContent: 'flex-end' },
 
           policyText: {
-            
+            flex:1,
             fontFamily: theme.POPPINS_BOLD,
             color: theme.DEEP_BLACK_COLOR,
             fontSize: theme.FONT_SIZE_MEDIUM,
@@ -119,19 +128,34 @@ export default GetResetPasswordScreenStyles = (theme) => {
           policyItem: {
             fontFamily: theme.POPPINS_MEDIUM,
             color: theme.DEEP_BLACK_COLOR,
-            fontSize: theme.FONT_SIZE_MEDIUM,
+            fontSize: theme.FONT_SIZE_10,
             marginBottom: 5,
           },
-
+        
           bottomButton: {
-            alignSelf: 'flex-end',
+            justifyContent: 'center',
+            alignItems: 'center',
             padding: 10,
             borderRadius: 15,
+            
+          },    
+          bottomButtonView: {
+            width: '100%',
+            borderRadius: 15,
+            
           },
           buttonText: {
             color: 'white',
           },
 
+          crossIconButtonContainer: {
+            position: 'absolute',
+            top: 0,
+            right: 0,
+            alignItems: 'flex-end',
+            justifyContent: 'flex-start',
+          },
+          
         
     });
 

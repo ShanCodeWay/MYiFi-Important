@@ -8,12 +8,12 @@
   import SelectDropDown from "../../../components/Common/Dropdown/SelectDropDown"; 
   import MainTitleBar from "../../../components/Common/TitleBar/MainTitleBar";
   import CommonButton from "../../../components/Common/MainButton/CommonButton";
-  import BottomTitleBar from "../../../components/Common/BottomTitleBar";
+  import BottomTitleBar from "../../../components/Common/BottomBar/BottomBar";
   import { GetCommonStyles } from "../../../../styles/CommonStyles";
   import GetResetPasswordScreenStyles from "./ResetPasswordScreenStyles";
 
   import {Android_Theme_Light} from "../../../../styles/Themes";
-
+//Done by: Darshana 02/02/2024
   class ResetPasswordScreen extends Component {
 
     constructor(props) {
@@ -64,7 +64,7 @@
 
     OnBackButtonPress = () => {
       try{
-        this.props.navigation.replace(Index.SETT_1); 
+        this.props.navigation.replace(Index.SETTINGS_SCREEN_1); 
         console.log("left pressed to Navigate to SettingsScreen");
       }
       catch (error){ 
@@ -127,11 +127,21 @@
       const policyView = this.state.isPolicyExpanded && (
         <TouchableWithoutFeedback onPress={this.handlePressOnPolicy}>
     <View style={GetResetPasswordScreenStyles(Android_Theme_Light).overlay}>
+      
       <View style={GetResetPasswordScreenStyles(Android_Theme_Light).policyView}>
+     
         <View style={GetResetPasswordScreenStyles(Android_Theme_Light).policyContainer}>
+        <View style={GetResetPasswordScreenStyles(Android_Theme_Light).policyTitleView}>
+
           <Text style={GetResetPasswordScreenStyles(Android_Theme_Light).policyText}>
             Your password must meet the following requirements:
           </Text>
+          <TouchableOpacity onPress={this.handlePressOnPolicy}> 
+          <View style={GetResetPasswordScreenStyles(Android_Theme_Light).crossIconButton}>
+          <Android_Theme_Light.ICON_CIRCLE_X/>  
+           </View>
+           </TouchableOpacity>
+         </View>  
           <Text style={GetResetPasswordScreenStyles(Android_Theme_Light).policyItem}>- At least 8 characters long</Text>
           <Text style={GetResetPasswordScreenStyles(Android_Theme_Light).policyItem}>- Contains both uppercase and lowercase letters</Text>
           <Text style={GetResetPasswordScreenStyles(Android_Theme_Light).policyItem}>- Includes at least one numeric digit</Text>
@@ -139,6 +149,7 @@
           
          
         </View>
+        <View style={GetResetPasswordScreenStyles(Android_Theme_Light).bottomButtonView}>
         <View style={GetResetPasswordScreenStyles(Android_Theme_Light).bottomButton}>
            <CommonButton
                 type={"1"}
@@ -149,6 +160,7 @@
                 backgroundColor={Android_Theme_Light.BLUE_COLOR}
                 onPress={()=>this.handlePressOnPolicy()}
                 width={"40%"}/>
+          </View>
           </View>
       </View>
     </View>

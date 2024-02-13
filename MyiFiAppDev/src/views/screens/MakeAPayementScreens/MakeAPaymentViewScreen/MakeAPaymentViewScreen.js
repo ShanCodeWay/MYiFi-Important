@@ -5,7 +5,7 @@ import { View, Text, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Icon_backArrows from "../../../../assets/icons/Icon_backArrows.svg";
 import Icon_home from "../../../../assets/icons/Icon_home.svg";
-import BottomTitleBar from "../../../components/Common/BottomTitleBar";
+import BottomTitleBar from "../../../components/Common/BottomBar/BottomBar";
 import { Android_Theme_Light } from "../../../../styles/Themes";
 import { GetCommonStyles } from "../../../../styles/CommonStyles";
 import GetMakeAPaymentViewScreenStyles from "./MakeAPaymentViewScreenStyles";
@@ -124,6 +124,14 @@ class MakeAPaymentViewScreen extends Component {
       this.props.navigation.replace("MakeAPayementScreen");
     } catch (error) {
       console.log("[MakeAPaymentViewScreen] - handleBack - Error ", error);
+    }
+  };
+
+  handleHome = () => {
+    try {
+      this.props.navigation.replace("DashboardScreen");
+    } catch (error) {
+      console.log("[MakeAPaymentViewScreen] - handleHome - Error ", error);
     }
   };
 

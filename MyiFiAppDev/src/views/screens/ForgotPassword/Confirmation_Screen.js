@@ -2,7 +2,14 @@ import React, { Component } from "react";
 import { Android_Theme_Light } from "../../../styles/Themes";
 import GetConfirmation_ScreenStyles from "./Confirmation_ScreenStyles";
 import { GetCommonStyles } from "../../../styles/CommonStyles";
-import { View, Text, Alert } from "react-native";
+import {
+  View,
+  Text,
+  Alert,
+  SafeAreaView,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from "react-native";
 
 import MainTitleBar from "../../components/Common/TitleBar/MainTitleBar";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
@@ -21,6 +28,7 @@ class Confirmation_Screen extends Component {
       ConfirmOtp: "",
       NewPassword: "",
       ConfirmPasword: "",
+      isPolicyExpanded: false,
     };
   }
 
@@ -70,6 +78,19 @@ class Confirmation_Screen extends Component {
       console.log(
         "[Confirmation_Screen] -  handleConfirmPaswordInputChange() EX: " +
           Error
+      );
+    }
+  };
+
+  handlePressOnPolicy = () => {
+    try {
+      this.setState((prevState) => ({
+        isPolicyExpanded: !prevState.isPolicyExpanded,
+      }));
+    } catch (error) {
+      console.error(
+        "[Confirmation_Screen] - handlePressOnPolicy Error: ",
+        error
       );
     }
   };
@@ -125,8 +146,77 @@ class Confirmation_Screen extends Component {
   };
 
   render() {
+    const policyView = this.state.isPolicyExpanded && (
+      <TouchableWithoutFeedback onPress={this.handlePressOnPolicy}>
+        <View style={GetConfirmation_ScreenStyles(Android_Theme_Light).overlay}>
+          <View
+            style={GetConfirmation_ScreenStyles(Android_Theme_Light).policyView}
+          >
+            <View
+              style={
+                GetConfirmation_ScreenStyles(Android_Theme_Light)
+                  .policyContainer
+              }
+            >
+              <Text
+                style={
+                  GetConfirmation_ScreenStyles(Android_Theme_Light).policyText
+                }
+              >
+                {"Your password must meet the following requirements:"}
+              </Text>
+              <Text
+                style={
+                  GetConfirmation_ScreenStyles(Android_Theme_Light).policyItem
+                }
+              >
+                {"- At least 8 characters long"}
+              </Text>
+              <Text
+                style={
+                  GetConfirmation_ScreenStyles(Android_Theme_Light).policyItem
+                }
+              >
+                {"- Contains both uppercase and lowercase letters"}
+              </Text>
+              <Text
+                style={
+                  GetConfirmation_ScreenStyles(Android_Theme_Light).policyItem
+                }
+              >
+                {"- Includes at least one numeric digit"}
+              </Text>
+              <Text
+                style={
+                  GetConfirmation_ScreenStyles(Android_Theme_Light).policyItem
+                }
+              >
+                {"- Contains special characters (e.g., @, #, $)"}
+              </Text>
+            </View>
+            <View
+              style={
+                GetConfirmation_ScreenStyles(Android_Theme_Light).bottomButton
+              }
+            >
+              <CommonButton
+                type={"1"}
+                title={"OK"}
+                fontFamily={Android_Theme_Light.POPPINS_SEMIBOLD}
+                textSize={Android_Theme_Light.FONT_SIZE_15}
+                textColor={Android_Theme_Light.WHITE_COLOR}
+                backgroundColor={Android_Theme_Light.BLUE_COLOR}
+                onPress={() => this.handlePressOnPolicy()}
+                width={"40%"}
+              />
+            </View>
+          </View>
+        </View>
+      </TouchableWithoutFeedback>
+    );
+
     return (
-      <View style={GetCommonStyles(Android_Theme_Light).safeAreaView}>
+      <SafeAreaView style={GetCommonStyles(Android_Theme_Light).safeAreaView}>
         <MainTitleBar
           IconLeft={Android_Theme_Light.ICON_BACK_ARROW}
           TitleText={""}
@@ -149,7 +239,7 @@ class Confirmation_Screen extends Component {
               style={GetCommonStyles(Android_Theme_Light).topTitleContainer}
             >
               <Text
-                style={GetCommonStyles(Android_Theme_Light).textStyleH1Medium}
+                style={GetConfirmation_ScreenStyles(Android_Theme_Light).textStyleH1Medium}
               >
                 {"Forgot Password Confirmation"}
               </Text>
@@ -188,9 +278,38 @@ class Confirmation_Screen extends Component {
                 inputRef={this.NewPasswordInputRef}
                 nextInputRef={this.ConfirmPaswordInputRef}
               />
+              <TouchableOpacity
+                onPress={this.handlePressOnPolicy}
+                style={
+                  GetConfirmation_ScreenStyles(Android_Theme_Light)
+                    .policyContainer
+                }
+              >
+                <View
+                  style={
+                    GetConfirmation_ScreenStyles(Android_Theme_Light)
+                      .policyTextContainer
+                  }
+                >
+                  <Android_Theme_Light.ICON_INFO
+                    width={12}
+                    height={12}
+                    fill={Android_Theme_Light.DARK_BLUE_COLOR}
+                    style={{ marginRight: 5 }} // Add margin to separate icon from text
+                  />
+                  <Text
+                    style={
+                      GetConfirmation_ScreenStyles(Android_Theme_Light)
+                        .policyTitle
+                    }
+                  >
+                    {"Password Policy"}
+                  </Text>
+                </View>
+              </TouchableOpacity>
 
               {/* Gap */}
-              <View style={{ height: 20 }} />
+              {/* <View style={{ height: 20 }} /> */}
 
               {/* Confirm Password */}
               <CommonInputField
@@ -220,7 +339,8 @@ class Confirmation_Screen extends Component {
             </View>
           </KeyboardAwareScrollView>
         </View>
-      </View>
+        {policyView}
+      </SafeAreaView>
     );
   }
 }

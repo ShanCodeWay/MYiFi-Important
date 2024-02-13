@@ -5,13 +5,14 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Main_Logo from "../../../../assets/icons/Icon_MI_LOGO_Description.svg";
 import Icon_backArrows from "../../../../assets/icons/Icon_backArrows.svg";
 import Icon_home from "../../../../assets/icons/Icon_home.svg";
-import BottomTitleBar from '../../../components/Common/BottomTitleBar';
+import BottomTitleBar from '../../../components/Common/BottomBar/BottomBar';
 import { Android_Theme_Light } from "../../../../styles/Themes";
 import { GetCommonStyles } from "../../../../styles/CommonStyles";
 import { GetBillPaymentTransferReceiptScreenStyles } from "./BillPaymentTransferReceiptScreenStyles";
 import Index from "../../../../configs/Index";
 import CommonSummeryView from '../../../components/Common/SummeryView/CommonSummeryView';
 import CommonSmallButton from "../../../components/Common/CommonSmallButton";
+import { AmountSeperation } from '../../../../utils/helpers';
 
 //Nawodya 1/31/2024
 class BillPaymentTransferReceiptScreen extends Component {
@@ -20,6 +21,7 @@ class BillPaymentTransferReceiptScreen extends Component {
 
         this.state = {
             SummeryList: [],
+            amountPass: '',
         }
     }
 
@@ -38,7 +40,7 @@ class BillPaymentTransferReceiptScreen extends Component {
                     };
                 }),
 
-                // FdAmount : this.props.route.params.amountEntered
+                amountPass: this.props.route.params.amountEntered
             },
 
             );
@@ -46,7 +48,7 @@ class BillPaymentTransferReceiptScreen extends Component {
 
         } catch (Error) {
             console.log(
-                "[MakeAPaymentViewScreen] - componentDidMount() EX: " + Error
+                "[BillPaymentTransferReceiptScreen] - componentDidMount() EX: " + Error
             );
         }
     }
@@ -71,22 +73,22 @@ class BillPaymentTransferReceiptScreen extends Component {
             this.props.navigation.navigate("BillPayment");
             console.log("Back button pressed to Navigate to Fund Transfer Screen");
         }
-        catch (error) { console.log("[TransRecieptScreen] - Back_Button - Error ", error); }
+        catch (error) { console.log("[BillPaymentTransferReceiptScreen] - Back_Button - Error ", error); }
     };
 
     handleHome = () => {
         try {
-            this.props.navigation.replace(Index.SIGNUP_1);
-            console.log("Home Button pressed to Navigate to SignupScreen1");
-        } catch (error) { console.log("[TransRecieptScreen] - Home_Button - Error ", error); }
+            this.props.navigation.navigate("DashboardScreen");
+            console.log("Home Button pressed to Navigate to DashboardScreen");
+        } catch (error) { console.log("[BillPaymentTransferReceiptScreen] - Home_Button - Error ", error); }
 
     };
     handleNext = () => {
         try {
             console.log("handleNext function called");
-            this.props.navigation.navigate("BillPaymentOTPScreen", { data: this.state.SummeryList });
+            this.props.navigation.navigate("BillPaymentOTPScreen", { data: this.state.SummeryList , amountPassOTP : this.state.amountPass });
         } catch (error) {
-            console.log("[TransRecieptScreen] - Home_Button - Error ", error);
+            console.log("[BillPaymentTransferReceiptScreen] - Home_Button - Error ", error);
         }
     };
 
@@ -101,65 +103,35 @@ class BillPaymentTransferReceiptScreen extends Component {
 
                     <View style={GetBillPaymentTransferReceiptScreenStyles(Android_Theme_Light).outView}>
                         <Text style={GetBillPaymentTransferReceiptScreenStyles(Android_Theme_Light).title}>Almost there</Text>
-                        <Text style={GetBillPaymentTransferReceiptScreenStyles(Android_Theme_Light).secondTitle}>Transfer</Text>
-
+                        <Text style={GetBillPaymentTransferReceiptScreenStyles(Android_Theme_Light).secondTitle}>BillPayment</Text>
+               
                     </View>
 
 
                     <View style={GetBillPaymentTransferReceiptScreenStyles(Android_Theme_Light).middleView}>
 
 
-                        {/* <View style={GetTransferReceiptScreenStyles(Android_Theme_Light).middleViewout}>
-                            <View style={GetTransferReceiptScreenStyles(Android_Theme_Light).middleFirstViewLeft}>
-                                <Text style={GetTransferReceiptScreenStyles(Android_Theme_Light).textLarge}></Text>
-                                <Text style={GetTransferReceiptScreenStyles(Android_Theme_Light).textSmall}>Recipient</Text>
-
-
-                            </View>
-                            <View style={GetTransferReceiptScreenStyles(Android_Theme_Light).middleBoxLeft}>
-                                <Text style={GetTransferReceiptScreenStyles(Android_Theme_Light).textLarge}>ATPD Jayamaha</Text>
-                                <Text style={GetTransferReceiptScreenStyles(Android_Theme_Light).textSmall}>Nick Name</Text>
-
-
-                            </View>
-                            <View style={GetTransferReceiptScreenStyles(Android_Theme_Light).middleBoxLeft}>
-                                <Text style={GetTransferReceiptScreenStyles(Android_Theme_Light).textLarge}>Dasuna</Text>
-                                <Text style={GetTransferReceiptScreenStyles(Android_Theme_Light).textSmall}>Type</Text>
-                            </View>
-                            <View style={GetTransferReceiptScreenStyles(Android_Theme_Light).middleBoxLeft}>
-                                <Text style={GetTransferReceiptScreenStyles(Android_Theme_Light).textLarge}>Transfer/CEFT</Text>
-                                <Text style={GetTransferReceiptScreenStyles(Android_Theme_Light).textSmall}>Reference</Text>
-                            </View>
-                            <View style={GetTransferReceiptScreenStyles(Android_Theme_Light).middlelastViewLeft}>
-
-                            </View>
-                        </View > */}
-                        {/* <View style={GetTransferReceiptScreenStyles(Android_Theme_Light).middleViewout}> */}
-
-                        {/* <View style={GetTransferReceiptScreenStyles(Android_Theme_Light).middleFirstViewRight}>
-                                <Text style={GetTransferReceiptScreenStyles(Android_Theme_Light).textLarge}></Text>
-                                <Text style={GetTransferReceiptScreenStyles(Android_Theme_Light).textSmall}>From</Text>
-                            </View>
-                            <View style={GetTransferReceiptScreenStyles(Android_Theme_Light).middleBoxRight}>
-                                <Text style={GetTransferReceiptScreenStyles(Android_Theme_Light).textLarge}>MyiFy/Dhamith</Text>
-                                <Text style={GetTransferReceiptScreenStyles(Android_Theme_Light).textSmall}>Time</Text>
-                            </View>
-                            <View style={GetTransferReceiptScreenStyles(Android_Theme_Light).middleBoxRight}>
-                                <Text style={GetTransferReceiptScreenStyles(Android_Theme_Light).textLarge}></Text>
-                                <Text style={GetTransferReceiptScreenStyles(Android_Theme_Light).textSmall}>Date</Text>
-                            </View>
-                            <View style={GetTransferReceiptScreenStyles(Android_Theme_Light).middleBoxRight}>
-                                <Text style={GetTransferReceiptScreenStyles(Android_Theme_Light).textLarge}></Text>
-                                <Text style={GetTransferReceiptScreenStyles(Android_Theme_Light).textSmall}>Remarks</Text>
-                            </View>
-                            <View style={GetTransferReceiptScreenStyles(Android_Theme_Light).middlelastViewRight}>
-                                <Text style={GetTransferReceiptScreenStyles(Android_Theme_Light).textLarge}>trip collection</Text>
-                            </View> */}
-
+                    <View
+                            style={[GetBillPaymentTransferReceiptScreenStyles(Android_Theme_Light).prizeContainer]}
+                        >
+                            <Text style={[GetCommonStyles(Android_Theme_Light).amountRsText]}>
+                                {"Rs "}
+                            </Text>
+                            <Text
+                                style={[GetCommonStyles(Android_Theme_Light).amountIntegerText]}
+                            >
+                                {AmountSeperation(this.state.amountPass)[0]}
+                            </Text>
+                            <Text
+                                style={[GetCommonStyles(Android_Theme_Light).amountDecimalText]}
+                            >
+                                {AmountSeperation(this.state.amountPass)[1]}
+                            </Text>
+                        </View>
 
                         {/* </View > */}
 
-                        <View
+                        {/* <View
                             style={[ GetBillPaymentTransferReceiptScreenStyles(Android_Theme_Light).prizeContainer]}
                         >
                             <Text style={
@@ -172,7 +144,8 @@ class BillPaymentTransferReceiptScreen extends Component {
                                 GetBillPaymentTransferReceiptScreenStyles(Android_Theme_Light)
                                     .textsmall}  >.00</Text>
 
-                        </View>
+                        </View> */}
+
 
                         <CommonSummeryView
                             data={this.state.SummeryList}

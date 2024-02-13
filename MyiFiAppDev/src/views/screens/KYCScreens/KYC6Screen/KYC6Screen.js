@@ -115,18 +115,11 @@ class KYC6Screen extends Component {
         {/* PageIndicator */}
         <PageIndicator totalNoOfPages={7} pageNumber={6} />
         <View style={GetCommonStyles(Android_Theme_Light).mainContainer}>
-          {/* Title Text */}
-          <View style={GetCommonStyles(Android_Theme_Light).topTitleContainer}>
-            {/* <Text
-              style={GetCommonStyles(Android_Theme_Light).textStyleH1Medium}
-            >
-              {"Employment Information"}
-            </Text> */}
+       
+       
+     
 
-            {/* <Text style = {GetCommonStyles(Android_Theme_Light).textStyleCaption1Medium}>
-                Create account so you can {"\n"} manage your personal finances
-              </Text> */}
-          </View>
+
 
           {/* ScrollView */}
           <ScrollView style={{ width: "100%" }}>

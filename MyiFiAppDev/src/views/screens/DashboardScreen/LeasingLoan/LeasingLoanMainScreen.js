@@ -4,8 +4,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Android_Theme_Light } from "../../../../styles/Themes";
 import { GetCommonStyles } from "../../../../styles/CommonStyles";
 import GetLeasingLoanMainScreenStyles from "./LeasingLoanMainScreenStyles";
-import CommonCardButton from "../../../components/Common/CommonCardButton";
-import BottomTitleBar from "../../../components/Common/BottomTitleBar";
+import CommonCardButton from "../../../components/Common/CardButton/CommonCardButton";
+import BottomTitleBar from "../../../components/Common/BottomBar/BottomBar";
 import { AmountSeperation } from "../../../../utils/helpers";
 
 
@@ -127,7 +127,7 @@ class LeasingLoanMainScreen extends Component {
                 }
               />
               <CommonCardButton
-                onPress={() => null}
+                onPress={() => this.props.navigation.navigate("GoldLoanScreen")}
                 text={"Gold Loans"}
                 height={90}
                 amount={this.state.GoldLoanBalance}

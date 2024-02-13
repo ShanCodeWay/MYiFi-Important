@@ -1,22 +1,18 @@
 // Splash.js
 import React, { Component } from "react";
-import { View, Text, Touchable, Modal, Image, FlatList } from "react-native";
-import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
-
+import { View, Text,  Image, FlatList } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { GetCommonStyles } from "../../../styles/CommonStyles";
 import {
   Android_Theme_Light,
-  Android_Theme_Dark,
 } from "../../../styles/Themes";
 import GetFixedDepositsScreenStyles from "./FixedDepositsScreenStyles";
-
-import CommonCardButton from "../../components/Common/CommonCardButton";
-import Icon_arrowUp from "../../../assets/icons/Icon_arrowUp.svg";
-import Icon_arrowDown from "../../../assets/icons/Icon_arrowDown.svg";
+import CommonCardButton from "../../components/Common/CardButton/CommonCardButton";
 import CommonButton from "../../components/Common/MainButton/CommonButton";
 import { AmountSeperation } from "../../../utils/helpers";
-import BottomTitleBar from "../../components/Common/BottomTitleBar";
+import BottomBar from "../../components/Common/BottomBar/BottomBar";
+import Index from "../../../configs/Index";
 
 //Done by: Dinuranga 23/01/19
 class FixedDepositsScreen extends Component {
@@ -27,6 +23,7 @@ class FixedDepositsScreen extends Component {
       TotalInvest: 30000,
     };
   }
+
   InvestmentsList = [
     {
       id: 1,
@@ -40,14 +37,14 @@ class FixedDepositsScreen extends Component {
 
       date: "2024-11-27",
       MDate: "2024-12-21",
-      amount: 1200000.50,
+      amount: 1200000.5,
     },
     {
       id: 3,
 
       date: "2024-03-27",
       MDate: "2024-10-27",
-      amount: 600000.80,
+      amount: 600000.8,
     },
   ];
 
@@ -122,40 +119,37 @@ class FixedDepositsScreen extends Component {
             </Text>
           </View> */}
 
-
           <View
-                style={[
-                  GetDashboardScreenStyles(Android_Theme_Light).AmountContainer,
-                ]}
-              >
-                <Text
-                  style={[
-                    GetDashboardScreenStyles(Android_Theme_Light).textBalanceRs,
-                  ]}
-                >
-                  {"Rs. "}
-                </Text>
+            style={[
+              GetDashboardScreenStyles(Android_Theme_Light).AmountContainer,
+            ]}
+          >
+            <Text
+              style={[
+                GetDashboardScreenStyles(Android_Theme_Light).textBalanceRs,
+              ]}
+            >
+              {"Rs. "}
+            </Text>
 
-                <Text
-                  style={[
-                    GetDashboardScreenStyles(Android_Theme_Light)
-                      .textBalanceIntegerAmount,{fontSize:Android_Theme_Light.FONT_SIZE_HEADER_TWO} ,
-                  ]}
-                >
-                  {AmountSeperation(item.amount)[0]}
-                </Text>
-                <Text
-                  style={[
-                    GetDashboardScreenStyles(Android_Theme_Light)
-                      .textBalanceDecimalAmount,
-                  ]}
-                >
-                  {AmountSeperation(item.amount)[1]}
-                </Text>
-              </View>
-
-
-          
+            <Text
+              style={[
+                GetDashboardScreenStyles(Android_Theme_Light)
+                  .textBalanceIntegerAmount,
+                { fontSize: Android_Theme_Light.FONT_SIZE_HEADER_TWO },
+              ]}
+            >
+              {AmountSeperation(item.amount)[0]}
+            </Text>
+            <Text
+              style={[
+                GetDashboardScreenStyles(Android_Theme_Light)
+                  .textBalanceDecimalAmount,
+              ]}
+            >
+              {AmountSeperation(item.amount)[1]}
+            </Text>
+          </View>
 
           <CommonButton
             type={"1"}
@@ -217,6 +211,13 @@ class FixedDepositsScreen extends Component {
     }
   }
 
+  onPressCreateFD = () => {
+    try {
+      this.props.navigation.navigate(Index.FD_CREATE_SCREEN);
+    } catch (Error) {
+      console.log("[FixedDepositsScreen] - onPressCreateFD() EX: " + Error);
+    }
+  };
   render() {
     return (
       <SafeAreaView style={GetCommonStyles(Android_Theme_Light).safeAreaView}>
@@ -294,7 +295,7 @@ class FixedDepositsScreen extends Component {
               height={64}
               icon={Android_Theme_Light.ICON_INVEST}
               text={"Create a New FD"}
-              onPress={() => null}
+              onPress={this.onPressCreateFD}
             />
 
             <CommonCardButton
@@ -336,11 +337,11 @@ class FixedDepositsScreen extends Component {
           <View
             style={GetFixedDepositsScreenStyles(Android_Theme_Light).bottomView}
           >
-            <BottomTitleBar
-              icon1={Android_Theme_Light.ICON_BACK_ARROWS}
-              icon2={Android_Theme_Light.ICON_HOME}
-              onPressIcon1={this.handleBack}
-              onPressIcon2={this.handleHome}
+            <BottomBar
+              BackIcon={Android_Theme_Light.ICON_BACK_ARROWS}
+              HomeIcon={Android_Theme_Light.ICON_HOME}
+              onPressBackButton={this.handleBack}
+              onPressHomeButton={this.handleHome}
             />
           </View>
         </View>

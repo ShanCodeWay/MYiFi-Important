@@ -6,7 +6,7 @@ import Colors from "../../../styles/Colors";
 import { GetCommonStyles } from "../../../styles/CommonStyles";
 import GetQR_PaymentSuccessScreenStyles from "./QR_PaymentSuccessScreenStyles";
 import { Android_Theme_Light } from "../../../styles/Themes";
-import BottomTitleBar from "../../components/Common/BottomTitleBar";
+import BottomTitleBar from "../../components/Common/BottomBar/BottomBar";
 import { AmountSeperation } from "../../../utils/helpers";
 
 // done by: Randima 2024/02/01
@@ -22,7 +22,7 @@ class QR_PaymentSuccessScreen extends Component {
 
   componentDidMount() {
     try {
-      StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
+    //  StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
       console.log("####", this.props.route.params.amountEntered);
       console.log("####", this.props.route.params.success);
       this.setState({

@@ -55,7 +55,7 @@ export const GetAddNewBillerScreenStyles = (theme) => {
             fontSize:theme.  FONT_SIZE_SMALL,
             fontFamily: theme.POPPINS_REGULAR,
             textAlign: "left",
-            fontWeight:'bold',
+           // fontWeight:'bold',
             //backgroundColor:'red',
             marginBottom:5,
         }

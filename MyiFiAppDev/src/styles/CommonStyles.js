@@ -11,9 +11,18 @@ export const GetCommonStyles = (theme) => {
     //Main container style after safe area and title bar views
     mainContainer: {
       flex: 1,
-      backgroundColor: "theme.BACKGROUND_COLOR",
+      backgroundColor: theme.BACKGROUND_COLOR,
       justifyContent: "center",
       alignItems: "center",
+    },
+
+    mainParentContainer: {
+      flex: 1,
+      height:'100%',
+      backgroundColor: theme.BACKGROUND_COLOR,
+      justifyContent: "center",
+      alignItems: "center",
+      margin:10
     },
 
     topTitleContainer: {
@@ -121,6 +130,33 @@ export const GetCommonStyles = (theme) => {
       color: theme.DARK_GREEN_COLOR,
       fontSize: theme.FONT_SIZE_LARGE,
       fontFamily: theme.POPPINS_MEDIUM,
+    },
+    balanceAmountTextContainer: {
+      //flex:1,
+      //height:'100%',
+      flexDirection: "row",
+      justifyContent:'flex-start',
+      alignItems: "flex-end",
+      textAlignVertical:'bottom',
+    },
+    textBalanceRs: {
+      color: theme.DARK_GRAY_COLOR,
+      fontSize: theme.FONT_SIZE_CAPTION_ONE_MEDIUM,
+      fontFamily: theme.POPPINS_MEDIUM,
+      //marginLeft: 5,
+      includeFontPadding:false
+    },
+    textBalanceIntegerAmount: {
+      color: theme.DARK_GREEN_COLOR,
+      fontSize: theme.FONT_SIZE_HEADER_THREE_MEDIUM,
+      fontFamily: theme.POPPINS_MEDIUM,
+      includeFontPadding:false
+    },
+    textBalanceDecimalAmount: {
+      color: theme.DARK_GREEN_COLOR,
+      fontSize: theme.FONT_SIZE_CAPTION_ONE_MEDIUM,
+      fontFamily: theme.POPPINS_MEDIUM,
+      includeFontPadding:false
     },
   });
 

@@ -23,7 +23,8 @@ class BillPaymentOTPScreen extends Component {
       scrollEnabled: false,
       otp: "",
       timer: 5,
-      otpsucess: false,
+      otpsucess: true,
+      amountSuccess: "",
       // otpNumber: "",
     };
   }
@@ -35,18 +36,18 @@ class BillPaymentOTPScreen extends Component {
         this.setState({ timer: timer - 1 });
       }
       try {
-        StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
+       // StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
       } catch (Error) {
         console.log(
-          "[MakeAPaymentOtpScreen] - componentDidMount - Error ",
+          "[BillPaymentOTPScreen] - componentDidMount - Error ",
           Error
         );
       }
     }, 1000);
-
-    // this.setState({
-    //   FdAmountPayed: this.props.route.params.amountPayed,
-    // });
+    console.log("/////////", this.props.route.params.amountPassOTP)
+    this.setState({
+      amountSuccess: this.props.route.params.amountPassOTP,
+    });
   }
 
   componentWillUnmount() {
@@ -54,7 +55,7 @@ class BillPaymentOTPScreen extends Component {
     try {
     } catch (Error) {
       console.log(
-        "[MakeAPaymentOtpScreen] - componentWillUnmount - Error ",
+        "[BillPaymentOTPScreen] - componentWillUnmount - Error ",
         Error
       );
     }
@@ -64,7 +65,7 @@ class BillPaymentOTPScreen extends Component {
     this.setState({ otp: text });
     try {
     } catch (Error) {
-      console.log("[MakeAPaymentOtpScreen] - handleOtpChange - Error ", Error);
+      console.log("[BillPaymentOTPScreen] - handleOtpChange - Error ", Error);
     }
   };
 
@@ -72,37 +73,38 @@ class BillPaymentOTPScreen extends Component {
     console.log("Resend button pressed!");
     try {
     } catch (Error) {
-      console.log("[MakeAPaymentOtpScreen] - handleResend - Error ", Error);
+      console.log("[BillPaymentOTPScreen] - handleResend - Error ", Error);
     }
   };
 
   handleNextButtonPress = () => {
     try {
 
-  
-      
-      
+
       const { otpsucess } = this.state;
       const success = otpsucess;
-      this.props.navigation.navigate("BillPaymentTransferReceiptSuccessScreen", { success ,          data: this.props.route.params.data, });
-  
+      this.props.navigation.navigate("BillPaymentTransferReceiptSuccessScreen", 
+      { success, 
+        data: this.props.route.params.data, 
+        amountPaymenToPay: this.state.amountSuccess });
+
       console.log("Next button pressed to Navigate to MakeAPaymentSuccessfulScreen");
     } catch (error) {
-      console.log("[MakeAPaymentOtpScreen] - Next_Button - Error ", error);
+      console.log("[BillPaymentOTPScreen] - Next_Button - Error ", error);
     }
   };
-  
+
 
   handleLeftButtonPress = () => {
     try {
-      this.props.navigation.navigate("MakeAPaymentViewScreen");
-      console.log("left pressed to Navigate to MakeAPaymentViewScreen");
+      this.props.navigation.navigate("DashboardScreen");
+      console.log("left pressed to Navigate to DashboardScreen");
     } catch (error) {
-      console.log("[MakeAPaymentOtpScreen] - left_Button - Error ", error);
+      console.log("[BillPaymentOTPScreen] - left_Button - Error ", error);
     }
   };
 
-  handlePasswordInputChange = (text) => {};
+  handlePasswordInputChange = (text) => { };
 
   render() {
     const { otp, timer } = this.state;
@@ -127,8 +129,8 @@ class BillPaymentOTPScreen extends Component {
             enableAutomaticScroll={false}
             keyboardOpeningTime={300}
             scrollToPosition={{ x: 0, y: 0, animated: true }}
-            onKeyboardDidShow={(frames) => {}}
-            onKeyboardDidHide={(frames) => {}}
+            onKeyboardDidShow={(frames) => { }}
+            onKeyboardDidHide={(frames) => { }}
           >
             <View style={GetCommonStyles(Android_Theme_Light).mainContainer}>
               <View

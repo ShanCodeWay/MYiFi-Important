@@ -3,9 +3,6 @@ import { View, Text, SafeAreaView, StatusBar } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import CommonButton from "../../../components/Common/MainButton/CommonButton";
 import MainTitleBar from "../../../components/Common/TitleBar/MainTitleBar";
-import PaginationIndicator from "../../../components/Common/PageIndicator/PageIndicator";
-
-import Index from "../../../../configs/Index";
 import CommonInputField from "../../../components/Common/TextInput/CommonInputField";
 import Colors from "../../../../styles/Colors";
 import { GetCommonStyles } from "../../../../styles/CommonStyles";
@@ -13,7 +10,6 @@ import GetMakeAPaymentOtpScreenStyles from "./MakeAPaymentOtpScreenStyles";
 
 import {
   Android_Theme_Light,
-  Android_Theme_Dark,
 } from "../../../../styles/Themes";
 
 class MakeAPaymentOtpScreen extends Component {
@@ -35,7 +31,7 @@ class MakeAPaymentOtpScreen extends Component {
         this.setState({ timer: timer - 1 });
       }
       try {
-        StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
+     //   StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
       } catch (Error) {
         console.log(
           "[MakeAPaymentOtpScreen] - componentDidMount - Error ",
@@ -97,14 +93,12 @@ class MakeAPaymentOtpScreen extends Component {
 
   handleLeftButtonPress = () => {
     try {
-      this.props.navigation.navigate("MakeAPaymentViewScreen");
-      console.log("left pressed to Navigate to MakeAPaymentViewScreen");
+      this.props.navigation.navigate("DashboardScreen");
+      console.log("left pressed to Navigate to DashboardScreen");
     } catch (error) {
       console.log("[MakeAPaymentOtpScreen] - left_Button - Error ", error);
     }
   };
-
-  handlePasswordInputChange = (text) => {};
 
   render() {
     const { otp, timer } = this.state;

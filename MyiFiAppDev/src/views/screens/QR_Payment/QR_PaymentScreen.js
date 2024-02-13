@@ -8,7 +8,7 @@ import GetQR_PaymentScreenStyles from "./QR_PaymentScreenStyles";
 import CommonSpinnerLong from "../../components/Common/CommonSpinnerLong";
 import CommonInputField from "../../components/Common/TextInput/CommonInputField";
 import CommonButton from "../../components/Common/MainButton/CommonButton";
-import BottomTitleBar from "../../components/Common/BottomTitleBar";
+import BottomTitleBar from "../../components/Common/BottomBar/BottomBar";
 import ValidationDialogs from "../../components/Common/ValidationDialogs";
 
 //Done by Randima 2024/01/31

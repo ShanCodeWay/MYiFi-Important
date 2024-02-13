@@ -2,19 +2,16 @@
 import React, { Component } from "react";
 import { View, Text, Image, FlatList } from "react-native";
 import {  TouchableOpacity } from "react-native-gesture-handler";
-
 import { SafeAreaView } from "react-native-safe-area-context";
 import { GetCommonStyles } from "../../../styles/CommonStyles";
 import {
   Android_Theme_Light,
 } from "../../../styles/Themes";
 import GetLeasingLoanScreenStyles from "./LeasingLoanScreenStyles";
-
-import CommonCardButton from "../../components/Common/CommonCardButton";
-
+import CommonCardButton from "../../components/Common/CardButton/CommonCardButton";
 import CommonButton from "../../components/Common/MainButton/CommonButton";
 import { AmountSeperation } from "../../../utils/helpers";
-import BottomTitleBar from "../../components/Common/BottomTitleBar";
+import BottomTitleBar from "../../components/Common/BottomBar/BottomBar";
 
 //Done by: Dinuranga 23/01/19
 class LeasingLoanScreen extends Component {
@@ -30,18 +27,16 @@ class LeasingLoanScreen extends Component {
       id: 1,
 
       LeaseId: "VLAK000378",
-      Rental: 49000,
-      amount: 804000.45,
+      Rental: 4900,
+      amount: 85500.0,
     },
 
     {
-        id: 2,
-  
-        LeaseId: "VLAK000379",
-        Rental: 9000,
-        amount: 674000.50,
-      },
-
+      id: 2,
+      LeaseId: "VLAK000379",
+      Rental: 9000,
+      amount: 100000.3,
+    },
   ];
 
   InvestmentRenderItem = ({ item }) => (
@@ -80,8 +75,7 @@ class LeasingLoanScreen extends Component {
 
             <Text
               style={[
-                GetLeasingLoanScreenStyles(Android_Theme_Light)
-                  .textMDateValue,
+                GetLeasingLoanScreenStyles(Android_Theme_Light).textMDateValue,
               ]}
             >
               {"Rs." + AmountSeperation(item.Rental)[0]}
@@ -173,11 +167,19 @@ class LeasingLoanScreen extends Component {
     </View>
   );
 
+  handleMakeAPayment = () => {
+    try {
+      this.props.navigation.navigate("MakeAPayementScreen");
+    } catch {
+      console.log('[LeasingLoanScreen] - handleMakeAPayment() EX: ' + Error)
+    }
+  };
+
   handleBack = () => {
     try {
       this.props.navigation.navigate("LeasingLoanMainScreen");
     } catch {
-      console.log('[LeasingLoanScreen] - handleBack() EX: ' + Error)
+      console.log("[LeasingLoanScreen] - handleBack() EX: " + Error);
     }
   };
 
@@ -185,7 +187,7 @@ class LeasingLoanScreen extends Component {
     try {
       this.props.navigation.navigate("LeasingLoanMainScreen");
     } catch {
-      console.log('[LeasingLoanScreen] - handleHome() EX: ' + Error)
+      console.log("[LeasingLoanScreen] - handleHome() EX: " + Error);
     }
   };
 
@@ -205,9 +207,7 @@ class LeasingLoanScreen extends Component {
   componentWillUnmount() {
     try {
     } catch (Error) {
-      console.log(
-        "[LeasingLoanScreen] - componentWillUnmount() EX: " + Error
-      );
+      console.log("[LeasingLoanScreen] - componentWillUnmount() EX: " + Error);
     }
   }
 
@@ -217,14 +217,10 @@ class LeasingLoanScreen extends Component {
         <View style={GetCommonStyles(Android_Theme_Light).mainContainer}>
           {/* Upper View (User details and Buttons) */}
           <View
-            style={[
-              GetLeasingLoanScreenStyles(Android_Theme_Light).UpperView,
-            ]}
+            style={[GetLeasingLoanScreenStyles(Android_Theme_Light).UpperView]}
           >
             <View
-              style={[
-                GetLeasingLoanScreenStyles(Android_Theme_Light).LeftView,
-              ]}
+              style={[GetLeasingLoanScreenStyles(Android_Theme_Light).LeftView]}
             >
               <Text
                 style={[
@@ -236,8 +232,7 @@ class LeasingLoanScreen extends Component {
               </Text>
               <Text
                 style={[
-                  GetLeasingLoanScreenStyles(Android_Theme_Light)
-                    .TextFdInvest,
+                  GetLeasingLoanScreenStyles(Android_Theme_Light).TextFdInvest,
                 ]}
               >
                 {"Total Leasing and Loans"}
@@ -296,7 +291,7 @@ class LeasingLoanScreen extends Component {
               height={64}
               icon={Android_Theme_Light.ICON_PAYNOW}
               text={"Make a Payment"}
-              onPress={() => null}
+              onPress={() => this.handleMakeAPayment()}
             />
           </View>
           {/*End Middle Button View */}

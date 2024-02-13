@@ -3,7 +3,7 @@ import { View, Text, SafeAreaView, StatusBar } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import CommonButton from "../../../components/Common/MainButton/CommonButton";
 import MainTitleBar from "../../../components/Common/TitleBar/MainTitleBar";
-
+import { CommonActions } from '@react-navigation/native';
 import Index from "../../../../configs/Index";
 import Svg, { Path } from "react-native-svg";
 
@@ -29,7 +29,7 @@ class KYCSuccessfulScreen extends Component {
 
   componentDidMount() {
     try {
-      StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
+  //    StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
     } catch (Error) {
       console.log("[KYCSuccessfulScreen] - componentDidMount - Error ", Error);
     }
@@ -37,14 +37,22 @@ class KYCSuccessfulScreen extends Component {
   componentWillUnmount() {
     try {
     } catch (Error) {
-      console.log("[KYCSuccessfulScreen] - componentWillUnmount - Error ", Error);
+      console.log(
+        "[KYCSuccessfulScreen] - componentWillUnmount - Error ",
+        Error
+      );
     }
   }
 
   handleNextButtonPress = () => {
     try {
-      //   this.props.navigation.replace(Index.FUND_1);
-      console.log("Next button pressed to NAvigate Fund transfer Screen");
+      
+      this.props.navigation.dispatch(
+        CommonActions.reset({
+          index: 0, // Navigate to the first screen in the stack
+          routes: [{ name: "LoginScreen" }], // Specify the screen
+        })
+      );
     } catch (error) {
       console.log("[KYCSuccessfulScreen] - Next_Button - Error ", error);
     }
@@ -53,7 +61,7 @@ class KYCSuccessfulScreen extends Component {
   handleLeftButtonPress = () => {
     try {
       this.props.navigation.navigate("KYCOtpScreen");
-      console.log("left pressed to navigate to KYCOtpScreen"); 
+      console.log("left pressed to navigate to KYCOtpScreen");
     } catch (error) {
       console.log("[KYCSuccessfulScreen] - left_Button - Error ", error);
     }
@@ -86,25 +94,34 @@ class KYCSuccessfulScreen extends Component {
           >
             <View style={GetCommonStyles(Android_Theme_Light).mainContainer}>
               <View
-                style={GetKYCSuccessfulScreenStyles(Android_Theme_Light).middleView}
+                style={
+                  GetKYCSuccessfulScreenStyles(Android_Theme_Light).middleView
+                }
               >
-                <Android_Theme_Light.ICON_CIRCLECHECKED width={90} height={100} />
+                <Android_Theme_Light.ICON_CIRCLECHECKED
+                  width={90}
+                  height={100}
+                />
                 <Text
                   style={
-                    GetKYCSuccessfulScreenStyles(Android_Theme_Light).secondTitle
+                    GetKYCSuccessfulScreenStyles(Android_Theme_Light)
+                      .secondTitle
                   }
                 >
                   {"Registration Succesful!"}
                 </Text>
                 <Text
-                  style={GetKYCSuccessfulScreenStyles(Android_Theme_Light).mainTitle}
+                  style={
+                    GetKYCSuccessfulScreenStyles(Android_Theme_Light).mainTitle
+                  }
                 >
                   {"Welcome to"}
                 </Text>
                 <MI_Logo />
                 <Text
                   style={
-                    GetKYCSuccessfulScreenStyles(Android_Theme_Light).secondTitle1
+                    GetKYCSuccessfulScreenStyles(Android_Theme_Light)
+                      .secondTitle1
                   }
                 >
                   {"You can now sign in to your Account!"}
@@ -112,19 +129,26 @@ class KYCSuccessfulScreen extends Component {
               </View>
 
               <View
-                style={GetKYCSuccessfulScreenStyles(Android_Theme_Light).bottomView}
+                style={
+                  GetKYCSuccessfulScreenStyles(Android_Theme_Light).bottomView
+                }
               >
                 <CommonButton
                   type="1"
                   title="Sign in"
                   borderRadius={35}
                   onPress={this.handleNextButtonPress}
-                  textSize={20}
-                  width={"90%"}
+                  fontFamily={Android_Theme_Light.POPPINS_REGULAR}
+                  textSize={Android_Theme_Light.FONT_SIZE_BODY_TWO_REGULAR}
+                  textColor={Android_Theme_Light.WHITE_COLOR}
+                  backgroundColor={Android_Theme_Light.DARK_BLUE_COLOR}
+                  width={"50%"}
                 />
 
                 <View
-                  style={GetKYCSuccessfulScreenStyles(Android_Theme_Light).logoIcon}
+                  style={
+                    GetKYCSuccessfulScreenStyles(Android_Theme_Light).logoIcon
+                  }
                 ></View>
               </View>
             </View>

@@ -146,7 +146,7 @@ class KYC4Screen extends Component {
                   textAlign={"center"}
                   leftIcon={Android_Theme_Light.ICON_CAMERA}
                   backgroundColor={Android_Theme_Light.DARK_GREEN_COLOR}
-                  onPress={() => this.handleCameraButtonPress()}
+                  onPress={() => null}
                 />
               </View>
             </View>
@@ -168,7 +168,7 @@ class KYC4Screen extends Component {
                   textAlign={"center"}
                   leftIcon={Android_Theme_Light.ICON_CAMERA}
                   backgroundColor={Android_Theme_Light.DARK_GREEN_COLOR}
-                  onPress={() => this.handleCameraButtonPress()}
+                  onPress={() => null}
                 />
               </View>
             </View>

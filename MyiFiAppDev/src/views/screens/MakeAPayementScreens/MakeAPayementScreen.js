@@ -13,7 +13,7 @@ import CommonButton from "../../components/Common/MainButton/CommonButton";
 import CommonInputField from "../../components/Common/TextInput/CommonInputField";
 import ValidationDialogs from "../../components/Common/ValidationDialogs";
 import CommonSpinnerLong from "../../components/Common/CommonSpinnerLong";
-import BottomTitleBar from "../../components/Common/BottomTitleBar";
+import BottomTitleBar from "../../components/Common/BottomBar/BottomBar";
 
 // done by: Randima 2024/01/23
 class MakeAPayementScreen extends Component {

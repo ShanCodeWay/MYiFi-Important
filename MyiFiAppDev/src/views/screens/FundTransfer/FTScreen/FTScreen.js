@@ -4,7 +4,6 @@ import {
   Text,
   ScrollView,
   SafeAreaView,
-  StatusBar,
   Modal,
   TouchableOpacity,
   TouchableWithoutFeedback,
@@ -16,9 +15,8 @@ import Index from "../../../../configs/Index";
 import CommonInputField from "../../../components/Common/TextInput/CommonInputField";
 import CommonSpinnerLong from "../../../components/Common/CommonSpinnerLong";
 import ValidationDialogs from "../../../components/Common/ValidationDialogs";
-import Colors from "../../../../styles/Colors";
 import { GetCommonStyles } from "../../../../styles/CommonStyles";
-import BottomTitleBar from "../../../components/Common/BottomTitleBar";
+import BottomTitleBar from "../../../components/Common/BottomBar/BottomBar";
 import { Android_Theme_Light } from "../../../../styles/Themes";
 import SelectDropDown from "../../../components/Common/Dropdown/SelectDropDown";
 import LinearGradient from "react-native-linear-gradient";
@@ -171,12 +169,19 @@ class FTScreen extends Component {
 
   componentDidMount() {
     try {
-      StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
+
 
       this.setState({
         selectedFromAccount: this.state.spinnerData[0].label_1,
+        selectedFromAccountAmount: this.state.spinnerData[0].label_2,
+        selectedFromAccountID:this.state.spinnerData[0].value,
+
 
         selectedType: this.state.accountTypeList[0].label_1,
+
+      
+
+
       });
     } catch (Error) {
       console.log("[FTScreen] - componentDidMount - Error ", Error);
@@ -336,13 +341,13 @@ class FTScreen extends Component {
     }
   };
 
-  handleTypeSelection = (label_1) => {
+  handleTypeSelection = (value) => {
     try {
       let resetState = this.resetStateValues();
 
-      if (label_1 === "Own-Account") {
+      if (value === "Own-Account") {
         this.setState({
-          selectedType: label_1,
+          selectedType:  this.state.accountTypeList.find((item) => item.value === value).label_1,
           isExpanded: false,
           isExpanded1: false,
           isExpanded2: false,
@@ -352,9 +357,9 @@ class FTScreen extends Component {
           isExpanded7: false,
           ...resetState,
         });
-      } else if (label_1 === "Unreg-Account") {
+      } else if (value === "Unreg-Account") {
         this.setState({
-          selectedType: label_1,
+          selectedType:  this.state.accountTypeList.find((item) => item.value === value).label_1,
           isExpanded: false,
           isExpanded1: false,
           isExpanded2: true,
@@ -364,9 +369,9 @@ class FTScreen extends Component {
           isExpanded7: true,
           ...resetState,
         });
-      } else if (label_1 === "Reg-Account") {
+      } else if (value === "Reg-Account") {
         this.setState({
-          selectedType: label_1,
+          selectedType:  this.state.accountTypeList.find((item) => item.value === value).label_1,
           isExpanded: false,
           isExpanded1: false,
           isExpanded5: true,
@@ -377,7 +382,7 @@ class FTScreen extends Component {
         });
       } else {
         this.setState({
-          selectedType: label_1,
+          selectedType: value,
           isExpanded: false,
           isExpanded1: false,
           isExpanded5: false,
@@ -453,7 +458,7 @@ class FTScreen extends Component {
     try {
       this.setState(
         (prevState) => ({
-          isExpanded: !prevState.isExpanded,
+          isExpanded: true,
           isExpanded1: false,
           selectedSchedule: "",
         }),
@@ -652,7 +657,7 @@ class FTScreen extends Component {
                   {/* Type selection- added by Dinuranga */}
                   <View style={FTScreenStyles(Android_Theme_Light).bankView}>
                     <SelectDropDown
-                      width={"96%"}
+                      width={"100%"}
                       data={this.state.accountTypeList.map((item) => {
                         return {
                           label: item.label_1,
@@ -696,7 +701,7 @@ class FTScreen extends Component {
                         style={FTScreenStyles(Android_Theme_Light).bankView}
                       >
                         <SelectDropDown
-                          width={"96%"}
+                          width={"100%"}
                           data={this.state.tansferTypes.map((item) => ({
                             label: item.label_1,
 
@@ -779,7 +784,7 @@ class FTScreen extends Component {
                               }
                             >
                               <SelectDropDown
-                                width={"96%"}
+                                width={"100%"}
                                 data={this.state.Banklist.map((item) => ({
                                   label: item.label_1,
 
@@ -977,7 +982,7 @@ class FTScreen extends Component {
                           style={FTScreenStyles(Android_Theme_Light).bankView}
                         >
                           <SelectDropDown
-                            width={"96%"}
+                            width={"100%"}
                             data={this.state.regList.map((person) => ({
                               label:
                                 "Name: " +
@@ -1164,8 +1169,9 @@ class FTScreen extends Component {
                     lable_2Show={false}
                     value={this.state.SelectedTransactionTime}
                     onRef={(ref) => (this.parentReferenceItem2 = ref)}
+
                     parentReferenceItem={(label_1, label_2, value) => {
-                      value === 1
+                      value == 1
                         ? this.setState({ isExpanded: false })
                         : this.toggleExpand();
                       this.setState({
@@ -1218,7 +1224,7 @@ class FTScreen extends Component {
                         style={FTScreenStyles(Android_Theme_Light).bankView}
                       >
                         <SelectDropDown
-                          width={"96%"}
+                          width={"100%"}
                           data={this.state.shedualList.map((item) => ({
                             label: item.label_1,
 
@@ -1278,7 +1284,7 @@ class FTScreen extends Component {
                             style={FTScreenStyles(Android_Theme_Light).bankView}
                           >
                             <SelectDropDown
-                              width={"96%"}
+                              width={"100%"}
                               data={this.state.frequencyList.map((item) => ({
                                 label: item.label_1,
 
@@ -1436,8 +1442,11 @@ class FTScreen extends Component {
                   <Text
                     style={FTScreenStyles(Android_Theme_Light).textZeroTransfer}
                   >
-                    Amount Is Zero {"\n"} Can't Transfer
+                    Please enter an amount greater {'\n'} than 0 to proceed
                   </Text>
+
+
+                  <View height={10}/>
                   <CommonButton
                     type="1"
                     title={"OK"}

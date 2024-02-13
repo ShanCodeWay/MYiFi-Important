@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 import { Android_Theme_Light } from "../../../../styles/Themes";
-//Done by: Darshana 26/01/2024
+import { hoverGestureHandlerProps } from "react-native-gesture-handler/lib/typescript/handlers/gestures/hoverGesture";
+//Done by: Darshana 02/02/2024
 
 export const  GetSettingsScreenStyles = (theme) => {
 
@@ -315,6 +316,85 @@ titleIconView:{
         fontSize : theme.FONT_SIZE_SMALL,
         textAlign: "left"
       },
+
+        /*exit View */
+
+
+        overlay: {
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(6, 15, 61, 0.60)',
+          justifyContent: 'center',
+          alignItems: 'center',
+        },
+        exitView: {
+        
+          width:300,
+          backgroundColor: Android_Theme_Light.BACKGROUND_COLOR,
+          padding: 20,
+          borderRadius: 15,
+          justifyContent: 'center',
+          alignItems: 'center',
+        },
+        exitContainer: {
+          marginBottom: 10,
+          justifyContent: 'center',
+          alignItems: 'center',
+        },
+        exitTitle: {
+          
+          fontFamily: theme.POPPINS_MEDIUM,
+          color: theme.DEEP_BLACK_COLOR,
+          fontSize: theme.FONT_SIZE_CAPTION_ONE_MEDIUM,
+          textAlign: 'right',
+          justifyContent: 'center',
+          alignItems: 'center',
+          
+        },
+        exitTextContainer: {
+          flexDirection: 'row', 
+          alignItems: 'center', 
+          justifyContent: 'flex-end',
+          backgroundColor:'red'
+         },
+
+        exitText: {
+          
+          fontFamily: theme.POPPINS_BOLD,
+          color: theme.DEEP_BLACK_COLOR,
+          fontSize: theme.FONT_SIZE_MEDIUM,
+          marginBottom: 5,
+        },
+        exitItem: {
+          fontFamily: theme.POPPINS_MEDIUM,
+          color: theme.DEEP_BLACK_COLOR,
+          fontSize: theme.FONT_SIZE_MEDIUM,
+          marginBottom: 5,
+        },
+        bottomButtonView: {
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexDirection: 'row',
+          width: '100%',
+          borderRadius: 15,
+          height: 70,
+          
+        },
+
+        bottomButton: {
+
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 50,
+        borderRadius: 15,
+        },
+
+        buttonText: {
+          color: 'white',
+        },
     
 
 

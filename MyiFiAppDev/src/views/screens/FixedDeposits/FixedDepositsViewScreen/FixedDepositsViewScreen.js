@@ -1,18 +1,15 @@
 import React, { Component } from "react"; //Nawodya
 import { View, Text, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Main_Logo from "../../../../assets/icons/Icon_MI_LOGO_Description.svg";
-import Icon_backArrows from "../../../../assets/icons/Icon_backArrows.svg";
-import Icon_home from "../../../../assets/icons/Icon_home.svg";
-import BottomTitleBar from "../../../components/Common/BottomTitleBar";
+import BottomTitleBar from "../../../components/Common/BottomBar/BottomBar";
 import { Android_Theme_Light } from "../../../../styles/Themes";
 import { GetCommonStyles } from "../../../../styles/CommonStyles";
 import GetFixedDepositsViewScreenStyles from "./FixedDepositsViewScreenStyles";
-import Index from "../../../../configs/Index";
-import CommonCardButton from "../../../components/Common/CommonCardButton";
+import CommonCardButton from "../../../components/Common/CardButton/CommonCardButton";
 import CommonSummeryView from "../../../components/Common/SummeryView/CommonSummeryView";
 import { AmountSeperation } from "../../../../utils/helpers";
 
+//Done by Dinuranga
 class FixedDepositsViewScreen extends Component {
   constructor(props) {
     super(props);
@@ -216,8 +213,8 @@ class FixedDepositsViewScreen extends Component {
             }
           >
             <BottomTitleBar
-              icon1={Icon_backArrows}
-              icon2={Icon_home}
+              icon1={Android_Theme_Light.ICON_BACK_ARROWS}
+              icon2={Android_Theme_Light.ICON_HOME}
               onPressIcon1={this.handleBack}
               onPressIcon2={this.handleHome}
             />
