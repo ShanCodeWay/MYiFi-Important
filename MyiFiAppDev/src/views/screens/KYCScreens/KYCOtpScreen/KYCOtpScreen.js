@@ -5,7 +5,7 @@ import CommonButton from "../../../components/Common/MainButton/CommonButton";
 import MainTitleBar from "../../../components/Common/TitleBar/MainTitleBar";
 import PaginationIndicator from "../../../components/Common/PageIndicator/PageIndicator";
 
-import Index from "../../../../configs/Index";
+import Index from "../../../navigators/NavIndex";
 import CommonInputField from "../../../components/Common/TextInput/CommonInputField";
 import Colors from "../../../../styles/Colors";
 import { GetCommonStyles } from "../../../../styles/CommonStyles";

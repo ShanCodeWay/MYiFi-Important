@@ -10,7 +10,8 @@ export default DashboardTitleBar = (props) => {
 
         return (
 
-            <View style={GetDashboardTitleBarStyles(Android_Theme_Light).mainContainer}>
+            <View style={[GetDashboardTitleBarStyles(Android_Theme_Light).mainContainer,
+            {height: props.IconProfilePic ? 55 : 35}]}>
 
                 {
                     props.menuIcon ?

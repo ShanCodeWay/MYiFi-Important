@@ -8,7 +8,7 @@ import GetQR_PaymentScreenStyles from "./QR_PaymentScreenStyles";
 import CommonSpinnerLong from "../../components/Common/CommonSpinnerLong";
 import CommonInputField from "../../components/Common/TextInput/CommonInputField";
 import CommonButton from "../../components/Common/MainButton/CommonButton";
-import BottomTitleBar from "../../components/Common/BottomBar/BottomBar";
+import BottomBar from "../../components/Common/BottomBar/BottomBar";
 import ValidationDialogs from "../../components/Common/ValidationDialogs";
 
 //Done by Randima 2024/01/31
@@ -294,11 +294,11 @@ class QR_PaymentScreen extends Component {
               style={GetQR_PaymentScreenStyles(Android_Theme_Light).bottomView}
             >
               {/* Bottom Title Bar */}
-              <BottomTitleBar
-                icon1={Android_Theme_Light.ICON_BACK_ARROWS}
-                icon2={Android_Theme_Light.ICON_HOME}
-                onPressIcon1={this.handleBack}
-                onPressIcon2={this.handleHome}
+              <BottomBar
+                BackIcon={Android_Theme_Light.ICON_BACK_ARROWS}
+                HomeIcon={Android_Theme_Light.ICON_HOME}
+                onPressBackButton={this.handleBack}
+                onPressHomeButton={this.handleHome}
               />
             </View>
           </View>

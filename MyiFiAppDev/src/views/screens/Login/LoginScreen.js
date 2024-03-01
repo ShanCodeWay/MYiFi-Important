@@ -4,7 +4,7 @@ import { View, Text, Touchable, Modal } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import CommonInputField from "../../components/Common/TextInput/CommonInputField";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Index from "../../../configs/Index";
+import Index from "../../navigators/NavIndex";
 import {
   Android_Theme_Light,
   Android_Theme_Dark,
@@ -13,7 +13,6 @@ import CommonButton from "../../components/Common/MainButton/CommonButton";
 import Colors from "../../../styles/Colors";
 import Fonts from "../../../styles/Fonts";
 import FingerPrintLogin from "../LoginScreen/FingerPrintLogin/FingerPrintLogin";
-import FingerPrintLoginStyles from "../LoginScreen/FingerPrintLogin/FingerPrintLoginStyles";
 //import CommonSpinner from "../../components/Common/CommonSpinner";
 
 import GetLoginScreenStyles from "./LoginScreenStyles";
@@ -275,14 +274,15 @@ class LoginScreen extends Component {
 
                 </Text>
 
+ {/* Fingerprint */}
+ <FingerPrintLogin
+              isModalVisible={this.state.isEnableFingerPrint}
+              onInputChange={this.handleUserNameInputChange}
+                />
             </View>
 
 
-            {/* Fingerprint */}
-            {/*<FingerPrintLogin
-              isModalVisible={this.state.isEnableFingerPrint}
-              onInputChange={this.handleUserNameInputChange}
-                />*/}
+           
 
           </KeyboardAwareScrollView>
 

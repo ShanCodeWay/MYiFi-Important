@@ -15,7 +15,7 @@ export default GetSavingsScreenStyles = (theme) => {
     },
 
     SavingsRowLeftView: {
-      flex: 3,
+      flex: 1,
       justifyContent: "flex-start",
       alignContent: "flex-start",
       alignItems: "flex-start",
@@ -49,6 +49,7 @@ export default GetSavingsScreenStyles = (theme) => {
     },
 
     SavingsRowMainContainer: {
+      width:'100%',
       justifyContent: "center",
       alignContent: "center",
       alignItems: "center",
@@ -73,7 +74,8 @@ export default GetSavingsScreenStyles = (theme) => {
     },
 
     SavingsRowRightView: {
-      flex: 2,
+      width:120,
+      //flex: 2,
       justifyContent: "flex-start",
       alignContent: "flex-end",
       alignItems: "flex-end",

@@ -13,7 +13,7 @@ import CommonButton from "../../components/Common/MainButton/CommonButton";
 import CommonInputField from "../../components/Common/TextInput/CommonInputField";
 import ValidationDialogs from "../../components/Common/ValidationDialogs";
 import CommonSpinnerLong from "../../components/Common/CommonSpinnerLong";
-import BottomTitleBar from "../../components/Common/BottomBar/BottomBar";
+import BottomBar from "../../components/Common/BottomBar/BottomBar";
 
 // done by: Randima 2024/01/23
 class MakeAPayementScreen extends Component {
@@ -281,11 +281,11 @@ class MakeAPayementScreen extends Component {
               }
             >
               {/* Bottom Title Bar */}
-              <BottomTitleBar
-                icon1={Icon_backArrows}
-                icon2={Icon_home}
-                onPressIcon1={this.handleBack}
-                onPressIcon2={this.handleHome}
+              <BottomBar
+                BackIcon={Icon_backArrows}
+                HomeIcon={Icon_home}
+                onPressBackButton={this.handleBack}
+                onPressHomeButton={this.handleHome}
               />
             </View>
           </View>

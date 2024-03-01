@@ -11,7 +11,7 @@ import GetLeasingLoanScreenStyles from "./LeasingLoanScreenStyles";
 import CommonCardButton from "../../components/Common/CardButton/CommonCardButton";
 import CommonButton from "../../components/Common/MainButton/CommonButton";
 import { AmountSeperation } from "../../../utils/helpers";
-import BottomTitleBar from "../../components/Common/BottomBar/BottomBar";
+import BottomBar from "../../components/Common/BottomBar/BottomBar";
 
 //Done by: Dinuranga 23/01/19
 class LeasingLoanScreen extends Component {
@@ -111,7 +111,7 @@ class LeasingLoanScreen extends Component {
 
           <View
             style={[
-              GetDashboardScreenStyles(Android_Theme_Light).AmountContainer,
+              GetCommonStyles(Android_Theme_Light).amountContainer,
             ]}
           >
             <Text
@@ -332,11 +332,11 @@ class LeasingLoanScreen extends Component {
           <View
             style={GetLeasingLoanScreenStyles(Android_Theme_Light).bottomView}
           >
-            <BottomTitleBar
-              icon1={Android_Theme_Light.ICON_BACK_ARROWS}
-              icon2={Android_Theme_Light.ICON_HOME}
-              onPressIcon1={this.handleBack}
-              onPressIcon2={this.handleHome}
+            <BottomBar
+              BackIcon={Android_Theme_Light.ICON_BACK_ARROWS}
+              HomeIcon={Android_Theme_Light.ICON_HOME}
+              onPressBackButton={this.handleBack}
+              onPressHomeButton={this.handleHome}
             />
           </View>
         </View>

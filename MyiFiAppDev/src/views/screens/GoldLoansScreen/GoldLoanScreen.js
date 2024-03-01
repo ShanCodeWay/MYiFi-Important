@@ -14,7 +14,7 @@ import CommonCardButton from "../../components/Common/CardButton/CommonCardButto
 
 import CommonButton from "../../components/Common/MainButton/CommonButton";
 import { AmountSeperation } from "../../../utils/helpers";
-import BottomTitleBar from "../../components/Common/BottomBar/BottomBar";
+import BottomBar from "../../components/Common/BottomBar/BottomBar";
 
 //Done by: Dinuranga 23/01/19
 class GoldLoanScreen extends Component {
@@ -98,7 +98,7 @@ class GoldLoanScreen extends Component {
 
           <View
             style={[
-              GetDashboardScreenStyles(Android_Theme_Light).AmountContainer,
+              GetCommonStyles(Android_Theme_Light).amountContainer,
             ]}
           >
             <Text
@@ -326,11 +326,11 @@ class GoldLoanScreen extends Component {
           <View
             style={GetGoldLoanScreenStyles(Android_Theme_Light).bottomView}
           >
-            <BottomTitleBar
-              icon1={Android_Theme_Light.ICON_BACK_ARROWS}
-              icon2={Android_Theme_Light.ICON_HOME}
-              onPressIcon1={this.handleBack}
-              onPressIcon2={this.handleHome}
+            <BottomBar
+              BackIcon={Android_Theme_Light.ICON_BACK_ARROWS}
+              HomeIcon={Android_Theme_Light.ICON_HOME}
+              onPressBackButton={this.handleBack}
+              onPressHomeButton={this.handleHome}
             />
           </View>
         </View>

@@ -6,11 +6,11 @@ import { Android_Theme_Light } from "../../../styles/Themes";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CommonInputField from "../../components/Common/TextInput/CommonInputField";
 import CommonSpinnerLong from "../../components/Common/CommonSpinnerLong";
-import BottomTitleBar from "../../components/Common/BottomBar/BottomBar";
 import CommonSmallButton from "../../components/Common/CommonSmallButton";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import MainTitleBar from "../../components/Common/TitleBar/MainTitleBar";
-import Index from "../../../configs/Index";
+import BottomBar from "../../components/Common/BottomBar/BottomBar";
+import Index from "../../navigators/NavIndex";
 
 // Done by Nawodya
 class AddNewBillerScreen extends Component {
@@ -325,11 +325,12 @@ class AddNewBillerScreen extends Component {
               />
             </View>
           </View>
-          <BottomTitleBar
-            icon1={Android_Theme_Light.ICON_BACK_ARROWS}
-            icon2={Android_Theme_Light.ICON_HOME}
-            onPressIcon1={this.handleBack}
-            onPressIcon2={this.handleHome}
+       
+          <BottomBar
+            BackIcon={Android_Theme_Light.ICON_BACK_ARROWS}
+            HomeIcon={Android_Theme_Light.ICON_HOME}
+            onPressBackButton={this.handleBack}
+            onPressHomeButton={this.handleHome}
           />
         </KeyboardAwareScrollView>
       </SafeAreaView>

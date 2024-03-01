@@ -122,7 +122,7 @@ class WelcomeScreen extends Component {
               title={"Preferred Language"}
               placeholder={""}
               value={this.state.selectedLanguage || "English"}
-              lable={this.state.selectedLanguage || "English"}
+              label={this.state.selectedLanguage || "English"}
               onRef={(ref) => (this.parentReferenceItem = ref)}
               parentReferenceItem={this.handleLanguageSelection}
             />

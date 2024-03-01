@@ -3,7 +3,7 @@
   import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
   import CommonButton from "../../components/Common/MainButton/CommonButton";
   import MainTitleBar from "../../components/Common/TitleBar/MainTitleBar";
-  import Index from "../../../configs/Index";
+  import Index from "../../navigators/NavIndex";
   import { CommonActions } from '@react-navigation/native';
   import { GetCommonStyles } from "../../../styles/CommonStyles";
   import GetSignup_SuccessScreenStyles from "./Signup_SuccessScreenStyles";

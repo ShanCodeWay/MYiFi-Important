@@ -5,13 +5,13 @@ export default GetDashboardTitleBarStyles = (theme) => {
     const DashboardTitleBarStyles = StyleSheet.create({
 
         mainContainer: {
-            height: 55,
+            height: 53,
             //width: '100%',
             flexDirection: 'row',
             backgroundColor:theme.BACKGROUND_COLOR,
             alignItems:"center",
             //marginTop:10,
-            margin:10
+            //margin:10
         },
 
         leftIcon: {
@@ -37,7 +37,7 @@ export default GetDashboardTitleBarStyles = (theme) => {
 
         middleText: {
             flex: 1,
-            marginLeft: 10
+            //marginLeft: 10
         },
 
         rightIcon: {

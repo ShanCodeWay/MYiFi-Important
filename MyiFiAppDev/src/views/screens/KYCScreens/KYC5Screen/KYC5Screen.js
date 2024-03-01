@@ -248,7 +248,7 @@ class KYC5Screen extends Component {
                     ]}
                     placeholder={""}
                     value={this.state.selectedTitle}
-                    lable={this.state.selectedTitle}
+                    label={this.state.selectedTitle}
                     onRef={(ref) => (this.parentReferenceItem = ref)}
                     parentReferenceItem={this.handleTitle}
                   />
@@ -330,7 +330,7 @@ class KYC5Screen extends Component {
                     ]}
                     placeholder={""}
                     value={this.state.selectedGender}
-                    lable={this.state.selectedGender}
+                    label={this.state.selectedGender}
                     onRef={(ref) => (this.parentReferenceItem = ref)}
                     parentReferenceItem={this.handleGender}
                   />
@@ -472,7 +472,7 @@ class KYC5Screen extends Component {
                     ]}
                     placeholder={""}
                     value={this.state.selectedCity}
-                    lable={this.state.selectedCity}
+                    label={this.state.selectedCity}
                     onRef={(ref) => (this.parentReferenceItem = ref)}
                     parentReferenceItem={this.handleCity}
                   />

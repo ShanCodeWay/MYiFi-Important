@@ -2,7 +2,7 @@ import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { navigationRef } from "./RootNavigation.js";
-import Index from "../../configs/Index";
+import Index from "./NavIndex.js";
 import Dashboard_DrawerNavigator from "./Dashboard_DrawerNavigator.js";
 
  {/*SPLASH Screen */ }
@@ -18,7 +18,10 @@ import Signup_SuccessScreen from "../screens/SignUp/Signup_SuccessScreen.js";
 
 {/*DASHBOARD Screen */ }
 //import DashboardScreen from "../screens/DashboardScreen/DashboardScreen.js";
+//import SendMainScreen from "../screens/Dashboard/Send/SendMainScreen.js";
 import InvestMainScreen from "../screens/Dashboard/Invest/InvestMainScreen.js";
+import PaymentsMainScreen from "../screens/Dashboard/Payments/PaymentsMainScreen.js";
+import LeasingLoanMainScreen from "../screens/Dashboard/LeasingLoan/LeasingLoanMainScreen.js";
 
  {/*FUNDTRANSFER Screens*/}
 import FTScreen from "../screens/FundTransfer/FTScreen/FTScreen.js";
@@ -38,10 +41,15 @@ import KYC5Screen from "../screens/KYCScreens/KYC5Screen/KYC5Screen.js";
 import KYC6Screen from "../screens/KYCScreens/KYC6Screen/KYC6Screen.js";
 import KYCOtpScreen from "../screens/KYCScreens/KYCOtpScreen/KYCOtpScreen.js";
 import KYCSuccessfulScreen from "../screens/KYCScreens/KYCSuccessfulScreen/KYCSuccessfulScreen.js";
+
+{/*FD Screens */ }
 import FixedDepositsScreen from "../screens/FixedDeposits/FixedDepositsScreen.js";
 import FixedDepositsViewScreen from "../screens/FixedDeposits/FixedDepositsViewScreen/FixedDepositsViewScreen.js";
 import CreateFDScreen from "../screens/FixedDeposits/CreateFD/CreateFDScreen.js";
 import CreateFDConfirmationScreen from "../screens/FixedDeposits/CreateFD/CreateFDConfirmationScreen.js";
+import CreateFd_OTPScreen from "../screens/FixedDeposits/CreateFD/CreateFd_OTPScreen.js";
+import CreateFD_SuccessScreen from "../screens/FixedDeposits/CreateFD/CreateFD_SuccessScreen.js";
+
 
 
 {/*Bill Payment Screens */ }
@@ -54,7 +62,7 @@ import MakeAPayementScreen from "../screens/MakeAPayementScreens/MakeAPayementSc
 import MakeAPaymentViewScreen from "../screens/MakeAPayementScreens/MakeAPaymentViewScreen/MakeAPaymentViewScreen.js";
 import MakeAPaymentOtpScreen from "../screens/MakeAPayementScreens/MakeAPaymentOtpScreen/MakeAPaymentOtpScreen.js";
 import MakeAPaymentSuccessfulScreen from "../screens/MakeAPayementScreens/MakeAPaymentSuccessfulScreen/MakeAPaymentSuccessfulScreen.js";
-import LeasingLoanMainScreen from "../screens/DashboardScreen/LeasingLoan/LeasingLoanMainScreen.js";
+
 import BillPaymentTransferReceiptScreen from "../screens/BillPaymentScreens/BillPaymentTransferReceipt/BillPaymentTransferReceiptScreen.js";
 import BillPayementOTPScreen from "../screens/BillPaymentScreens/BillPaymentOTPScreen/BillPaymentOTPScreen.js";
 
@@ -91,9 +99,8 @@ import SavingsScreen from "../screens/SavingsScreens/SavingsScreen.js";
 import SavingsTransactionScreen from "../screens/SavingsScreens/SavingsTransactionScreen/SavingsTransactionScreen.js";
 import TransactionHistoryScreen from "../screens/SavingsScreens/TransactionHistoryScreen/TransactionHistoryScreen.js";
 import GoldLoanViewScreen from "../screens/GoldLoansScreen/GoldLoanViewScreen/GoldLoanViewScreen.js";
-
-
-
+import AddNewPayeeScreen from "../screens/PayeeManagementScreen/AddNewPayeeScreen.js";
+import PayeeRegistrationScreen from "../screens/PayeeManagementScreen/PayeeRegistrationScreen.js";
 
 const Stack = createStackNavigator();
 //navigationRef - is used to navigation inside the actions
@@ -130,11 +137,14 @@ function NavContainer() {
         <Stack.Screen name={Index.FUND_OTP} component={FTOTPScreen} />
 
         {/*DASHBOARD Screens */ }
-        <Stack.Screen name={Index.INVEST_SCREEN} component={InvestMainScreen} />
-        <Stack.Screen name="LeasingLoanMainScreen"component={LeasingLoanMainScreen} />
+        <Stack.Screen name={Index.INVEST_MAIN_SCREEN} component={InvestMainScreen} />
+        {/* //<Stack.Screen name={Index.SEND_MAIN_SCREEN} component={SendMainScreen} /> */}
+        <Stack.Screen name={Index.PAYMENTS_MAIN_SCREEN} component={PaymentsMainScreen} />
+        <Stack.Screen name={Index.LEASING_LOAN_MAIN_SCREEN} component={LeasingLoanMainScreen} />
         <Stack.Screen name="NotificationsCentreScreen" component={NotificationsCentreScreen} />
         <Stack.Screen name="NotificationsPage" component={NotificationsPage} />
-
+        <Stack.Screen name="AddNewPayeeScreen" component={AddNewPayeeScreen} />
+        <Stack.Screen name={Index.PAYEE_MANAGEMENT_SCREEN} component={PayeeRegistrationScreen} />
 
         {/*KYC Screens */ }
         <Stack.Screen name="WelcomeScreen"  component={WelcomeScreen} />
@@ -153,6 +163,9 @@ function NavContainer() {
         <Stack.Screen name= {Index.FD_SCREEN_2} component={FixedDepositsViewScreen} />
         <Stack.Screen name= {Index.FD_CREATE_SCREEN} component={CreateFDScreen} />
         <Stack.Screen name= {Index.FD_CREATE_CONFIRMATION_SCREEN} component={CreateFDConfirmationScreen} />
+        <Stack.Screen name= {Index.FD_CREATE_OTP_SCREEN} component={CreateFd_OTPScreen} />
+        <Stack.Screen name= {Index.FD_CREATE_SUCCESS_SCREEN} component={CreateFD_SuccessScreen} />
+        
         
 
         {/*Bill Payement Screens */ }
@@ -195,7 +208,7 @@ function NavContainer() {
 
         
         {/* Savings Screens */}
-        <Stack.Screen name="SavingsScreen"     component={SavingsScreen} />
+        <Stack.Screen name={Index.SAVINGS_SCREEN}    component={SavingsScreen} />
         <Stack.Screen name="SavingsTransactionScreen"     component={SavingsTransactionScreen} />
         <Stack.Screen name="TransactionHistoryScreen"     component={TransactionHistoryScreen} />
 

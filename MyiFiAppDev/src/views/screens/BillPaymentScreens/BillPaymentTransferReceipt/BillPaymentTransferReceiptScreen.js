@@ -3,13 +3,11 @@ import React, { Component } from 'react';         //Nawodya
 import { View, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Main_Logo from "../../../../assets/icons/Icon_MI_LOGO_Description.svg";
-import Icon_backArrows from "../../../../assets/icons/Icon_backArrows.svg";
-import Icon_home from "../../../../assets/icons/Icon_home.svg";
-import BottomTitleBar from '../../../components/Common/BottomBar/BottomBar';
+import BottomBar from "../../../components/Common/BottomBar/BottomBar";
 import { Android_Theme_Light } from "../../../../styles/Themes";
 import { GetCommonStyles } from "../../../../styles/CommonStyles";
 import { GetBillPaymentTransferReceiptScreenStyles } from "./BillPaymentTransferReceiptScreenStyles";
-import Index from "../../../../configs/Index";
+import Index from "../../../navigators/NavIndex";
 import CommonSummeryView from '../../../components/Common/SummeryView/CommonSummeryView';
 import CommonSmallButton from "../../../components/Common/CommonSmallButton";
 import { AmountSeperation } from '../../../../utils/helpers';
@@ -169,12 +167,13 @@ class BillPaymentTransferReceiptScreen extends Component {
 
                     <View style={GetBillPaymentTransferReceiptScreenStyles(Android_Theme_Light).bottomView}>
 
-                        <BottomTitleBar
-                            icon1={Icon_backArrows}
-                            icon2={Icon_home}
-                            onPressIcon1={this.handleBack}
-                            onPressIcon2={this.handleHome}
+                        <BottomBar
+                            BackIcon={Android_Theme_Light.ICON_BACK_ARROWS}
+                            HomeIcon={Android_Theme_Light.ICON_HOME}
+                            onPressBackButton={this.handleBack}
+                            onPressHomeButton={this.handleHome}
                         />
+
                     </View>
 
                 </View>

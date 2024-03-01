@@ -10,7 +10,7 @@ import { Android_Theme_Light } from "../../../styles/Themes";
 import GetDashboardScreenStyles from "./DashboardScreenStyles";
 
 import CommonCardButton from "../../components/Common/CardButton/CommonCardButton";
-import Index from "../../../configs/Index";
+import Index from "../../navigators/NavIndex";
 import { AmountSeperation, GetGreeting } from "../../../utils/helpers";
 
 import { DrawerActions } from '@react-navigation/native';
@@ -156,7 +156,7 @@ class DashboardScreen extends Component {
   OnSendButtonPress = () => {
 
     try {
-      this.props.navigation.navigate("FTScreen");
+      this.props.navigation.navigate(Index.SEND_MAIN_SCREEN);
     } 
     catch(error) {
       console.log("[DashboardScreen] - OnSendButtonPress() Ex: ", error);
@@ -174,7 +174,7 @@ class DashboardScreen extends Component {
 
   OnPaymentsButtonPress = () => {
     try {
-      this.props.navigation.navigate(Index.BILL_1);
+      this.props.navigation.navigate(Index.PAYMENTS_MAIN_SCREEN);
     } 
     catch(error){
       console.log("[DashboardScreen] - OnPaymentsButtonPress() Ex: ", error);
@@ -183,7 +183,7 @@ class DashboardScreen extends Component {
 
   OnLeaseLoanButtonPress = () => {
     try {
-      this.props.navigation.navigate("SavingsScreen");
+      this.props.navigation.navigate(Index.LEASING_LOAN_MAIN_SCREEN);
     } 
     catch(error){
       console.log("[DashboardScreen] - OnLeaseLoanButtonPress() Ex: ", error);
@@ -201,7 +201,7 @@ class DashboardScreen extends Component {
 
   OnPress_EasyPaymentsButton = () => {
     try {
-      this.props.navigation.navigate('LeasingLoanMainScreen');
+      this.props.navigation.navigate(Index.BILL_1);
     }    
     catch(error){
       console.log("[DashboardScreen] - OnPress_EasyPaymentsButton() Ex: ", error);
@@ -210,7 +210,7 @@ class DashboardScreen extends Component {
 
   OnPress_EasyFDButton = () => {
     try {
-      this.props.navigation.navigate("BillPayement");
+      this.props.navigation.navigate(Index.FD_SCREEN_1);
     } 
     catch(error){
       console.log("[DashboardScreen] - OnPress_EasyFDButton() Ex: ", error);
@@ -219,7 +219,7 @@ class DashboardScreen extends Component {
 
   OnPress_EasySavingsButton = () => {
     try {
-      this.props.navigation.navigate("BillPayement");
+      this.props.navigation.navigate(Index.SAVINGS_SCREEN);
     } 
     catch(error){
       console.log("[DashboardScreen] - OnPress_EasySavingsButton() Ex: ", error);

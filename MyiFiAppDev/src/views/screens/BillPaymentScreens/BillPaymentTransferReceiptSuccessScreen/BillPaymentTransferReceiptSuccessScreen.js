@@ -1,16 +1,13 @@
 import React, { Component } from "react";
 import { View, Text, SafeAreaView, StatusBar } from "react-native";
-import Icon_backArrows from "../../../../assets/icons/Icon_backArrows.svg";
-import Icon_home from "../../../../assets/icons/Icon_home.svg";
 import Colors from "../../../../styles/Colors";
-
+import BottomBar from "../../../components/Common/BottomBar/BottomBar";
 import { GetCommonStyles } from "../../../../styles/CommonStyles";
 import { GetBillPaymentTransferReceiptSuccessScreenStyles } from "./BillPaymentTransferReceiptSuccessStyles";
 import CommonSummeryView from '../../../components/Common/SummeryView/CommonSummeryView';
 import {
   Android_Theme_Light,
 } from "../../../../styles/Themes";
-import BottomTitleBar from "../../../components/Common/BottomBar/BottomBar";
 import { AmountSeperation } from "../../../../utils/helpers";
 
 
@@ -203,12 +200,13 @@ class BillPaymentTransferReceiptSuccessScreen extends Component {
                             numColumns={2}
                             TextColor={Android_Theme_Light.DARK_GRAY_COLOR}
                         /> */}
-              <BottomTitleBar
-                icon1={Icon_backArrows}
-                icon2={Icon_home}
-                onPressIcon1={this.handleBack}
-                onPressIcon2={this.handleHome}
+              <BottomBar
+                BackIcon={Android_Theme_Light.ICON_BACK_ARROWS}
+                HomeIcon={Android_Theme_Light.ICON_HOME}
+                onPressBackButton={this.handleBack}
+                onPressHomeButton={this.handleHome}
               />
+
             </View>
           </View>
         </SafeAreaView>

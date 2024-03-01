@@ -4,9 +4,7 @@ import { GetCommonStyles } from "../../../styles/CommonStyles";
 import { GetBillerManagementScreenStyles } from "./BillerManagementScreenStyles";
 import { Android_Theme_Light } from "../../../styles/Themes";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Icon_backArrows from "../../../assets/icons/Icon_backArrows.svg";
-import Icon_home from "../../../assets/icons/Icon_home.svg";
-import BottomTitleBar from "../../components/Common/BottomBar/BottomBar";
+import BottomBar from "../../components/Common/BottomBar/BottomBar";
 import CommonSmallButton from "../../components/Common/CommonSmallButton";
 import MainTitleBar from "../../components/Common/TitleBar/MainTitleBar";
 
@@ -195,12 +193,13 @@ class BillerManagementScreen extends Component {
                 icon={Android_Theme_Light.ICON_PLUS}
               />
             </View>
-            <BottomTitleBar
-              icon1={Icon_backArrows}
-              icon2={Icon_home}
-              onPressIcon1={this.handleBack}
-              onPressIcon2={this.handleHome}
-            />
+        
+            <BottomBar
+            BackIcon={Android_Theme_Light.ICON_BACK_ARROWS}
+            HomeIcon={Android_Theme_Light.ICON_HOME}
+            onPressBackButton={this.handleBack}
+            onPressHomeButton={this.handleHome}
+          />
           </View>
         </View>
       </SafeAreaView>

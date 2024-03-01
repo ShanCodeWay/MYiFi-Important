@@ -4,7 +4,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import CommonButton from "../../../components/Common/MainButton/CommonButton";
 import MainTitleBar from "../../../components/Common/TitleBar/MainTitleBar";
 import { GetBillPaymentStyles } from "./BillPaymentStyles";
-import Index from "../../../../configs/Index";
+import Index from "../../../navigators/NavIndex";
 import CommonInputField from "../../../components/Common/TextInput/CommonInputField";
 import CommonSpinner from '../../../components/Common/CommonSpinner';
 import CommonSpinnerLong from '../../../components/Common/CommonSpinnerLong';
@@ -16,8 +16,8 @@ import {
   Android_Theme_Light,
   Android_Theme_Dark,
 } from "../../../../styles/Themes";
-import BottomTitleBar from "../../../components/Common/BottomBar/BottomBar";
 
+import BottomBar from "../../../components/Common/BottomBar/BottomBar";
 //Done by: Darshana 24/01/26
 //Done by:Nawodya
 
@@ -727,11 +727,11 @@ class BillPayment extends Component {
               width={"60%"}
             />
 
-            <BottomTitleBar
-              icon1={Android_Theme_Light.ICON_BACK_ARROWS}
-              icon2={Android_Theme_Light.ICON_HOME}
-              onPressIcon1={this.handleBack}
-              onPressIcon2={this.handleHome}
+            <BottomBar
+              BackIcon={Android_Theme_Light.ICON_BACK_ARROWS}
+              HomeIcon={Android_Theme_Light.ICON_HOME}
+              onPressBackButton={this.handleBack}
+              onPressHomeButton={this.handleHome}
             />
 
           </View>

@@ -5,7 +5,7 @@ import { View, Text, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Icon_backArrows from "../../../../assets/icons/Icon_backArrows.svg";
 import Icon_home from "../../../../assets/icons/Icon_home.svg";
-import BottomTitleBar from "../../../components/Common/BottomBar/BottomBar";
+import BottomBar from "../../../components/Common/BottomBar/BottomBar";
 import { Android_Theme_Light } from "../../../../styles/Themes";
 import { GetCommonStyles } from "../../../../styles/CommonStyles";
 import GetMakeAPaymentViewScreenStyles from "./MakeAPaymentViewScreenStyles";
@@ -233,11 +233,11 @@ class MakeAPaymentViewScreen extends Component {
           >
 
             {/* Bottom Title Bar */}
-            <BottomTitleBar
-              icon1={Icon_backArrows}
-              icon2={Icon_home}
-              onPressIcon1={this.handleBack}
-              onPressIcon2={this.handleHome}
+            <BottomBar
+              BackIcon={Icon_backArrows}
+              HomeIcon={Icon_home}
+              onPressBackButton={this.handleBack}
+              onPressHomeButton={this.handleHome}
             />
           </View>
         </View>

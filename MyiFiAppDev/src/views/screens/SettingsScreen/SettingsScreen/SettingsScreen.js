@@ -10,10 +10,10 @@ import {
 } from "react-native";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import { GetSettingsScreenStyles } from "./SettingsScreenStyles";
-import Index from "../../../../configs/Index";
+import Index from "../../../navigators/NavIndex";
 import Colors from "../../../../styles/Colors";
 import { GetCommonStyles } from "../../../../styles/CommonStyles";
-import BottomTitleBar from "../../../components/Common/BottomBar/BottomBar";
+import BottomBar from "../../../components/Common/BottomBar/BottomBar";
 import LinearGradient from "react-native-linear-gradient";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import {
@@ -354,7 +354,7 @@ class SettingsScreen extends Component {
               width={"100%"}
               data={this.state.languageList}
               value={this.state.selectedLanguage || this.state.languageList[0].value}
-              lable={this.state.selectedLanguage || this.state.languageList[0].label}
+              label={this.state.selectedLanguage || this.state.languageList[0].label}
               onRef={(ref) => (this.parentReferenceItem = ref)}
               parentReferenceItem={this.handleLanguageSelection}
             />         
@@ -510,11 +510,11 @@ class SettingsScreen extends Component {
           </View>
 
           <View style={GetSettingsScreenStyles(Android_Theme_Light).bottomView}>
-            <BottomTitleBar
-              icon1={Android_Theme_Light.ICON_BACK_ARROWS}
-              icon2={Android_Theme_Light.ICON_HOME}
-              onPressIcon1={this.handleBack}
-              onPressIcon2={this.handleHome}
+            <BottomBar
+              BackIcon={Android_Theme_Light.ICON_BACK_ARROWS}
+              HomeIcon={Android_Theme_Light.ICON_HOME}
+              onPressBackButton={this.handleBack}
+              onPressHomeButton={this.handleHome}
             />
           </View>
           {exitView}

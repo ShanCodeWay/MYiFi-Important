@@ -14,7 +14,7 @@ export default GetSelectDropDownStyles = (theme)=> {
     labelText: {
       fontFamily : theme.POPPINS_MEDIUM,
       color : theme.DEEP_BLACK_COLOR,
-      fontSize : theme.FONT_SIZE_SMALL,
+      fontSize : theme.FONT_SIZE_CAPTION_ONE_MEDIUM,
       textAlign: "left"
     },
 
@@ -52,15 +52,14 @@ export default GetSelectDropDownStyles = (theme)=> {
     textPlaceholder: {
       fontFamily : theme.POPPINS_REGULAR,
       color: theme.GRAY_COLOR,
-      fontSize: 14,
-      fontSize : theme.FONT_SIZE_LARGE,
+      fontSize : theme.FONT_SIZE_BODY_ONE_REGULAR,
       textAlign: "left",
     },
 
     valueText: {
       fontFamily : theme.POPPINS_REGULAR,
       color : theme.DEEP_BLACK_COLOR,
-      fontSize : theme.FONT_SIZE_LARGE,
+      fontSize : theme.FONT_SIZE_BODY_ONE_REGULAR,
       textAlign: "left"
     },
 

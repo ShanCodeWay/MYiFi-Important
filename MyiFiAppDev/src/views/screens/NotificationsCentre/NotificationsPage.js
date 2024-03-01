@@ -7,7 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import CommonSmallButton from '../../components/Common/CommonSmallButton';
 import Icon_backArrows from "../../../assets/icons/Icon_backArrows.svg";
 import Icon_home from "../../../assets/icons/Icon_home.svg";
-import BottomTitleBar from '../../components/Common/BottomBar/BottomBar';
+import BottomBar from '../../components/Common/BottomBar/BottomBar';
 
 
 class NotificationsPage extends Component {                   // Done by Nawodya 2/6/2024
@@ -72,11 +72,11 @@ class NotificationsPage extends Component {                   // Done by Nawodya
           </View>
 
           <View style={GetNotificationsPageStyles(Android_Theme_Light).bottomContainer}>
-            <BottomTitleBar
-              icon1={Icon_backArrows}
-              icon2={Icon_home}
-              onPressIcon1={this.handleBack}
-              onPressIcon2={this.handleHome}
+            <BottomBar
+              BackIcon={Icon_backArrows}
+              HomeIcon={Icon_home}
+              onPressBackButton={this.handleBack}
+              onPressHomeButton={this.handleHome}
             />
 
           </View>

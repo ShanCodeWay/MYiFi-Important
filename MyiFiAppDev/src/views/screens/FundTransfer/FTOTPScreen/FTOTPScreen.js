@@ -6,7 +6,7 @@ import CommonButton from "../../../components/Common/MainButton/CommonButton";
 import MainTitleBar from "../../../components/Common/TitleBar/MainTitleBar";
 import PageIndicator from "../../../components/Common/PageIndicator/PageIndicator";
 import OTPTimer from "../../../components/Common/OTPTimer/OTPTimer";
-import Index from "../../../../configs/Index";
+import Index from "../../../navigators/NavIndex";
 import CommonInputField from "../../../components/Common/TextInput/CommonInputField";
 import { GetCommonStyles } from "../../../../styles/CommonStyles";
 import GetFTOTPScreenStyles from "./FTOTPScreenStyles";

@@ -168,7 +168,7 @@ class KYC6Screen extends Component {
                 ]}
                 placeholder={""}
                 value={this.state.selectedEmploymentStatus}
-                lable={this.state.selectedEmploymentStatus}
+                label={this.state.selectedEmploymentStatus}
                 parentReferenceItem={this.handleEmploymentStatus}
               />
             </View>
@@ -211,7 +211,7 @@ class KYC6Screen extends Component {
                 ]}
                 placeholder={""}
                 value={this.state.selectedOccupation}
-                lable={this.state.selectedOccupation}
+                label={this.state.selectedOccupation}
                 parentReferenceItem={this.handleOccupation}
               />
             </View>

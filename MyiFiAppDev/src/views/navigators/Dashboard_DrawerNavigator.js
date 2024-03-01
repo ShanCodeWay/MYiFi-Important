@@ -3,7 +3,7 @@ import {DrawerContentScreen} from '../screens/Dashboard/drawer/DrawerContentScre
 import { NavigationContainer } from "@react-navigation/native";
 import DashboardScreen from '../screens/Dashboard/DashboardScreen';
 import { Android_Theme_Light } from '../../styles/Themes';
-import Index from '../../configs/Index';
+import Index from './NavIndex';
 
 const Drawer = createDrawerNavigator();
 

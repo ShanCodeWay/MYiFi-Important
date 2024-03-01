@@ -5,7 +5,7 @@ import React, {useEffect, useState } from "react";
 import GetDrawerContentScreenStyles from "./DrawerContentScreenStyles"
 import { Android_Theme_Light } from "../../../../styles/Themes";
 import CommonCardButton from "../../../components/Common/CardButton/CommonCardButton";
-import Index from "../../../../configs/Index";
+import Index from "../../../navigators/NavIndex";
 import * as RootNavigation from "../../../navigators/RootNavigation"
 
 const DrawerItem_List = [
@@ -22,7 +22,7 @@ const DrawerItem_List = [
     },
     {
         id: 3,
-        label: "Billers Management",
+        label: "Biller Management",
         key:3
     },
     {
@@ -77,7 +77,7 @@ const ProcessFlatlist = ( {item} ) => {
                 onPress = {item.id === 1 ? () => RootNavigation.navigate(Index.FUND_1)
                     :  item.id === 2 ? () => RootNavigation.navigate(Index.BILL_1)
                     :  item.id === 3 ? () => RootNavigation.navigate(Index.BILLERS_MANAGEMENT_LIST)
-                    :  item.id === 4 ? null
+                    :  item.id === 4 ? () => RootNavigation.navigate(Index.PAYEE_MANAGEMENT_SCREEN)
                     :  item.id === 5 ? () => RootNavigation.navigate(Index.QR_SCREEN_1)
                     :  item.id === 6 ? () => RootNavigation.navigate(Index.FD_SCREEN_1)
                     :  item.id === 7 ? null

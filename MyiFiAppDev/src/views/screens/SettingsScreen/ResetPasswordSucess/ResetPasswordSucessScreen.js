@@ -4,7 +4,7 @@
   import CommonButton from "../../../components/Common/MainButton/CommonButton";
   import MainTitleBar from "../../../components/Common/TitleBar/MainTitleBar";
   
-  import Index from "../../../../configs/Index";
+  import Index from "../../../navigators/NavIndex";
   import Svg, { Path } from 'react-native-svg';
 
   import Icon_CircleChecked from '../../../../assets/icons/Icon_CircleChecked.svg';

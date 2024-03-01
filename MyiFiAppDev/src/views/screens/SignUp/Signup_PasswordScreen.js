@@ -3,7 +3,7 @@
   import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
  
   
-  import Index from "../../../configs/Index";
+  import Index from "../../navigators/NavIndex";
   import CommonInputField from "../../components/Common/TextInput/CommonInputField";
   import SelectDropDown from "../../components/Common/Dropdown/SelectDropDown"; 
   import MainTitleBar from "../../components/Common/TitleBar/MainTitleBar";
@@ -150,7 +150,7 @@
                   data={this.state.SecurityQuestionList}
                   placeholder = {"Select security question"}
                   value = {this.state.SelectedQuestion}
-                  lable = {this.state.SelectedQuestionLabel}
+                  label = {this.state.SelectedQuestionLabel}
                   onRef = {(ref) => (this.parentReferenceItem = ref)}
                   parentReferenceItem= {this.HandleSecQuestion}/>
                 

@@ -8,7 +8,7 @@ import GetCreateFDConfirmationScreenStyles from "./CreateFDConfirmationScreenSty
 import CommonSmallButton from "../../../components/Common/CommonSmallButton";
 import CommonSummeryView from "../../../components/Common/SummeryView/CommonSummeryView";
 import { AmountSeperation } from "../../../../utils/helpers";
-import Index from "../../../../configs/Index";
+import Index from "../../../navigators/NavIndex";
 
 //Done by Dinurnaga 24-1-31
 class CreateFDConfirmationScreen extends Component {
@@ -62,8 +62,12 @@ class CreateFDConfirmationScreen extends Component {
     try {
       this.setState({
         Amount: 
-          this.props.route.params.data
-        ,
+    
+
+          parseFloat(
+            this.props.route.params.data.replace(",", "")
+          ).toFixed(2),
+        
       });
     } catch (Error) {
       console.log(
@@ -85,7 +89,7 @@ class CreateFDConfirmationScreen extends Component {
   handleBack = () => {
     try {
       this.props.navigation.replace(Index.FD_CREATE_SCREEN);
-      console.log("Back button pressed to Navigate to Fund Transfer Screen");
+      console.log("Back button pressed to Navigate to FD Create Screen");
     } catch (error) {
       console.log("[CreateFDConfirmationScreen] - handleBack() - Ex: ", error);
     }
@@ -101,9 +105,9 @@ class CreateFDConfirmationScreen extends Component {
   };
   handleContinue = () => {
     try {
-      // this.props.navigation.replace("FTOTPScreen", {
-      //   amount: this.state.Amount,
-      // });
+      this.props.navigation.replace(Index.FD_CREATE_OTP_SCREEN, {
+        amount: this.state.Amount,
+      });
     } catch (error) {
       console.log(
         "[CreateFDConfirmationScreen] - handleContinue() - Ex: ",
@@ -148,16 +152,22 @@ class CreateFDConfirmationScreen extends Component {
                   GetCreateFDConfirmationScreenStyles(Android_Theme_Light).prize
                 }
               >
-              {  'Rs. '}
+                {"Rs. "}
               </Text>
               <Text
                 style={
                   GetCreateFDConfirmationScreenStyles(Android_Theme_Light).prize
                 }
               >
-                {this.state.Amount}
+                {AmountSeperation(this.state.Amount)[0]}
               </Text>
-         
+              <Text
+                style={
+                  GetCreateFDConfirmationScreenStyles(Android_Theme_Light).prize
+                }
+              >
+                {AmountSeperation(this.state.Amount)[1]}
+              </Text>
             </View>
           </View>
 
@@ -202,14 +212,12 @@ class CreateFDConfirmationScreen extends Component {
                 .bottomView
             }
           >
-       
-<BottomBar
+            <BottomBar
               BackIcon={Android_Theme_Light.ICON_BACK_ARROWS}
               HomeIcon={Android_Theme_Light.ICON_HOME}
               onPressBackButton={this.handleBack}
               onPressHomeButton={this.handleHome}
             />
-
           </View>
         </View>
       </SafeAreaView>

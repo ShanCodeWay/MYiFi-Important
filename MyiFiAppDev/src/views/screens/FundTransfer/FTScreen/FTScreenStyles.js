@@ -3,6 +3,19 @@ import { StyleSheet } from "react-native";
 //Modified by : Dinuranga 1/2/2024
 export default GetFTScreenStyles = (theme) => {
   return StyleSheet.create({
+    
+    middleContainer: {
+      flex: 1,
+      width: "100%",
+    },
+    
+    
+    
+    
+    
+    
+    
+    
     topView: {
       height: 150,
       justifyContent: "center",

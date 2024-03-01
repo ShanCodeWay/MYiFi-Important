@@ -8,7 +8,7 @@ import CommonCardButton from "../../../components/Common/CardButton/CommonCardBu
 import BottomBar from "../../../components/Common/BottomBar/BottomBar";
 import { AmountSeperation } from "../../../../utils/helpers";
 import DashboardTitleBar from "../../../components/Common/TitleBar/DashboardTitleBar";
-import Index from "../../../../configs/Index";
+import Index from "../../../navigators/NavIndex";
 
 class InvestMainScreen extends Component {
   constructor(props) {
@@ -66,51 +66,22 @@ class InvestMainScreen extends Component {
       
       <SafeAreaView style={GetCommonStyles(Android_Theme_Light).safeAreaView}>
 
-        <DashboardTitleBar
-          //menuIcon = {Android_Theme_Light.ICON_DRAWERMENU }
-          //onPressMenu = {()=>this.onPressMenu() }
-          // = {() => this.onPressNotifications()}
-          //onPressProfilePic = {() => this.onPressProfilePic()}
-          TitleText = {'Invest'}
-          //TitleMessage = {GetGreeting()}
-          //IconBell = {Android_Theme_Light.ICON_BELL}
-          //IconProfilePic = {Android_Theme_Light.IMAGE_PROFILE_PIC}
-        />
-
         <View style = {GetCommonStyles(Android_Theme_Light).mainParentContainer}>
 
-          <View style={GetInvestMainScreenStyles(Android_Theme_Light).topTotalInvestContainer}>
+          <DashboardTitleBar
+            //menuIcon = {Android_Theme_Light.ICON_DRAWERMENU }
+            //onPressMenu = {()=>this.onPressMenu() }
+            // = {() => this.onPressNotifications()}
+            //onPressProfilePic = {() => this.onPressProfilePic()}
+            TitleText = {'Invest'}
+            //TitleMessage = {GetGreeting()}
+            //IconBell = {Android_Theme_Light.ICON_BELL}
+            IconProfilePic = {Android_Theme_Light.IMAGE_PROFILE_PIC}
+          />
 
-            <Text
-              style={GetInvestMainScreenStyles(Android_Theme_Light).totInvestText}>
-                
-              Total Investments
-
-            </Text>
-
-            <View
-              style={GetCommonStyles(Android_Theme_Light).balanceAmountTextContainer}>
-
-              <Text
-                style={GetCommonStyles(Android_Theme_Light).textBalanceRs}>
-                Rs.
-              </Text>
-
-              <Text
-                style={GetCommonStyles(Android_Theme_Light).textBalanceIntegerAmount}>
-                      
-                {AmountSeperation(this.state.TotalInvestment)[0]}
-              </Text>
-                  
-              <Text
-                style={GetCommonStyles(Android_Theme_Light).textBalanceDecimalAmount}>
-                  
-                {AmountSeperation(this.state.TotalInvestment)[1]}
-              </Text>
-
-            </View>
-
-          </View>
+          <TopSummaryBar
+            TitleText = {'Total Investments'}
+            AmountText = {this.state.TotalInvestment}/>
 
           <View style={GetInvestMainScreenStyles(Android_Theme_Light).cardContainer}>
 
@@ -128,7 +99,8 @@ class InvestMainScreen extends Component {
               height={65}
               amount={this.state.SavingsBalance}
               icon={Android_Theme_Light.ICON_LOAN}
-              onPress ={this.handleSavingsButtonPress}
+              onPress={() =>
+                this.props.navigation.navigate(Index.SAVINGS_SCREEN)}
             />
             
           </View>
@@ -137,11 +109,12 @@ class InvestMainScreen extends Component {
 
           <Image
                 resizeMode='contain'
-                style={{ width: "100%", height: "100%", borderRadius: 0 }}
+                style={{ width: "90%", height: "90%", borderRadius: 0 }}
                 source={{
                   //uri: "https://i.postimg.cc/sgbVwBMM/417154212-694920426120079-3500684663587443534-n.jpg",
                   //uri: "https://i.ibb.co/vcY5LrH/395766311-653960710216051-4808326345482705522-n.jpg",
-                  uri: "https://i.ibb.co/FbdjP7c/385813432-641432961468826-3213421074883791327-n.jpg"
+                 // uri: "https://i.ibb.co/FbdjP7c/385813432-641432961468826-3213421074883791327-n.jpg"
+                 uri: "https://i.ibb.co/z51KTtj/336678882-1574264406411220-6212085725978309773-n.jpg"
                 }}
               />
             
@@ -155,6 +128,7 @@ class InvestMainScreen extends Component {
           />
 
         </View>
+
       </SafeAreaView>
     );
   }

@@ -14,7 +14,7 @@ export default GetFixedDepositsScreenStyles = (theme) => {
       flex: 1,
     },
     InvestementRowLeftView: {
-      flex: 3,
+      flex: 1,
       justifyContent: "flex-start",
       alignContent: "flex-start",
       alignItems: "flex-start",
@@ -47,6 +47,7 @@ export default GetFixedDepositsScreenStyles = (theme) => {
       marginTop: 10,
     },
     InvestmentRowMainContainer: {
+      width:'100%',
       justifyContent: "center",
       alignContent: "center",
       alignItems: "center",
@@ -67,7 +68,8 @@ export default GetFixedDepositsScreenStyles = (theme) => {
       fontFamily: theme.POPPINS_MEDIUM,
     },
     InvestementRowRightView: {
-      flex: 2,
+      width:120,
+      //flex: 2,
       justifyContent: "flex-start",
       alignContent: "flex-end",
       alignItems: "flex-end",

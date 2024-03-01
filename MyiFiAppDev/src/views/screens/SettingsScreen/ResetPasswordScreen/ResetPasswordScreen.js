@@ -3,12 +3,12 @@
   import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
  
   
-  import Index from "../../../../configs/Index";
+  import Index from "../../../navigators/NavIndex";
   import CommonInputField from "../../../components/Common/TextInput/CommonInputField";
   import SelectDropDown from "../../../components/Common/Dropdown/SelectDropDown"; 
   import MainTitleBar from "../../../components/Common/TitleBar/MainTitleBar";
   import CommonButton from "../../../components/Common/MainButton/CommonButton";
-  import BottomTitleBar from "../../../components/Common/BottomBar/BottomBar";
+  import BottomBar from "../../../components/Common/BottomBar/BottomBar";
   import { GetCommonStyles } from "../../../../styles/CommonStyles";
   import GetResetPasswordScreenStyles from "./ResetPasswordScreenStyles";
 
@@ -274,11 +274,11 @@
   backgroundColor={Android_Theme_Light.BLUE_COLOR}
   onPress={()=>this.OnNextButtonPress()}
   width={"50%"}/>
- <BottomTitleBar
-icon1={Android_Theme_Light.ICON_BACK_ARROWS}
-icon2={Android_Theme_Light.ICON_HOME}
-onPressIcon1={this.OnBackButtonPress}
-onPressIcon2={this.OnHomeButtonPress}
+ <BottomBar
+BackIcon={Android_Theme_Light.ICON_BACK_ARROWS}
+HomeIcon={Android_Theme_Light.ICON_HOME}
+onPressBackButton={this.OnBackButtonPress}
+onPressHomeButton={this.OnHomeButtonPress}
 />
 </View>
 {policyView}

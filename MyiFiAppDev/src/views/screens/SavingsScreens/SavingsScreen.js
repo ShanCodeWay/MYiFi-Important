@@ -10,7 +10,7 @@ import GetSavingsScreenStyles from "./SavingsScreenStyles";
 import CommonCardButton from "../../components/Common/CardButton/CommonCardButton";
 import CommonButton from "../../components/Common/MainButton/CommonButton";
 import { AmountSeperation } from "../../../utils/helpers";
-import BottomTitleBar from "../../components/Common/BottomBar/BottomBar";
+import BottomBar from "../../components/Common/BottomBar/BottomBar";
 
 class SavingsScreen extends Component {
   constructor(props) {
@@ -89,12 +89,12 @@ class SavingsScreen extends Component {
         >
           <View
             style={[
-              GetDashboardScreenStyles(Android_Theme_Light).AmountContainer,
+              GetCommonStyles(Android_Theme_Light).amountContainer,
             ]}
           >
             <Text
               style={[
-                GetDashboardScreenStyles(Android_Theme_Light).textBalanceRs,
+                GetCommonStyles(Android_Theme_Light).amountRsText,
               ]}
             >
               {"Rs. "}
@@ -102,8 +102,8 @@ class SavingsScreen extends Component {
 
             <Text
               style={[
-                GetDashboardScreenStyles(Android_Theme_Light)
-                  .textBalanceIntegerAmount,
+                GetCommonStyles(Android_Theme_Light)
+                  .amountIntegerText,
                 { fontSize: Android_Theme_Light.FONT_SIZE_HEADER_TWO },
               ]}
             >
@@ -111,8 +111,8 @@ class SavingsScreen extends Component {
             </Text>
             <Text
               style={[
-                GetDashboardScreenStyles(Android_Theme_Light)
-                  .textBalanceDecimalAmount,
+                GetCommonStyles(Android_Theme_Light)
+                  .amountDecimalText,
               ]}
             >
               {AmountSeperation(item.amount)[1]}
@@ -307,11 +307,11 @@ class SavingsScreen extends Component {
 
           {/* bottom view */}
           <View style={GetSavingsScreenStyles(Android_Theme_Light).bottomView}>
-            <BottomTitleBar
-              icon1={Android_Theme_Light.ICON_BACK_ARROWS}
-              icon2={Android_Theme_Light.ICON_HOME}
-              onPressIcon1={this.handleBack}
-              onPressIcon2={this.handleHome}
+            <BottomBar
+              BackIcon={Android_Theme_Light.ICON_BACK_ARROWS}
+              HomeIcon={Android_Theme_Light.ICON_HOME}
+              onPressBackButton={this.handleBack}
+              onPressHomeButton={this.handleHome}
             />
           </View>
         </View>

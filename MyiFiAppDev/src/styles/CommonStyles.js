@@ -131,33 +131,6 @@ export const GetCommonStyles = (theme) => {
       fontSize: theme.FONT_SIZE_LARGE,
       fontFamily: theme.POPPINS_MEDIUM,
     },
-    balanceAmountTextContainer: {
-      //flex:1,
-      //height:'100%',
-      flexDirection: "row",
-      justifyContent:'flex-start',
-      alignItems: "flex-end",
-      textAlignVertical:'bottom',
-    },
-    textBalanceRs: {
-      color: theme.DARK_GRAY_COLOR,
-      fontSize: theme.FONT_SIZE_CAPTION_ONE_MEDIUM,
-      fontFamily: theme.POPPINS_MEDIUM,
-      //marginLeft: 5,
-      includeFontPadding:false
-    },
-    textBalanceIntegerAmount: {
-      color: theme.DARK_GREEN_COLOR,
-      fontSize: theme.FONT_SIZE_HEADER_THREE_MEDIUM,
-      fontFamily: theme.POPPINS_MEDIUM,
-      includeFontPadding:false
-    },
-    textBalanceDecimalAmount: {
-      color: theme.DARK_GREEN_COLOR,
-      fontSize: theme.FONT_SIZE_CAPTION_ONE_MEDIUM,
-      fontFamily: theme.POPPINS_MEDIUM,
-      includeFontPadding:false
-    },
   });
 
   return CommonStyles;

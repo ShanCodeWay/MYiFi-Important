@@ -1,7 +1,7 @@
 import React, { Component } from "react"; //Nawodya
 import { View, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import BottomTitleBar from "../../../components/Common/BottomBar/BottomBar";
+import BottomBar from "../../../components/Common/BottomBar/BottomBar";
 import { Android_Theme_Light } from "../../../../styles/Themes";
 import { GetCommonStyles } from "../../../../styles/CommonStyles";
 import GetFTConfirmationScreenStyles from "./FTConfirmationScreenStyles";
@@ -218,11 +218,11 @@ class FTConfirmationScreen extends Component {
                 .bottomView
             }
           >
-            <BottomTitleBar
-              icon1={Android_Theme_Light.ICON_BACK_ARROWS}
-              icon2={Android_Theme_Light.ICON_HOME}
-              onPressIcon1={this.handleBack}
-              onPressIcon2={this.handleHome}
+            <BottomBar
+              BackIcon={Android_Theme_Light.ICON_BACK_ARROWS}
+              HomeIcon={Android_Theme_Light.ICON_HOME}
+              onPressBackButton={this.handleBack}
+              onPressHomeButton={this.handleHome}
             />
           </View>
         </View>

@@ -5,13 +5,13 @@ import {
   ScrollView,
   SafeAreaView,
   Modal,
-  TouchableOpacity,
+  
   TouchableWithoutFeedback,
 } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import CommonButton from "../../../components/Common/MainButton/CommonButton";
 import GetCreateFDScreenStyles from "./CreateFDScreenStyles";
-import Index from "../../../../configs/Index";
+import Index from "../../../navigators/NavIndex";
 import CommonInputField from "../../../components/Common/TextInput/CommonInputField";
 import CommonSpinnerLong from "../../../components/Common/CommonSpinnerLong";
 import ValidationDialogs from "../../../components/Common/ValidationDialogs";
@@ -22,7 +22,6 @@ import SelectDropDown from "../../../components/Common/Dropdown/SelectDropDown";
 import LinearGradient from "react-native-linear-gradient";
 
 //Done by: Dinuranga 12/02/2024
-
 class CreateFDScreen extends Component {
   constructor(props) {
     super(props);
@@ -185,8 +184,8 @@ class CreateFDScreen extends Component {
 
   handleBack = () => {
     try {
-      this.props.navigation.replace("DashboardScreen");
-      console.log("Home Button pressed to Navigate to DashboardScreen");
+      this.props.navigation.replace(Index.FD_SCREEN_1);
+      console.log("Back Button pressed to Navigate to DashboardScreen");
     } catch (error) {
       console.log("[CreateFDScreen] - handleBack - EX: ", error);
     }
@@ -366,7 +365,7 @@ class CreateFDScreen extends Component {
                       placeholder={
                         this.state.selectedFrequency || "Select Frequency"
                       }
-                      lable={this.state.selectedFrequency}
+                      label={this.state.selectedFrequency}
                       value={this.state.selectedFrequency}
                       onRef={(ref) => (this.parentReferenceItemName = ref)}
                       parentReferenceItem={this.handleFdType}
@@ -400,7 +399,7 @@ class CreateFDScreen extends Component {
                       placeholder={
                         this.state.selectedDuration || "Select Duration"
                       }
-                      lable={this.state.selectedDuration}
+                      label={this.state.selectedDuration}
                       value={this.state.selectedDuration}
                       onRef={(ref) => (this.parentReferenceItemName = ref)}
                       parentReferenceItem={this.handleDurationSelect}
@@ -500,7 +499,7 @@ class CreateFDScreen extends Component {
                       placeholder={
                         this.state.selectedPaymentType || "Select Payment Type"
                       }
-                      lable={this.state.selectedPaymentType}
+                      label={this.state.selectedPaymentType}
                       value={this.state.selectedPaymentType}
                       onRef={(ref) => (this.parentReferenceItemName = ref)}
                       parentReferenceItem={this.handlePaymentType}

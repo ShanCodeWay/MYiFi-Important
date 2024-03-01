@@ -11,19 +11,172 @@ import {
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import CommonButton from "../../../components/Common/MainButton/CommonButton";
 import FTScreenStyles from "./FTScreenStyles";
-import Index from "../../../../configs/Index";
+import Index from "../../../navigators/NavIndex";
 import CommonInputField from "../../../components/Common/TextInput/CommonInputField";
 import CommonSpinnerLong from "../../../components/Common/CommonSpinnerLong";
 import ValidationDialogs from "../../../components/Common/ValidationDialogs";
 import { GetCommonStyles } from "../../../../styles/CommonStyles";
-import BottomTitleBar from "../../../components/Common/BottomBar/BottomBar";
+import BottomBar from "../../../components/Common/BottomBar/BottomBar";
 import { Android_Theme_Light } from "../../../../styles/Themes";
 import SelectDropDown from "../../../components/Common/Dropdown/SelectDropDown";
 import LinearGradient from "react-native-linear-gradient";
 
-//Done by: Darshana 26/01/2024
+import CommonDropDown from "../../../components/Common/Dropdown/CommonDropDown";
+
+import DashboardTitleBar from "../../../components/Common/TitleBar/DashboardTitleBar";
 
 class FTScreen extends Component {
+
+  AccountList = [
+    {
+      value: 1,
+      label: '0010007710 - Primary Account',
+      AccNo: '0010007710',
+      AccName: 'Primary Account',
+      AccBalance: 6700450
+    },
+    {
+      value: 2,
+      label: '0010008068 - Myifi Acc',
+      AccNo: '0010008068',
+      AccName: 'Myifi Acc',
+      AccBalance: 495000
+    },
+    {
+      value: 3,
+      label: '0010009940 - Other Savings',
+      AccNo: '0010009940',
+      AccName: 'Other Savings',
+      AccBalance: 7900
+    },
+
+  ]
+
+  TransferTypeList = [ 
+    {
+      value: 1,
+      label: 'Own Account Transfer'
+    },
+    {
+      value: 2,
+      label: 'Registerd Payee'
+    },
+    {
+      value: 3,
+      label: 'Unregisterd Payee'
+    }
+  ]
+
+  RegisteredPayee_List = [ 
+    {
+      value: 1,
+      label: 'Ranesh de Silva - Wedding Photographer',
+      type: 'I',
+      Nickname: 'Wedding Photographer',
+      AccNo: '0020008940',
+      BankCode: '001',
+      BankDesc: 'Mercantile Investments & Finance PLC'
+    },
+    {
+      value: 2,
+      label: 'ATPD Jayamaha',
+      type: 'E',
+      Nickname: 'Jayamaha payee',
+      AccNo: '0140009920',
+      BankCode: '005',
+      BankDesc: 'Hatton National Bank'
+    },
+    {
+      value: 3,
+      label: 'RC Perera',
+      type: 'I',
+      Nickname: 'Internal payee',
+      AccNo: '0010004922',
+      BankCode: '001',
+      BankDesc: 'Mercantile Investments & Finance PLC'
+    },
+    {
+      value: 4,
+      label: 'CK Chaminda - Chaminda Hardware',
+      type: 'E',
+      Nickname: 'Chaminda Hardware',
+      AccNo: '0190009210',
+      BankCode: '006',
+      BankDesc: 'Sampath Bank'
+    }
+  ]
+
+  Bank_List = [
+    { 
+      value: '001',
+      label: 'Mercantile Investments & Finance PLC', 
+    },
+    { 
+      value: '005',
+      label: 'Hatton National Bank', 
+    },
+    { 
+      value: '006',
+      label: 'Sampath Bank', 
+    }
+  ]
+
+  AccountType_List = [
+    {
+      value: 1,
+      label: 'Internal'
+    },
+    {
+      value: 2,
+      label: 'External'
+    },
+  ]
+
+  TransactionType_List = [
+    {
+      value: 1,
+      label: 'NOW'
+    },
+    {
+      value: 2,
+      label: 'LATER'
+    },
+  ]
+
+  ScheduleType_List = [
+    {
+      value: 1,
+      label: 'One-Time'
+    },
+    {
+      value: 2,
+      label: 'Repeat'
+    },
+  ]
+
+  FrequencyList = [
+    { 
+      value: "01",
+      label: "Dialy", 
+    },
+    { 
+      value: "02",
+      label: "Weekly", 
+    },
+    { 
+      value: "03",
+      label: "Monthly", 
+    },
+    { 
+     value: "04",
+     label: "Quarter", 
+    },
+    { 
+      value: "05",
+      label: "Yearly", 
+    }
+  ]
+  
   constructor(props) {
     super(props);
 
@@ -34,7 +187,52 @@ class FTScreen extends Component {
     this.transferRemark = React.createRef();
     this.transferPurpose = React.createRef();
     this.scrollViewRef = React.createRef();
+
+   
+
     this.state = {
+
+      SelectedFromAccountID: 1,
+      SelectedFromAccount: "",
+      SelectedFromAccountAmount: "",
+
+      SelectedTransferTypeVal: 1,
+      SelectedTransferTypeDesc: "",
+
+      SelectedToAccountID: 0,
+      SelectedToAccount: "",
+      SelectedToAccountAmount: "",
+
+      RemarkVal: '',
+
+      SelectedPayeeID: 0,
+      SelectedPayee: '',
+      SelectedPayeeAccNo: '',
+
+      SelectedPayeeBankCode: '',
+      SelectedPayeeBank: '',
+
+      SelectedAccountTypeVal: 1,
+      SelectedAccountTypeDesc: "",
+
+      UnregToAccountNo:'',
+
+      SelectedTransactionTypeVal:1,
+      SelectedTransactionTypeDesc:'',
+
+      SelectedScheduleTypeVal:1,
+      SelectedScheduleTypeDesc:'',
+
+      SelectedFrequencyTypeVal:'',
+      SelectedFrequencyTypeDesc:'',
+
+
+
+
+
+
+
+
       scrollEnabled: false,
       selectedAccountType: null,
       toAccount: null,
@@ -63,9 +261,7 @@ class FTScreen extends Component {
       selectedFrequency: "",
       nickname: "",
 
-      selectedFromAccount: "",
-      selectedFromAccountAmount: "",
-      selectedFromAccountID: "",
+    
       selectedAccount2: "",
       selectedAmount2: "",
       selected_ID2: "",
@@ -154,27 +350,21 @@ class FTScreen extends Component {
     };
   }
 
-  /*componentDidUpdate(prevProps, prevState) {
-      const { isVisibleValidationDialog }         = this.state;
-    
-      
-      if (isVisibleValidationDialog !== prevState.isVisibleValidationDialog) {
-        if (isVisibleValidationDialog) {
-          StatusBar.setBackgroundColor("#1B1F52D5");
-        } else {
-          StatusBar.setBackgroundColor(Colors.BLUE_ACCENT);
-        }
-      }
-    }*/ // This can use to color change status bar when validation Dialog pop-up
-
   componentDidMount() {
+    
     try {
 
+      this.HandleFromAccount(this.state.SelectedFromAccountID); // Set default from account
+      this.HandleFundTransferType(this.state.SelectedTransferTypeVal); // Set default fund transfer type
+      this.HandleAccountType(this.state.SelectedAccountTypeVal)// Set default account type
+      this.HandleTransactionType(this.state.SelectedTransactionTypeVal)// Set default transaction type
+      this.HandleScheduleType(this.state.SelectedScheduleTypeVal)// Set default schedule type
 
       this.setState({
-        selectedFromAccount: this.state.spinnerData[0].label_1,
-        selectedFromAccountAmount: this.state.spinnerData[0].label_2,
-        selectedFromAccountID:this.state.spinnerData[0].value,
+
+        //selectedFromAccount: this.state.spinnerData[0].label_1,
+        //selectedFromAccountAmount: this.state.spinnerData[0].label_2,
+        //selectedFromAccountID:this.state.spinnerData[0].value,
 
 
         selectedType: this.state.accountTypeList[0].label_1,
@@ -183,21 +373,358 @@ class FTScreen extends Component {
 
 
       });
-    } catch (Error) {
+    } 
+    catch (Error) {
       console.log("[FTScreen] - componentDidMount - Error ", Error);
     }
   }
 
   componentWillUnmount() {
+    
     try {
-    } catch (Error) {
+    
+    } 
+    catch (Error) {
       console.log("[FTScreen] - componentWillUnmount - Error ", Error);
     }
   }
+  
   componentDidUpdate(prevProps, prevState) {
     if (prevState.selectedNickname !== this.state.selectedNickname) {
+    
     }
   }
+
+  //Select from Account
+  HandleFromAccount = (SelectVal) => {
+      
+    try {
+
+      console.log('HandleFromAccount SelectVal--',SelectVal)
+
+      var AccountLabel = this.AccountList.find(option => option.value == SelectVal);
+      var AccountLabeltmp = this.AccountList.filter((option) => option.value == SelectVal)
+
+      console.log('SelectedAccountLabel--',AccountLabel)
+      console.log('SelectedAccountLabeltmp--',AccountLabeltmp)
+
+      var ToAccountList = this.AccountList.filter((option) => option.value !== SelectVal)
+      console.log('ToAccountList-----------------------',ToAccountList)
+
+      
+      this.setState({ 
+        SelectedFromAccountID:SelectVal,
+        SelectedFromAccount: AccountLabel.label,
+        SelectedFromAccountAmount: AccountLabel.AccBalance,
+
+        SelectedToAccountID:ToAccountList[0].value,
+        SelectedToAccount:ToAccountList[0].label,
+        SelectedToAccountAmount: ToAccountList[0].AccBalance
+      });
+
+      console.log('SELECTED ACCOUNT ID:------',this.state.SelectedToAccountID)
+    }
+    catch (Error) {
+      console.log("[FTScreen] - HandleFromAccount Ex: ", Error);
+    }
+  };
+
+  HandleToAccount = (SelectVal) => {
+
+    try {
+
+      console.log('SelectVal--',SelectVal)
+
+      var ToAccountLabel = this.AccountList.find(option => option.value == SelectVal);
+      var ToAccountLabeltmp = this.AccountList.filter((option) => option.value == SelectVal)
+
+      console.log('ToAccountLabel--',ToAccountLabel)
+      console.log('ToAccountLabeltmp--',ToAccountLabeltmp)
+      
+      this.setState({ 
+        SelectedToAccountID:SelectVal,
+        SelectedToAccount: ToAccountLabel.label,
+        SelectedToAccountAmount: ToAccountLabel.AccBalance
+      });
+
+      
+      /*this.setState({
+        selectedAccount2: this.state.spinnerData.find(
+          (item) => item.value === value
+        ).label_1,
+        selectedAmount2: this.state.spinnerData.find(
+          (item) => item.value === value
+        ).label_2,
+        selected_ID2: value,
+      });*/
+
+    }
+    catch (Error) {
+      console.log("[FTScreen] - HandleToAccount Ex: ", Error);
+    }
+  };
+
+  //Select Transfer Type
+  HandleFundTransferType = (SelectVal) => {
+    
+    try {
+
+      console.log('SelectVal--',SelectVal)
+
+      var TransferTypeLabel = this.TransferTypeList.find(option => option.value == SelectVal);
+      var TransferTypeLabeltmp = this.TransferTypeList.filter((option) => option.value !== SelectVal)
+
+      console.log('TransferTypeLabel--',TransferTypeLabel)
+      console.log('TransferTypeLabeltmp--',TransferTypeLabeltmp)
+      
+      this.setState({ 
+        SelectedTransferTypeVal:SelectVal,
+        SelectedTransferTypeDesc: TransferTypeLabel.label,
+
+      });
+
+
+      
+      
+      /*let resetState = this.resetStateValues();
+
+      if (value === "Own-Account") {
+        this.setState({
+          selectedType:  this.state.accountTypeList.find((item) => item.value === value).label_1,
+          isExpanded: false,
+          isExpanded1: false,
+          isExpanded2: false,
+          isExpanded3: true,
+          isExpanded5: false,
+          isExpanded6: false,
+          isExpanded7: false,
+          ...resetState,
+        });
+      } else if (value === "Unreg-Account") {
+        this.setState({
+          selectedType:  this.state.accountTypeList.find((item) => item.value === value).label_1,
+          isExpanded: false,
+          isExpanded1: false,
+          isExpanded2: true,
+          isExpanded3: false,
+          isExpanded5: false,
+          isExpanded6: false,
+          isExpanded7: true,
+          ...resetState,
+        });
+      } else if (value === "Reg-Account") {
+        this.setState({
+          selectedType:  this.state.accountTypeList.find((item) => item.value === value).label_1,
+          isExpanded: false,
+          isExpanded1: false,
+          isExpanded5: true,
+          isExpanded3: false,
+          isExpanded2: false,
+          isExpanded6: false,
+          ...resetState,
+        });
+      } else {
+        this.setState({
+          selectedType: value,
+          isExpanded: false,
+          isExpanded1: false,
+          isExpanded5: false,
+          isExpanded3: false,
+          isExpanded2: false,
+          ...resetState,
+        });
+      }*/
+    } catch (error) {
+      console.log("[FTScreen] - HandleFundTransferType - Error ", error);
+    }
+  };
+
+  OnAmountInputChange = (text) => {
+    try {
+      this.setState({ amount: text });
+    } 
+    catch (Error) {
+      console.log("[FTScreen] - OnAmountInputChange - Ex: ", Error);
+    }
+  };
+
+  OnRemarkInputChange = (text) => {
+    try {
+
+      this.setState({ 
+        RemarkVal: text 
+      });
+    
+    } 
+    catch (Error) {
+      console.log("[FTScreen] - OnRemarkInputChange - Ex: ", Error);
+    }
+  };
+
+  HandleRegisteredPayee = (SelectVal) => {
+    
+    try {
+
+      console.log('HandleRegisteredPayee SelectVal--',SelectVal)
+
+      var RegisteredPayeeLabel = this.RegisteredPayee_List.find(option => option.value == SelectVal);
+      
+      console.log('HandleRegisteredPayee RegisteredPayeeLabel--',RegisteredPayeeLabel)
+
+      this.setState({ 
+        SelectedPayeeID:SelectVal,
+        SelectedPayee: RegisteredPayeeLabel.label,
+        SelectedPayeeAccNo:RegisteredPayeeLabel.AccNo,
+        SelectedPayeeBankCode:RegisteredPayeeLabel.BankCode,
+        SelectedPayeeBank:RegisteredPayeeLabel.BankDesc
+      });
+     
+    } 
+    catch (error) {
+      console.log("[FTScreen] - HandleRegisteredPayee Ex: ", error);
+    }
+  };
+
+  OnRegisteredPayeeInputChange = (text) => {
+    try {
+
+      console.log('OnRegisteredPayeeInputChange---',text)
+
+      this.setState({ 
+        SelectedPayeeAccNo: text 
+      });
+    
+    } 
+    catch (Error) {
+      console.log("[FTScreen] - OnRegisteredPayeeInputChange - Ex: ", Error);
+    }
+  };
+
+  HandleBank = (SelectVal) => {
+    try {
+
+      console.log('SelectVal--',SelectVal)
+
+      var BankLabel = this.Bank_List.find(option => option.value == SelectVal);
+
+      console.log('BankLabel--',BankLabel)
+      
+      this.setState({ 
+        SelectedPayeeBankCode:SelectVal,
+        SelectedPayeeBank: BankLabel.label,
+      });
+     
+    } 
+    catch (error) {
+      console.log("[FTScreen] - HandleBank - Ex: ", error);
+    }
+  };
+
+  HandleAccountType = (SelectVal) => {
+    
+    try {
+
+      console.log('SelectVal--',SelectVal)
+
+      var AccountTypeLabel = this.AccountType_List.find(option => option.value == SelectVal);
+
+      console.log('AccountTypeLabel--',AccountTypeLabel)
+      
+      this.setState({ 
+        SelectedAccountTypeVal:SelectVal,
+        SelectedAccountTypeDesc: AccountTypeLabel.label,
+      });
+     
+    } 
+    catch (error) {
+      console.log("[FTScreen] - HandleAccountType - Ex: ", error);
+    }
+  };
+
+  OnUnregPayee_ToAccountInputChange = (text) => {
+    try {
+
+      console.log('OnUnregPayee_ToAccountInputChange---',text)
+
+      this.setState({ 
+        UnregToAccountNo: text 
+      });
+    
+    } 
+    catch (Error) {
+      console.log("[FTScreen] - OnUnregPayee_ToAccountInputChange - Ex: ", Error);
+    }
+  };
+
+  HandleTransactionType = (SelectVal) => {
+    try {
+
+      console.log('SelectVal--',SelectVal)
+
+      var TransactionType_Label = this.TransactionType_List.find(option => option.value == SelectVal);
+
+      console.log('TransactionType_Label--',TransactionType_Label)
+      
+      this.setState({ 
+        SelectedTransactionTypeVal:SelectVal,
+        SelectedTransactionTypeDesc: TransactionType_Label.label,
+      });
+     
+    } 
+    catch (error) {
+      console.log("[FTScreen] - HandleTransactionType - Ex: ", error);
+    }
+  };
+
+  HandleScheduleType = (SelectVal) => {
+    try {
+
+      console.log('SelectVal--',SelectVal)
+
+      var ScheduleType_Label = this.ScheduleType_List.find(option => option.value == SelectVal);
+
+      console.log('ScheduleType_Label--',ScheduleType_Label)
+      
+      this.setState({ 
+        SelectedScheduleTypeVal:SelectVal,
+        SelectedScheduleTypeDesc: ScheduleType_Label.label,
+      });
+     
+    } 
+    catch (error) {
+      console.log("[FTScreen] - HandleScheduleType - Ex: ", error);
+    }
+  };
+
+  HandleFrequencyType = (SelectVal) => {
+    try {
+
+      console.log('SelectVal--',SelectVal)
+
+      var FrequencyType_Label = this.FrequencyList.find(option => option.value == SelectVal);
+
+      console.log('FrequencyType_Label--',FrequencyType_Label)
+      
+      this.setState({ 
+        SelectedFrequencyTypeVal:SelectVal,
+        SelectedFrequencyTypeDesc: FrequencyType_Label.label,
+      });
+     
+    } 
+    catch (error) {
+      console.log("[FTScreen] - HandleFrequencyType - Ex: ", error);
+    }
+  };
+
+
+
+
+
+
+
+
+
+
 
   handleNextButtonPress = () => {
     try {
@@ -223,9 +750,7 @@ class FTScreen extends Component {
     }
   };
 
-  handlePasswordInputChange = (text) => {
-    console.log("Input changed:", text);
-  };
+ 
 
   handleNickNameInputChange = (text) => {
     try {
@@ -246,7 +771,8 @@ class FTScreen extends Component {
   handleAccount = (selectedAccount) => {
     try {
       this.setState({ selectedAccount });
-    } catch (Error) {
+    } 
+    catch (Error) {
       console.log("[FTScreen] - handleAccount - Error ", Error);
     }
   };
@@ -267,13 +793,7 @@ class FTScreen extends Component {
     }
   };
 
-  handleAmountInputChange = (text) => {
-    try {
-      this.setState({ amount: text });
-    } catch (Error) {
-      console.log("[FTScreen] - handleAmountInputChange - Error ", Error);
-    }
-  };
+
 
   handleValidationDialog = () => {
     try {
@@ -341,60 +861,7 @@ class FTScreen extends Component {
     }
   };
 
-  handleTypeSelection = (value) => {
-    try {
-      let resetState = this.resetStateValues();
-
-      if (value === "Own-Account") {
-        this.setState({
-          selectedType:  this.state.accountTypeList.find((item) => item.value === value).label_1,
-          isExpanded: false,
-          isExpanded1: false,
-          isExpanded2: false,
-          isExpanded3: true,
-          isExpanded5: false,
-          isExpanded6: false,
-          isExpanded7: false,
-          ...resetState,
-        });
-      } else if (value === "Unreg-Account") {
-        this.setState({
-          selectedType:  this.state.accountTypeList.find((item) => item.value === value).label_1,
-          isExpanded: false,
-          isExpanded1: false,
-          isExpanded2: true,
-          isExpanded3: false,
-          isExpanded5: false,
-          isExpanded6: false,
-          isExpanded7: true,
-          ...resetState,
-        });
-      } else if (value === "Reg-Account") {
-        this.setState({
-          selectedType:  this.state.accountTypeList.find((item) => item.value === value).label_1,
-          isExpanded: false,
-          isExpanded1: false,
-          isExpanded5: true,
-          isExpanded3: false,
-          isExpanded2: false,
-          isExpanded6: false,
-          ...resetState,
-        });
-      } else {
-        this.setState({
-          selectedType: value,
-          isExpanded: false,
-          isExpanded1: false,
-          isExpanded5: false,
-          isExpanded3: false,
-          isExpanded2: false,
-          ...resetState,
-        });
-      }
-    } catch (error) {
-      console.log("[FTScreen] - handleTypeSelection - Error ", error);
-    }
-  };
+ 
 
   handleTransferTypeSelection = (value) => {
     try {
@@ -420,17 +887,7 @@ class FTScreen extends Component {
     }
   };
 
-  handleBankSelection = (value) => {
-    try {
-      this.setState({
-        selectedBank: this.state.Banklist.find((item) => item.value === value)
-          .label_1,
-        selectedBankCode: value,
-      });
-    } catch (error) {
-      console.log("[FTScreen] - handleTypeSelection - Error ", error);
-    }
-  };
+ 
 
   resetStateValues = () => {
     return {
@@ -501,7 +958,7 @@ class FTScreen extends Component {
 
   handleBack = () => {
     try {
-      this.props.navigation.replace("DashboardScreen");
+      this.props.navigation.replace(Index.SEND_MAIN_SCREEN);
       console.log("Home Button pressed to Navigate to DashboardScreen");
     } catch (error) {
       console.log("[FTScreen] - Home_Button - Error ", error);
@@ -520,45 +977,15 @@ class FTScreen extends Component {
     });
   };
 
-  handleSpinnerChange2 = (value) => {
-    this.setState({
-      selectedAccount2: this.state.spinnerData.find(
-        (item) => item.value === value
-      ).label_1,
-      selectedAmount2: this.state.spinnerData.find(
-        (item) => item.value === value
-      ).label_2,
-      selected_ID2: value,
-    });
-  };
+ 
 
-  handleNameSelect = (SelectVal) => {
-    try {
-      const selectedPerson = this.state.regList.find(
-        (person) => person.label === SelectVal
-      );
-
-      console.log("selectedPerson--", selectedPerson);
-
-      if (selectedPerson) {
-        this.setState(
-          {
-            selectedName: SelectVal,
-            selectedAccount: selectedPerson.accountNum,
-            selectedBank: selectedPerson.bank,
-            selectedNickname: selectedPerson.nickname,
-          },
-          () => {
-            console.log("State updated:", this.state.selectedNickname);
-          }
-        );
-      }
-    } catch (error) {
-      console.log("[FTScreen] - handleNameSelect Error: ", error);
-    }
-  };
+ 
 
   render() {
+
+    
+    console.log('SelectedPayeeAccNo---------------------------',this.state.SelectedPayeeAccNo)
+
     const { isModalVisible } = this.state;
     const { isZeroAmountModalVisible } = this.state;
     const { isExpanded } = this.state;
@@ -578,798 +1005,339 @@ class FTScreen extends Component {
     return (
       <>
         <SafeAreaView style={GetCommonStyles(Android_Theme_Light).safeAreaView}>
-          <KeyboardAwareScrollView
-            contentContainerStyle={{
-              flexGrow: 1,
-              justifyContent: "flex-end",
-              alignItems: "center",
-            }}
-            keyboardShouldPersistTaps="handled"
-            extraScrollHeight={10}
-            enableOnAndroid={true}
-            enableAutomaticScroll={false}
-            keyboardOpeningTime={300}
-            scrollToPosition={{ x: 0, y: 0, animated: true }}
-            ref={this.scrollViewRef}
-            onKeyboardDidShow={(frames) => {}}
-            onKeyboardDidHide={(frames) => {}}
-          >
-            <View style={GetCommonStyles(Android_Theme_Light).mainContainer}>
-              <View style={GetCommonStyles(Android_Theme_Light).titleContainer}>
-                <Text
-                  style={
-                    GetCommonStyles(Android_Theme_Light).titleContainertitleText
-                  }
-                >
-                  Transfer
-                </Text>
-              </View>
 
-              <View style={FTScreenStyles(Android_Theme_Light).middleView}>
-                <ScrollView>
-                  <View style={{ height: 5 }} />
-                  <Text style={FTScreenStyles(Android_Theme_Light).titleText}>
-                    From
-                  </Text>
+          <View style = {GetCommonStyles(Android_Theme_Light).mainParentContainer}>
 
-                  <CommonSpinnerLong
-                    width={"100%"}
-                    data={this.state.spinnerData}
-                    placeholder={
-                      this.state.selectedFromAccount || spinnerData[1].label_1
-                    }
-                    lable_1={this.state.selectedFromAccount}
-                    lable_2={
-                      this.state.selectedFromAccountAmount ||
-                      spinnerData[1].label_2
-                    }
-                    lable_2Show={true}
-                    value={this.state.selectedFromAccountID}
-                    onRef={(ref) => (this.parentReferenceItem1 = ref)}
-                    inputRef={this.transferFrom}
-                    nextInputRef={this.transferTo}
-                    currency={"LKR"}
-                    parentReferenceItem={this.handleSpinnerChange1}
-                  />
+            <DashboardTitleBar
+              //menuIcon = {Android_Theme_Light.ICON_DRAWERMENU }
+              //onPressMenu = {()=>this.onPressMenu() }
+              // = {() => this.onPressNotifications()}
+              //onPressProfilePic = {() => this.onPressProfilePic()}
+              TitleText = {'Transfer'}
+              //TitleMessage = {GetGreeting()}
+              //IconBell = {Android_Theme_Light.ICON_BELL}
+              //IconProfilePic = {Android_Theme_Light.IMAGE_PROFILE_PIC}
+            />
 
-                  <View style={{ height: 20 }} />
-                  <Text style={FTScreenStyles(Android_Theme_Light).titleText}>
-                    Type
-                  </Text>
-                  {/* 
-                  <CommonSpinnerLong
-                    width={"100%"}
-                    data={this.state.accountTypeList}
-                    placeholder={this.state.selectedType }
-                    lable_1={
-                      this.state.selectedType 
-                    }
-                    lable_2Show={false}
-                    search={false}
-                    value={""}
-                    onRef={(ref) => (this.parentReferenceItem = ref)}
-                    parentReferenceItem={(label_1, label_2, value) => {
+            <View style={FTScreenStyles(Android_Theme_Light).middleContainer}>
+
+              <KeyboardAwareScrollView
+              
+                contentContainerStyle={GetCommonStyles(Android_Theme_Light).keyboardAwareView}
+                keyboardShouldPersistTaps="always"
+                behavior="padding"
+                enableOnAndroid={true}
+                enableAutomaticScroll={false}
+                ref={this.scrollViewRef}>
+
+                {/* FROM ACCOUNT */}
+                <CommonDropDown
+                  title={"From"}
+                  data={this.AccountList}
+                  isAccount={true}
+                  //placeholder={'Select From Account'}
+                  value={this.state.SelectedFromAccountID}
+                  label={this.state.SelectedFromAccount}
+                  amountlabel={this.state.SelectedFromAccountAmount}
+                  onRef = {(ref) => (this.parentReferenceItem = ref)}
+                  parentReferenceItem= {this.HandleFromAccount}/>
+
+                {/* Gap */}
+                <View style = {{height:20}}/>
+
+                {/* TRANSFER TYPE */}
+                <SelectDropDown
+                  title={"Transfer Type"}
+                  data={this.TransferTypeList}
+                  placeholder={'Select transfer type'}
+                  label={this.state.SelectedTransferTypeDesc}
+                  value={this.state.SelectedTransferTypeVal}
+                  onRef={(ref) => (this.parentReferenceItem = ref)}
+                  parentReferenceItem={this.HandleFundTransferType}
+                />
+
+                {/* Gap */}
+                <View style = {{height:20}}/>
+
+                {
+
+                  // Own Account Transfer 
+                  this.state.SelectedTransferTypeVal === 1 ? 
+
+                    /* TO ACCOUNT DROP DOWN */
+                    <CommonDropDown
+                      title={"To"}
+                      data={this.AccountList.filter((option) => option.value !== this.state.SelectedFromAccountID)}
+                      isAccount={true}
+                      //placeholder={'Select to Account'}
+                      value={this.state.SelectedToAccountID}
+                      label={this.state.SelectedToAccount}
+                      amountlabel={this.state.SelectedToAccountAmount}
+                      onRef = {(ref) => (this.parentReferenceItem = ref)}
+                      parentReferenceItem= {this.HandleToAccount}/>
                   
-                      this.handleTypeSelection(label_1, value);
-                    }}
-                  /> */}
+                  // Registered Payee Transfer
+                  : this.state.SelectedTransferTypeVal === 2 ? 
 
-                  {/* Type selection- added by Dinuranga */}
-                  <View style={FTScreenStyles(Android_Theme_Light).bankView}>
-                    <SelectDropDown
-                      width={"100%"}
-                      data={this.state.accountTypeList.map((item) => {
-                        return {
-                          label: item.label_1,
-                          value: item.value,
-                        };
-                      })}
-                      placeholder={this.state.selectedType}
-                      lable={this.state.selectedType}
-                      value={this.state.selectedType}
-                      onRef={(ref) => (this.parentReferenceItemName = ref)}
-                      parentReferenceItem={this.handleTypeSelection}
-                    />
-                  </View>
-
-                  {this.state.isExpanded2 && (
                     <>
-                      <View style={{ height: 20 }} />
 
-                      {/* 
-                      <CommonSpinnerLong
-                        width={"100%"}
-                        data={tansferTypes}
-                        placeholder={this.state.selectedTransferType}
-                        lable_1={
-                          this.state.selectedTransferType || tansferTypes[0].label_1
-                        }
-                        lable_2Show={false}
-                        search={false}
-                        value={""}
-                        onRef={(ref) => (this.parentReferenceItem = ref)}
-                        parentReferenceItem={(label_1, label_2, value) => {
-                          this.setState({
-                            selectedTransferType: label_1,
-                          });
-                          this.handleTransferTypeSelection(label_1, value);
-                        }}
-                      /> */}
+                      {/* REGISTERED PAYEE LIST DROP DOWN*/}
+                      <SelectDropDown
+                        data={this.RegisteredPayee_List}
+                        title={"Send to"}
+                        placeholder={"Select Payee"}
+                        value={this.state.SelectedPayeeID}
+                        label={this.state.SelectedPayee}
+                        onRef={(ref) => (this.parentReferenceItemName = ref)}
+                        parentReferenceItem={this.HandleRegisteredPayee}
+                      />
 
-                      {/* Transfer type selection DropDown- added by Dinuranga */}
-                      <View
-                        style={FTScreenStyles(Android_Theme_Light).bankView}
-                      >
-                        <SelectDropDown
-                          width={"100%"}
-                          data={this.state.tansferTypes.map((item) => ({
-                            label: item.label_1,
+                      { 
+                        
+                        this.state.SelectedPayeeID ? 
 
-                            value: item.value,
-                          }))}
-                          placeholder={
-                            this.state.selectedTransferType ||
-                            tansferTypes[0].label_1
-                          }
-                          lable={this.state.selectedTransferType}
-                          value={this.state.selectedTransferType}
-                          onRef={(ref) => (this.parentReferenceItemName = ref)}
-                          parentReferenceItem={this.handleTransferTypeSelection}
-                        />
-                      </View>
-
-                      <View>
-                        {this.state.isExpanded6 && (
-                          <View>
-                            <View style={{ height: 20 }} />
-                            <Text
-                              style={
-                                FTScreenStyles(Android_Theme_Light).titleText
-                              }
-                            >
-                              Send to
-                            </Text>
-
-                            <View style={{ height: 20 }} />
-                            <CommonInputField
-                              value={this.state.selectedName}
-                              title={"Account Number"}
-                              onInputChange={(text) =>
-                                this.handlePasswordInputChange(text)
-                              }
-                              inputRef={this.transferName}
-                              nextInputRef={this.transferPurpose}
-                              placeholder={"Insert Account Number"}
-                              width={"100%"}
-                              icon={Android_Theme_Light.ICON_VERIFIED}
-                            />
-
-                            <View style={{ height: 20 }} />
-                            <Text
-                              style={
-                                FTScreenStyles(Android_Theme_Light).titleText
-                              }
-                            >
-                              Bank
-                            </Text>
-                            {/* 
-                            <CommonSpinnerLong
-                              width={"100%"}
-                              data={Banklist}
-                              placeholder={this.state.selectedBank}
-                              lable_1={
-                                this.state.selectedBank || Banklist[1].label_1
-                              }
-                              value={this.state.selectedBankCode}
-                              lable_2Show={
-                                false
-                              } 
-                              onRef={(ref) => (this.parentReferenceItem = ref)}
-                              inputRef={this.transferFrom}
-                              nextInputRef={this.transferTo}
-                              currency={""}
-                              parentReferenceItem={(label_1, value) => {
-                                this.setState({
-                                  selectedBank: label_1,
-                                  selectedBankCode: value,
-                                });
-                              }}
-                            />
-                            */}
-
-                            {/* Bank Selection DropDown- added by Dinuranga */}
-                            <View
-                              style={
-                                FTScreenStyles(Android_Theme_Light).bankView
-                              }
-                            >
-                              <SelectDropDown
-                                width={"100%"}
-                                data={this.state.Banklist.map((item) => ({
-                                  label: item.label_1,
-
-                                  value: item.value,
-                                }))}
-                                placeholder={
-                                  this.state.selectedBank || "Select Bank"
-                                }
-                                lable={this.state.selectedBank}
-                                value={this.state.selectedBank}
-                                onRef={(ref) =>
-                                  (this.parentReferenceItemName = ref)
-                                }
-                                parentReferenceItem={this.handleBankSelection}
-                              />
-                            </View>
-                          </View>
-                        )}
-
-                        {this.state.isExpanded7 && (
-                          <View>
-                            <View style={{ height: 20 }} />
-                            <Text
-                              style={
-                                FTScreenStyles(Android_Theme_Light).titleText
-                              }
-                            >
-                              Send to
-                            </Text>
-                            <View style={{ height: 20 }} />
-                            <CommonInputField
-                              value={this.state.selectedAccountNum}
-                              title={"Account Number"}
-                              onInputChange={(text) =>
-                                this.handlePasswordInputChange(text)
-                              }
-                              inputRef={this.transferName}
-                              nextInputRef={this.transferPurpose}
-                              placeholder={"Insert Account Number"}
-                              width={"100%"}
-                              icon={Android_Theme_Light.ICON_VERIFIED}
-                            />
-
-                            <View style={{ height: 20 }} />
-                          </View>
-                        )}
-
-                        <View style={{ height: 10 }} />
-                        <View
-                          style={
-                            FTScreenStyles(Android_Theme_Light)
-                              .addPayeeButtonView
-                          }
-                        >
-                          <LinearGradient
-                            angle={70}
-                            useAngle={true}
-                            start={{ x: 0, y: 0 }}
-                            end={{ x: 1, y: 1 }}
-                            colors={
-                              this.state.isExpanded4
-                                ? ["#7FDDE5", "#7FDCE5", "#6FBBE5"]
-                                : ["#D9D9D9", "#D9D9D9", "#D9D9D9"]
-                            }
-                            style={
-                              FTScreenStyles(Android_Theme_Light).addPayeeButton
-                            }
-                          >
-                            <TouchableOpacity
-                              onPress={() => this.handleAddPayeeButton()}
-                            >
-                              <Text
-                                style={[
-                                  FTScreenStyles(Android_Theme_Light)
-                                    .addPayeeButtonText,
-                                  {
-                                    color: this.state.isExpanded4
-                                      ? Android_Theme_Light.DARK_BLUE_COLOR
-                                      : Android_Theme_Light.GRAY_COLOR,
-                                  },
-                                ]}
-                              >
-                                {" "}
-                                Add as payee
-                              </Text>
-                            </TouchableOpacity>
-                          </LinearGradient>
-                        </View>
-
-                        {this.state.isExpanded4 && (
                           <>
-                            <CommonInputField
-                              value={this.state.nickname}
-                              title={"Add Nick Name*"}
-                              onInputChange={(text) =>
-                                this.handleAmountInputChange(text)
-                              }
-                              width={"100%"}
-                              icon={Android_Theme_Light.ICON_VERIFIED}
-                            />
-                          </>
-                        )}
-                      </View>
-                    </>
-                  )}
-
-                  {this.state.isExpanded3 && (
-                    <>
-                      <View style={{ height: 20 }} />
-                      <View>
-                        <Text
-                          style={FTScreenStyles(Android_Theme_Light).titleText}
-                        >
-                          To
-                        </Text>
-
-                        {/* Commented By Dinuranga */}
-                        {/* <CommonSpinnerLong
-                          width={"100%"}
-                          data={spinnerData.filter(
-                            (item) => item.label_1 !== selectedFromAccount
-                          )}
-                          placeholder={
-                            selectedAccount2 ||
-                            spinnerData.find(
-                              (item) => item.label_1 !== selectedFromAccount
-                            )?.label_1 ||
-                            spinnerData[0].label_1
-                          }
-                          lable_1={selectedAccount2}
-                          lable_2={
-                            spinnerData.find(
-                              (item) => item.label_1 !== selectedFromAccount
-                            )?.label_2 || ""
-                          }
-                          lable_2Show={true}
-                          value={selected_ID2}
-                          onRef={(ref) => (this.parentReferenceItem2 = ref)}
-                          inputRef={this.transferFrom}
-                          nextInputRef={this.transferTo}
-                          currency={"LKR"}
-                          parentReferenceItem={this.handleSpinnerChange2}
-                        /> */}
-
-                        {/* To Account Select DropDown- added by Dinuranga */}
-                        <View
-                          style={FTScreenStyles(Android_Theme_Light).bankView}
-                        >
-                          <SelectDropDown
-                            width={"96%"}
-                            data={this.state.spinnerData
-                              .filter(
-                                (item) =>
-                                  item.label_1 !==
-                                  this.state.selectedFromAccount
-                              )
-                              .map((person) => ({
-                                label:
-                                  "Account:  " +
-                                  person.label_1 +
-                                  "\n" +
-                                  "Balance:  " +
-                                  person.label_2,
-
-                                value: person.value,
-                              }))}
-                            placeholder={
-                              this.state.selectedAccount2 || "Select Account"
-                            }
-                            lable={this.state.selectedAccount2}
-                            value={this.state.selectedAccount2}
-                            onRef={(ref) =>
-                              (this.parentReferenceItemName = ref)
-                            }
-                            parentReferenceItem={this.handleSpinnerChange2}
-                          />
-                        </View>
-                      </View>
-                      <View style={{ height: 20 }} />
-                    </>
-                  )}
-
-                  {/*this is expand5 view of Registerd Payee */}
-
-                  {this.state.isExpanded5 && (
-                    <>
-                      <View style={{ height: 20 }} />
-                      <View>
-                        <Text
-                          style={FTScreenStyles(Android_Theme_Light).titleText}
-                        >
-                          Send
-                        </Text>
-                        <View
-                          style={FTScreenStyles(Android_Theme_Light).bankView}
-                        >
-                          <SelectDropDown
-                            width={"100%"}
-                            data={this.state.regList.map((person) => ({
-                              label:
-                                "Name: " +
-                                person.label +
-                                ", NickName: " +
-                                person.nickname +
-                                ", Account Num: " +
-                                person.accountNum +
-                                ", Bank: " +
-                                person.bank,
-                              value: person.label,
-                            }))}
-                            title={"Select Name"}
-                            placeholder={"Select Name"}
-                            lable={this.state.selectedName}
-                            value={this.state.selectedName}
-                            onRef={(ref) =>
-                              (this.parentReferenceItemName = ref)
-                            }
-                            parentReferenceItem={this.handleNameSelect}
-                          />
-                        </View>
-                        <View style={{ height: 20 }} />
-
-                        {/*Add View to */}
-                        <View
-                          style={
-                            FTScreenStyles(Android_Theme_Light).parentContainer
-                          }
-                        >
-                          <View
-                            style={
-                              FTScreenStyles(Android_Theme_Light).labelContainer
-                            }
-                          >
-                            <Text
-                              style={
-                                FTScreenStyles(Android_Theme_Light).labelText
-                              }
-                            >
-                              Account Number
-                            </Text>
-                          </View>
-                          <View
-                            style={
-                              FTScreenStyles(Android_Theme_Light).inputContainer
-                            }
-                          >
-                            <Text
-                              style={
-                                FTScreenStyles(Android_Theme_Light)
-                                  .inputFieldText
-                              }
-                            >
-                              {this.state.selectedAccount}
-                            </Text>
-                            <View
-                              style={
-                                FTScreenStyles(Android_Theme_Light)
-                                  .iconContainer
-                              }
-                            >
-                              <Android_Theme_Light.ICON_VERIFIED
-                                fill={
-                                  this.state.selectedAccount
-                                    ? Android_Theme_Light.BLUE_COLOR
-                                    : Android_Theme_Light.GRAY_COLOR
-                                }
-                              />
-                            </View>
-                          </View>
-                        </View>
-
-                        {/*Add View to */}
-                      </View>
-                      <View style={{ height: 10 }} />
-                    </>
-                  )}
-
-                  {/*this is End expand5 view of Registerd Payee */}
-
-                  <View style={FTScreenStyles(Android_Theme_Light).inputView}>
-                    <CommonInputField
-                      value={this.state.amount}
-                      title={"Amount *"}
-                      onInputChange={(text) =>
-                        this.handleAmountInputChange(text)
-                      }
-                      inputRef={this.transferTo}
-                      nextInputRef={this.transferRemark}
-                      type={"currency"}
-                      width={"100%"}
-                      icon={Android_Theme_Light.ICON_VERIFIED}
-                    />
-
-                    <View style={{ height: 10 }} />
-
-                    <CommonInputField
-                      value={this.state.selectedName}
-                      title={"Remark"}
-                      onInputChange={(text) =>
-                        this.handlePasswordInputChange(text)
-                      }
-                      inputRef={this.transferRemark}
-                      nextInputRef={this.transferPurpose}
-                      placeholder={"Remark"}
-                      width={"100%"}
-                      icon={Android_Theme_Light.ICON_VERIFIED}
-                    />
-                  </View>
-                  <View style={{ height: 20 }} />
-
-                  {/* Previous Now /Later Button */}
-                  {/* <View
-                    style={FTScreenStyles(Android_Theme_Light).buttonContainer}
-                  >
-                    <View
-                      style={
-                        FTScreenStyles(Android_Theme_Light).buttonContainer1
-                      }
-                    >
-                      <TouchableOpacity
-                        onPress={() => this.setState({ isExpanded: false })}
-                      >
-                        <View
-                          style={[
-                            FTScreenStyles(Android_Theme_Light).button,
-                            {
-                              backgroundColor: this.state.isExpanded
-                                ? Android_Theme_Light.WHITE_COLOR
-                                : Android_Theme_Light.BLUE_COLOR,
-                            },
-                          ]}
-                        >
-                          <Text
-                            style={[
-                              FTScreenStyles(Android_Theme_Light).buttonText,
-                              {
-                                color: this.state.isExpanded
-                                  ? Android_Theme_Light.DARK_BLUE_COLOR
-                                  : Android_Theme_Light.WHITE_COLOR,
-                              },
-                            ]}
-                          >
-                            Now
-                          </Text>
-                        </View>
-                      </TouchableOpacity>
-
-                      <TouchableOpacity onPress={this.toggleExpand}>
-                        <View
-                          style={[
-                            FTScreenStyles(Android_Theme_Light).button,
-                            {
-                              backgroundColor: this.state.isExpanded
-                                ? Android_Theme_Light.BLUE_COLOR
-                                : Android_Theme_Light.WHITE_COLOR,
-                            },
-                          ]}
-                        >
-                          <Text
-                            style={[
-                              FTScreenStyles(Android_Theme_Light).buttonText,
-                              {
-                                color: this.state.isExpanded
-                                  ? Android_Theme_Light.WHITE_COLOR
-                                  : Android_Theme_Light.DARK_BLUE_COLOR,
-                              },
-                            ]}
-                          >
-                            Later
-                          </Text>
-                        </View>
-                      </TouchableOpacity>
-                    </View>
-                  </View> */}
-
-                  {/* Transaction Time Added By Dinuranga */}
-                  <CommonSpinnerLong
-                    width={"100%"}
-                    data={this.state.TransactionTimes}
-                    placeholder={this.state.SelectedTransactionTime}
-                    lable_1={this.state.SelectedTransactionTime}
-                    lable_2Show={false}
-                    value={this.state.SelectedTransactionTime}
-                    onRef={(ref) => (this.parentReferenceItem2 = ref)}
-
-                    parentReferenceItem={(label_1, label_2, value) => {
-                      value == 1
-                        ? this.setState({ isExpanded: false })
-                        : this.toggleExpand();
-                      this.setState({
-                        SelectedTransactionTime: label_1,
-                      });
-                    }}
-                  />
-
-                  {isExpanded && (
-                    <View
-                      style={
-                        FTScreenStyles(Android_Theme_Light).expandContainer
-                      }
-                    >
-                      <View style={{ height: 10 }} />
-                      <Text
-                        style={FTScreenStyles(Android_Theme_Light).titleText}
-                      >
-                        Schedule Type
-                      </Text>
-                      <View style={{ height: 5 }} />
-
-                      {/* <View
-                        style={FTScreenStyles(Android_Theme_Light).bankView}
-                      >
-                        <CommonSpinnerLong
-                          width={"100%"}
-                          data={shedualList}
-                          placeholder={this.state.selectedSchedule}
-                          lable_1={
-                            this.state.selectedSchedule ||
-                            shedualList[0].label_1
-                          }
-                          lable_2Show={false}
-                          value={""}
-                          search={false}
-                          onRef={(ref) => (this.parentReferenceItem = ref)}
-                          currency={"LKR"}
-                          parentReferenceItem={(label_1, label_2, value) => {
-                            this.setState({
-                              selectedSchedule: label_1,
-                            });
-                            this.handleSpinnerSelection(label_1, value);
-                          }}
-                        />
-                      </View> */}
-
-                      {/* Shedule type DropDown- added by Dinuranga */}
-                      <View
-                        style={FTScreenStyles(Android_Theme_Light).bankView}
-                      >
-                        <SelectDropDown
-                          width={"100%"}
-                          data={this.state.shedualList.map((item) => ({
-                            label: item.label_1,
-
-                            value: item.value,
-                          }))}
-                          placeholder={
-                            this.state.selectedSchedule || "Select Shedule"
-                          }
-                          lable={this.state.selectedSchedule}
-                          value={this.state.selectedSchedule}
-                          onRef={(ref) => (this.parentReferenceItemName = ref)}
-                          parentReferenceItem={this.handleSpinnerSelection}
-                        />
-                      </View>
-
-                      <View style={{ height: 20 }} />
-
-                      {this.state.isExpanded1 && (
-                        <>
-                          <View style={{ height: 10 }} />
-                          <Text
-                            style={
-                              FTScreenStyles(Android_Theme_Light).titleText
-                            }
-                          >
-                            Frequency
-                          </Text>
-                          <View style={{ height: 5 }} />
-
-                          {/* Commented by Dinuranga */}
-                          {/* <View
-                            style={FTScreenStyles(Android_Theme_Light).bankView}
-                          >
-                            <CommonSpinnerLong
-                              width={"100%"}
-                              data={frequencyList}
-                              placeholder={"Select Frequency"}
-                              lable_1={this.state.selectedFrequency}
-                              lable_2Show={false}
-                              value={""}
-                              search={false}
-                              onRef={(ref) => (this.parentReferenceItem = ref)}
-                              parentReferenceItem={(
-                                label_1,
-                                label_2,
-                                value
-                              ) => {
-                                this.setState({
-                                  selectedFrequency: label_1,
-                                });
-                              }}
-                            />
-                          </View> */}
-
-                          {/*Select Frequency DropDown- added by Dinuranga */}
-                          <View
-                            style={FTScreenStyles(Android_Theme_Light).bankView}
-                          >
-                            <SelectDropDown
-                              width={"100%"}
-                              data={this.state.frequencyList.map((item) => ({
-                                label: item.label_1,
-
-                                value: item.value,
-                              }))}
-                              placeholder={
-                                this.state.selectedFrequency ||
-                                "Select Frequency"
-                              }
-                              lable={this.state.selectedFrequency}
-                              value={this.state.selectedFrequency}
+                          
+                            {/* Gap */}
+                            <View style = {{height:20}}/>
+                            
+                            {/* PAYEE BANK */}
+                            <CommonDropDown
+                              disabled={true}
+                              title={"Bank"}
+                              data={this.Bank_List}
+                              placeholder={this.state.SelectedPayeeBank || "Select Bank"}
+                              label={this.state.SelectedPayeeBank}
+                              value={this.state.SelectedPayeeBankCode}
                               onRef={(ref) =>
-                                (this.parentReferenceItemName = ref)
+                              (this.parentReferenceItemName = ref)
                               }
-                              parentReferenceItem={(value) => {
-                                this.setState({
-                                  selectedFrequency:
-                                    this.state.frequencyList.find(
-                                      (item) => item.value === value
-                                    ).label_1,
-                                });
-                              }}
+                              parentReferenceItem={this.HandleBank}
                             />
-                          </View>
 
-                          <View style={{ height: 20 }} />
-                          <CommonInputField
-                            value={""}
-                            title={"Date From *"}
-                            onInputChange={""}
-                            inputRef={this.transferTo}
-                            nextInputRef={this.transferRemark}
-                            type={"date"}
-                            width={"100%"}
-                            icon={Android_Theme_Light.ICON_CALENDER}
-                            readOnly={true}
-                          />
+                            {/* Gap */}
+                            <View style = {{height:20}}/>
 
-                          <View style={{ height: 20 }} />
-                          <CommonInputField
-                            value={""}
-                            title={"Date To *"}
-                            onInputChange={""}
-                            inputRef={this.transferTo}
-                            nextInputRef={this.transferRemark}
-                            type={"date"}
-                            width={"100%"}
-                            icon={Android_Theme_Light.ICON_CALENDER}
-                            readOnly={true}
-                          />
-                        </>
-                      )}
+                            {/* TO ACCOUNT NO*/}
+                            <CommonInputField
+                              readOnly = {true}
+                              value={this.state.SelectedPayeeAccNo}
+                              title={"Account Number"}
+                              onInputChange={this.OnRegisteredPayeeInputChange}
+                              //inputRef={this.transferName}
+                              //nextInputRef={this.transferPurpose}
+                              placeholder={"Account Number"}
+                              icon={Android_Theme_Light.ICON_VERIFIED}
+                            /> 
 
-                      <View style={{ height: 20 }} />
-                      {!this.state.isExpanded1 && (
-                        <CommonInputField
-                          value={""}
-                          title={"Transaction Date *"}
-                          onInputChange={""}
-                          inputRef={this.transferTo}
-                          nextInputRef={this.transferRemark}
-                          type={"date"}
-                          width={"100%"}
-                          icon={Android_Theme_Light.ICON_CALENDER}
-                          readOnly={true}
-                        />
-                      )}
-                      <View style={{ height: 20 }} />
-                    </View>
-                  )}
-                  <View style={{ height: 20 }} />
+                          </> 
+                        : null
+                      }
+                    </>
 
-                  <View style={FTScreenStyles(Android_Theme_Light).bottomView3}>
-                    <View
-                      style={FTScreenStyles(Android_Theme_Light).bottomView1}
-                    >
-                      <View
-                        style={FTScreenStyles(Android_Theme_Light).bottomView2}
-                      ></View>
-                    </View>
-                  </View>
-                </ScrollView>
-              </View>
+                  // Unregistered Payee Transfer
+                  : this.state.SelectedTransferTypeVal === 3 ? 
+
+                    <>
+
+                      {/* Gap */}
+                      <View style = {{height:20}}/>
+
+                      {/* ACCOUNT TYPE */}
+                      <SelectDropDown
+                        title={"Account Type"}
+                        data={this.AccountType_List}
+                        placeholder={'Select account type'}
+                        value={this.state.SelectedAccountTypeVal}
+                        label={this.state.SelectedAccountTypeDesc}
+                        onRef={(ref) => (this.parentReferenceItem = ref)}
+                        parentReferenceItem={this.HandleAccountType}
+                      />
+
+                      {/* Gap */}
+                      <View style = {{height:20}}/>
+
+                      {
+
+                        this.state.SelectedAccountTypeVal !== 1 ? 
+
+                          <> 
+
+                            {/* UNREGISTERED PAYEE BANK */}
+                            <CommonDropDown
+                              title={"Bank"}
+                              data={this.Bank_List}
+                              placeholder={this.state.SelectedPayeeBank || "Select Bank"}
+                              label={this.state.SelectedPayeeBank}
+                              value={this.state.SelectedPayeeBankCode}
+                              onRef={(ref) => (this.parentReferenceItemName = ref)}
+                              parentReferenceItem={this.HandleBank}
+                            />
+
+                            {/* Gap */}
+                            <View style = {{height:20}}/>
+
+                          </> 
+                        
+                        : null
+                      }
+
+                      {/* UNREG PAYEE TO ACCOUNT */}
+                      <CommonInputField
+                        title={"Account Number"}
+                        value={this.state.UnregToAccountNo}
+                        onInputChange={(text) =>
+                          this.OnUnregPayee_ToAccountInputChange(text)
+                        }
+                        //inputRef={this.tr}
+                        nextInputRef={this.transferAmount}
+                        placeholder={"Enter payee account number"}
+                        icon={Android_Theme_Light.ICON_VERIFIED}
+                        returnKeyType="next"
+                      /> 
+                    </>
+                  : null
+                
+                }
+
+                {/* Gap */}
+                <View style = {{height:20}}/>
+
+                {/* AMOUNT */}
+                <CommonInputField
+                  value={this.state.amount}
+                  title={"Amount*"}
+                  onInputChange={(text) =>
+                    this.OnAmountInputChange(text)
+                  }
+                  inputRef={this.transferAmount}
+                  nextInputRef={this.transferRemark}
+                  type={"currency"}
+                  //width={"100%"}
+                  icon={Android_Theme_Light.ICON_VERIFIED}
+                />
+
+                {/* Gap */}
+                <View style = {{height:20}}/>
+
+                {/* REMARK */}
+                <CommonInputField
+                  value={this.state.RemarkVal}
+                  title={"Remark"}
+                  placeholder={"Remark"}
+                  onInputChange={(text) =>
+                    this.OnRemarkInputChange(text)
+                   }
+                  inputRef={this.transferRemark}
+                  //nextInputRef={this.transferPurpose}
+                  icon={Android_Theme_Light.ICON_VERIFIED}
+                />
+
+                {/* Gap */}
+                <View style = {{height:20}}/>
+
+                {/* UNREGISTERED PAYEE BANK */}
+                <CommonDropDown
+                  title={"Transaction Type"}
+                  data={this.TransactionType_List}
+                  placeholder={this.state.SelectedTransactionTypeDesc || "Select Transaction Type"}
+                  value={this.state.SelectedTransactionTypeVal}
+                  label={this.state.SelectedTransactionTypeDesc}
+                  onRef={(ref) => (this.parentReferenceItem = ref)}
+                  parentReferenceItem={this.HandleTransactionType}
+                />
+
+                { 
+                
+                  this.state.SelectedTransactionTypeVal !== 1 ? 
+
+                    <>
+
+                      {/* Gap */}
+                      <View style = {{height:20}}/>
+
+                      {/* SCHEDULE TYPE */}
+                      <SelectDropDown
+                        data={this.ScheduleType_List}
+                        placeholder={this.state.SelectedScheduleTypeDesc || "Select Schedule"}
+                        value={this.state.SelectedScheduleTypeVal}
+                        label={this.state.SelectedScheduleTypeDesc}
+                        onRef={(ref) => (this.parentReferenceItem = ref)}
+                        parentReferenceItem={this.HandleScheduleType}
+                      />
+
+                      { 
+                
+                        this.state.SelectedScheduleTypeVal !== 1 ? 
+
+                          <>
+
+                            {/* Gap */}
+                            <View style = {{height:20}}/>
+                      
+                            {/* FREAQUENCY TYPE */}
+                            <SelectDropDown
+                              data={this.FrequencyList}
+                              placeholder={this.state.SelectedFrequencyTypeVal || "Select Frequency"}
+                              value={this.state.SelectedFrequencyTypeVal}
+                              label={this.state.SelectedFrequencyTypeDesc}
+                              onRef={(ref) => (this.parentReferenceItem = ref)}
+                              parentReferenceItem={this.HandleFrequencyType}/>
+
+                          </>    
+                        : null
+                      }
+
+                      {/* Gap */}
+                      <View style = {{height:20}}/>
+
+                      <CommonInputField
+                         value={""}
+                        title={"Date From *"}
+                        onInputChange={""}
+                        inputRef={this.transferTo}
+                        nextInputRef={this.transferRemark}
+                        type={"date"}
+                        icon={Android_Theme_Light.ICON_CALENDER}
+                        readOnly={true}
+                      />
+
+                      { 
+                
+                        this.state.SelectedScheduleTypeVal !== 1 ? 
+
+                          <>
+
+                            {/* Gap */}
+                            <View style = {{height:20}}/>
+                         
+                            <CommonInputField
+                              value={""}
+                              title={"Date To *"}
+                              onInputChange={""}
+                              inputRef={this.transferTo}
+                              nextInputRef={this.transferRemark}
+                              type={"date"}
+                            
+                              icon={Android_Theme_Light.ICON_CALENDER}
+                              readOnly={true}
+                            />
+
+                          </> 
+                        : null
+                      }
+
+                    </> 
+                  
+                  : null
+
+                }
+
+              </KeyboardAwareScrollView>
+
             </View>
-          </KeyboardAwareScrollView>
+
+          </View>
 
           <View style={FTScreenStyles(Android_Theme_Light).bottomView}>
             <CommonButton
@@ -1381,11 +1349,11 @@ class FTScreen extends Component {
               width={"60%"}
             />
 
-            <BottomTitleBar
-              icon1={Android_Theme_Light.ICON_BACK_ARROWS}
-              icon2={Android_Theme_Light.ICON_HOME}
-              onPressIcon1={this.handleBack}
-              onPressIcon2={this.handleHome}
+            <BottomBar
+              BackIcon={Android_Theme_Light.ICON_BACK_ARROWS}
+              HomeIcon={Android_Theme_Light.ICON_HOME}
+              onPressBackButton={this.handleBack}
+              onPressHomeButton={this.handleHome}
             />
           </View>
 

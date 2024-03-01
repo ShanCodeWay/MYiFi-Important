@@ -6,7 +6,7 @@ import Colors from "../../../styles/Colors";
 import { GetCommonStyles } from "../../../styles/CommonStyles";
 import GetQR_PaymentSuccessScreenStyles from "./QR_PaymentSuccessScreenStyles";
 import { Android_Theme_Light } from "../../../styles/Themes";
-import BottomTitleBar from "../../components/Common/BottomBar/BottomBar";
+import BottomBar from "../../components/Common/BottomBar/BottomBar";
 import { AmountSeperation } from "../../../utils/helpers";
 
 // done by: Randima 2024/02/01
@@ -176,11 +176,11 @@ class QR_PaymentSuccessScreen extends Component {
                   .bottomView
               }
             >
-              <BottomTitleBar
-                icon1={Icon_backArrows}
-                icon2={Icon_home}
-                onPressIcon1={this.handleBack}
-                onPressIcon2={this.handleHome}
+              <BottomBar
+                BackIcon={Icon_backArrows}
+                HomeIcon={Icon_home}
+                onPressBackButton={this.handleBack}
+                onPressHomeButton={this.handleHome}
               />
             </View>
           </View>

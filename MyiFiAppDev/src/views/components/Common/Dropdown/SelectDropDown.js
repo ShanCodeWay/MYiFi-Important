@@ -104,7 +104,7 @@ const SelectDropDown = (props) => {
             <Text
               key={index}
               style={{
-                color: char === '*' ? 'red' : Android_Theme_Light.BLACK_COLOR,
+                color: char === '*' ? 'red' : Android_Theme_Light.DEEP_BLACK_COLOR,
               }}
             >
               {char}
@@ -138,7 +138,7 @@ const SelectDropDown = (props) => {
                 style={ props.value ? GetSelectDropDownStyles(Android_Theme_Light).valueText
                       : GetSelectDropDownStyles(Android_Theme_Light).textPlaceholder}>
 
-                {props.value ? props.lable : props.placeholder}
+                {props.value ? props.label : props.placeholder}
 
               </Text>
             </View>

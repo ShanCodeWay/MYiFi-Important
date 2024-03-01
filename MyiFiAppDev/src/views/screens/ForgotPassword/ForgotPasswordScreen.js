@@ -159,7 +159,7 @@ class ForgotPasswordScreen extends Component {
                 title={"Security Question"}
                 placeholder={"Select Security Question"}
                 value={this.state.SelectedQuestion}
-                lable={this.state.SelectedQuestion}
+                label={this.state.SelectedQuestion}
                 onRef={(ref) => (this.parentReferenceItem = ref)}
                 parentReferenceItem={this.handleSecurityQuestionChange}
                 inputRef={this.SecurityQuestionInputRef}

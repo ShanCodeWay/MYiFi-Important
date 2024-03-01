@@ -8,11 +8,12 @@ import {
   Android_Theme_Light,
 } from "../../../styles/Themes";
 import GetFixedDepositsScreenStyles from "./FixedDepositsScreenStyles";
+import GetDashboardScreenStyles from "../../screens/Dashboard/DashboardScreenStyles"
 import CommonCardButton from "../../components/Common/CardButton/CommonCardButton";
 import CommonButton from "../../components/Common/MainButton/CommonButton";
 import { AmountSeperation } from "../../../utils/helpers";
 import BottomBar from "../../components/Common/BottomBar/BottomBar";
-import Index from "../../../configs/Index";
+import Index from "../../navigators/NavIndex";
 
 //Done by: Dinuranga 23/01/19
 class FixedDepositsScreen extends Component {
@@ -121,12 +122,12 @@ class FixedDepositsScreen extends Component {
 
           <View
             style={[
-              GetDashboardScreenStyles(Android_Theme_Light).AmountContainer,
+              GetCommonStyles(Android_Theme_Light).amountContainer,
             ]}
           >
             <Text
               style={[
-                GetDashboardScreenStyles(Android_Theme_Light).textBalanceRs,
+                GetCommonStyles(Android_Theme_Light).amountRsText,
               ]}
             >
               {"Rs. "}
@@ -134,8 +135,8 @@ class FixedDepositsScreen extends Component {
 
             <Text
               style={[
-                GetDashboardScreenStyles(Android_Theme_Light)
-                  .textBalanceIntegerAmount,
+                GetCommonStyles(Android_Theme_Light)
+                  .amountIntegerText,
                 { fontSize: Android_Theme_Light.FONT_SIZE_HEADER_TWO },
               ]}
             >
@@ -143,8 +144,8 @@ class FixedDepositsScreen extends Component {
             </Text>
             <Text
               style={[
-                GetDashboardScreenStyles(Android_Theme_Light)
-                  .textBalanceDecimalAmount,
+                GetCommonStyles(Android_Theme_Light)
+                  .amountDecimalText,
               ]}
             >
               {AmountSeperation(item.amount)[1]}
